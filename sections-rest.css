@@ -88,8 +88,7 @@
 /* Feature bento */
 .s-mfg-features {
     padding: clamp(4rem, 8vh, 6rem) clamp(1.5rem, 4vw, 3.5rem);
-    background: #02040a;
-    /* Dark background for particles */
+    background: var(--bg-primary);
     position: relative;
     overflow: hidden;
     transition: background-color 0.8s ease;
@@ -121,8 +120,11 @@
 .mfg-card {
     border-radius: 16px;
     padding: clamp(1.5rem, 2.5vw, 2.5rem);
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.4);
+    /* Glassmorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     position: relative;
     overflow: hidden;
     opacity: 0;

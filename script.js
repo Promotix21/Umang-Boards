@@ -677,12 +677,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // S4 BG color - REMOVED for Particle Animation
-        /* ScrollTrigger.create({
+        // S4 BG color
+        ScrollTrigger.create({
             trigger: '.s-mfg-features', start: 'top 60%',
             onEnter: () => { document.querySelector('.s-mfg-features').style.backgroundColor = '#F0EDE7'; },
             onLeaveBack: () => { document.querySelector('.s-mfg-features').style.backgroundColor = ''; }
-        }); */
+        });
 
         // S5 — Global
         gsap.fromTo('#globalLeft', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '#sGlobal', start: 'top 70%' } });
@@ -724,13 +724,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* ---- MANUFACTURING PARTICLES (DARK WAVE) ---- */
+    /* ---- MANUFACTURING PARTICLES (DARK WAVE - ADAPTED FOR LIGHT BG) ---- */
     const initMfgParticles = () => {
         const canvas = document.getElementById('mfg-particles');
         const container = document.querySelector('.s-mfg-features');
         if (!canvas || !container) return;
 
         const scene = new THREE.Scene();
+        // Clear background color so CSS background shows
+        // scene.background = null; 
+
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 5000);
         camera.position.set(0, 400, 1200);
         camera.lookAt(0, 0, 0);
@@ -761,7 +764,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 gl_Position = projectionMatrix * viewPosition;
                 gl_PointSize = uSize * aScale * uPixelRatio; gl_PointSize *= (1.0 / - viewPosition.z);
                 float elevationNormal = (elevation + noiseAmp) / (noiseAmp * 2.0);
-                vec3 colorDeep = vec3(0.0, 0.2, 0.5); vec3 colorHigh = vec3(0.0, 1.0, 1.0);
+                
+                // Dark colors for light background
+                vec3 colorDeep = vec3(0.05, 0.1, 0.25); // Dark Navy
+                vec3 colorHigh = vec3(0.77, 0.63, 0.4); // Gold (#C4A265)
+                
                 vColor = mix(colorDeep, colorHigh, elevationNormal * 1.5);
                 float edgeFade = 1.0 - smoothstep(width * 0.4, width * 0.5, abs(modelPosition.x));
                 vAlpha = edgeFade * (0.6 + elevationNormal * 0.4);
@@ -778,7 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         const geometry = new THREE.BufferGeometry();
-        const count = 4000; // Reduced from 12000 for performance/subtlety
+        const count = 4000;
         const positions = new Float32Array(count * 3);
         const randomness = new Float32Array(count * 3);
         const scales = new Float32Array(count);
@@ -795,7 +802,10 @@ document.addEventListener('DOMContentLoaded', () => {
         geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 1));
 
         const material = new THREE.ShaderMaterial({
-            depthWrite: false, blending: THREE.AdditiveBlending, vertexColors: true, transparent: true,
+            depthWrite: false,
+            blending: THREE.NormalBlending, // Normal blending for dark on light
+            vertexColors: true,
+            transparent: true,
             vertexShader, fragmentShader,
             uniforms: { uTime: { value: 0 }, uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) }, uSize: { value: 150.0 }, uMouse: { value: new THREE.Vector2(0, 0) } }
         });
@@ -814,18 +824,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('mousemove', (e) => {
-            // Normalize mouse relative to center
             mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
             mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
         });
 
         const animate = () => {
-            // Visibility check
             const rect = container.getBoundingClientRect();
             if (rect.bottom > 0 && rect.top < window.innerHeight) {
                 time += 0.01; material.uniforms.uTime.value = time;
                 material.uniforms.uMouse.value.lerp(mouse, 0.05);
-                // Subtle camera sway
                 camera.position.x += (mouse.x * 50 - camera.position.x) * 0.01;
                 camera.lookAt(0, 0, 0);
                 renderer.render(scene, camera);
