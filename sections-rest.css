@@ -729,7 +729,7 @@
 }
 
 /* Brand column */
-.sf-brand img {
+.sf-brand > img {
     height: 40px;
     margin-bottom: 1.5rem;
     filter: brightness(2);
