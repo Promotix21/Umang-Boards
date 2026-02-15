@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isMobileGlobe = window.innerWidth <= 768;
         const globeContainer = gC.parentElement;
         const gW = isMobileGlobe ? gC.clientWidth || globeContainer.clientWidth : window.innerWidth;
-        const gH = isMobileGlobe ? (gC.clientHeight || gC.clientWidth) : window.innerHeight;
+        const gH = isMobileGlobe ? (gC.clientHeight || 300) : window.innerHeight;
 
         const scene = new THREE.Scene();
         const cam = new THREE.PerspectiveCamera(50, gW / gH, 0.1, 1000);
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const arcObjects = []; // Track all arcs for animation
         const electrons = [];
 
-        if (!isMobileGlobe) {
+        {
             const arcSegments = 60;
 
             function createArc(startLatLon, endLatLon, height, color, delay) {
@@ -644,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => {
             const mobile = window.innerWidth <= 768;
             const rW = mobile ? (gC.clientWidth || globeContainer.clientWidth) : window.innerWidth;
-            const rH = mobile ? (gC.clientHeight || gC.clientWidth) : window.innerHeight;
+            const rH = mobile ? (gC.clientHeight || 300) : window.innerHeight;
             cam.aspect = rW / rH;
             cam.updateProjectionMatrix();
             ren.setSize(rW, rH);

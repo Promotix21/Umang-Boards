@@ -981,14 +981,14 @@
     .s-legacy {
         flex-direction: column;
         min-height: auto;
+        padding: 2rem clamp(1.5rem, 4vw, 3.5rem);
     }
 
     #globeCanvas {
         position: relative;
         width: 100%;
-        aspect-ratio: 1 / 1;
-        height: auto;
-        max-height: 380px;
+        height: 80vw;
+        max-height: 400px;
         opacity: 1;
     }
 
