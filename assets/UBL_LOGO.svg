@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <!-- Shield Shape -->
+  <path d="M80,50 L320,50 L320,280 Q320,380 200,450 Q80,380 80,280 Z" 
+        fill="#5A6C7D" stroke="#000" stroke-width="6" stroke-linejoin="round"/>
+  
+  <!-- Diagonal Band -->
+  <g>
+    <path d="M140,120 L350,320 L340,360 L130,160 Z" 
+          fill="#D4B896" stroke="#000" stroke-width="4"/>
+  </g>
+  
+  <!-- Lightning Bolts on Shield -->
+  <g fill="#FFF">
+    <path d="M105,180 L115,190 L108,200 L120,210 L108,215 L118,230 L105,220 L112,210 L100,200 L112,190 Z"/>
+    <path d="M105,240 L115,250 L108,260 L120,270 L108,275 L118,290 L105,280 L112,270 L100,260 L112,250 Z"/>
+  </g>
+  
+  <!-- Three-Line Bold Text -->
+  <text x="200" y="380" font-family="Arial, sans-serif" font-size="58" font-weight="900" 
+        fill="#2C3E50" text-anchor="middle" letter-spacing="2">
+    UMANG
+  </text>
+  
+  <text x="200" y="435" font-family="Arial, sans-serif" font-size="58" font-weight="900" 
+        fill="#2C3E50" text-anchor="middle" letter-spacing="2">
+    BOARDS
+  </text>
+  
+  <text x="200" y="490" font-family="Arial, sans-serif" font-size="48" font-weight="900" 
+        fill="#5A6C7D" text-anchor="middle" letter-spacing="1">
+    LIMITED
+  </text>
+</svg>
