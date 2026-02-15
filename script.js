@@ -177,14 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             const a = mobileNav.classList.toggle('active');
             menuToggle.classList.toggle('active');
-            if (a) { document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden'; lenis.stop(); }
-            else { document.documentElement.style.overflow = ''; document.body.style.overflow = ''; lenis.start(); }
+            if (a) { lenis.stop(); }
+            else { lenis.start(); }
             // Close all accordions when menu closes
             if (!a) mobileNav.querySelectorAll('.mobile-accordion.active').forEach(ac => ac.classList.remove('active'));
         });
         // Close mobile nav when a direct link is clicked (not accordion headers)
         mobileNav.querySelectorAll('.mobile-nav-links > li > a, .mobile-accordion-body a').forEach(a => a.addEventListener('click', () => {
-            mobileNav.classList.remove('active'); menuToggle.classList.remove('active'); document.body.style.overflow = '';
+            mobileNav.classList.remove('active'); menuToggle.classList.remove('active');
             lenis.start();
         }));
         // Accordion toggle
