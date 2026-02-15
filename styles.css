@@ -97,7 +97,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 17px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -467,7 +467,6 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    height: 100vh;
     background: transparent;
     z-index: 200;
     opacity: 0;
@@ -475,8 +474,8 @@ img {
     pointer-events: none;
     transition: opacity 0.45s var(--ease-out-expo), visibility 0s 0.45s;
     display: flex;
-    align-items: center;
-    padding: 120px clamp(2rem, 6vw, 6rem) 60px;
+    align-items: flex-start;
+    padding: 90px clamp(2rem, 6vw, 6rem) 48px;
 }
 
 /* Mega Curtains */
@@ -666,10 +665,34 @@ img {
 
 .mega-col a .mega-sub {
     display: block;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--text-faint);
     margin-top: 2px;
 }
+
+/* Staggered entrance for individual mega menu links */
+.mega-menu.active .mega-col a {
+    opacity: 0;
+    animation: megaItemSlide 0.6s var(--ease-out-expo) forwards;
+}
+
+@keyframes megaItemSlide {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mega-menu.active .mega-col a:nth-of-type(1) { animation-delay: 0.15s; }
+.mega-menu.active .mega-col a:nth-of-type(2) { animation-delay: 0.22s; }
+.mega-menu.active .mega-col a:nth-of-type(3) { animation-delay: 0.29s; }
+.mega-menu.active .mega-col a:nth-of-type(4) { animation-delay: 0.36s; }
+.mega-menu.active .mega-col a:nth-of-type(5) { animation-delay: 0.43s; }
+.mega-menu.active .mega-col a:nth-of-type(6) { animation-delay: 0.50s; }
 
 /* Mega feature card */
 .mega-feature {

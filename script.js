@@ -900,6 +900,122 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     initMfgParticles();
 
+    /* ---- CERTIFICATIONS PARTICLES (DARK WAVE - BLUE TONES FOR LIGHT BG) ---- */
+    const initCertsParticles = () => {
+        const canvas = document.getElementById('certs-particles');
+        const container = document.querySelector('.s-certs');
+        if (!canvas || !container) return;
+
+        const scene = new THREE.Scene();
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 5000);
+        camera.position.set(0, 400, 1200);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const vertexShader = `
+            uniform float uTime; uniform float uPixelRatio; uniform float uSize; uniform vec2 uMouse;
+            attribute float aScale; attribute vec3 aRandomness;
+            varying vec3 vColor; varying float vAlpha;
+            vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;} vec2 mod289(vec2 x){return x-floor(x*(1.0/289.0))*289.0;} vec3 permute(vec3 x){return mod289(((x*34.0)+1.0)*x);}
+            float snoise(vec2 v){ const vec4 C=vec4(0.211324865405187,0.366025403784439,-0.577350269189626,0.024390243902439); vec2 i=floor(v+dot(v,C.yy)); vec2 x0=v-i+dot(i,C.xx); vec2 i1; i1=(x0.x>x0.y)?vec2(1.0,0.0):vec2(0.0,1.0); vec4 x12=x0.xyxy+C.xxzz; x12.xy-=i1; i=mod289(i); vec3 p=permute(permute(i.y+vec3(0.0,i1.y,1.0))+i.x+vec3(0.0,i1.x,1.0)); vec3 m=max(0.5-vec3(dot(x0,x0),dot(x12.xy,x12.xy),dot(x12.zw,x12.zw)),0.0); m=m*m; m=m*m; vec3 x=2.0*fract(p*C.www)-1.0; vec3 h=abs(x)-0.5; vec3 ox=floor(x+0.5); vec3 a0=x-ox; m*=1.79284291400159-0.85373472095314*(a0*a0+h*h); vec3 g; g.x=a0.x*x0.x+h.x*x0.y; g.yz=a0.yz*x12.xz+h.yz*x12.yw; return 130.0*dot(m,g); }
+            void main() {
+                vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+                float speed = 20.0; float flowOffset = uTime * speed; float width = 3000.0;
+                modelPosition.x -= flowOffset; modelPosition.x = mod(modelPosition.x + width * 0.5, width) - width * 0.5;
+                float noiseFreq = 0.0015; float noiseAmp = 80.0;
+                float elevation = snoise(vec2(modelPosition.x * noiseFreq, modelPosition.z * noiseFreq * 0.5 + uTime * 0.1)) * noiseAmp;
+                elevation += sin(modelPosition.x * 0.01 + uTime * 0.5) * 10.0;
+                float distToMouse = distance(vec2(modelPosition.x, modelPosition.z), vec2(uMouse.x * 1000.0, uMouse.y * 500.0));
+                float mouseEffect = smoothstep(600.0, 0.0, distToMouse);
+                elevation -= mouseEffect * 100.0 * sin(uTime * 5.0);
+                modelPosition.y += elevation + aRandomness.y * 20.0;
+                vec4 viewPosition = viewMatrix * modelPosition;
+                gl_Position = projectionMatrix * viewPosition;
+                gl_PointSize = uSize * aScale * uPixelRatio; gl_PointSize *= (1.0 / - viewPosition.z);
+                float elevationNormal = (elevation + noiseAmp) / (noiseAmp * 2.0);
+
+                // Blue tones for light certs background
+                vec3 colorDeep = vec3(0.24, 0.38, 0.6);  // Brand blue #3D6098
+                vec3 colorHigh = vec3(0.65, 0.75, 0.87);  // Brand blue pale #A8C0DC
+
+                vColor = mix(colorDeep, colorHigh, elevationNormal * 1.5);
+                float edgeFade = 1.0 - smoothstep(width * 0.4, width * 0.5, abs(modelPosition.x));
+                vAlpha = edgeFade * (0.6 + elevationNormal * 0.4);
+            }
+        `;
+        const fragmentShader = `
+            varying vec3 vColor; varying float vAlpha;
+            void main() {
+                float strength = distance(gl_PointCoord, vec2(0.5)); strength = 1.0 - strength; strength = pow(strength, 3.0);
+                float alpha = vAlpha * strength;
+                if(alpha < 0.01) discard;
+                gl_FragColor = vec4(vColor, alpha);
+            }
+        `;
+
+        const geometry = new THREE.BufferGeometry();
+        const count = 5000;
+        const positions = new Float32Array(count * 3);
+        const randomness = new Float32Array(count * 3);
+        const scales = new Float32Array(count);
+        for (let i = 0; i < count; i++) {
+            const i3 = i * 3;
+            positions[i3] = (Math.random() - 0.5) * 3000;
+            positions[i3 + 1] = 0;
+            positions[i3 + 2] = (Math.random() - 0.5) * 1500;
+            randomness[i3] = Math.random(); randomness[i3 + 1] = Math.random(); randomness[i3 + 2] = Math.random();
+            scales[i] = Math.random();
+        }
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('aRandomness', new THREE.BufferAttribute(randomness, 3));
+        geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 1));
+
+        const material = new THREE.ShaderMaterial({
+            depthWrite: false,
+            blending: THREE.NormalBlending,
+            vertexColors: true,
+            transparent: true,
+            vertexShader, fragmentShader,
+            uniforms: { uTime: { value: 0 }, uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) }, uSize: { value: 250.0 }, uMouse: { value: new THREE.Vector2(0, 0) } }
+        });
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        let time = 0;
+        const mouse = new THREE.Vector2(0, 0);
+
+        window.addEventListener('resize', () => {
+            if (!container) return;
+            const w = container.offsetWidth;
+            const h = container.offsetHeight;
+            camera.aspect = w / h; camera.updateProjectionMatrix();
+            renderer.setSize(w, h); material.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        const animate = () => {
+            const rect = container.getBoundingClientRect();
+            if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                time += 0.01; material.uniforms.uTime.value = time;
+                material.uniforms.uMouse.value.lerp(mouse, 0.05);
+                camera.position.x += (mouse.x * 50 - camera.position.x) * 0.01;
+                camera.lookAt(0, 0, 0);
+                renderer.render(scene, camera);
+            }
+            requestAnimationFrame(animate);
+        };
+        animate();
+    };
+    initCertsParticles();
+
     /* ---- THEME SWITCHER (PREVIEW) ---- */
     const themeBtn = document.getElementById('themeSwitchBtn');
     const themeText = document.getElementById('themeSwitchText');
