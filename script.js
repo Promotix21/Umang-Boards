@@ -4,6 +4,15 @@
    ============================================ */
 document.addEventListener('DOMContentLoaded', () => {
 
+    /* ---- LENIS SMOOTH SCROLL ---- */
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        touchMultiplier: 2,
+        autoRaf: false,
+    });
+
     /* ---- LOADER ---- */
     const triggerLoaded = () => setTimeout(() => document.body.classList.add('loaded'), 800);
     if (document.readyState === 'complete') triggerLoaded();
@@ -151,12 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const a = mobileNav.classList.toggle('active');
             menuToggle.classList.toggle('active');
             document.body.style.overflow = a ? 'hidden' : '';
+            if (a) lenis.stop(); else lenis.start();
             // Close all accordions when menu closes
             if (!a) mobileNav.querySelectorAll('.mobile-accordion.active').forEach(ac => ac.classList.remove('active'));
         });
         // Close mobile nav when a direct link is clicked (not accordion headers)
         mobileNav.querySelectorAll('.mobile-nav-links > li > a, .mobile-accordion-body a').forEach(a => a.addEventListener('click', () => {
             mobileNav.classList.remove('active'); menuToggle.classList.remove('active'); document.body.style.overflow = '';
+            lenis.start();
         }));
         // Accordion toggle
         mobileNav.querySelectorAll('.mobile-accordion-header').forEach(h => h.addEventListener('click', () => {
@@ -344,17 +355,22 @@ document.addEventListener('DOMContentLoaded', () => {
        THREE.JS — EARTH GLOBE (Textured + Dot Grid)
        ============================================ */
     const gC = document.getElementById('globeCanvas');
-    if (gC && window.innerWidth > 768 && typeof THREE !== 'undefined') {
+    if (gC && typeof THREE !== 'undefined') {
+        const isMobileGlobe = window.innerWidth <= 768;
+        const globeContainer = gC.parentElement;
+        const gW = isMobileGlobe ? globeContainer.clientWidth : window.innerWidth;
+        const gH = isMobileGlobe ? globeContainer.clientHeight || 300 : window.innerHeight;
+
         const scene = new THREE.Scene();
-        const cam = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-        cam.position.z = 5.0; // Slightly further back to see full orbits
-        const ren = new THREE.WebGLRenderer({ canvas: gC, alpha: true, antialias: true });
-        ren.setSize(window.innerWidth, window.innerHeight);
-        ren.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        const cam = new THREE.PerspectiveCamera(50, gW / gH, 0.1, 1000);
+        cam.position.z = 5.0;
+        const ren = new THREE.WebGLRenderer({ canvas: gC, alpha: true, antialias: !isMobileGlobe });
+        ren.setSize(gW, gH);
+        ren.setPixelRatio(Math.min(window.devicePixelRatio, isMobileGlobe ? 1.5 : 2));
 
         // ---- EARTH GROUP ----
         const earthGroup = new THREE.Group();
-        earthGroup.position.set(2.0, 0, 0);
+        earthGroup.position.set(isMobileGlobe ? 0 : 2.0, 0, 0);
         scene.add(earthGroup);
 
         // ---- EARTH SPHERE ----
@@ -446,107 +462,96 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // ---- ANIMATED ARC CONNECTIONS ----
-        const arcSegments = 60;
         const arcObjects = []; // Track all arcs for animation
+        const electrons = [];
 
-        function createArc(startLatLon, endLatLon, height, color, delay) {
-            const start = latLonToVector3(startLatLon.lat, startLatLon.lon, R);
-            const end = latLonToVector3(endLatLon.lat, endLatLon.lon, R);
+        if (!isMobileGlobe) {
+            const arcSegments = 60;
 
-            const points = [];
-            for (let i = 0; i <= arcSegments; i++) {
-                const t = i / arcSegments;
-                // Interpolate between start and end
-                const point = new THREE.Vector3().lerpVectors(start, end, t);
-                // Normalize to sphere surface then lift with parabolic curve
-                point.normalize();
-                const elevation = 1 + height * Math.sin(Math.PI * t);
-                point.multiplyScalar(R * elevation);
-                points.push(point);
+            function createArc(startLatLon, endLatLon, height, color, delay) {
+                const start = latLonToVector3(startLatLon.lat, startLatLon.lon, R);
+                const end = latLonToVector3(endLatLon.lat, endLatLon.lon, R);
+
+                const points = [];
+                for (let i = 0; i <= arcSegments; i++) {
+                    const t = i / arcSegments;
+                    const point = new THREE.Vector3().lerpVectors(start, end, t);
+                    point.normalize();
+                    const elevation = 1 + height * Math.sin(Math.PI * t);
+                    point.multiplyScalar(R * elevation);
+                    points.push(point);
+                }
+
+                const curve = new THREE.CatmullRomCurve3(points);
+                const geometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(arcSegments));
+                geometry.setDrawRange(0, 0);
+                const material = new THREE.LineBasicMaterial({
+                    color: color,
+                    transparent: true,
+                    opacity: 0.5
+                });
+                const line = new THREE.Line(geometry, material);
+                earthGroup.add(line);
+
+                return {
+                    line: line,
+                    geometry: geometry,
+                    material: material,
+                    totalPoints: arcSegments + 1,
+                    progress: 0,
+                    delay: delay,
+                    delayCounter: 0,
+                    phase: 'waiting',
+                    visibleTimer: 0
+                };
             }
 
-            const curve = new THREE.CatmullRomCurve3(points);
-            const geometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(arcSegments));
-            geometry.setDrawRange(0, 0); // Start hidden
-            const material = new THREE.LineBasicMaterial({
-                color: color,
-                transparent: true,
-                opacity: 0.5
-            });
-            const line = new THREE.Line(geometry, material);
-            earthGroup.add(line);
+            // Connect key trade routes (India as hub)
+            const arcColor = 0xC4A265;
+            const india = countries[0];
 
-            return {
-                line: line,
-                geometry: geometry,
-                material: material,
-                totalPoints: arcSegments + 1,
-                progress: 0,        // Current draw progress
-                delay: delay,       // Stagger delay (frames)
-                delayCounter: 0,    // Frame counter
-                phase: 'waiting',   // waiting → drawing → visible → fading → waiting
-                visibleTimer: 0
-            };
+            arcObjects.push(createArc(india, countries[1], 0.04, arcColor, 0));
+            arcObjects.push(createArc(india, countries[2], 0.03, arcColor, 30));
+            arcObjects.push(createArc(india, countries[5], 0.06, arcColor, 60));
+            arcObjects.push(createArc(india, countries[6], 0.08, arcColor, 90));
+            arcObjects.push(createArc(india, countries[7], 0.12, arcColor, 120));
+            arcObjects.push(createArc(india, countries[10], 0.09, arcColor, 150));
+            arcObjects.push(createArc(india, countries[12], 0.08, arcColor, 180));
+            arcObjects.push(createArc(india, countries[15], 0.05, arcColor, 210));
+            arcObjects.push(createArc(india, countries[16], 0.06, arcColor, 240));
+            arcObjects.push(createArc(india, countries[17], 0.07, arcColor, 270));
+            arcObjects.push(createArc(india, countries[9], 0.11, arcColor, 300));
+            arcObjects.push(createArc(india, countries[29], 0.03, arcColor, 330));
+            arcObjects.push(createArc(india, countries[18], 0.06, arcColor, 360));
+
+            // ---- ELECTRON ORBITS (ATOM STYLE) ----
+            function createAtomOrbit(orbitR, rotX, rotY, rotZ, color, speed) {
+                const group = new THREE.Group();
+                const eGeo = new THREE.SphereGeometry(0.04, 8, 8);
+                const eMat = new THREE.MeshBasicMaterial({ color: color });
+                const eMesh = new THREE.Mesh(eGeo, eMat);
+                group.add(eMesh);
+                group.rotation.set(rotX, rotY, rotZ);
+                return { group, mesh: eMesh, angle: Math.random() * Math.PI * 2, speed: speed, r: orbitR };
+            }
+
+            const atomGroup = new THREE.Group();
+            atomGroup.position.copy(earthGroup.position);
+            scene.add(atomGroup);
+
+            const orbR = R * 1.25;
+            const orbColor = 0xffaa00;
+
+            const orb1 = createAtomOrbit(orbR, 1.0, 0.5, 0, orbColor, 0.015);
+            const orb2 = createAtomOrbit(orbR, -1.0, 0.5, 0, orbColor, 0.015);
+            const orb3 = createAtomOrbit(orbR, 0, 0, 1.57, orbColor, 0.015);
+
+            electrons.push(orb1, orb2, orb3);
+            electrons.forEach(e => atomGroup.add(e.group));
         }
-
-        // Connect key trade routes (India as hub)
-        const arcColor = 0xC4A265; // Golden arcs
-        const india = countries[0];
-
-        // Keep arc heights LOW so they don't collide with electron orbits (orbR = R * 1.25)
-        arcObjects.push(createArc(india, countries[1], 0.04, arcColor, 0));    // → Thailand
-        arcObjects.push(createArc(india, countries[2], 0.03, arcColor, 30));   // → UAE
-        arcObjects.push(createArc(india, countries[5], 0.06, arcColor, 60));   // → Kenya
-        arcObjects.push(createArc(india, countries[6], 0.08, arcColor, 90));   // → South Africa
-        arcObjects.push(createArc(india, countries[7], 0.12, arcColor, 120));  // → USA
-        arcObjects.push(createArc(india, countries[10], 0.09, arcColor, 150)); // → Germany
-        arcObjects.push(createArc(india, countries[12], 0.08, arcColor, 180)); // → UK
-        arcObjects.push(createArc(india, countries[15], 0.05, arcColor, 210)); // → China
-        arcObjects.push(createArc(india, countries[16], 0.06, arcColor, 240)); // → Japan
-        arcObjects.push(createArc(india, countries[17], 0.07, arcColor, 270)); // → Australia
-        arcObjects.push(createArc(india, countries[9], 0.11, arcColor, 300));  // → Brazil
-        arcObjects.push(createArc(india, countries[29], 0.03, arcColor, 330)); // → Malaysia
-        arcObjects.push(createArc(india, countries[18], 0.06, arcColor, 360)); // → Russia
 
         // ---- TILT EARTH AXIS (23.5 degrees like real Earth) ----
         earthGroup.rotation.z = 23.5 * (Math.PI / 180);
-
-        // ---- ELECTRON ORBITS (ATOM STYLE) ----
-        // 3 uniform orbits, rotated 60 degrees apart
-        function createAtomOrbit(orbitR, rotX, rotY, rotZ, color, speed) {
-            const group = new THREE.Group();
-
-            // Orbit path removed - only electrons shown
-
-            // Electron
-            const eGeo = new THREE.SphereGeometry(0.04, 8, 8);
-            const eMat = new THREE.MeshBasicMaterial({ color: color });
-            const eMesh = new THREE.Mesh(eGeo, eMat);
-            group.add(eMesh);
-
-            // Orient the entire orbit group
-            group.rotation.set(rotX, rotY, rotZ);
-
-            return { group, mesh: eMesh, angle: Math.random() * Math.PI * 2, speed: speed, r: orbitR };
-        }
-
-        const atomGroup = new THREE.Group();
-        atomGroup.position.copy(earthGroup.position);
-        scene.add(atomGroup);
-
-        const orbR = R * 1.25; // Reduced from 1.6 for tighter orbits
-        const electrons = [];
-
-        // Gold/Bright Orbits
-        const orbColor = 0xffaa00; // Gold-ish orange
-
-        // Create 3 specific orbits
-        const orb1 = createAtomOrbit(orbR, 1.0, 0.5, 0, orbColor, 0.015);
-        const orb2 = createAtomOrbit(orbR, -1.0, 0.5, 0, orbColor, 0.015);
-        const orb3 = createAtomOrbit(orbR, 0, 0, 1.57, orbColor, 0.015); // Vertical-ish
-
-        electrons.push(orb1, orb2, orb3);
-        electrons.forEach(e => atomGroup.add(e.group));
 
 
 
@@ -619,9 +624,12 @@ document.addEventListener('DOMContentLoaded', () => {
         anim();
 
         window.addEventListener('resize', () => {
-            cam.aspect = window.innerWidth / window.innerHeight;
+            const mobile = window.innerWidth <= 768;
+            const rW = mobile ? globeContainer.clientWidth : window.innerWidth;
+            const rH = mobile ? (globeContainer.clientHeight || 300) : window.innerHeight;
+            cam.aspect = rW / rH;
             cam.updateProjectionMatrix();
-            ren.setSize(window.innerWidth, window.innerHeight);
+            ren.setSize(rW, rH);
         });
     }
 
@@ -631,6 +639,11 @@ document.addEventListener('DOMContentLoaded', () => {
        ============================================ */
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
+
+        // Sync Lenis with GSAP ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
 
         gsap.fromTo('#legacyEyebrow', { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 1, scrollTrigger: { trigger: '#sLegacy', start: 'top 80%', toggleActions: 'play none none reverse' } });
         gsap.fromTo('#legacyTitle', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '#sLegacy', start: 'top 70%', toggleActions: 'play none none reverse' } });
@@ -720,6 +733,32 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.fromTo('#ctaTitle', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '#sCta', start: 'top 70%' } });
         gsap.fromTo('#ctaBody', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, delay: 0.15, scrollTrigger: { trigger: '#sCta', start: 'top 65%' } });
         gsap.fromTo('#ctaActions', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.3, scrollTrigger: { trigger: '#sCta', start: 'top 60%' } });
+
+        // Hero parallax on scroll-out
+        gsap.to('.hero-content', {
+            y: -60, opacity: 0.3, ease: 'none',
+            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.5 }
+        });
+        gsap.to('.hero-visual', {
+            y: -40, ease: 'none',
+            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.5 }
+        });
+        gsap.to('.scroll-indicator', {
+            opacity: 0, y: -20,
+            scrollTrigger: { trigger: '.hero', start: '15% top', end: '30% top', scrub: true }
+        });
+
+        // S5 — Global country tag wave
+        gsap.utils.toArray('.sg-tag').forEach((tag, i) => {
+            gsap.fromTo(tag, { opacity: 0, scale: 0.7 },
+                { opacity: 1, scale: 1, duration: 0.4, delay: 0.5 + i * 0.03, ease: 'back.out(2)',
+                  scrollTrigger: { trigger: '.s-global-tags', start: 'top 90%' } });
+        });
+
+        // S8 — Footer reveal
+        gsap.fromTo('.s-footer-top', { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+              scrollTrigger: { trigger: '.s-footer', start: 'top 85%' } });
 
     }
 

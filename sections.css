@@ -941,6 +941,7 @@
     .bento-card.b-medium { grid-column: span 3; }
     .bento-card.b-small { grid-column: span 3; }
     .bento-featured { grid-column: span 6; }
+    .bento-impact > .bento-card:last-child { grid-column: 1 / -1; }
 
     .bento-certs { grid-template-columns: repeat(6, 1fr); }
     .cert-bento.cb-hero { grid-column: span 6; }
@@ -959,9 +960,21 @@
 }
 
 @media (max-width: 768px) {
-    .s-legacy-pin { min-height: 80vh; }
+    .s-legacy-pin { min-height: auto; }
 
-    #globeCanvas { opacity: 0.4; }
+    .s-legacy {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    #globeCanvas {
+        position: relative;
+        width: 100%;
+        height: 60vw;
+        min-height: 280px;
+        max-height: 380px;
+        opacity: 1;
+    }
 
     .globe-caption { display: none; }
 
@@ -970,6 +983,7 @@
     .bento-card.b-medium,
     .bento-card.b-small { grid-column: span 1; min-height: 200px; }
     .bento-featured { grid-column: span 2; }
+    .bento-impact > .bento-card:last-child { grid-column: 1 / -1; }
 
     .bento-certs { grid-template-columns: 1fr 1fr; }
     .cert-bento.cb-hero,

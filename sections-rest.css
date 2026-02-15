@@ -917,6 +917,10 @@
         grid-column: span 8;
     }
 
+    .mfg-card.mc-full {
+        grid-column: span 8;
+    }
+
     .s-global-grid {
         grid-template-columns: 1fr;
     }
@@ -945,10 +949,15 @@
 
     .mfg-card.mc-wide,
     .mfg-card.mc-tall,
-    .mfg-card.mc-hero {
+    .mfg-card.mc-hero,
+    .mfg-card.mc-full {
         grid-column: span 2;
         grid-row: span 1;
         min-height: auto;
+    }
+
+    .mfg-card.mc-full {
+        flex-direction: column;
     }
 
     .s-global-stats {
@@ -973,8 +982,13 @@
 
     .mfg-card.mc-wide,
     .mfg-card.mc-tall,
-    .mfg-card.mc-hero {
+    .mfg-card.mc-hero,
+    .mfg-card.mc-full {
         grid-column: span 1;
+    }
+
+    .mfg-card.mc-full {
+        flex-direction: column;
     }
 
     .s-global-stats {
