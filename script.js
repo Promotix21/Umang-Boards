@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const scene = new THREE.Scene();
         const cam = new THREE.PerspectiveCamera(50, gW / gH, 0.1, 1000);
-        cam.position.z = 5.0;
+        cam.position.z = isMobileGlobe ? 3.2 : 5.0;
         const ren = new THREE.WebGLRenderer({ canvas: gC, alpha: true, antialias: !isMobileGlobe });
         ren.setSize(gW, gH);
         ren.setPixelRatio(Math.min(window.devicePixelRatio, isMobileGlobe ? 1.5 : 2));
