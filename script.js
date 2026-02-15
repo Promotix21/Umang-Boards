@@ -376,8 +376,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (gC && typeof THREE !== 'undefined') {
         const isMobileGlobe = window.innerWidth <= 768;
         const globeContainer = gC.parentElement;
-        const gW = isMobileGlobe ? globeContainer.clientWidth : window.innerWidth;
-        const gH = isMobileGlobe ? globeContainer.clientHeight || 300 : window.innerHeight;
+        const gW = isMobileGlobe ? gC.clientWidth || globeContainer.clientWidth : window.innerWidth;
+        const gH = isMobileGlobe ? (gC.clientHeight || gC.clientWidth) : window.innerHeight;
 
         const scene = new THREE.Scene();
         const cam = new THREE.PerspectiveCamera(50, gW / gH, 0.1, 1000);
@@ -643,8 +643,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('resize', () => {
             const mobile = window.innerWidth <= 768;
-            const rW = mobile ? globeContainer.clientWidth : window.innerWidth;
-            const rH = mobile ? (globeContainer.clientHeight || 300) : window.innerHeight;
+            const rW = mobile ? (gC.clientWidth || globeContainer.clientWidth) : window.innerWidth;
+            const rH = mobile ? (gC.clientHeight || gC.clientWidth) : window.innerHeight;
             cam.aspect = rW / rH;
             cam.updateProjectionMatrix();
             ren.setSize(rW, rH);
