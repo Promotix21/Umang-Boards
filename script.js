@@ -785,7 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         const geometry = new THREE.BufferGeometry();
-        const count = 4000;
+        const count = 6000; // Increased density
         const positions = new Float32Array(count * 3);
         const randomness = new Float32Array(count * 3);
         const scales = new Float32Array(count);
@@ -803,11 +803,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const material = new THREE.ShaderMaterial({
             depthWrite: false,
-            blending: THREE.NormalBlending, // Normal blending for dark on light
+            blending: THREE.NormalBlending,
             vertexColors: true,
             transparent: true,
             vertexShader, fragmentShader,
-            uniforms: { uTime: { value: 0 }, uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) }, uSize: { value: 150.0 }, uMouse: { value: new THREE.Vector2(0, 0) } }
+            uniforms: { uTime: { value: 0 }, uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) }, uSize: { value: 300.0 }, uMouse: { value: new THREE.Vector2(0, 0) } }
         });
         const points = new THREE.Points(geometry, material);
         scene.add(points);
