@@ -13,10 +13,28 @@ document.addEventListener('DOMContentLoaded', () => {
         autoRaf: false,
     });
 
-    /* ---- LOADER ---- */
-    const triggerLoaded = () => setTimeout(() => document.body.classList.add('loaded'), 800);
-    if (document.readyState === 'complete') triggerLoaded();
-    else window.addEventListener('load', triggerLoaded);
+    /* ---- LOADER WITH PROGRESS BAR ---- */
+    const loaderBar = document.getElementById('loaderBar');
+    let loadProgress = 0;
+    let loadComplete = false;
+
+    const progressInterval = setInterval(() => {
+        if (loadComplete) {
+            loadProgress = 100;
+            loaderBar.style.width = '100%';
+            clearInterval(progressInterval);
+            setTimeout(() => document.body.classList.add('loaded'), 600);
+        } else {
+            // Simulate progress that slows near 90%
+            const remaining = 90 - loadProgress;
+            loadProgress += remaining * 0.06;
+            loaderBar.style.width = loadProgress + '%';
+        }
+    }, 50);
+
+    const markLoaded = () => { loadComplete = true; };
+    if (document.readyState === 'complete') markLoaded();
+    else window.addEventListener('load', markLoaded);
 
     /* ---- CURSOR ---- */
     const cur = document.getElementById('cursor'), dot = document.getElementById('cursorDot');
