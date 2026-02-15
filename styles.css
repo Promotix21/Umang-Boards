@@ -2004,7 +2004,7 @@ img {
 
 @media (max-width: 768px) {
     .hero {
-        padding-bottom: 5rem;
+        padding-bottom: 2.5rem;
         min-height: auto;
         padding-top: 140px;
     }
