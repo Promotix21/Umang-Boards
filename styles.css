@@ -1548,8 +1548,8 @@ img {
     backdrop-filter: blur(30px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
+    justify-content: flex-start;
+    padding: 6rem 2rem 2rem;
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s var(--ease-out-expo);
