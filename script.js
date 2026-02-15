@@ -677,12 +677,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // S4 BG color
-        ScrollTrigger.create({
+        // S4 BG color - REMOVED for Particle Animation
+        /* ScrollTrigger.create({
             trigger: '.s-mfg-features', start: 'top 60%',
             onEnter: () => { document.querySelector('.s-mfg-features').style.backgroundColor = '#F0EDE7'; },
             onLeaveBack: () => { document.querySelector('.s-mfg-features').style.backgroundColor = ''; }
-        });
+        }); */
 
         // S5 — Global
         gsap.fromTo('#globalLeft', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '#sGlobal', start: 'top 70%' } });
