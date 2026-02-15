@@ -895,9 +895,13 @@ img {
 
 .menu-toggle.active {
     position: fixed;
+    display: flex;
     top: 46px;
     right: clamp(1.5rem, 4vw, 3.5rem);
     z-index: 180;
+    padding: 14px;
+    background: rgba(245, 243, 239, 0.9);
+    border-radius: 50%;
 }
 
 .menu-toggle span {
@@ -1559,8 +1563,10 @@ img {
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s var(--ease-out-expo);
-    overflow-y: auto;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
 }
 
 .mobile-nav.active {

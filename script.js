@@ -177,8 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             const a = mobileNav.classList.toggle('active');
             menuToggle.classList.toggle('active');
-            document.body.style.overflow = a ? 'hidden' : '';
-            if (a) lenis.stop(); else lenis.start();
+            if (a) { document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden'; lenis.stop(); }
+            else { document.documentElement.style.overflow = ''; document.body.style.overflow = ''; lenis.start(); }
             // Close all accordions when menu closes
             if (!a) mobileNav.querySelectorAll('.mobile-accordion.active').forEach(ac => ac.classList.remove('active'));
         });
