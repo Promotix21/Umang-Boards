@@ -891,7 +891,13 @@ img {
     flex-direction: column;
     gap: 6px;
     padding: 10px;
-    z-index: 200;
+}
+
+.menu-toggle.active {
+    position: fixed;
+    top: 46px;
+    right: clamp(1.5rem, 4vw, 3.5rem);
+    z-index: 180;
 }
 
 .menu-toggle span {
@@ -1543,7 +1549,7 @@ img {
 .mobile-nav {
     position: fixed;
     inset: 0;
-    z-index: 150;
+    z-index: 170;
     background: rgba(245, 243, 239, 0.98);
     backdrop-filter: blur(30px);
     display: flex;
@@ -1554,6 +1560,7 @@ img {
     visibility: hidden;
     transition: all 0.5s var(--ease-out-expo);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .mobile-nav.active {
@@ -1966,17 +1973,33 @@ img {
 
     .hero-mosaic {
         max-width: 100%;
-        aspect-ratio: 16/10;
+        aspect-ratio: auto;
+        display: flex;
+        flex-direction: column;
     }
 
-    .mosaic-secondary, .hero-badge {
-        display: none;
+    .mosaic-secondary {
+        position: relative;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+        border-radius: 12px;
+        margin-top: 0.75rem;
+    }
+
+    .hero-badge {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 0.75rem;
     }
 
     .slideshow-main {
         position: relative;
         width: 100%;
-        height: 100%;
+        height: auto;
+        aspect-ratio: 16/10;
         border-radius: 12px;
     }
 
