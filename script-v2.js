@@ -217,6 +217,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ============================================
+       MEGA MENU — Center category hover → Right sub-panel
+       ============================================ */
+    document.querySelectorAll('.mega-cat').forEach(cat => {
+        cat.addEventListener('mouseenter', () => {
+            const subId = cat.dataset.sub;
+            if (!subId) return;
+            const menu = cat.closest('.mega-menu');
+            if (!menu) return;
+            // Deactivate all cats + panels in this menu
+            menu.querySelectorAll('.mega-cat').forEach(c => c.classList.remove('active'));
+            menu.querySelectorAll('.mega-sub-panel').forEach(p => p.classList.remove('active'));
+            cat.classList.add('active');
+            const panel = document.getElementById(subId);
+            if (panel) panel.classList.add('active');
+        });
+    });
+
+    /* ============================================
        MOBILE MENU
        ============================================ */
     const menuToggle = document.getElementById('menuToggle');
