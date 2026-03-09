@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umang Boards Limited — Powering Transformation</title>
+    <title>Umang Boards Limited — Powering World's Electric Future</title>
     <meta name="description" content="India's leading manufacturer of cellulose transformer insulation, winding wires and insulating chemicals. Exporting to 61+ countries since 1999.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Outfit:wght@200;300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="sections.css">
-    <link rel="stylesheet" href="sections-rest.css">
+    <link rel="stylesheet" href="styles-v2.css">
+    <link rel="stylesheet" href="sections-v2.css">
     <link rel="icon" type="image/png" href="assets/ubl-favicon.png">
 </head>
 <body>
@@ -23,109 +21,225 @@
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="grain"></div>
 
-    <!-- Theme Switcher (Preview) -->
-    <button id="themeSwitchBtn" class="theme-switch-btn" aria-label="Toggle Theme">
-        <div class="theme-switch-icon"></div>
-        <span id="themeSwitchText">Preview Industrial</span>
-    </button>
-
-    <!-- V2 Preview Link -->
-    <a href="index-v2.html" style="position:fixed;bottom:28px;left:28px;z-index:9999;display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:#0B1F3A;color:#C8A84B;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:6px;text-decoration:none;box-shadow:0 4px 20px rgba(11,31,58,0.3);transition:all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(11,31,58,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.3)'">
-        Preview V2 &rarr;
-    </a>
-
-    <!-- Loader -->
-    <div class="loader">
+    <!-- ================================================
+         LOADER — SVG Draw Animation
+         ================================================ -->
+    <div class="loader" id="loader">
         <div class="loader-inner">
             <div class="loader-logo">
                 <svg viewBox="0 0 596 596" xmlns="http://www.w3.org/2000/svg" class="loader-svg">
                     <path class="svg-draw svg-draw-1" d="M 98.82 71.21 C 165.21 71.32 231.60 71.22 298.00 71.26 C 336.33 70.73 374.67 71.12 413.00 71.00 C 425.16 71.17 437.34 70.64 449.48 71.28 C 449.22 75.62 450.52 80.25 449.31 84.41 C 400.67 137.71 352.05 191.06 303.30 244.27 C 296.83 251.80 289.68 258.73 283.48 266.49 C 280.09 262.08 275.00 259.61 270.57 256.45 C 260.14 249.23 249.81 241.86 239.42 234.59 C 235.78 231.99 231.78 229.80 228.71 226.49 C 237.99 225.70 247.39 226.23 256.60 224.76 C 256.71 222.90 256.84 221.05 257.01 219.20 C 238.16 203.59 218.70 188.71 199.65 173.35 C 196.08 170.38 192.15 167.84 188.84 164.57 C 197.38 163.58 205.98 163.29 214.53 162.43 C 214.61 160.09 214.67 157.75 214.69 155.42 C 207.31 149.69 199.54 144.48 192.02 138.95 C 177.12 127.84 162.01 117.03 146.95 106.14 C 144.06 108.44 141.46 111.08 139.12 113.94 C 156.94 127.96 174.99 141.72 193.10 155.37 C 190.78 156.03 188.39 156.48 185.97 156.51 C 178.84 156.67 171.75 157.50 164.63 157.73 C 164.53 159.68 164.42 161.63 164.30 163.59 C 183.40 178.90 202.88 193.75 222.14 208.87 C 225.21 211.55 229.51 213.32 231.07 217.35 C 222.08 217.60 213.04 217.19 204.08 218.12 C 204.48 221.00 203.88 224.55 206.31 226.70 C 209.66 229.75 213.58 232.08 217.21 234.79 C 232.05 245.62 246.93 256.38 261.76 267.22 C 265.79 270.10 269.64 273.25 273.96 275.70 C 275.33 274.48 276.71 273.27 278.05 272.03 C 276.11 275.63 272.53 277.86 269.94 280.94 C 235.99 317.98 202.23 355.18 168.27 392.22 C 155.44 406.75 141.96 420.70 129.18 435.28 C 128.61 436.29 127.54 436.55 126.49 436.74 C 120.65 423.01 113.46 409.85 108.49 395.76 C 98.79 365.53 98.75 333.43 98.31 302.01 C 98.32 265.67 98.31 229.34 98.31 193.00 C 98.76 157.34 98.43 121.67 98.54 86.00 C 98.64 81.07 98.22 76.12 98.82 71.21 Z" />
                     <path class="svg-draw svg-draw-2" d="M 440.45 242.46 C 443.53 239.25 446.08 235.50 449.67 232.82 C 449.96 253.88 449.30 274.95 449.60 296.01 C 449.91 300.05 448.48 303.95 448.71 307.98 C 448.71 326.66 448.98 345.35 448.35 364.02 C 445.66 383.94 442.34 404.24 433.35 422.43 C 429.88 429.88 424.07 435.77 419.36 442.40 C 413.34 450.63 407.90 459.39 400.57 466.58 C 386.28 481.22 367.23 489.77 348.58 497.42 C 325.77 505.81 301.09 507.10 277.01 506.54 C 269.63 506.65 262.35 505.24 254.97 505.17 C 239.27 503.20 223.43 501.54 208.05 497.74 C 210.57 494.10 214.17 491.38 217.01 488.00 C 292.03 406.64 366.07 324.40 440.45 242.46 Z" />
-                    <path class="svg-draw svg-draw-3" fill="#e8caa4" d="M 410.66 145.66 C 429.81 124.83 448.59 103.65 467.95 83.03 C 478.11 106.25 487.65 129.75 497.71 153.02 C 498.18 154.66 499.80 156.73 498.19 158.24 C 387.62 279.96 277.20 401.85 166.61 523.58 C 166.30 523.59 165.70 523.60 165.40 523.61 C 151.25 504.06 137.26 484.39 123.11 464.85 C 122.43 464.02 121.93 462.59 122.81 461.73 C 218.83 356.43 314.70 250.99 410.66 145.66 Z" />
+                    <path class="svg-draw svg-draw-3" d="M 410.66 145.66 C 429.81 124.83 448.59 103.65 467.95 83.03 C 478.11 106.25 487.65 129.75 497.71 153.02 C 498.18 154.66 499.80 156.73 498.19 158.24 C 387.62 279.96 277.20 401.85 166.61 523.58 C 166.30 523.59 165.70 523.60 165.40 523.61 C 151.25 504.06 137.26 484.39 123.11 464.85 C 122.43 464.02 121.93 462.59 122.81 461.73 C 218.83 356.43 314.70 250.99 410.66 145.66 Z" />
                 </svg>
             </div>
             <div class="loader-progress">
                 <div class="loader-progress-bar" id="loaderBar"></div>
             </div>
-            <div style="overflow:hidden;">
-                <div class="loader-text">Umang Boards</div>
+            <div class="loader-text-wrap">
+                <div class="loader-text">Umang Boards Limited</div>
             </div>
-        </div>
-    </div>
-    <div class="loader-curtain-left"></div>
-    <div class="loader-curtain-right"></div>
-
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-track">
-            <span class="top-bar-item">ISO 9001:2015 Certified</span>
-            <span class="top-bar-item">NABL Accredited — IEC 17025</span>
-            <span class="top-bar-item">PGCIL Approved up to 400 kV Class</span>
-            <span class="top-bar-item">CRISIL BBB Rated</span>
-            <span class="top-bar-item">One Star Export House — Govt. of India</span>
-            <span class="top-bar-item">ISO 14001 &amp; OHSAS 45001</span>
-            <span class="top-bar-item">Exporting to 61+ Countries</span>
-            <span class="top-bar-item">ISO 9001:2015 Certified</span>
-            <span class="top-bar-item">NABL Accredited — IEC 17025</span>
-            <span class="top-bar-item">PGCIL Approved up to 400 kV Class</span>
-            <span class="top-bar-item">CRISIL BBB Rated</span>
-            <span class="top-bar-item">One Star Export House — Govt. of India</span>
-            <span class="top-bar-item">ISO 14001 &amp; OHSAS 45001</span>
-            <span class="top-bar-item">Exporting to 61+ Countries</span>
         </div>
     </div>
 
     <!-- ================================================
-         HEADER
+         UTILITY BAR (Top Bar — Two-bar pattern)
+         ================================================ -->
+    <div class="utility-bar" id="utilityBar">
+        <div class="utility-bar-inner">
+            <div class="utility-left">
+                <!-- NSE/BSE Ticker -->
+                <div class="stock-ticker">
+                    <span class="ticker-label">NSE</span>
+                    <span class="ticker-value">UMANGBOARD</span>
+                    <span class="ticker-sep">|</span>
+                    <span class="ticker-label">BSE</span>
+                    <span class="ticker-value">539294</span>
+                </div>
+            </div>
+            <div class="utility-right">
+                <!-- E-Catalog / Customer Portal -->
+                <a href="/customer-portal" class="utility-link utility-ecatalog" data-cursor="hover">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                    <span>E-Catalog</span>
+                </a>
+                <span class="utility-sep">|</span>
+
+                <!-- AI Search -->
+                <button class="utility-search-btn" id="searchToggle" data-cursor="hover" aria-label="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <span>Search</span>
+                </button>
+                <span class="utility-sep">|</span>
+
+                <!-- Language Dropdown -->
+                <div class="utility-lang" id="langDropdown">
+                    <button class="utility-lang-btn" data-cursor="hover">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        <span>EN</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="10" height="10"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="utility-lang-menu">
+                        <a href="?lang=en" class="lang-option active">English</a>
+                        <a href="?lang=hi" class="lang-option">Hindi</a>
+                        <a href="?lang=th" class="lang-option">Thai</a>
+                    </div>
+                </div>
+                <span class="utility-sep">|</span>
+
+                <!-- Hamburger Utility Panel -->
+                <button class="utility-hamburger" id="utilityPanelToggle" data-cursor="hover" aria-label="Open utility panel">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================
+         SEARCH OVERLAY
+         ================================================ -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-inner">
+            <button class="search-close" id="searchClose" data-cursor="hover" aria-label="Close search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+            <div class="search-box">
+                <svg class="search-box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, solutions, resources..." autocomplete="off">
+                <div class="search-ai-badge">AI</div>
+            </div>
+            <div class="search-suggestions" id="searchSuggestions">
+                <div class="search-suggest-label">Popular Searches</div>
+                <div class="search-suggest-tags">
+                    <a href="/cellulose-transformer-insulation-boards" class="search-suggest-tag">Pressboards</a>
+                    <a href="/machined-and-milled-components" class="search-suggest-tag">Machined Components</a>
+                    <a href="/copper" class="search-suggest-tag">Copper Winding Wires</a>
+                    <a href="/wire-enamels" class="search-suggest-tag">Wire Enamels</a>
+                    <a href="/quality" class="search-suggest-tag">Quality & Testing</a>
+                    <a href="/downloads" class="search-suggest-tag">Catalogues</a>
+                    <a href="/careers" class="search-suggest-tag">Careers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================
+         UTILITY PANEL (Slide-out Drawer)
+         ================================================ -->
+    <div class="utility-panel" id="utilityPanel">
+        <div class="utility-panel-overlay" id="utilityPanelOverlay"></div>
+        <div class="utility-panel-drawer">
+            <div class="utility-panel-header">
+                <span class="utility-panel-title">Quick Links</span>
+                <button class="utility-panel-close" id="utilityPanelClose" data-cursor="hover" aria-label="Close panel">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <nav class="utility-panel-nav">
+                <a href="/contact-us" class="up-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    <span>Contact Us</span>
+                </a>
+                <a href="/downloads" class="up-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Download Center</span>
+                </a>
+                <a href="/csr" class="up-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    <span>CSR</span>
+                </a>
+                <a href="/our-locations" class="up-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Our Locations</span>
+                </a>
+                <a href="#sEvents" class="up-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    <span>Announcements</span>
+                </a>
+                <a href="/blogs" class="up-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    <span>Blogs</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- ================================================
+         HEADER (Bottom Menu Bar — Main Nav)
          ================================================ -->
     <header class="header" id="header">
         <div class="header-inner">
             <a href="/" class="logo" data-cursor="hover">
-                <img src="assets/ubl-favicon.svg" alt="Umang Boards Limited" class="logo-icon">
+                <img src="assets/ubl-favicon.svg" alt="Umang Boards Limited" class="logo-icon" id="logoIcon">
                 <div class="logo-text">
-                    <span class="logo-name">UMANG</span>
-                    <span class="logo-name">BOARDS</span>
-                    <span class="logo-name logo-name-sub">LIMITED</span>
+                    <span class="logo-name">UMANG BOARDS</span>
+                    <span class="logo-sub">LIMITED</span>
                 </div>
             </a>
 
             <nav class="nav-desktop">
-                <!-- MEGA: Corporate -->
+                <!-- 1. COMPANY (Mega Menu) -->
                 <div class="mega-wrap">
-                    <a href="#" class="nav-item" data-cursor="hover" data-mega="megaCorporate">Corporate</a>
+                    <a href="#" class="nav-link" data-cursor="hover" data-mega="megaCompany">Company</a>
                 </div>
 
-                <!-- MEGA: Products -->
+                <!-- 2. PRODUCTS (Mega Menu) -->
                 <div class="mega-wrap">
-                    <a href="#" class="nav-item" data-cursor="hover" data-mega="megaProducts">Products</a>
+                    <a href="#" class="nav-link" data-cursor="hover" data-mega="megaProducts">Products</a>
                 </div>
 
-                <!-- Simple dropdowns -->
+                <!-- 3. SOLUTIONS (Mega Menu) -->
+                <div class="mega-wrap">
+                    <a href="#" class="nav-link" data-cursor="hover" data-mega="megaSolutions">Solutions</a>
+                </div>
+
+                <!-- 4. INVESTORS (Dropdown) -->
                 <div class="nav-dropdown-wrap">
-                    <a href="/group-companies" class="nav-item" data-cursor="hover">Group Companies</a>
-                    <div class="nav-dropdown">
-                        <a href="/umang-boards-bkk-co-ltd">Umang Boards BKK (Thailand)</a>
-                        <a href="/anup-insulations-pvt-ltd">Anup Insulations</a>
-                        <a href="/umang-boards-business-ventures-pvt-ltd">Umang Business Ventures</a>
-                        <a href="/umang-corporate-park-pvt-ltd">Umang Corporate Park</a>
+                    <a href="/investors" class="nav-link" data-cursor="hover">Investors</a>
+                    <div class="nav-dropdown nav-dropdown-wide">
+                        <div class="nav-dropdown-grid">
+                            <div class="nav-dropdown-col">
+                                <div class="nav-dropdown-col-title">Financial Information</div>
+                                <a href="/annual-reports">Annual Reports</a>
+                                <a href="/quarterly-results">Quarterly Results</a>
+                                <a href="/financial-statements">Financial Statements</a>
+                                <a href="/investor-presentations">Investor Presentations</a>
+                            </div>
+                            <div class="nav-dropdown-col">
+                                <div class="nav-dropdown-col-title">Governance</div>
+                                <a href="/corporate-governance">Corporate Governance</a>
+                                <a href="/board-of-directors">Board of Directors</a>
+                                <a href="/policies">Policies</a>
+                                <a href="/shareholder-info">Shareholder Information</a>
+                            </div>
+                            <div class="nav-dropdown-col">
+                                <div class="nav-dropdown-col-title">Stock Information</div>
+                                <a href="/stock-exchange">NSE / BSE Listing</a>
+                                <a href="/shareholding-pattern">Shareholding Pattern</a>
+                                <a href="/credit-rating">Credit Rating</a>
+                                <a href="/downloads">Downloads</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+                <!-- 5. CONTACT US -->
+                <a href="/contact-us" class="nav-link" data-cursor="hover">Contact Us</a>
+
+                <!-- 6. NEWSROOM (Dropdown) -->
                 <div class="nav-dropdown-wrap">
-                    <a href="/investors" class="nav-item" data-cursor="hover">Investors</a>
+                    <a href="/newsroom" class="nav-link" data-cursor="hover">Newsroom</a>
                     <div class="nav-dropdown">
-                        <a href="/corporate-governance">Corporate Governance</a>
-                        <a href="/annual-reports">Annual Reports</a>
-                        <a href="/downloads">Downloads</a>
+                        <a href="/media-kit">Media Kit</a>
+                        <a href="/events">Events</a>
+                        <a href="/press-releases">Press Releases</a>
                     </div>
                 </div>
-
-                <a href="/careers" class="nav-item" data-cursor="hover">Careers</a>
             </nav>
 
-            <div class="header-cta">
+            <div class="header-actions">
                 <a href="/contact-us" class="btn-enquiry" data-cursor="hover"><span>Enquire Now</span></a>
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -133,35 +247,43 @@
     </header>
 
     <!-- ================================================
-         MEGA MENU: CORPORATE
+         MEGA MENU: COMPANY
          ================================================ -->
-    <div class="mega-menu" id="megaCorporate">
-        <div class="mega-curtain-1"></div>
-        <div class="mega-curtain-2"></div>
-        <button class="mega-close" data-cursor="hover" aria-label="Close menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
+    <div class="mega-menu" id="megaCompany">
         <div class="mega-grid">
+            <!-- Col 1: About -->
             <div class="mega-col">
                 <div class="mega-col-title">About</div>
-                <a href="/our-story">Our Story<span class="mega-sub">The Umang Boards journey since 1999</span></a>
-                <a href="/our-history">History &amp; Milestones<span class="mega-sub">25+ years of key achievements</span></a>
-                <a href="/csr">CSR<span class="mega-sub">Corporate social responsibility initiatives</span></a>
+                <a href="/about-us">About Us<span class="mega-sub">India's leading insulation manufacturer</span></a>
+                <a href="/leadership">Leadership<span class="mega-sub">Board of directors & management team</span></a>
+                <a href="/company-history">Company History<span class="mega-sub">25+ years of milestones since 1999</span></a>
+                <a href="/dhanuka-foundation">Dhanuka Foundation<span class="mega-sub">Social initiatives & philanthropy</span></a>
+                <a href="/manufacturing-units">Manufacturing Units<span class="mega-sub">Two state-of-the-art facilities</span></a>
             </div>
+            <!-- Col 2: People -->
             <div class="mega-col">
-                <div class="mega-col-title">Quality</div>
-                <a href="/quality">Quality Assurance<span class="mega-sub">NABL accredited testing facilities</span></a>
-                <a href="/research-and-development">Research &amp; Development<span class="mega-sub">Innovation in insulation technology</span></a>
-                <a href="/certifications">Certifications<span class="mega-sub">ISO, IEC, PGCIL approvals</span></a>
-            </div>
-            <div class="mega-col">
-                <div class="mega-col-title">Career</div>
-                <a href="/life-ubl">Life @ UBL<span class="mega-sub">Culture, values &amp; work environment</span></a>
-                <a href="/positions-available">Positions Available<span class="mega-sub">Current openings across departments</span></a>
-                <a href="/training-and-development">Training &amp; Development<span class="mega-sub">Growth &amp; learning opportunities</span></a>
+                <div class="mega-col-title">People</div>
+                <a href="/life-ubl">Life @ UBL<span class="mega-sub">Culture, values & work environment</span></a>
+                <a href="/careers">Careers<span class="mega-sub">Current openings across departments</span></a>
+                <a href="/training-and-development">Training & Development<span class="mega-sub">Growth & learning opportunities</span></a>
                 <div class="mega-col-divider"></div>
-                <a href="/downloads">Downloads<span class="mega-sub">Catalogues, datasheets &amp; resources</span></a>
+                <div class="mega-col-title">Quality</div>
+                <a href="/sustainability">Sustainability<span class="mega-sub">ESG & environmental commitments</span></a>
+                <a href="/quality">Testing Labs<span class="mega-sub">TI Lab, WW Lab, Chemical Lab</span></a>
+                <a href="/research-and-development">R&D<span class="mega-sub">Innovation in insulation technology</span></a>
             </div>
+            <!-- Col 3: Download Center -->
+            <div class="mega-col">
+                <div class="mega-col-title">Download Center</div>
+                <a href="/certifications">Certifications<span class="mega-sub">ISO, NABL, PGCIL approvals</span></a>
+                <a href="/catalogues">Catalogues<span class="mega-sub">Product catalogues & brochures</span></a>
+                <a href="/tech-datasheets">Technical Datasheets<span class="mega-sub">Product specifications & data</span></a>
+                <a href="/tc-sales">T&C Sales<span class="mega-sub">Terms & conditions of sale</span></a>
+                <a href="/tc-purchase">T&C Purchase<span class="mega-sub">Terms & conditions of purchase</span></a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/code-of-conduct">Code of Conduct</a>
+            </div>
+            <!-- Col 4: Feature Card -->
             <div class="mega-col">
                 <div class="mega-feature">
                     <div>
@@ -179,30 +301,64 @@
          MEGA MENU: PRODUCTS
          ================================================ -->
     <div class="mega-menu" id="megaProducts">
-        <div class="mega-curtain-1"></div>
-        <div class="mega-curtain-2"></div>
-        <button class="mega-close" data-cursor="hover" aria-label="Close menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-        <div class="mega-grid">
+        <div class="mega-grid mega-grid-5">
+            <!-- Col 1: Pressboards -->
             <div class="mega-col">
-                <div class="mega-col-title">Transformer Insulations</div>
-                <a href="/cellulose-transformer-insulation-boards">Cellulose Pressboards<span class="mega-sub">Pre-compressed boards, laminated boards</span></a>
-                <a href="/machined-and-milled-components">Machined &amp; Milled Components<span class="mega-sub">Custom precision insulation parts</span></a>
-                <a href="/moulded-components">Moulded Components<span class="mega-sub">Spacers, rings, caps, snouts</span></a>
-                <a href="/insulation-papers">Insulation Papers<span class="mega-sub">Crepe paper, DDP, tubes</span></a>
+                <div class="mega-col-title">Pressboards</div>
+                <a href="/pre-compressed-pressboards">Pre-Compressed Pressboards</a>
+                <a href="/laminated-pressboards">Laminated Pressboards</a>
+                <a href="/calendered-pressboards">Calendered Pressboards</a>
+                <a href="/moulded-pressboards">Moulded Pressboards</a>
             </div>
+            <!-- Col 2: Machined & Moulded -->
+            <div class="mega-col">
+                <div class="mega-col-title">Machined Components</div>
+                <a href="/spacers-and-blocks">Spacers & Blocks</a>
+                <a href="/rings-and-caps">Rings & Caps</a>
+                <a href="/lead-exit-assemblies">Lead Exit Assemblies</a>
+                <a href="/snouts-and-tubes">Snouts & Tubes</a>
+                <a href="/channels-and-angles">Channels & Angles</a>
+                <a href="/barriers-and-sectors">Barriers & Sectors</a>
+                <a href="/core-clamps">Core Clamps</a>
+                <a href="/custom-machined">Custom Machined Parts</a>
+                <div class="mega-col-divider"></div>
+                <div class="mega-col-title">Moulded Components</div>
+                <a href="/moulded-spacers">Moulded Spacers</a>
+                <a href="/moulded-rings">Moulded Rings</a>
+                <a href="/moulded-caps">Moulded Caps</a>
+                <a href="/moulded-snouts">Moulded Snouts</a>
+                <a href="/moulded-custom">Custom Moulded Parts</a>
+            </div>
+            <!-- Col 3: Papers & Accessories -->
+            <div class="mega-col">
+                <div class="mega-col-title">Insulation Papers</div>
+                <a href="/crepe-paper">Crepe Paper</a>
+                <a href="/ddp">Diamond Dotted Paper (DDP)</a>
+                <a href="/plain-kraft-paper">Plain Kraft Paper</a>
+                <a href="/paper-tubes">Paper Tubes</a>
+                <a href="/tissue-paper">Tissue Paper</a>
+                <div class="mega-col-divider"></div>
+                <div class="mega-col-title">Transformer Accessories</div>
+                <a href="/bushings">Bushings</a>
+                <a href="/conservators">Conservators</a>
+                <a href="/radiators">Radiators</a>
+                <a href="/tap-changers">Tap Changers</a>
+                <a href="/gaskets">Gaskets & Seals</a>
+            </div>
+            <!-- Col 4: Winding Wires & Chemicals -->
             <div class="mega-col">
                 <div class="mega-col-title">Winding Wires</div>
-                <a href="/copper">Copper Winding Wires<span class="mega-sub">Paper and film insulated</span></a>
-                <a href="/aluminium">Aluminium Winding Wires<span class="mega-sub">For distribution transformers</span></a>
-            </div>
-            <div class="mega-col">
+                <a href="/aluminium">Aluminium Winding Wires</a>
+                <a href="/copper">Copper Winding Wires</a>
+                <div class="mega-col-divider"></div>
                 <div class="mega-col-title">Insulating Chemicals</div>
-                <a href="/wire-enamels">Wire Enamels<span class="mega-sub">Polyester, polyurethane, polyamide-imide</span></a>
+                <a href="/wire-enamels">Wire Enamels</a>
                 <a href="/impregnating-resins">Impregnating Resins</a>
                 <a href="/insulating-varnishes">Insulating Varnishes</a>
+                <a href="/bonding-agents">Bonding Agents</a>
+                <a href="/thinners-cleaners">Thinners & Cleaners</a>
             </div>
+            <!-- Col 5: Feature Card -->
             <div class="mega-col">
                 <div class="mega-feature">
                     <div>
@@ -216,35 +372,81 @@
         </div>
     </div>
 
-    <!-- Mobile Nav -->
+    <!-- ================================================
+         MEGA MENU: SOLUTIONS
+         ================================================ -->
+    <div class="mega-menu" id="megaSolutions">
+        <div class="mega-grid">
+            <!-- Col 1: Power & Distribution -->
+            <div class="mega-col">
+                <div class="mega-col-title">Transformer Solutions</div>
+                <a href="/solutions/power-transformers">Power Transformers<span class="mega-sub">400 kV class insulation systems</span></a>
+                <a href="/solutions/distribution-transformers">Distribution Transformers<span class="mega-sub">Cost-effective insulation solutions</span></a>
+                <a href="/solutions/instrument-transformers">Instrument Transformers<span class="mega-sub">Precision insulation components</span></a>
+            </div>
+            <!-- Col 2: Industrial -->
+            <div class="mega-col">
+                <div class="mega-col-title">Industrial Applications</div>
+                <a href="/solutions/data-centers">Data Centers<span class="mega-sub">High-reliability transformer insulation</span></a>
+                <a href="/solutions/renewables">Renewables<span class="mega-sub">Wind & solar transformer solutions</span></a>
+                <a href="/solutions/electric-motors">Electric Motors<span class="mega-sub">Motor winding wire & insulation</span></a>
+            </div>
+            <!-- Col 3: Consumer & EV -->
+            <div class="mega-col">
+                <div class="mega-col-title">Consumer & EV</div>
+                <a href="/solutions/home-appliances">Home Appliances<span class="mega-sub">Enamelled wires for appliance motors</span></a>
+                <a href="/solutions/ev-motors">EV Motors<span class="mega-sub">High-temperature insulation for EVs</span></a>
+                <a href="/solutions/stabilizers">Stabilizers<span class="mega-sub">Winding wires for voltage regulators</span></a>
+            </div>
+            <!-- Col 4: Feature Card -->
+            <div class="mega-col">
+                <div class="mega-feature">
+                    <div>
+                        <div class="mega-feature-tag">End-to-End</div>
+                        <div class="mega-feature-title">Complete Insulation Systems</div>
+                        <div class="mega-feature-desc">From raw cellulose to finished components — vertically integrated manufacturing for complete transformer insulation solutions.</div>
+                    </div>
+                    <a href="/solutions" class="mega-feature-cta" data-cursor="hover">All Solutions &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================
+         MOBILE NAV
+         ================================================ -->
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" data-lenis-prevent>
         <ul class="mobile-nav-links">
-            <!-- Corporate (accordion) -->
+            <!-- 1. Company -->
             <li class="mobile-accordion">
                 <div class="mobile-accordion-header" data-cursor="hover">
-                    <span>Corporate</span>
+                    <span>Company</span>
                     <svg class="mobile-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
                 </div>
                 <ul class="mobile-accordion-body">
-                    <li><a href="/our-story">Our Story</a></li>
-                    <li><a href="/our-history">History / Milestones</a></li>
-                    <li><a href="/csr">CSR</a></li>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/leadership">Leadership</a></li>
+                    <li><a href="/company-history">Company History</a></li>
+                    <li><a href="/dhanuka-foundation">Dhanuka Foundation</a></li>
+                    <li><a href="/manufacturing-units">Manufacturing Units</a></li>
+                    <li class="mobile-sub-group">
+                        <span class="mobile-sub-title">People</span>
+                        <a href="/life-ubl">Life @ UBL</a>
+                        <a href="/careers">Careers</a>
+                        <a href="/training-and-development">Training & Development</a>
+                    </li>
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Quality</span>
-                        <a href="/research-and-development">Research &amp; Development</a>
+                        <a href="/sustainability">Sustainability</a>
+                        <a href="/quality">Testing Labs</a>
+                        <a href="/research-and-development">R&D</a>
                         <a href="/certifications">Certifications</a>
                     </li>
-                    <li class="mobile-sub-group">
-                        <span class="mobile-sub-title">Career</span>
-                        <a href="/life-ubl">Life @ UBL</a>
-                        <a href="/positions-available">Positions Available</a>
-                        <a href="/training-and-development">Training &amp; Development</a>
-                    </li>
-                    <li><a href="/downloads">Downloads</a></li>
+                    <li><a href="/downloads">Download Center</a></li>
                 </ul>
             </li>
 
-            <!-- Products (accordion) -->
+            <!-- 2. Products -->
             <li class="mobile-accordion">
                 <div class="mobile-accordion-header" data-cursor="hover">
                     <span>Products</span>
@@ -253,72 +455,129 @@
                 <ul class="mobile-accordion-body">
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Transformer Insulations</span>
-                        <a href="/cellulose-transformer-insulation-boards">Cellulose Transformer Boards</a>
-                        <a href="/machined-and-milled-components">Machined &amp; Milled Components</a>
+                        <a href="/cellulose-transformer-insulation-boards">Pressboards</a>
+                        <a href="/machined-and-milled-components">Machined Components</a>
                         <a href="/moulded-components">Moulded Components</a>
                         <a href="/insulation-papers">Insulation Papers</a>
                     </li>
                     <li class="mobile-sub-group">
-                        <span class="mobile-sub-title">Winding Wires</span>
-                        <a href="/aluminium">Aluminium</a>
-                        <a href="/copper">Copper</a>
+                        <span class="mobile-sub-title">Transformer Accessories</span>
+                        <a href="/bushings">Bushings</a>
+                        <a href="/conservators">Conservators</a>
+                        <a href="/radiators">Radiators</a>
+                        <a href="/tap-changers">Tap Changers</a>
+                        <a href="/gaskets">Gaskets & Seals</a>
                     </li>
-                    <li><a href="/insulating-chemical">Insulating Chemical</a></li>
+                    <li class="mobile-sub-group">
+                        <span class="mobile-sub-title">Winding Wires</span>
+                        <a href="/copper">Copper Winding Wires</a>
+                        <a href="/aluminium">Aluminium Winding Wires</a>
+                    </li>
+                    <li class="mobile-sub-group">
+                        <span class="mobile-sub-title">Insulating Chemicals</span>
+                        <a href="/wire-enamels">Wire Enamels</a>
+                        <a href="/impregnating-resins">Impregnating Resins</a>
+                        <a href="/insulating-varnishes">Insulating Varnishes</a>
+                    </li>
                 </ul>
             </li>
 
-            <li><a href="/group-companies" data-cursor="hover">Group Companies</a></li>
-            <li><a href="/investors" data-cursor="hover">Investors</a></li>
-            <li><a href="/careers" data-cursor="hover">Careers</a></li>
-            <li><a href="/contact-us" data-cursor="hover">Contact</a></li>
-            <li><a href="/contact-us" data-cursor="hover" style="color:var(--brand-blue);">Enquire Now &rarr;</a></li>
+            <!-- 3. Solutions -->
+            <li class="mobile-accordion">
+                <div class="mobile-accordion-header" data-cursor="hover">
+                    <span>Solutions</span>
+                    <svg class="mobile-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <ul class="mobile-accordion-body">
+                    <li><a href="/solutions/power-transformers">Power Transformers</a></li>
+                    <li><a href="/solutions/distribution-transformers">Distribution Transformers</a></li>
+                    <li><a href="/solutions/instrument-transformers">Instrument Transformers</a></li>
+                    <li><a href="/solutions/data-centers">Data Centers</a></li>
+                    <li><a href="/solutions/renewables">Renewables</a></li>
+                    <li><a href="/solutions/electric-motors">Electric Motors</a></li>
+                    <li><a href="/solutions/home-appliances">Home Appliances</a></li>
+                    <li><a href="/solutions/ev-motors">EV Motors</a></li>
+                    <li><a href="/solutions/stabilizers">Stabilizers</a></li>
+                </ul>
+            </li>
+
+            <!-- 4. Investors -->
+            <li class="mobile-accordion">
+                <div class="mobile-accordion-header" data-cursor="hover">
+                    <span>Investors</span>
+                    <svg class="mobile-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <ul class="mobile-accordion-body">
+                    <li><a href="/annual-reports">Annual Reports</a></li>
+                    <li><a href="/quarterly-results">Quarterly Results</a></li>
+                    <li><a href="/corporate-governance">Corporate Governance</a></li>
+                    <li><a href="/board-of-directors">Board of Directors</a></li>
+                    <li><a href="/shareholding-pattern">Shareholding Pattern</a></li>
+                    <li><a href="/downloads">Downloads</a></li>
+                </ul>
+            </li>
+
+            <!-- 5. Contact Us -->
+            <li><a href="/contact-us" data-cursor="hover">Contact Us</a></li>
+
+            <!-- 6. Newsroom -->
+            <li class="mobile-accordion">
+                <div class="mobile-accordion-header" data-cursor="hover">
+                    <span>Newsroom</span>
+                    <svg class="mobile-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <ul class="mobile-accordion-body">
+                    <li><a href="/media-kit">Media Kit</a></li>
+                    <li><a href="/events">Events</a></li>
+                    <li><a href="/press-releases">Press Releases</a></li>
+                </ul>
+            </li>
+
+            <li><a href="/customer-portal" data-cursor="hover">E-Catalog / Customer Portal</a></li>
+            <li><a href="/contact-us" data-cursor="hover" style="color:var(--navy);">Enquire Now &rarr;</a></li>
         </ul>
         <div class="mobile-nav-footer">
             <p>General Enquiry</p>
-            <a href="tel:+911412362093">+91-141-236 2093</a>
+            <a href="tel:+911412395845">+91 141 239 5845</a>
         </div>
     </nav>
 
     <!-- ================================================
          HERO
          ================================================ -->
-    <section class="hero" id="hero">
+    <section class="s-hero">
         <div class="hero-bg">
-            <div class="hero-bg-gradient"></div>
-            <div class="hero-lines"></div>
+            <video autoplay loop muted playsinline class="hero-video">
+                <source src="assets/images/transformer-assembly.webm" type="video/webm">
+                <source src="assets/images/transformer-assembly.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
         </div>
 
-        <div class="hero-orbital">
-            <div class="orbital-ring"><div class="orbital-dot orbital-dot-1"></div></div>
-            <div class="orbital-ring-2"><div class="orbital-dot orbital-dot-2"></div></div>
-        </div>
-
-        <!-- LEFT: Content -->
         <div class="hero-content">
             <div class="hero-eyebrow">
                 <div class="hero-eyebrow-line"></div>
-                <span class="hero-eyebrow-text">Since 1999 &mdash; Jaipur, India</span>
+                <span>Since 1999 &mdash; Jaipur, India</span>
             </div>
 
-            <h1 class="hero-headline">
-                <span class="line"><span class="line-inner line-1">Powering the</span></span>
-                <span class="line"><span class="line-inner line-2">World's <em>Transformers</em></span></span>
-                <span class="line"><span class="line-inner line-3">India's leading manufacturer of cellulose insulation, winding wires &amp; insulating chemicals for the global power sector.</span></span>
+            <h1 class="hero-title">
+                <span class="hero-title-line"><span class="htl-inner">Powering World's</span></span>
+                <span class="hero-title-line"><span class="htl-inner"><em>Electric Future</em></span></span>
             </h1>
+
+            <p class="hero-subtitle">Manufacturing high quality transformer insulation solutions and winding wires for the global power sector.</p>
 
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-number" data-target="25" data-suffix="+">0<span class="accent">+</span></div>
+                    <div class="hero-stat-num" data-target="25" data-suffix="+">0</div>
                     <div class="hero-stat-label">Years of Excellence</div>
                 </div>
-                <div class="hero-stat-divider"></div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number" data-target="61" data-suffix="+">0<span class="accent">+</span></div>
+                    <div class="hero-stat-num" data-target="61" data-suffix="+">0</div>
                     <div class="hero-stat-label">Countries Served</div>
                 </div>
-                <div class="hero-stat-divider"></div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number" data-target="400" data-suffix="kV">0<span class="accent">kV</span></div>
+                    <div class="hero-stat-num" data-target="400" data-suffix=" kV">0</div>
                     <div class="hero-stat-label">PGCIL Approved</div>
                 </div>
             </div>
@@ -328,608 +587,614 @@
                     <span>Explore Solutions</span>
                     <div class="btn-arrow"></div>
                 </a>
-                <a href="/our-story" class="btn-ghost" data-cursor="hover">Our Story</a>
+                <a href="/about-us" class="btn-outline" data-cursor="hover">Our Story</a>
             </div>
         </div>
 
-        <!-- RIGHT: Visual — Slideshow + Badge -->
-        <div class="hero-visual">
-            <div class="hero-mosaic">
-
-                <!-- Main image: Displacement slideshow -->
-                <div class="slideshow-main">
-                    <div class="slideshow-viewport">
-                        <div class="slide active">
-                            <img src="assets/images/Main-Slideshow_0000_MS1.png" alt="Transformer coil winding close-up" class="slide-img">
-                        </div>
-                        <div class="slide">
-                            <img src="assets/images/Main-Slideshow_0001_MS2.png" alt="Manufacturing floor pressboard production" class="slide-img">
-                        </div>
-                        <div class="slide">
-                            <img src="assets/images/Main-Slideshow_0002_MS3.png" alt="Power grid substation at golden hour" class="slide-img">
-                        </div>
-                    </div>
-                    <div class="slideshow-progress">
-                        <div class="slideshow-progress-bar"></div>
-                    </div>
-                </div>
-
-                <!-- Secondary static image -->
-                <div class="mosaic-secondary">
-                    <img src="assets/images/Secondary Static.jpg" alt="NABL Lab Quality Testing" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                </div>
-
-                <!-- 400kV Badge — Pure CSS Card -->
-                <div class="hero-badge" data-cursor="hover">
-                    <div class="badge-eyebrow">PGCIL Approved</div>
-                    <div class="badge-headline">
-                        <span class="badge-kv">400 kV</span>
-                        Class Certified
-                    </div>
-                    <div class="badge-divider"></div>
-                    <div class="badge-body">
-                        Pressboards, Laminated Boards &amp; Machined Components — <strong>certified by Power Grid Corporation of India.</strong>
-                    </div>
-                    <div class="badge-logo-text">Umang Boards Limited</div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <span class="scroll-indicator-text">Scroll</span>
-            <div class="scroll-indicator-line"></div>
-        </div>
-    </section>
-
-    <!-- Magnetic Field Canvas (background) -->
-    <canvas id="magneticField"></canvas>
-
-    <!-- ================================================
-         SECTION 2 — LEGACY & GLOBE
-         ================================================ -->
-    <section class="s-legacy" id="sLegacy">
-        <canvas id="globeCanvas"></canvas>
-
-        <div class="s-legacy-content">
-            <div class="s-legacy-left">
-                <div class="s-legacy-eyebrow" id="legacyEyebrow">
-                    <div class="s-legacy-eyebrow-line"></div>
-                    <span class="s-legacy-eyebrow-text">Who We Are</span>
-                </div>
-                <h2 class="s-legacy-title" id="legacyTitle">
-                    Building the Backbone<br>
-                    of <em>Power Infrastructure</em>
-                </h2>
-                <div class="s-legacy-body" id="legacyBody">
-                    <p>
-                        Founded in 1999, Umang Boards Limited has grown from a single pressboard unit into <strong>one of India's most trusted names in transformer insulation</strong>. We are an OEM supplier to all major power and distribution transformer manufacturers worldwide.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="globe-caption" id="globeCaption">
-            <div class="globe-caption-number">61+</div>
-            <div class="globe-caption-label">Exports to 61+ Countries</div>
+        <div class="scroll-cue">
+            <span>Scroll</span>
+            <div class="scroll-cue-line"></div>
         </div>
     </section>
 
     <!-- ================================================
-         SECTION 2B — IMPACT BENTO (Blue)
+         SECTION 2 — VALUE PROPOSITION (9 Items)
          ================================================ -->
-    <section class="s-impact" id="sImpact">
-        <div class="s-impact-inner">
-            <div class="s-impact-header" id="impactHeader">
-                <div class="s-impact-eyebrow">Our Impact in Numbers</div>
-                <h2 class="s-impact-title">Scale That Speaks for <em>Itself</em></h2>
+    <section class="s-value" id="sValue">
+        <div class="s-value-inner">
+            <div class="s-value-header" id="valueHeader">
+                <div class="section-eyebrow">Why Umang Boards</div>
+                <h2 class="section-title">Built on Trust,<br>Driven by <em>Excellence</em></h2>
+                <p class="section-desc">From a single pressboard unit in 1999 to India's most trusted name in transformer insulation — delivering quality that powers critical infrastructure worldwide.</p>
             </div>
 
-            <div class="bento-impact">
-                <!-- Row 1 -->
-                <div class="bento-card b-large bc-glass" data-cursor="hover">
-                    <div>
-                        <div class="bento-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"><circle cx="24" cy="24" r="20"/><path d="M4 24h40M24 4c5.3 5.3 8 12 8 20s-2.7 14.7-8 20c-5.3-5.3-8-12-8-20s2.7-14.7 8-20z"/></svg>
-                        </div>
-                        <div class="bento-label">Global Exports</div>
+            <!-- BENTO GRID — 9 cells: 2 image cards + 7 stat/quote cards -->
+            <div class="bento-grid">
+
+                <!-- 1. LARGE FEATURED: 61+ Countries (2×2) -->
+                <div class="value-card vc-featured vc-large" data-cursor="hover">
+                    <div class="vc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                     </div>
-                    <div>
-                        <div class="bento-number"><span class="bn-accent">61+</span></div>
-                        <div class="bento-desc">Countries trust our insulation products — from South East Asia to Europe, Middle East to Africa.</div>
+                    <div class="vc-number">61+</div>
+                    <div class="vc-label">Countries Served</div>
+                    <div class="vc-desc">Our insulation products power transformers across 6 continents — from South East Asia to Europe, Middle East to Africa.</div>
+                    <div class="vc-continents">
+                        <span>Asia</span><span>Europe</span><span>Middle East</span><span>Africa</span><span>Americas</span><span>Oceania</span>
                     </div>
                 </div>
 
-                <div class="bento-card b-medium bc-gold" data-cursor="hover">
-                    <div>
-                        <div class="bento-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"><path d="M24 4v8M24 36v8M8 24H4M44 24h-4M11.5 11.5l3 3M33.5 33.5l3 3M11.5 36.5l3-3M33.5 14.5l3-3"/><circle cx="24" cy="24" r="10"/></svg>
+                <!-- 2. IMAGE CARD: Transformer Insulations photo (1×2 tall) -->
+                <div class="value-card vc-img vc-img-tall" data-cursor="hover">
+                    <img src="assets/images/Transformer Insulations.jpg" alt="Transformer Insulation Manufacturing" class="vc-img-photo">
+                    <div class="vc-img-overlay">
+                        <div class="vc-img-caption">
+                            <div class="vc-img-tag">Made in India</div>
+                            <div class="vc-img-text">Cellulose Pressboard Manufacturing, Jaipur</div>
                         </div>
-                        <div class="bento-label">Continuous Operations</div>
-                    </div>
-                    <div>
-                        <div class="bento-number"><span class="bn-accent">25+</span></div>
-                        <div class="bento-desc">Years powering transformer manufacturing since 1999.</div>
                     </div>
                 </div>
 
-                <div class="bento-card b-small bc-dark" data-cursor="hover">
-                    <div>
-                        <div class="bento-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"><rect x="6" y="14" width="36" height="28" rx="3"/><path d="M16 14V10a8 8 0 1116 0v4"/><circle cx="24" cy="30" r="3"/></svg>
-                        </div>
-                        <div class="bento-label">Manufacturing</div>
+                <!-- 3. QUOTE (2×1) -->
+                <div class="value-card vc-quote vc-wide" data-cursor="hover">
+                    <blockquote>"Our vision is to be a global leader in transformer insulation through high-technology products and unwavering quality commitment."</blockquote>
+                    <cite>S. K. Dhanuka &mdash; Founder &amp; Chairman</cite>
+                </div>
+
+                <!-- 4. 400 kV (1×1) -->
+                <div class="value-card" data-cursor="hover">
+                    <div class="vc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     </div>
-                    <div>
-                        <div class="bento-number"><span class="bn-accent">02</span></div>
-                        <div class="bento-desc">State-of-the-art production facilities with NABL labs.</div>
+                    <div class="vc-number">400 kV</div>
+                    <div class="vc-label">PGCIL Approved</div>
+                    <div class="vc-desc">Highest voltage class certification for Indian insulation manufacturers.</div>
+                </div>
+
+                <!-- 5. 400+ Employees (1×1) -->
+                <div class="value-card" data-cursor="hover">
+                    <div class="vc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <div class="vc-number">400+</div>
+                    <div class="vc-label">Employees</div>
+                    <div class="vc-desc">Skilled professionals across manufacturing, R&D, and operations.</div>
+                </div>
+
+                <!-- 6. ISO Certified (1×1) -->
+                <div class="value-card" data-cursor="hover">
+                    <div class="vc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="vc-number">ISO</div>
+                    <div class="vc-label">Certified</div>
+                    <div class="vc-desc">ISO 9001, ISO 14001 &amp; OHSAS 45001 certified manufacturing.</div>
+                </div>
+
+                <!-- 7. NABL (1×1) -->
+                <div class="value-card" data-cursor="hover">
+                    <div class="vc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="vc-number">NABL</div>
+                    <div class="vc-label">Accredited Lab</div>
+                    <div class="vc-desc">IEC/IES 17025 in-house testing — dielectric, moisture, density, tensile.</div>
+                </div>
+
+                <!-- 8. IMAGE CARD: Winding Wires (2×1 wide) -->
+                <div class="value-card vc-img vc-img-wide" data-cursor="hover">
+                    <img src="assets/images/Winding Wires.jpg" alt="Winding Wire Manufacturing" class="vc-img-photo">
+                    <div class="vc-img-overlay">
+                        <div class="vc-img-caption">
+                            <div class="vc-img-tag">Our Products</div>
+                            <div class="vc-img-text">Precision Winding Wires — Copper &amp; Aluminium</div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Row 2 -->
-                <div class="bento-card b-small bc-dark" data-cursor="hover">
-                    <div>
-                        <div class="bento-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"><path d="M8 40V22l16-14 16 14v18"/><path d="M18 40V28h12v12"/></svg>
-                        </div>
-                        <div class="bento-label">Enterprise Group</div>
+                <!-- 9. 25+ Years + 2 Mfg combined (1×1) -->
+                <div class="value-card" data-cursor="hover">
+                    <div class="vc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     </div>
-                    <div>
-                        <div class="bento-number"><span class="bn-accent">05</span></div>
-                        <div class="bento-desc">Group companies across India &amp; Thailand.</div>
-                    </div>
+                    <div class="vc-number">25+</div>
+                    <div class="vc-label">Years Legacy</div>
+                    <div class="vc-desc">25+ years of manufacturing excellence — 2 state-of-the-art facilities in Rajasthan.</div>
                 </div>
 
-                <div class="bento-featured" data-cursor="hover">
-                    <div class="bento-quote">
-                        <blockquote>"Our vision is to be a global leader in transformer insulation through high-technology products and unwavering quality commitment."</blockquote>
-                        <cite>S. K. Dhanuka &mdash; Founder &amp; Chairman</cite>
-                    </div>
-                </div>
-
-                <div class="bento-card b-medium bc-glass" data-cursor="hover">
-                    <div>
-                        <div class="bento-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"><path d="M24 4l6.18 12.52L44 18.54l-10 9.74 2.36 13.76L24 35.54l-12.36 6.5L14 28.28 4 18.54l13.82-2.02L24 4z"/></svg>
-                        </div>
-                        <div class="bento-label">Voltage Class</div>
-                    </div>
-                    <div>
-                        <div class="bento-number"><span class="bn-accent">400kV</span></div>
-                        <div class="bento-desc">PGCIL approved — the highest certification for Indian insulation manufacturers.</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- ================================================
-         SECTION 2C — CERTIFICATIONS BENTO
+         SECTION 3 — PRODUCT PORTFOLIO (Tabbed + 3-Level Finder)
          ================================================ -->
-    <section class="s-certs" id="sCerts">
-        <canvas id="certs-particles"></canvas>
-        <div class="s-certs-inner">
-            <div class="s-certs-header" id="certsHeader">
-                <div class="s-certs-eyebrow">Accreditations &amp; Approvals</div>
-                <h2 class="s-certs-title">Trusted at Every Level</h2>
+    <section class="s-products" id="sProducts">
+        <div class="s-products-inner">
+            <div class="s-products-header" id="productsHeader">
+                <div class="section-eyebrow">Product Portfolio</div>
+                <h2 class="section-title">Three Pillars of<br><em>Insulation Excellence</em></h2>
+                <p class="section-desc">A vertically integrated suite powering the world's electrical infrastructure — from cellulose pressboards to precision winding wires and specialty chemicals.</p>
             </div>
 
-            <div class="bento-certs">
-                <!-- Hero cert: 400kV -->
-                <div class="cert-bento cb-hero" data-cursor="hover">
-                    <div>
-                        <div class="cert-b-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <!-- Tab Modes -->
+            <div class="product-tab-modes">
+                <button class="product-mode active" data-mode="byProduct">By Products</button>
+                <button class="product-mode" data-mode="byApplication">By Applications</button>
+                <button class="product-mode" data-mode="byBusiness">By Business</button>
+            </div>
+
+            <!-- Mode 1: By Products (default — existing tabs) -->
+            <div class="product-mode-panel active" id="modeByProduct">
+                <div class="product-tabs">
+                    <button class="product-tab active" data-tab="panelInsulation">Transformer Insulations</button>
+                    <button class="product-tab" data-tab="panelWires">Winding Wires</button>
+                    <button class="product-tab" data-tab="panelChemicals">Insulating Chemicals</button>
+                </div>
+
+                <!-- Panel 1: Transformer Insulations -->
+                <div class="product-panel active" id="panelInsulation">
+                    <div class="product-panel-grid">
+                        <div class="product-panel-visual">
+                            <img src="assets/images/Transformer Insulations.jpg" alt="Transformer Insulations" class="product-panel-img">
                         </div>
-                        <div class="cert-b-detail">Power Grid Corporation of India</div>
-                        <div class="cert-b-badge">400 kV Class</div>
-                        <div class="cert-b-name">PGCIL Approved</div>
-                    </div>
-                    <div class="cert-b-desc">Certified for pressboards, laminated boards, and machined &amp; moulded components in transformers up to 400 kV class.</div>
-                </div>
-
-                <!-- NABL -->
-                <div class="cert-bento cb-standard" data-cursor="hover">
-                    <div class="cert-b-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                    </div>
-                    <div class="cert-b-name">NABL Accredited</div>
-                    <div class="cert-b-detail">IEC / IES 17025</div>
-                    <div class="cert-b-desc">Nationally accredited in-house testing lab ensuring world-class quality in every batch.</div>
-                </div>
-
-                <!-- Triple ISO -->
-                <div class="cert-bento cb-narrow" data-cursor="hover">
-                    <div class="cert-b-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <div class="cert-b-name">Triple ISO Certified</div>
-                    <div class="cert-b-detail">9001 &bull; 14001 &bull; 45001</div>
-                    <div class="cert-b-desc">Quality, environment, and safety across all operations.</div>
-                </div>
-
-                <!-- CRISIL -->
-                <div class="cert-bento cb-standard" data-cursor="hover">
-                    <div class="cert-b-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 20h20M5 20V10l7-7 7 7v10"/><path d="M9 20v-6h6v6"/></svg>
-                    </div>
-                    <div class="cert-b-name">CRISIL BBB</div>
-                    <div class="cert-b-detail">Investment Grade Rating</div>
-                    <div class="cert-b-desc">Financial stability and creditworthiness recognised by India's leading agency.</div>
-                </div>
-
-                <!-- Export House -->
-                <div class="cert-bento cb-standard" data-cursor="hover">
-                    <div class="cert-b-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                    </div>
-                    <div class="cert-b-name">One Star Export House</div>
-                    <div class="cert-b-detail">DGFT, Govt. of India</div>
-                    <div class="cert-b-desc">Recognised for outstanding export performance, valid until March 2028.</div>
-                </div>
-
-                <!-- OEM -->
-                <div class="cert-bento cb-standard" data-cursor="hover">
-                    <div class="cert-b-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </div>
-                    <div class="cert-b-name">OEM Approved</div>
-                    <div class="cert-b-detail">Major Global OEMs</div>
-                    <div class="cert-b-desc">Preferred supplier to all leading power &amp; distribution transformer makers worldwide.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================
-         SECTION 3 — BUSINESS SEGMENTS (Bento)
-         ================================================ -->
-    <section class="s-segments" id="sSegments">
-        <div class="s-segments-inner">
-            <div class="s-segments-header" id="segmentsHeader">
-                <div>
-                    <div class="s-segments-eyebrow">
-                        <div class="s-segments-eyebrow-line"></div>
-                        <span class="s-segments-eyebrow-text">What We Do</span>
-                    </div>
-                    <h2 class="s-segments-title">Three Pillars of<br><em>Insulation Excellence</em></h2>
-                </div>
-                <p class="s-segments-intro">From cellulose pressboards insulating high-voltage cores to precision winding wires and specialty chemicals — a vertically integrated suite powering the world's electrical infrastructure.</p>
-            </div>
-
-            <div class="bento-segments">
-                <!-- PRIMARY: Transformer Insulations (large left) -->
-                <div class="seg-card seg-primary" data-cursor="hover">
-                    <div class="seg-visual">
-                        <span class="seg-number-tag">01</span>
-                        <div class="seg-visual-bg sv-ins" style="background-image: url('assets/images/Transformer Insulations.jpg'); background-size: cover; background-position: center;">
-                            <div>
-                                <!-- Placeholder removed for actual image -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seg-content">
-                        <span class="seg-tag">Core Business</span>
-                        <h3 class="seg-name">Transformer Insulations</h3>
-                        <p class="seg-desc">India's only manufacturer of non-metallic particle pressboards. Our cellulose-based insulation range is PGCIL approved for transformers up to 400 kV class.</p>
-                        <ul class="seg-products">
-                            <li>Pressboards</li>
-                            <li>Laminated Boards</li>
-                            <li>Machined Components</li>
-                            <li>Moulded Parts</li>
-                            <li>Insulation Papers</li>
-                        </ul>
-                        <a href="/transformer-insulations" class="seg-cta">Explore Range <span class="seg-cta-arrow"></span></a>
-                    </div>
-                </div>
-
-                <!-- SECONDARY: Winding Wires (top right) -->
-                <div class="seg-card seg-secondary" data-cursor="hover">
-                    <div class="seg-visual">
-                        <span class="seg-number-tag">02</span>
-                        <div class="seg-visual-bg sv-wire" style="background-image: url('assets/images/Winding Wires.jpg'); background-size: cover; background-position: center;">
-                            <div>
-                                <!-- Placeholder removed for actual image -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seg-content">
-                        <span class="seg-tag">Conductors</span>
-                        <h3 class="seg-name">Winding Wires</h3>
-                        <p class="seg-desc">Paper &amp; film insulated copper and aluminium wires for power and distribution transformers.</p>
-                        <a href="/winding-wires" class="seg-cta">Explore Range <span class="seg-cta-arrow"></span></a>
-                    </div>
-                </div>
-
-                <!-- TERTIARY: Insulating Chemicals (bottom right) -->
-                <div class="seg-card seg-tertiary" data-cursor="hover">
-                    <div class="seg-visual">
-                        <span class="seg-number-tag">03</span>
-                        <div class="seg-visual-bg sv-chem" style="background-image: url('assets/images/Insulating Chemicals.jpg'); background-size: cover; background-position: center;">
-                            <div>
-                                <!-- Placeholder removed for actual image -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seg-content">
-                        <span class="seg-tag">Specialty Chemicals</span>
-                        <h3 class="seg-name">Insulating Chemicals</h3>
-                        <p class="seg-desc">Wire enamels, impregnating resins, and insulating varnishes for electrical equipment manufacturers.</p>
-                        <a href="/insulating-chemical" class="seg-cta">Explore Range <span class="seg-cta-arrow"></span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Strip -->
-            <div class="seg-strip" id="segStrip">
-                <div class="seg-strip-item">
-                    <div class="seg-strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                    <div class="seg-strip-title">End-to-End</div>
-                    <div class="seg-strip-desc">Complete insulation under one roof</div>
-                </div>
-                <div class="seg-strip-item">
-                    <div class="seg-strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
-                    <div class="seg-strip-title">OEM Supplier</div>
-                    <div class="seg-strip-desc">All major transformer OEMs</div>
-                </div>
-                <div class="seg-strip-item">
-                    <div class="seg-strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-                    <div class="seg-strip-title">Global Standards</div>
-                    <div class="seg-strip-desc">IEC, IS, ASTM compliant</div>
-                </div>
-                <div class="seg-strip-item">
-                    <div class="seg-strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                    <div class="seg-strip-title">Only in India</div>
-                    <div class="seg-strip-desc">Non-metallic particle boards</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================
-         S4 — MANUFACTURING EXCELLENCE
-         ================================================ -->
-    <section class="s-manufacturing" id="sMfg">
-
-        <!-- Full-bleed visual hero -->
-        <div class="s-mfg-hero">
-            <div class="s-mfg-hero-bg" style="background-image: url('assets/images/Mfg Hero Background.jpg'); background-size: cover; background-position: center;">
-                <!-- Placeholder text removed -->
-            </div>
-            <div class="s-mfg-hero-overlay"></div>
-            <div class="s-mfg-hero-content">
-                <div class="s-mfg-hero-eyebrow" id="mfgEyebrow">Manufacturing Excellence</div>
-                <h2 class="s-mfg-hero-title" id="mfgTitle">Where Precision<br>Meets <em>Scale</em></h2>
-                <p class="s-mfg-hero-sub" id="mfgSub">Two state-of-the-art facilities with NABL accredited laboratories, operating under Triple ISO certification to deliver insulation products that meet the world's most demanding specifications.</p>
-            </div>
-        </div>
-
-        <!-- Feature bento -->
-        <div class="s-mfg-features">
-            <canvas id="mfg-particles"></canvas>
-            <div class="s-mfg-features-inner">
-                <div class="bento-mfg">
-
-                    <!-- Hero card -->
-                    <div class="mfg-card mc-hero" data-cursor="hover">
-                        <div class="mfg-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                        </div>
-                        <div class="mfg-card-title">Vertically Integrated Operations</div>
-                        <div class="mfg-card-desc">From raw cellulose pulp to finished machined components — complete control over quality at every stage of production. Our in-house capabilities eliminate supply chain dependencies and ensure consistency across million-unit batches.</div>
-                        <div class="mfg-card-stat">100%</div>
-                    </div>
-
-                    <!-- Tall card -->
-                    <div class="mfg-card mc-tall" data-cursor="hover">
                         <div>
-                            <div class="mfg-card-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                            <span class="product-tag">Core Business</span>
+                            <h3 class="product-panel-title">Transformer Insulations</h3>
+                            <p class="product-panel-desc">India's only manufacturer of non-metallic particle pressboards. Our cellulose-based insulation range is PGCIL approved for transformers up to 400 kV class — serving every major power and distribution transformer OEM worldwide.</p>
+                            <ul class="product-list">
+                                <li>Cellulose Pressboards</li>
+                                <li>Laminated Boards</li>
+                                <li>Machined Components</li>
+                                <li>Moulded Parts</li>
+                                <li>Insulation Papers</li>
+                                <li>Transformer Accessories</li>
+                            </ul>
+                            <a href="/transformer-insulations" class="btn-text" data-cursor="hover">
+                                Explore Range
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 2: Winding Wires -->
+                <div class="product-panel" id="panelWires" style="display:none;">
+                    <div class="product-panel-grid">
+                        <div class="product-panel-visual">
+                            <img src="assets/images/Winding Wires.jpg" alt="Winding Wires" class="product-panel-img">
+                        </div>
+                        <div>
+                            <span class="product-tag">Conductors</span>
+                            <h3 class="product-panel-title">Winding Wires</h3>
+                            <p class="product-panel-desc">Paper and film insulated copper and aluminium wires engineered for power and distribution transformers. Precision-manufactured to international standards with consistent electrical performance across demanding operating conditions.</p>
+                            <ul class="product-list">
+                                <li>Paper Insulated Copper</li>
+                                <li>Film Insulated Copper</li>
+                                <li>Aluminium Winding Wires</li>
+                            </ul>
+                            <a href="/winding-wires" class="btn-text" data-cursor="hover">
+                                Explore Range
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3: Insulating Chemicals -->
+                <div class="product-panel" id="panelChemicals" style="display:none;">
+                    <div class="product-panel-grid">
+                        <div class="product-panel-visual">
+                            <img src="assets/images/Insulating Chemicals.jpg" alt="Insulating Chemicals" class="product-panel-img">
+                        </div>
+                        <div>
+                            <span class="product-tag">Specialty Chemicals</span>
+                            <h3 class="product-panel-title">Insulating Chemicals</h3>
+                            <p class="product-panel-desc">Wire enamels, impregnating resins, and insulating varnishes formulated for superior dielectric performance. Serving electrical equipment manufacturers across India and international markets.</p>
+                            <ul class="product-list">
+                                <li>Wire Enamels</li>
+                                <li>Impregnating Resins</li>
+                                <li>Insulating Varnishes</li>
+                            </ul>
+                            <a href="/insulating-chemical" class="btn-text" data-cursor="hover">
+                                Explore Range
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mode 2: By Applications -->
+            <div class="product-mode-panel" id="modeByApplication" style="display:none;">
+                <div class="application-grid">
+                    <a href="/solutions/power-transformers" class="app-card" data-cursor="hover">
+                        <div class="app-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        </div>
+                        <div class="app-card-title">Power Transformers</div>
+                        <div class="app-card-desc">Pressboards, machined components, winding wires for transformers up to 400 kV class.</div>
+                    </a>
+                    <a href="/solutions/distribution-transformers" class="app-card" data-cursor="hover">
+                        <div class="app-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        </div>
+                        <div class="app-card-title">Distribution Transformers</div>
+                        <div class="app-card-desc">Cost-effective insulation and aluminium winding wire solutions.</div>
+                    </a>
+                    <a href="/solutions/instrument-transformers" class="app-card" data-cursor="hover">
+                        <div class="app-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                        </div>
+                        <div class="app-card-title">Instrument Transformers</div>
+                        <div class="app-card-desc">Precision insulation components for current & potential transformers.</div>
+                    </a>
+                    <a href="/solutions/electric-motors" class="app-card" data-cursor="hover">
+                        <div class="app-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+                        </div>
+                        <div class="app-card-title">Electric Motors</div>
+                        <div class="app-card-desc">Enamelled wires and insulating varnishes for motor manufacturing.</div>
+                    </a>
+                    <a href="/solutions/renewables" class="app-card" data-cursor="hover">
+                        <div class="app-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                        </div>
+                        <div class="app-card-title">Renewables</div>
+                        <div class="app-card-desc">Wind & solar transformer insulation solutions.</div>
+                    </a>
+                    <a href="/solutions/data-centers" class="app-card" data-cursor="hover">
+                        <div class="app-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                        </div>
+                        <div class="app-card-title">Data Centers</div>
+                        <div class="app-card-desc">High-reliability transformer insulation for mission-critical infrastructure.</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mode 3: By Business -->
+            <div class="product-mode-panel" id="modeByBusiness" style="display:none;">
+                <div class="business-cards">
+                    <div class="biz-card" data-cursor="hover">
+                        <div class="biz-card-header">
+                            <div class="biz-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                             </div>
-                            <div class="mfg-card-title">NABL Accredited Laboratory</div>
-                            <div class="mfg-card-desc">In-house testing to IEC/IES 17025 standards. Every batch undergoes dielectric strength, moisture content, density, and tensile testing before dispatch. Full traceability from raw material to delivery.</div>
+                            <h4 class="biz-card-title">Transformer Insulation</h4>
                         </div>
-                        <div class="mfg-card-stat" style="display: flex; justify-content: flex-start; align-items: flex-end; flex: 1;">
-                            <img src="assets/NABL_Official_LOGO_Registered.png" alt="NABL Accredited" style="max-height: 250px; width: auto; max-width: 100%; object-fit: contain;">
-                        </div>
+                        <p class="biz-card-desc">Core business — pressboards, machined components, moulded parts, insulation papers, and transformer accessories.</p>
+                        <a href="/transformer-insulations" class="btn-text" data-cursor="hover">
+                            View Products
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
-
-                    <!-- Row 2 -->
-                    <div class="mfg-card mc-wide" data-cursor="hover">
-                        <div class="mfg-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <div class="biz-card" data-cursor="hover">
+                        <div class="biz-card-header">
+                            <div class="biz-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+                            </div>
+                            <h4 class="biz-card-title">Winding Wires</h4>
                         </div>
-                        <div class="mfg-card-title">Large Format Pressboards</div>
-                        <div class="mfg-card-desc">Capability to produce laminated pressboards up to 3200 × 2100mm for medium and power class transformers — one of very few manufacturers globally with this capacity.</div>
-                        <div class="mfg-card-stat">3200mm</div>
+                        <p class="biz-card-desc">Paper & film insulated copper and aluminium winding wires for transformers, motors, and electrical equipment.</p>
+                        <a href="/winding-wires" class="btn-text" data-cursor="hover">
+                            View Products
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
-
-                    <div class="mfg-card mc-wide" data-cursor="hover">
-                        <div class="mfg-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <div class="biz-card" data-cursor="hover">
+                        <div class="biz-card-header">
+                            <div class="biz-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2v7.527a2 2 0 01-.211.896L4.72 20.55a1 1 0 00.9 1.45h12.76a1 1 0 00.9-1.45l-5.069-10.127A2 2 0 0114 9.527V2"/><path d="M8.5 2h7"/></svg>
+                            </div>
+                            <h4 class="biz-card-title">Insulating Chemicals</h4>
                         </div>
-                        <div class="mfg-card-title">Custom Engineering</div>
-                        <div class="mfg-card-desc">CNC precision machining for spacers, rings, caps, channels, and angles. Full CAD-to-production service with tolerances to ±0.1mm for critical insulation components.</div>
-                        <div class="mfg-card-stat">±0.1mm</div>
+                        <p class="biz-card-desc">Wire enamels, impregnating resins, insulating varnishes, bonding agents, and specialty chemicals.</p>
+                        <a href="/insulating-chemical" class="btn-text" data-cursor="hover">
+                            View Products
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
+                </div>
+            </div>
 
-                    <div class="mfg-card mc-full" data-cursor="hover">
-                        <div class="mfg-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        </div>
-                        <div class="mfg-card-title">Non-Metallic Particle</div>
-                        <div class="mfg-card-desc">India's sole manufacturer using non-metallic particle technology — eliminating conductive contamination risk, a critical requirement for high-voltage transformer insulation.</div>
-                        <div class="mfg-card-stat">Sole Mfg</div>
+            <!-- 3-Level Product Finder: Business > Solutions > Product -->
+            <div class="product-finder">
+                <div class="pf-title">Find Your Product</div>
+                <div class="pf-selects">
+                    <div class="pf-select-group">
+                        <label class="pf-label" for="pfBusiness">Business</label>
+                        <select class="pf-select" id="pfBusiness">
+                            <option value="">Select Business</option>
+                            <option value="insulation">Transformer Insulation</option>
+                            <option value="wires">Winding Wires</option>
+                            <option value="chemicals">Insulating Chemicals</option>
+                        </select>
                     </div>
-
+                    <div class="pf-select-group">
+                        <label class="pf-label" for="pfSolution">Solution</label>
+                        <select class="pf-select" id="pfSolution" disabled>
+                            <option value="">Select Solution</option>
+                        </select>
+                    </div>
+                    <div class="pf-select-group">
+                        <label class="pf-label" for="pfProduct">Product</label>
+                        <select class="pf-select" id="pfProduct" disabled>
+                            <option value="">Select Product</option>
+                        </select>
+                    </div>
+                    <a href="#" class="btn-primary pf-go-btn" id="pfGoBtn" data-cursor="hover" style="pointer-events:none; opacity:0.5;">
+                        <span>Go</span>
+                        <div class="btn-arrow"></div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-
     <!-- ================================================
-         S5 — GLOBAL REACH
+         SECTION 4 — GLOBAL REACH
          ================================================ -->
     <section class="s-global" id="sGlobal">
         <div class="s-global-inner">
             <div class="s-global-grid">
                 <div class="s-global-left" id="globalLeft">
-                    <div class="s-global-eyebrow">Global Footprint</div>
-                    <h2 class="s-global-title">Exporting Trust<br>to <em>61+ Nations</em></h2>
-                    <p class="s-global-body">Our insulation products power transformers on every inhabited continent. Recognised as a One Star Export House by the Government of India, we maintain active trade relationships across Asia, the Middle East, Africa, Europe, and the Americas.</p>
+                    <div class="section-eyebrow-light">Global Footprint</div>
+                    <h2 class="section-title-light">Exporting Trust<br>to <em>61+ Nations</em></h2>
+                    <p class="section-desc-light">Our insulation products power transformers on every inhabited continent. Recognised as a One Star Export House by the Government of India, we maintain active trade relationships across Asia, the Middle East, Africa, Europe, and the Americas.</p>
 
-                    <div class="s-global-stats">
-                        <div class="sg-stat">
-                            <div class="sg-stat-num">61+</div>
-                            <div class="sg-stat-label">Countries</div>
+                    <div class="global-stats">
+                        <div class="g-stat">
+                            <div class="g-stat-num">61+</div>
+                            <div class="g-stat-label">Countries</div>
                         </div>
-                        <div class="sg-stat">
-                            <div class="sg-stat-num">6</div>
-                            <div class="sg-stat-label">Continents</div>
+                        <div class="g-stat">
+                            <div class="g-stat-num">6</div>
+                            <div class="g-stat-label">Continents</div>
                         </div>
-                        <div class="sg-stat">
-                            <div class="sg-stat-num">2028</div>
-                            <div class="sg-stat-label">Export Cert. Valid</div>
+                        <div class="g-stat">
+                            <div class="g-stat-num">2028</div>
+                            <div class="g-stat-label">Export Cert. Valid</div>
                         </div>
                     </div>
 
-                    <div class="s-global-tags">
-                        <span class="sg-tag">India</span>
-                        <span class="sg-tag">Thailand</span>
-                        <span class="sg-tag">UAE</span>
-                        <span class="sg-tag">Saudi Arabia</span>
-                        <span class="sg-tag">Qatar</span>
-                        <span class="sg-tag">Kenya</span>
-                        <span class="sg-tag">South Africa</span>
-                        <span class="sg-tag">Nigeria</span>
-                        <span class="sg-tag">Egypt</span>
-                        <span class="sg-tag">Germany</span>
-                        <span class="sg-tag">UK</span>
-                        <span class="sg-tag">Italy</span>
-                        <span class="sg-tag">Brazil</span>
-                        <span class="sg-tag">Mexico</span>
-                        <span class="sg-tag">Indonesia</span>
-                        <span class="sg-tag">Malaysia</span>
-                        <span class="sg-tag">Singapore</span>
-                        <span class="sg-tag">Japan</span>
+                    <div class="global-tags">
+                        <span class="g-tag">India</span>
+                        <span class="g-tag">Thailand</span>
+                        <span class="g-tag">UAE</span>
+                        <span class="g-tag">Saudi Arabia</span>
+                        <span class="g-tag">Qatar</span>
+                        <span class="g-tag">Kenya</span>
+                        <span class="g-tag">South Africa</span>
+                        <span class="g-tag">Nigeria</span>
+                        <span class="g-tag">Egypt</span>
+                        <span class="g-tag">Germany</span>
+                        <span class="g-tag">UK</span>
+                        <span class="g-tag">Italy</span>
+                        <span class="g-tag">Brazil</span>
+                        <span class="g-tag">Mexico</span>
+                        <span class="g-tag">Indonesia</span>
+                        <span class="g-tag">Malaysia</span>
+                        <span class="g-tag">Singapore</span>
+                        <span class="g-tag">Japan</span>
                     </div>
                 </div>
 
                 <div class="s-global-map" id="globalMap">
-                    <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                        <source src="assets/images/product-showcase.webm" type="video/webm">
-                        <source src="assets/images/product-showcase.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="map-container">
+                        <img src="assets/World-Map.png" alt="Umang Boards Global Presence" class="global-map-img">
+                        <!-- Map Pins -->
+                        <div class="map-pin" style="top:32%;left:73%;" data-label="Jaipur HQ" data-type="hq"></div>
+                        <div class="map-pin" style="top:32%;left:74.5%;" data-label="Mfg Facility" data-type="mfg"></div>
+                        <div class="map-pin" style="top:48%;left:80%;" data-label="Thailand Office" data-type="office"></div>
+                        <div class="map-pin" style="top:35%;left:62%;" data-label="Middle East" data-type="export"></div>
+                        <div class="map-pin" style="top:55%;left:55%;" data-label="Africa" data-type="export"></div>
+                        <div class="map-pin" style="top:28%;left:50%;" data-label="Europe" data-type="export"></div>
+                        <div class="map-pin" style="top:42%;left:85%;" data-label="SE Asia" data-type="export"></div>
+                    </div>
+                    <div class="map-legend">
+                        <span class="map-legend-item"><span class="map-legend-dot dot-hq"></span> HQ</span>
+                        <span class="map-legend-item"><span class="map-legend-dot dot-mfg"></span> Manufacturing</span>
+                        <span class="map-legend-item"><span class="map-legend-dot dot-office"></span> Office</span>
+                        <span class="map-legend-item"><span class="map-legend-dot dot-export"></span> Export</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-
     <!-- ================================================
-         S6 — MILESTONES TIMELINE
+         SECTION 5 — CSR
          ================================================ -->
-    <section class="s-milestones" id="sMs">
-        <div class="s-ms-header" id="msHeader">
-            <div class="s-ms-eyebrow">Our Journey</div>
-            <h2 class="s-ms-title">Key Milestones</h2>
-        </div>
+    <section class="s-csr" id="sCSR">
+        <div class="s-csr-inner">
+            <div class="s-csr-grid">
+                <div class="s-csr-content" id="csrContent">
+                    <div class="section-eyebrow">Corporate Social Responsibility</div>
+                    <h2 class="section-title">Growing Together,<br><em>Responsibly</em></h2>
+                    <p class="section-desc">At Umang Boards, we believe in sustainable growth that creates a positive impact on communities, the environment, and our stakeholders.</p>
 
-        <div class="s-ms-track-wrap">
-            <div class="s-ms-line"></div>
-            <div class="s-ms-track" id="msTrack">
+                    <div class="csr-highlights">
+                        <div class="csr-item">
+                            <div class="csr-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <div class="csr-item-title">Environmental Stewardship</div>
+                                <div class="csr-item-desc">ISO 14001 certified operations with a commitment to minimising environmental footprint through responsible manufacturing practices.</div>
+                            </div>
+                        </div>
+                        <div class="csr-item">
+                            <div class="csr-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                            </div>
+                            <div>
+                                <div class="csr-item-title">Community Development</div>
+                                <div class="csr-item-desc">Investing in education, healthcare, and skill development initiatives in the communities surrounding our manufacturing facilities.</div>
+                            </div>
+                        </div>
+                        <div class="csr-item">
+                            <div class="csr-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div>
+                                <div class="csr-item-title">Workplace Safety</div>
+                                <div class="csr-item-desc">OHSAS 45001 certified. Prioritising employee well-being with rigorous safety standards and continuous training programmes.</div>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="ms-item">
-                    <div class="ms-dot"></div>
-                    <div class="ms-year">1999</div>
-                    <div class="ms-title">Incorporation</div>
-                    <div class="ms-desc">Umang Boards Pvt Ltd incorporated in Jaipur to manufacture cellulose insulation pressboards.</div>
+                    <a href="/csr" class="btn-text" data-cursor="hover" style="margin-top: 2rem;">
+                        Learn More About CSR
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
                 </div>
 
-                <div class="ms-item">
-                    <div class="ms-dot"></div>
-                    <div class="ms-year">2001</div>
-                    <div class="ms-title">Production Begins</div>
-                    <div class="ms-desc">First facility operational. Began supplying distribution transformer manufacturers across India.</div>
+                <div class="s-csr-visual" id="csrVisual">
+                    <img src="assets/images/Secondary Static.jpg" alt="CSR Initiatives at Umang Boards" class="csr-img">
                 </div>
-
-                <div class="ms-item">
-                    <div class="ms-dot"></div>
-                    <div class="ms-year">2008</div>
-                    <div class="ms-title">Export Operations</div>
-                    <div class="ms-desc">Commenced global exports to South East Asian and Middle Eastern markets.</div>
-                </div>
-
-                <div class="ms-item">
-                    <div class="ms-dot"></div>
-                    <div class="ms-year">2013</div>
-                    <div class="ms-title">Umang House HQ</div>
-                    <div class="ms-desc">Corporate headquarters established in Jaipur with state-of-the-art facilities.</div>
-                </div>
-
-                <div class="ms-item">
-                    <div class="ms-dot"></div>
-                    <div class="ms-year">2016</div>
-                    <div class="ms-title">Thailand Expansion</div>
-                    <div class="ms-desc">Umang Boards BKK Co. Ltd. established in Bangkok.</div>
-                </div>
-
-                <div class="ms-item">
-                    <div class="ms-dot"></div>
-                    <div class="ms-year">2020</div>
-                    <div class="ms-title">Power Transformer Grade</div>
-                    <div class="ms-desc">Developed 3200×2100mm laminated pressboards for power transformers.</div>
-                </div>
-
-                <div class="ms-item">
-                    <div class="ms-dot"></div>
-                    <div class="ms-year">2023</div>
-                    <div class="ms-title">One Star Export House</div>
-                    <div class="ms-desc">DGFT recognition for outstanding export performance, valid until 2028.</div>
-                </div>
-
-                <div class="ms-item">
-                    <div class="ms-dot"></div>
-                    <div class="ms-year">2024</div>
-                    <div class="ms-title">400 kV Approval</div>
-                    <div class="ms-desc">PGCIL approval for insulation up to 400 kV class — a landmark achievement.</div>
-                </div>
-
             </div>
-        </div>
-
-        <div class="s-ms-nav">
-            <button class="s-ms-btn" id="msL" data-cursor="hover" aria-label="Scroll left">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            </button>
-            <span class="s-ms-hint">Drag or scroll</span>
-            <button class="s-ms-btn" id="msR" data-cursor="hover" aria-label="Scroll right">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
         </div>
     </section>
 
+    <!-- ================================================
+         SECTION 6 — EVENTS & ANNOUNCEMENTS
+         ================================================ -->
+    <section class="s-events" id="sEvents">
+        <div class="s-events-inner">
+            <div class="s-events-header" id="eventsHeader">
+                <div>
+                    <div class="section-eyebrow">News &amp; Events</div>
+                    <h2 class="section-title">Latest from<br><em>Umang Boards</em></h2>
+                </div>
+                <a href="/news" class="btn-outline" data-cursor="hover">View All News</a>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card" data-cursor="hover">
+                    <div class="event-date">
+                        <span class="event-day">15</span>
+                        <span class="event-month">Jan</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-tag">Exhibition</span>
+                        <div class="event-title">Elecrama 2025 — Greater Noida</div>
+                        <div class="event-desc">Showcasing our complete range of transformer insulation solutions at India's flagship electrical industry exhibition.</div>
+                    </div>
+                </div>
+
+                <div class="event-card" data-cursor="hover">
+                    <div class="event-date">
+                        <span class="event-day">08</span>
+                        <span class="event-month">Dec</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-tag">Milestone</span>
+                        <div class="event-title">400 kV PGCIL Approval Achieved</div>
+                        <div class="event-desc">Power Grid Corporation of India approves Umang Boards for insulation components up to 400 kV class — a landmark achievement.</div>
+                    </div>
+                </div>
+
+                <div class="event-card" data-cursor="hover">
+                    <div class="event-date">
+                        <span class="event-day">22</span>
+                        <span class="event-month">Oct</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-tag">Recognition</span>
+                        <div class="event-title">One Star Export House — DGFT Recognition</div>
+                        <div class="event-desc">Government of India recognises Umang Boards for outstanding export performance. Certification valid until March 2028.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ================================================
-         S7 — CTA BAND
+         SECTION 7 — INVESTOR RELATIONS
          ================================================ -->
-    <section class="s-cta" id="sCta">
-        <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.2; mix-blend-mode: color-dodge;">
+    <section class="s-investor" id="sInvestor">
+        <div class="s-investor-inner">
+            <div class="s-investor-header" id="investorHeader">
+                <div class="section-eyebrow-light">Investor Relations</div>
+                <h2 class="section-title-light">Transparent Governance,<br><em>Sustainable Growth</em></h2>
+                <p class="section-desc-light">Publicly listed on NSE &amp; BSE. Committed to corporate governance standards and delivering value to all our stakeholders.</p>
+            </div>
+
+            <div class="investor-grid">
+                <div class="investor-card" data-cursor="hover">
+                    <div class="investor-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <div class="investor-card-title">Annual Reports</div>
+                    <div class="investor-card-desc">Access our annual reports, financial statements, and quarterly results for complete transparency into our financial performance.</div>
+                    <a href="/annual-reports" class="btn-text-light" data-cursor="hover">
+                        View Reports
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="investor-card" data-cursor="hover">
+                    <div class="investor-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="investor-card-title">Corporate Governance</div>
+                    <div class="investor-card-desc">Board composition, committee structures, policies, and practices that ensure ethical and transparent business operations.</div>
+                    <a href="/corporate-governance" class="btn-text-light" data-cursor="hover">
+                        Learn More
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="investor-card" data-cursor="hover">
+                    <div class="investor-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </div>
+                    <div class="investor-card-title">Downloads</div>
+                    <div class="investor-card-desc">Shareholder notices, investor presentations, catalogues, and compliance documents available for download.</div>
+                    <a href="/downloads" class="btn-text-light" data-cursor="hover">
+                        Browse Files
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="investor-stock-info">
+                <div class="stock-badge">
+                    <span class="stock-exchange">NSE</span>
+                    <span class="stock-symbol">UMANGBOARD</span>
+                </div>
+                <div class="stock-badge">
+                    <span class="stock-exchange">BSE</span>
+                    <span class="stock-symbol">539294</span>
+                </div>
+                <div class="stock-badge">
+                    <span class="stock-exchange">CRISIL</span>
+                    <span class="stock-symbol">BBB Rated</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         CTA BAND
+         ================================================ -->
+    <section class="s-cta" id="sCTA">
+        <video autoplay loop muted playsinline class="cta-bg-video">
             <source src="assets/images/transformer-assembly.webm" type="video/webm">
             <source src="assets/images/transformer-assembly.mp4" type="video/mp4">
         </video>
+        <div class="cta-overlay"></div>
         <div class="s-cta-inner">
-            <div class="s-cta-eyebrow" id="ctaEyebrow">Partner With Us</div>
-            <h2 class="s-cta-title" id="ctaTitle">Ready to Power Your<br>Next <em>Transformer Project</em>?</h2>
-            <p class="s-cta-body" id="ctaBody">Whether you need pressboards for a 400 kV power transformer or insulating varnishes for a distribution unit — our team is ready to engineer the right solution for your specifications.</p>
-            <div class="s-cta-actions" id="ctaActions">
-                <a href="/contact" class="s-cta-btn btn-gold" data-cursor="hover">
+            <div class="section-eyebrow-light" id="ctaEyebrow">Partner With Us</div>
+            <h2 class="section-title-light" id="ctaTitle">Ready to Power Your<br>Next <em>Transformer Project</em>?</h2>
+            <p class="section-desc-light" id="ctaDesc" style="margin: 1rem auto 0; text-align: center;">Whether you need pressboards for a 400 kV power transformer or insulating varnishes for a distribution unit — our team is ready to engineer the right solution for your specifications.</p>
+            <div class="cta-actions" id="ctaActions">
+                <a href="/contact-us" class="btn-gold" data-cursor="hover">
                     Request a Quote
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
-                <a href="/downloads" class="s-cta-btn btn-ghost" data-cursor="hover">
+                <a href="/downloads" class="btn-outline-light" data-cursor="hover">
                     Download Catalogue
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                 </a>
@@ -937,9 +1202,8 @@
         </div>
     </section>
 
-
     <!-- ================================================
-         S8 — FOOTER
+         FOOTER
          ================================================ -->
     <footer class="s-footer">
         <div class="s-footer-inner">
@@ -947,21 +1211,20 @@
 
                 <!-- Brand -->
                 <div class="sf-brand">
-                    <a href="/" class="footer-logo" data-cursor="hover" style="display: inline-flex; align-items: center; gap: 1.1rem; margin-bottom: 1.5rem; text-decoration: none;">
-                        <img src="assets/ubl-favicon.svg" alt="Umang Boards Limited" style="width: 72px; height: auto; filter: none;">
-                        <div style="display: flex; flex-direction: column; line-height: 1; gap: 2px;">
-                            <span style="font-family: var(--font-body); font-size: 1.25rem; font-weight: 900; letter-spacing: 0.22em; text-transform: uppercase; color: #FFFFFF; line-height: 1.15;">UMANG</span>
-                            <span style="font-family: var(--font-body); font-size: 1.25rem; font-weight: 900; letter-spacing: 0.22em; text-transform: uppercase; color: #FFFFFF; line-height: 1.15;">BOARDS</span>
-                            <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; color: rgba(255, 255, 255, 0.5); margin-top: 2px; text-transform: uppercase;">LIMITED</span>
+                    <a href="/" class="footer-logo" data-cursor="hover">
+                        <img src="assets/ubl-favicon.svg" alt="Umang Boards Limited" class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span>UMANG BOARDS</span>
+                            <span class="footer-logo-sub">LIMITED</span>
                         </div>
                     </a>
                     <p class="sf-brand-desc">India's leading manufacturer of cellulose transformer insulation, winding wires, and insulating chemicals. Publicly listed on NSE &amp; BSE. Exporting to 61+ countries since 1999.</p>
-                    <div class="sf-brand-certs">
-                        <span class="sf-cert-badge">ISO 9001</span>
-                        <span class="sf-cert-badge">ISO 14001</span>
-                        <span class="sf-cert-badge">OHSAS 45001</span>
-                        <span class="sf-cert-badge">NABL</span>
-                        <span class="sf-cert-badge">PGCIL 400kV</span>
+                    <div class="sf-certs">
+                        <span class="sf-cert">ISO 9001</span>
+                        <span class="sf-cert">ISO 14001</span>
+                        <span class="sf-cert">OHSAS 45001</span>
+                        <span class="sf-cert">NABL</span>
+                        <span class="sf-cert">PGCIL 400kV</span>
                     </div>
                 </div>
 
@@ -969,12 +1232,17 @@
                 <div>
                     <div class="sf-col-title">Products</div>
                     <ul class="sf-links">
-                        <li><a href="/pressboards">Pressboards</a></li>
-                        <li><a href="/machined-components">Machined Components</a></li>
+                        <li><a href="/cellulose-transformer-insulation-boards">Pressboards</a></li>
+                        <li><a href="/machined-and-milled-components">Machined Components</a></li>
                         <li><a href="/moulded-components">Moulded Components</a></li>
                         <li><a href="/insulation-papers">Insulation Papers</a></li>
-                        <li><a href="/winding-wires">Winding Wires</a></li>
-                        <li><a href="/insulating-chemicals">Insulating Chemicals</a></li>
+                        <li><a href="/copper">Winding Wires</a></li>
+                        <li><a href="/wire-enamels">Insulating Chemicals</a></li>
+                    </ul>
+                    <div class="sf-col-title" style="margin-top:1.5rem;">Resources</div>
+                    <ul class="sf-links">
+                        <li><a href="/customer-portal">E-Catalog / Portal</a></li>
+                        <li><a href="/downloads">Downloads</a></li>
                     </ul>
                 </div>
 
@@ -982,53 +1250,56 @@
                 <div>
                     <div class="sf-col-title">Company</div>
                     <ul class="sf-links">
-                        <li><a href="/about">Our Story</a></li>
+                        <li><a href="/about-us">About Us</a></li>
+                        <li><a href="/leadership">Leadership</a></li>
                         <li><a href="/quality">Quality &amp; R&amp;D</a></li>
                         <li><a href="/certifications">Certifications</a></li>
-                        <li><a href="/csr">CSR &amp; EHS</a></li>
+                        <li><a href="/csr">CSR</a></li>
                         <li><a href="/investors">Investors</a></li>
                         <li><a href="/careers">Careers</a></li>
                     </ul>
                 </div>
 
-                <!-- Group -->
+                <!-- Solutions -->
                 <div>
-                    <div class="sf-col-title">Group</div>
+                    <div class="sf-col-title">Solutions</div>
                     <ul class="sf-links">
-                        <li><a href="#">Umang Boards BKK</a></li>
-                        <li><a href="#">Umang Insulations</a></li>
-                        <li><a href="#">Umang Wires</a></li>
-                        <li><a href="#">Unistar Wires</a></li>
+                        <li><a href="/solutions/power-transformers">Power Transformers</a></li>
+                        <li><a href="/solutions/distribution-transformers">Distribution Transformers</a></li>
+                        <li><a href="/solutions/electric-motors">Electric Motors</a></li>
+                        <li><a href="/solutions/renewables">Renewables</a></li>
+                        <li><a href="/solutions/ev-motors">EV Motors</a></li>
+                    </ul>
+                    <div class="sf-col-title" style="margin-top:1.5rem;">Newsroom</div>
+                    <ul class="sf-links">
+                        <li><a href="/press-releases">Press Releases</a></li>
+                        <li><a href="/events">Events</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact -->
                 <div>
                     <div class="sf-col-title">Contact</div>
-                    <div class="sf-contact-item">
-                        <div class="sf-contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div class="sf-contact">
+                        <div class="sf-contact-row">
+                            <svg class="sf-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>"Umang House", D-40/A, RIICO Industrial Area, Mansarovar, Jaipur — 302020, India</span>
                         </div>
-                        <div class="sf-contact-text">"Umang House", D-40/A, RIICO Industrial Area, Mansarovar, Jaipur — 302020, India</div>
-                    </div>
-                    <div class="sf-contact-item">
-                        <div class="sf-contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        <div class="sf-contact-row">
+                            <svg class="sf-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            <a href="tel:+911412395845">+91 141 239 5845</a>
                         </div>
-                        <div class="sf-contact-text"><a href="tel:+911412395845">+91 141 239 5845</a></div>
-                    </div>
-                    <div class="sf-contact-item">
-                        <div class="sf-contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <div class="sf-contact-row">
+                            <svg class="sf-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <a href="mailto:info@umangboards.com">info@umangboards.com</a>
                         </div>
-                        <div class="sf-contact-text"><a href="mailto:info@umangboards.com">info@umangboards.com</a></div>
                     </div>
 
-                    <div class="sf-socials" style="margin-top: 1.2rem;">
+                    <div class="sf-socials">
                         <a href="#" class="sf-social" data-cursor="hover" aria-label="LinkedIn">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                         </a>
-                        <a href="#" class="sf-social" data-cursor="hover" aria-label="Twitter">
+                        <a href="#" class="sf-social" data-cursor="hover" aria-label="X / Twitter">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </a>
                     </div>
@@ -1047,20 +1318,41 @@
         </div>
     </footer>
 
+    <!-- ================================================
+         FLOATING ACTION BUTTONS (WhatsApp + Call + Email)
+         ================================================ -->
+    <div class="fab-cluster" id="fabCluster">
+        <!-- FAB Toggle -->
+        <button class="fab-toggle" id="fabToggle" data-cursor="hover" aria-label="Quick actions">
+            <svg class="fab-toggle-icon fab-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="fab-toggle-icon fab-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
 
-    <!-- Custom Cursor (System) -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
-    <!-- Mega Menu Close Cursor -->
+        <!-- WhatsApp -->
+        <a href="https://wa.me/911412395845" target="_blank" rel="noopener" class="fab-btn fab-whatsapp" aria-label="Chat on WhatsApp" data-cursor="hover">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+
+        <!-- Call -->
+        <a href="tel:+911412395845" class="fab-btn fab-call" aria-label="Call Sales" data-cursor="hover">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:sales@umangboards.com?subject=Product%20Enquiry&body=Dear%20Umang%20Boards%20Team%2C%0A%0AI%20would%20like%20to%20enquire%20about%20your%20products.%0A%0ARegards" class="fab-btn fab-email" aria-label="Email Sales" data-cursor="hover">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+    </div>
+
+    <!-- Mega Cursor -->
     <div class="mega-cursor" id="megaCursor">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </div>
 
     <!-- Libraries -->
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script-v2.js"></script>
 </body>
 </html>
