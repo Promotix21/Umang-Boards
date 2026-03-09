@@ -295,26 +295,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ============================================
        PRODUCT TABS (inside By Products mode)
+       Slide-fade animation on panel switch
        ============================================ */
     const tabs = document.querySelectorAll('.product-tab');
     const panels = document.querySelectorAll('.product-panel');
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
+            if (tab.classList.contains('active')) return;
             const targetId = tab.dataset.tab;
+
+            // Deactivate all tabs
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            panels.forEach(p => {
-                p.classList.remove('active');
-                p.style.display = 'none';
-                p.style.opacity = '0';
-            });
+
+            // Hide current panel
+            const currentPanel = document.querySelector('.product-panel.active');
+            if (currentPanel) {
+                currentPanel.style.opacity = '0';
+                currentPanel.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    currentPanel.classList.remove('active');
+                    currentPanel.style.display = 'none';
+                    currentPanel.style.opacity = '';
+                    currentPanel.style.transform = '';
+                }, 200);
+            }
+
+            // Show new panel with slide-in
             const targetPanel = document.getElementById(targetId);
             if (targetPanel) {
-                targetPanel.style.display = 'block';
-                targetPanel.offsetHeight;
-                targetPanel.classList.add('active');
-                targetPanel.style.opacity = '1';
+                setTimeout(() => {
+                    targetPanel.style.display = 'block';
+                    targetPanel.style.opacity = '0';
+                    targetPanel.style.transform = 'translateY(16px)';
+                    targetPanel.offsetHeight; // reflow
+                    targetPanel.style.transition = 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1)';
+                    targetPanel.style.opacity = '1';
+                    targetPanel.style.transform = 'translateY(0)';
+                    targetPanel.classList.add('active');
+                }, currentPanel ? 180 : 0);
             }
         });
     });

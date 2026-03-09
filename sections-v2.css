@@ -180,28 +180,41 @@
 
 /* Tabs (inside By Products mode) */
 .product-tabs {
-    display: flex; gap: 0;
-    border-bottom: 2px solid var(--border-subtle);
+    display: flex; gap: 0.4rem; align-items: center;
+    background: rgba(11,31,58,0.04);
+    border-radius: 12px; padding: 0.4rem;
     margin-bottom: clamp(2rem, 4vh, 3rem);
+    width: fit-content;
 }
 .product-tab {
-    padding: 1rem 2rem; font-family: var(--font-mono); font-size: 0.6rem;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--text-muted); background: none; border: none;
-    position: relative; cursor: pointer; transition: color 0.3s;
+    padding: 0.7rem 1.8rem; font-family: var(--font-mono); font-size: 0.58rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); background: transparent; border: none;
+    border-radius: 8px; cursor: pointer;
+    transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    position: relative; white-space: nowrap;
 }
-.product-tab::after {
-    content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
-    height: 2px; background: var(--navy);
-    transform: scaleX(0); transition: transform 0.4s var(--ease-out-expo);
+.product-tab:hover { color: var(--navy); background: rgba(11,31,58,0.06); }
+.product-tab.active {
+    color: #fff;
+    background: var(--navy);
+    box-shadow: 0 4px 16px rgba(11,31,58,0.2);
+    font-weight: 700;
 }
-.product-tab:hover { color: var(--navy); }
-.product-tab.active { color: var(--navy); font-weight: 700; }
-.product-tab.active::after { transform: scaleX(1); }
 
-/* Panels */
-.product-panel { display: none; opacity: 0; transition: opacity 0.4s ease; }
-.product-panel.active { display: block; opacity: 1; }
+/* Panels — slide-fade in */
+.product-panel {
+    display: none; opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.35s ease, transform 0.35s var(--ease-out-expo);
+}
+.product-panel.active {
+    display: block; opacity: 1;
+    transform: translateY(0);
+}
+.product-panel.entering {
+    display: block; opacity: 0; transform: translateY(16px);
+}
 .product-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
 .product-panel-visual { border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; }
 .product-panel-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-out-expo); }
