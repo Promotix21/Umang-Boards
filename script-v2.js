@@ -167,38 +167,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ============================================
-       MEGA MENU LOGIC (3 megas: Company, Products, Solutions)
+       MEGA MENU LOGIC — TCS-style compact dropdown
+       Positions panel flush below the header bar
        ============================================ */
     const allMegas = document.querySelectorAll('.mega-menu');
-    const megaCursor = document.getElementById('megaCursor');
     let megaTimer = null;
-    let cursorTimer = null;
-    let cursorFollowing = false;
+
+    function getMegaTop() {
+        // Position panel directly below the current header bottom edge
+        if (header) return header.getBoundingClientRect().bottom;
+        return 80;
+    }
+
+    function openMega(target) {
+        clearTimeout(megaTimer);
+        allMegas.forEach(m => { if (m !== target) m.classList.remove('active'); });
+        target.style.top = getMegaTop() + 'px';
+        target.classList.add('active');
+    }
 
     function closeMegas() {
+        clearTimeout(megaTimer);
         allMegas.forEach(m => m.classList.remove('active'));
-        if (megaCursor) {
-            megaCursor.classList.remove('active');
-            megaCursor.style.pointerEvents = 'none';
-        }
-        cursorFollowing = false;
-        clearTimeout(cursorTimer);
-    }
-
-    function parkCursor() {
-        cursorFollowing = false;
-        if (megaCursor) megaCursor.style.pointerEvents = 'auto';
-        clearTimeout(cursorTimer);
-        cursorTimer = setTimeout(() => {
-            if (megaCursor) megaCursor.classList.remove('active');
-        }, 1000);
-    }
-
-    if (megaCursor) {
-        megaCursor.addEventListener('click', (e) => {
-            e.stopPropagation();
-            closeMegas();
-        });
     }
 
     document.querySelectorAll('[data-mega]').forEach(trigger => {
@@ -206,46 +196,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = document.getElementById(targetId);
         if (!target) return;
 
-        trigger.addEventListener('mouseenter', (e) => {
-            clearTimeout(megaTimer);
-            allMegas.forEach(m => { if (m !== target) m.classList.remove('active'); });
-            target.classList.add('active');
-            if (megaCursor) {
-                megaCursor.style.pointerEvents = 'none';
-                megaCursor.style.left = e.clientX + 'px';
-                megaCursor.style.top = e.clientY + 'px';
-                megaCursor.classList.add('active');
-                cursorFollowing = true;
-                clearTimeout(cursorTimer);
-            }
-        });
-
-        target.addEventListener('mousemove', (e) => {
-            if (!cursorFollowing || !megaCursor) return;
-            megaCursor.style.left = e.clientX + 'px';
-            megaCursor.style.top = e.clientY + 'px';
-        });
-
-        const grid = target.querySelector('.mega-grid');
-        if (grid) {
-            grid.addEventListener('mouseenter', () => { parkCursor(); });
-        }
-
-        target.addEventListener('mouseenter', () => { clearTimeout(megaTimer); });
-        trigger.addEventListener('mouseleave', () => { megaTimer = setTimeout(closeMegas, 250); });
-        target.addEventListener('mouseleave', () => {
-            megaTimer = setTimeout(closeMegas, 250);
-            if (megaCursor) megaCursor.classList.remove('active');
-            cursorFollowing = false;
-        });
+        trigger.addEventListener('mouseenter', () => openMega(target));
+        trigger.addEventListener('mouseleave', () => { megaTimer = setTimeout(closeMegas, 220); });
+        target.addEventListener('mouseenter', () => clearTimeout(megaTimer));
+        target.addEventListener('mouseleave', () => { megaTimer = setTimeout(closeMegas, 220); });
     });
 
-    document.querySelectorAll('.mega-close').forEach(b => b.addEventListener('click', closeMegas));
+    // Close on Escape or click outside
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') {
             closeMegas();
             closeSearch();
             closeUtilityPanel();
+        }
+    });
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.mega-menu') && !e.target.closest('[data-mega]')) {
+            closeMegas();
         }
     });
 
