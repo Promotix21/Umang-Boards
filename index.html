@@ -48,13 +48,37 @@
     <div class="utility-bar" id="utilityBar">
         <div class="utility-bar-inner">
             <div class="utility-left">
-                <!-- NSE/BSE Ticker -->
-                <div class="stock-ticker">
-                    <span class="ticker-label">NSE</span>
-                    <span class="ticker-value">UMANGBOARD</span>
-                    <span class="ticker-sep">|</span>
-                    <span class="ticker-label">BSE</span>
-                    <span class="ticker-value">539294</span>
+                <!-- NSE/BSE Animated Ticker -->
+                <div class="stock-ticker" id="stockTicker">
+                    <div class="stock-ticker-track">
+                        <div class="stock-ticker-item">
+                            <span class="ticker-label">NSE</span>
+                            <span class="ticker-symbol">UMANGBOARD</span>
+                            <span class="ticker-price" id="tickerNsePrice">₹42.50</span>
+                            <span class="ticker-change positive" id="tickerNseChange">+1.20 (2.91%)</span>
+                        </div>
+                        <span class="ticker-sep">•</span>
+                        <div class="stock-ticker-item">
+                            <span class="ticker-label">BSE</span>
+                            <span class="ticker-symbol">539294</span>
+                            <span class="ticker-price" id="tickerBsePrice">₹42.55</span>
+                            <span class="ticker-change positive" id="tickerBseChange">+1.15 (2.78%)</span>
+                        </div>
+                        <span class="ticker-sep">•</span>
+                        <div class="stock-ticker-item">
+                            <span class="ticker-label">NSE</span>
+                            <span class="ticker-symbol">UMANGBOARD</span>
+                            <span class="ticker-price">₹42.50</span>
+                            <span class="ticker-change positive">+1.20 (2.91%)</span>
+                        </div>
+                        <span class="ticker-sep">•</span>
+                        <div class="stock-ticker-item">
+                            <span class="ticker-label">BSE</span>
+                            <span class="ticker-symbol">539294</span>
+                            <span class="ticker-price">₹42.55</span>
+                            <span class="ticker-change positive">+1.15 (2.78%)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="utility-right">
@@ -656,98 +680,117 @@
                 <p class="section-desc">From a single pressboard unit in 1999 to India's most trusted name in transformer insulation — delivering quality that powers critical infrastructure worldwide.</p>
             </div>
 
-            <!-- BENTO GRID — 9 cells: 2 image cards + 7 stat/quote cards -->
+            <!-- BENTO GRID — 9 cells: ALL with background images -->
             <div class="bento-grid">
 
                 <!-- 1. LARGE FEATURED: 61+ Countries (2×2) -->
-                <div class="value-card vc-featured vc-large" data-cursor="hover">
-                    <div class="vc-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                    </div>
-                    <div class="vc-number">61+</div>
-                    <div class="vc-label">Countries Served</div>
-                    <div class="vc-desc">Our insulation products power transformers across 6 continents — from South East Asia to Europe, Middle East to Africa.</div>
-                    <div class="vc-continents">
-                        <span>Asia</span><span>Europe</span><span>Middle East</span><span>Africa</span><span>Americas</span><span>Oceania</span>
-                    </div>
-                </div>
-
-                <!-- 2. IMAGE CARD: Transformer Insulations photo (1×2 tall) -->
-                <div class="value-card vc-img vc-img-tall" data-cursor="hover">
-                    <img src="assets/images/Transformer Insulations.jpg" alt="Transformer Insulation Manufacturing" class="vc-img-photo">
-                    <div class="vc-img-overlay">
-                        <div class="vc-img-caption">
-                            <div class="vc-img-tag">Made in India</div>
-                            <div class="vc-img-text">Cellulose Pressboard Manufacturing, Jaipur</div>
+                <div class="value-card vc-img vc-large" data-cursor="hover">
+                    <img src="assets/images/Mfg Hero Background.jpg" alt="Global Manufacturing" class="vc-img-photo">
+                    <div class="vc-img-overlay vc-img-overlay-stat">
+                        <div class="vc-stat-content">
+                            <div class="vc-number">61+</div>
+                            <div class="vc-label">Countries Served</div>
+                            <div class="vc-desc">Our insulation products power transformers across 6 continents — from South East Asia to Europe, Middle East to Africa.</div>
+                            <div class="vc-continents">
+                                <span>Asia</span><span>Europe</span><span>Middle East</span><span>Africa</span><span>Americas</span><span>Oceania</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. QUOTE (2×1) -->
-                <div class="value-card vc-quote vc-wide" data-cursor="hover">
-                    <blockquote>"Our vision is to be a global leader in transformer insulation through high-technology products and unwavering quality commitment."</blockquote>
-                    <cite>S. K. Dhanuka &mdash; Founder &amp; Chairman</cite>
+                <!-- 2. Transformer Insulations photo (1×2 tall) -->
+                <div class="value-card vc-img vc-img-tall" data-cursor="hover">
+                    <img src="assets/images/Transformer Insulations.jpg" alt="Transformer Insulation Manufacturing" class="vc-img-photo">
+                    <div class="vc-img-overlay vc-img-overlay-stat">
+                        <div class="vc-stat-content">
+                            <div class="vc-img-tag">Made in India</div>
+                            <div class="vc-number" style="font-size: clamp(1.6rem,2.5vw,2.2rem);">Cellulose Pressboards</div>
+                            <div class="vc-desc">India's only manufacturer of non-metallic particle pressboards — PGCIL approved for 400 kV class.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Chairman Quote (2×1) -->
+                <div class="value-card vc-img vc-wide" data-cursor="hover">
+                    <img src="assets/images/Main-Slideshow_0001_MS2.png" alt="Umang Boards Facility" class="vc-img-photo">
+                    <div class="vc-img-overlay vc-img-overlay-stat vc-img-overlay-quote">
+                        <div class="vc-stat-content">
+                            <blockquote>"Our vision is to be a global leader in transformer insulation through high-technology products and unwavering quality commitment."</blockquote>
+                            <cite>S. K. Dhanuka — Founder &amp; Chairman</cite>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 4. 400 kV (1×1) -->
-                <div class="value-card" data-cursor="hover">
-                    <div class="vc-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    </div>
-                    <div class="vc-number">400 kV</div>
-                    <div class="vc-label">PGCIL Approved</div>
-                    <div class="vc-desc">Highest voltage class certification for Indian insulation manufacturers.</div>
-                </div>
-
-                <!-- 5. 400+ Employees (1×1) -->
-                <div class="value-card" data-cursor="hover">
-                    <div class="vc-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-                    </div>
-                    <div class="vc-number">400+</div>
-                    <div class="vc-label">Employees</div>
-                    <div class="vc-desc">Skilled professionals across manufacturing, R&D, and operations.</div>
-                </div>
-
-                <!-- 6. ISO Certified (1×1) -->
-                <div class="value-card" data-cursor="hover">
-                    <div class="vc-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <div class="vc-number">ISO</div>
-                    <div class="vc-label">Certified</div>
-                    <div class="vc-desc">ISO 9001, ISO 14001 &amp; OHSAS 45001 certified manufacturing.</div>
-                </div>
-
-                <!-- 7. NABL (1×1) -->
-                <div class="value-card" data-cursor="hover">
-                    <div class="vc-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                    </div>
-                    <div class="vc-number">NABL</div>
-                    <div class="vc-label">Accredited Lab</div>
-                    <div class="vc-desc">IEC/IES 17025 in-house testing — dielectric, moisture, density, tensile.</div>
-                </div>
-
-                <!-- 8. IMAGE CARD: Winding Wires (2×1 wide) -->
-                <div class="value-card vc-img vc-img-wide" data-cursor="hover">
-                    <img src="assets/images/Winding Wires.jpg" alt="Winding Wire Manufacturing" class="vc-img-photo">
-                    <div class="vc-img-overlay">
-                        <div class="vc-img-caption">
-                            <div class="vc-img-tag">Our Products</div>
-                            <div class="vc-img-text">Precision Winding Wires — Copper &amp; Aluminium</div>
+                <div class="value-card vc-img" data-cursor="hover">
+                    <img src="assets/images/Main-Slideshow_0000_MS1.png" alt="High Voltage Testing" class="vc-img-photo">
+                    <div class="vc-img-overlay vc-img-overlay-stat">
+                        <div class="vc-stat-content">
+                            <div class="vc-number">400 kV</div>
+                            <div class="vc-label">PGCIL Approved</div>
+                            <div class="vc-desc">Highest voltage class certification for Indian insulation manufacturers.</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 9. 25+ Years + 2 Mfg combined (1×1) -->
-                <div class="value-card" data-cursor="hover">
-                    <div class="vc-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <!-- 5. 400+ Employees (1×1) -->
+                <div class="value-card vc-img" data-cursor="hover">
+                    <img src="assets/images/Main-Slideshow_0002_MS3.png" alt="Umang Boards Team" class="vc-img-photo">
+                    <div class="vc-img-overlay vc-img-overlay-stat">
+                        <div class="vc-stat-content">
+                            <div class="vc-number">400+</div>
+                            <div class="vc-label">Employees</div>
+                            <div class="vc-desc">Skilled professionals across manufacturing, R&amp;D, and operations.</div>
+                        </div>
                     </div>
-                    <div class="vc-number">25+</div>
-                    <div class="vc-label">Years Legacy</div>
-                    <div class="vc-desc">25+ years of manufacturing excellence — 2 state-of-the-art facilities in Rajasthan.</div>
+                </div>
+
+                <!-- 6. ISO Certified (1×1) -->
+                <div class="value-card vc-img" data-cursor="hover">
+                    <img src="assets/images/Secondary Static.jpg" alt="Certified Manufacturing" class="vc-img-photo">
+                    <div class="vc-img-overlay vc-img-overlay-stat">
+                        <div class="vc-stat-content">
+                            <div class="vc-number">ISO</div>
+                            <div class="vc-label">Certified</div>
+                            <div class="vc-desc">ISO 9001, ISO 14001 &amp; OHSAS 45001 certified manufacturing.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. NABL (1×1) -->
+                <div class="value-card vc-img" data-cursor="hover">
+                    <img src="assets/images/Insulating Chemicals.jpg" alt="NABL Accredited Laboratory" class="vc-img-photo">
+                    <div class="vc-img-overlay vc-img-overlay-stat">
+                        <div class="vc-stat-content">
+                            <div class="vc-number">NABL</div>
+                            <div class="vc-label">Accredited Lab</div>
+                            <div class="vc-desc">IEC/IES 17025 in-house testing — dielectric, moisture, density, tensile.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Winding Wires (2×1 wide) -->
+                <div class="value-card vc-img vc-img-wide" data-cursor="hover">
+                    <img src="assets/images/Winding Wires.jpg" alt="Winding Wire Manufacturing" class="vc-img-photo">
+                    <div class="vc-img-overlay vc-img-overlay-stat">
+                        <div class="vc-stat-content">
+                            <div class="vc-img-tag">Our Products</div>
+                            <div class="vc-number" style="font-size: clamp(1.6rem,2.5vw,2.2rem);">Precision Winding Wires</div>
+                            <div class="vc-desc">Paper &amp; film insulated copper and aluminium wires for power transformers.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. 25+ Years (1×1) -->
+                <div class="value-card vc-img" data-cursor="hover">
+                    <img src="assets/images/Mfg Hero Background.jpg" alt="Manufacturing Legacy" class="vc-img-photo" style="object-position: center 30%;">
+                    <div class="vc-img-overlay vc-img-overlay-stat">
+                        <div class="vc-stat-content">
+                            <div class="vc-number">25+</div>
+                            <div class="vc-label">Years Legacy</div>
+                            <div class="vc-desc">25+ years of manufacturing excellence — 2 state-of-the-art facilities in Rajasthan.</div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
