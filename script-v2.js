@@ -624,6 +624,43 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.fromTo('.s-footer-top', { opacity: 0, y: 40 },
             { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
               scrollTrigger: { trigger: '.s-footer', start: 'top 85%' } });
+
+        // --- Logo Scroll Animation (Tech Mahindra style) ---
+        // Logo re-draws SVG paths when scrolling back to top
+        const logoIcon = document.getElementById('logoIcon');
+        if (logoIcon) {
+            // On scroll past hero, shrink logo subtly
+            gsap.to('.logo-icon', {
+                scale: 0.85, duration: 0.3,
+                scrollTrigger: {
+                    trigger: '.s-hero',
+                    start: 'bottom 120px',
+                    end: 'bottom 60px',
+                    scrub: true,
+                    onLeaveBack: () => {
+                        // When scrolling back to top, play logo pulse animation
+                        gsap.fromTo('.logo-icon', { scale: 0.85 },
+                            { scale: 1, duration: 0.6, ease: 'elastic.out(1, 0.5)' });
+                    }
+                }
+            });
+
+            // Redraw SVG logo paths when each major section enters view
+            const svgDrawSections = ['#sValue', '#sProducts', '#sGlobal', '#sInvestor'];
+            svgDrawSections.forEach(sel => {
+                ScrollTrigger.create({
+                    trigger: sel,
+                    start: 'top 60%',
+                    onEnter: () => {
+                        gsap.fromTo('.logo-icon',
+                            { filter: 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(200,168,75,0.6))' },
+                            { filter: 'brightness(0) invert(1) drop-shadow(0 0 0px rgba(200,168,75,0))',
+                              duration: 0.8, ease: 'power2.out' });
+                    },
+                    once: false
+                });
+            });
+        }
     }
 
 });

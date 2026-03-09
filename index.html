@@ -818,9 +818,18 @@
             <!-- Mode 1: By Products (default — existing tabs) -->
             <div class="product-mode-panel active" id="modeByProduct">
                 <div class="product-tabs">
-                    <button class="product-tab active" data-tab="panelInsulation">Transformer Insulations</button>
-                    <button class="product-tab" data-tab="panelWires">Winding Wires</button>
-                    <button class="product-tab" data-tab="panelChemicals">Insulating Chemicals</button>
+                    <button class="product-tab active" data-tab="panelInsulation">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Transformer Insulations
+                    </button>
+                    <button class="product-tab" data-tab="panelWires">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+                        Winding Wires
+                    </button>
+                    <button class="product-tab" data-tab="panelChemicals">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2v7.527a2 2 0 01-.211.896L4.72 20.55a1 1 0 00.9 1.45h12.76a1 1 0 00.9-1.45l-5.069-10.127A2 2 0 0114 9.527V2"/><path d="M8.5 2h7"/></svg>
+                        Insulating Chemicals
+                    </button>
                 </div>
 
                 <!-- Panel 1: Transformer Insulations -->
@@ -894,6 +903,17 @@
                         </div>
                     </div>
                 </div>
+                <!-- Catch Phrase CTA -->
+                <div class="product-cta-box">
+                    <div class="product-cta-text">
+                        <h4 class="product-cta-title">Something caught your eye?</h4>
+                        <p class="product-cta-desc">Connect with our sales team for pricing, samples, and technical specifications.</p>
+                    </div>
+                    <a href="/contact-us" class="btn-primary product-cta-btn" data-cursor="hover">
+                        <span>Connect with Sales</span>
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
             </div>
 
             <!-- Mode 2: By Applications -->
@@ -940,6 +960,27 @@
                         </div>
                         <div class="app-card-title">Data Centers</div>
                         <div class="app-card-desc">High-reliability transformer insulation for mission-critical infrastructure.</div>
+                    </a>
+                    <a href="/solutions/home-appliances" class="app-card" data-cursor="hover">
+                        <div class="app-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <div class="app-card-title">Home Appliances</div>
+                        <div class="app-card-desc">Enamelled copper and aluminium wires for household appliance motors.</div>
+                    </a>
+                    <a href="/solutions/ev-motors" class="app-card" data-cursor="hover">
+                        <div class="app-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        </div>
+                        <div class="app-card-title">EV Motors</div>
+                        <div class="app-card-desc">High-performance enamelled wires for electric vehicle motor applications.</div>
+                    </a>
+                    <a href="/solutions/stabilizers" class="app-card" data-cursor="hover">
+                        <div class="app-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="2"/><line x1="17" y1="6" x2="17" y2="18"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="7" y1="8" x2="7" y2="16"/></svg>
+                        </div>
+                        <div class="app-card-title">Stabilizers</div>
+                        <div class="app-card-desc">Enamelled copper and aluminium round and flat wires for voltage stabilizers.</div>
                     </a>
                 </div>
             </div>

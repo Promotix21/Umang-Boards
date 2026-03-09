@@ -181,31 +181,43 @@
 .product-mode-panel { display: none; }
 .product-mode-panel.active { display: block; }
 
-/* Tabs (inside By Products mode) — corporate underline style */
+/* Tabs (inside By Products mode) — prominent corporate style */
 .product-tabs {
-    display: flex; gap: 0; align-items: center;
-    border-bottom: 2px solid var(--border-subtle);
-    margin-bottom: clamp(2rem, 4vh, 3rem);
+    display: flex; gap: 0; align-items: stretch;
+    margin-bottom: clamp(2.5rem, 5vh, 4rem);
     width: 100%;
+    background: transparent;
+    border-bottom: 3px solid rgba(11,31,58,0.08);
 }
 .product-tab {
-    padding: 1rem 2rem; font-family: var(--font-body); font-size: 0.88rem;
-    font-weight: 500; letter-spacing: 0;
+    flex: 1; padding: 1.2rem 2rem; font-family: var(--font-body); font-size: 1rem;
+    font-weight: 500; letter-spacing: 0; text-align: center;
     color: var(--text-muted); background: transparent; border: none;
     cursor: pointer; position: relative; white-space: nowrap;
-    transition: color 0.3s ease;
+    transition: all 0.35s var(--ease-out-expo);
+}
+.product-tab::before {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(11,31,58,0.03); opacity: 0;
+    transition: opacity 0.3s ease;
 }
 .product-tab::after {
-    content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
-    height: 3px; background: var(--navy); border-radius: 3px 3px 0 0;
-    transform: scaleX(0); transition: transform 0.3s var(--ease-out-expo);
+    content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+    height: 3px; background: var(--gold); border-radius: 3px 3px 0 0;
+    transform: scaleX(0); transition: transform 0.35s var(--ease-out-expo);
 }
 .product-tab:hover { color: var(--navy); }
+.product-tab:hover::before { opacity: 1; }
 .product-tab.active {
-    color: var(--navy);
-    font-weight: 700;
+    color: var(--navy); font-weight: 700;
+    background: rgba(11,31,58,0.04);
 }
 .product-tab.active::after { transform: scaleX(1); }
+.product-tab .tab-icon {
+    display: block; width: 32px; height: 32px; margin: 0 auto 0.5rem;
+    color: var(--text-muted); transition: color 0.3s ease;
+}
+.product-tab.active .tab-icon { color: var(--gold); }
 
 /* Panels — slide-fade in */
 .product-panel {
@@ -296,6 +308,28 @@
 .biz-card-icon svg { width: 24px; height: 24px; }
 .biz-card-title { font-family: var(--font-body); font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
 .biz-card-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex: 1; }
+
+/* Product CTA — "Something caught your eye?" */
+.product-cta-box {
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    margin-top: clamp(2rem, 4vh, 3rem);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    background: linear-gradient(135deg, var(--navy) 0%, #1A3556 100%);
+    border-radius: 16px; color: #fff;
+}
+.product-cta-title {
+    font-family: var(--font-body); font-size: 1.2rem; font-weight: 700;
+    color: var(--gold); margin-bottom: 0.3rem;
+}
+.product-cta-desc { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+.product-cta-btn {
+    flex-shrink: 0; display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 2rem; background: var(--gold); color: var(--navy);
+    font-family: var(--font-body); font-size: 0.85rem; font-weight: 700;
+    border-radius: 8px; border: none; text-decoration: none;
+    transition: all 0.3s var(--ease-out-expo);
+}
+.product-cta-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,168,75,0.3); }
 
 /* Product Finder */
 .product-finder {
@@ -653,7 +687,9 @@
     .investor-grid { grid-template-columns: 1fr; }
     .global-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .product-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .product-tab { white-space: nowrap; padding: 0.8rem 1.2rem; }
+    .product-tab { white-space: nowrap; padding: 0.8rem 1.2rem; font-size: 0.85rem; flex: none; }
+    .product-tab .tab-icon { display: none; }
+    .product-cta-box { flex-direction: column; text-align: center; }
     .product-tab-modes { flex-wrap: wrap; }
     .pf-selects { flex-direction: column; }
     .s-events-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
