@@ -167,38 +167,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ============================================
-       MEGA MENU LOGIC (3 megas: Company, Products, Solutions)
+       MEGA MENU LOGIC — TCS-style compact dropdown
+       Positions panel flush below the header bar
        ============================================ */
     const allMegas = document.querySelectorAll('.mega-menu');
-    const megaCursor = document.getElementById('megaCursor');
     let megaTimer = null;
-    let cursorTimer = null;
-    let cursorFollowing = false;
+
+    function getMegaTop() {
+        // Position panel directly below the current header bottom edge
+        if (header) return header.getBoundingClientRect().bottom;
+        return 80;
+    }
+
+    function openMega(target) {
+        clearTimeout(megaTimer);
+        allMegas.forEach(m => { if (m !== target) m.classList.remove('active'); });
+        target.style.top = getMegaTop() + 'px';
+        target.classList.add('active');
+    }
 
     function closeMegas() {
+        clearTimeout(megaTimer);
         allMegas.forEach(m => m.classList.remove('active'));
-        if (megaCursor) {
-            megaCursor.classList.remove('active');
-            megaCursor.style.pointerEvents = 'none';
-        }
-        cursorFollowing = false;
-        clearTimeout(cursorTimer);
-    }
-
-    function parkCursor() {
-        cursorFollowing = false;
-        if (megaCursor) megaCursor.style.pointerEvents = 'auto';
-        clearTimeout(cursorTimer);
-        cursorTimer = setTimeout(() => {
-            if (megaCursor) megaCursor.classList.remove('active');
-        }, 1000);
-    }
-
-    if (megaCursor) {
-        megaCursor.addEventListener('click', (e) => {
-            e.stopPropagation();
-            closeMegas();
-        });
     }
 
     document.querySelectorAll('[data-mega]').forEach(trigger => {
@@ -206,46 +196,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = document.getElementById(targetId);
         if (!target) return;
 
-        trigger.addEventListener('mouseenter', (e) => {
-            clearTimeout(megaTimer);
-            allMegas.forEach(m => { if (m !== target) m.classList.remove('active'); });
-            target.classList.add('active');
-            if (megaCursor) {
-                megaCursor.style.pointerEvents = 'none';
-                megaCursor.style.left = e.clientX + 'px';
-                megaCursor.style.top = e.clientY + 'px';
-                megaCursor.classList.add('active');
-                cursorFollowing = true;
-                clearTimeout(cursorTimer);
-            }
-        });
-
-        target.addEventListener('mousemove', (e) => {
-            if (!cursorFollowing || !megaCursor) return;
-            megaCursor.style.left = e.clientX + 'px';
-            megaCursor.style.top = e.clientY + 'px';
-        });
-
-        const grid = target.querySelector('.mega-grid');
-        if (grid) {
-            grid.addEventListener('mouseenter', () => { parkCursor(); });
-        }
-
-        target.addEventListener('mouseenter', () => { clearTimeout(megaTimer); });
-        trigger.addEventListener('mouseleave', () => { megaTimer = setTimeout(closeMegas, 250); });
-        target.addEventListener('mouseleave', () => {
-            megaTimer = setTimeout(closeMegas, 250);
-            if (megaCursor) megaCursor.classList.remove('active');
-            cursorFollowing = false;
-        });
+        trigger.addEventListener('mouseenter', () => openMega(target));
+        trigger.addEventListener('mouseleave', () => { megaTimer = setTimeout(closeMegas, 220); });
+        target.addEventListener('mouseenter', () => clearTimeout(megaTimer));
+        target.addEventListener('mouseleave', () => { megaTimer = setTimeout(closeMegas, 220); });
     });
 
-    document.querySelectorAll('.mega-close').forEach(b => b.addEventListener('click', closeMegas));
+    // Close on Escape or click outside
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') {
             closeMegas();
             closeSearch();
             closeUtilityPanel();
+        }
+    });
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.mega-menu') && !e.target.closest('[data-mega]')) {
+            closeMegas();
         }
     });
 
@@ -328,26 +295,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ============================================
        PRODUCT TABS (inside By Products mode)
+       Slide-fade animation on panel switch
        ============================================ */
     const tabs = document.querySelectorAll('.product-tab');
     const panels = document.querySelectorAll('.product-panel');
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
+            if (tab.classList.contains('active')) return;
             const targetId = tab.dataset.tab;
+
+            // Deactivate all tabs
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            panels.forEach(p => {
-                p.classList.remove('active');
-                p.style.display = 'none';
-                p.style.opacity = '0';
-            });
+
+            // Hide current panel
+            const currentPanel = document.querySelector('.product-panel.active');
+            if (currentPanel) {
+                currentPanel.style.opacity = '0';
+                currentPanel.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    currentPanel.classList.remove('active');
+                    currentPanel.style.display = 'none';
+                    currentPanel.style.opacity = '';
+                    currentPanel.style.transform = '';
+                }, 200);
+            }
+
+            // Show new panel with slide-in
             const targetPanel = document.getElementById(targetId);
             if (targetPanel) {
-                targetPanel.style.display = 'block';
-                targetPanel.offsetHeight;
-                targetPanel.classList.add('active');
-                targetPanel.style.opacity = '1';
+                setTimeout(() => {
+                    targetPanel.style.display = 'block';
+                    targetPanel.style.opacity = '0';
+                    targetPanel.style.transform = 'translateY(16px)';
+                    targetPanel.offsetHeight; // reflow
+                    targetPanel.style.transition = 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1)';
+                    targetPanel.style.opacity = '1';
+                    targetPanel.style.transform = 'translateY(0)';
+                    targetPanel.classList.add('active');
+                }, currentPanel ? 180 : 0);
             }
         });
     });
