@@ -193,34 +193,9 @@
                     <a href="#" class="nav-link" data-cursor="hover" data-mega="megaSolutions">Solutions</a>
                 </div>
 
-                <!-- 4. INVESTORS (Dropdown) -->
-                <div class="nav-dropdown-wrap">
-                    <a href="/investors" class="nav-link" data-cursor="hover">Investors</a>
-                    <div class="nav-dropdown nav-dropdown-wide">
-                        <div class="nav-dropdown-grid">
-                            <div class="nav-dropdown-col">
-                                <div class="nav-dropdown-col-title">Financial Information</div>
-                                <a href="/annual-reports">Annual Reports</a>
-                                <a href="/quarterly-results">Quarterly Results</a>
-                                <a href="/financial-statements">Financial Statements</a>
-                                <a href="/investor-presentations">Investor Presentations</a>
-                            </div>
-                            <div class="nav-dropdown-col">
-                                <div class="nav-dropdown-col-title">Governance</div>
-                                <a href="/corporate-governance">Corporate Governance</a>
-                                <a href="/board-of-directors">Board of Directors</a>
-                                <a href="/policies">Policies</a>
-                                <a href="/shareholder-info">Shareholder Information</a>
-                            </div>
-                            <div class="nav-dropdown-col">
-                                <div class="nav-dropdown-col-title">Stock Information</div>
-                                <a href="/stock-exchange">NSE / BSE Listing</a>
-                                <a href="/shareholding-pattern">Shareholding Pattern</a>
-                                <a href="/credit-rating">Credit Rating</a>
-                                <a href="/downloads">Downloads</a>
-                            </div>
-                        </div>
-                    </div>
+                <!-- 4. INVESTORS (Mega Menu) -->
+                <div class="mega-wrap">
+                    <a href="/investors" class="nav-link" data-cursor="hover" data-mega="megaInvestors">Investors</a>
                 </div>
 
                 <!-- 5. CONTACT US -->
@@ -247,166 +222,239 @@
     </header>
 
     <!-- ================================================
-         MEGA MENU: COMPANY
+         MEGA MENU: COMPANY — TCS 3-panel layout
          ================================================ -->
     <div class="mega-menu" id="megaCompany">
-        <div class="mega-grid">
-            <!-- Col 1: About -->
-            <div class="mega-col">
-                <div class="mega-col-title">About</div>
-                <a href="/about-us">About Us<span class="mega-sub">India's leading insulation manufacturer</span></a>
-                <a href="/leadership">Leadership<span class="mega-sub">Board of directors & management team</span></a>
-                <a href="/company-history">Company History<span class="mega-sub">25+ years of milestones since 1999</span></a>
-                <a href="/dhanuka-foundation">Dhanuka Foundation<span class="mega-sub">Social initiatives & philanthropy</span></a>
-                <a href="/manufacturing-units">Manufacturing Units<span class="mega-sub">Two state-of-the-art facilities</span></a>
+        <div class="mega-inner">
+            <div class="mega-left">
+                <h3 class="mega-left-title">About Us</h3>
+                <p class="mega-left-desc">We deliver excellence and create value for the global power sector. With 25+ years of manufacturing expertise, we help transformer OEMs build reliable infrastructure worldwide.</p>
+                <a href="/about-us" class="mega-left-cta" data-cursor="hover">Discover more &rarr;</a>
             </div>
-            <!-- Col 2: People -->
-            <div class="mega-col">
-                <div class="mega-col-title">People</div>
-                <a href="/life-ubl">Life @ UBL<span class="mega-sub">Culture, values & work environment</span></a>
-                <a href="/careers">Careers<span class="mega-sub">Current openings across departments</span></a>
-                <a href="/training-and-development">Training & Development<span class="mega-sub">Growth & learning opportunities</span></a>
-                <div class="mega-col-divider"></div>
-                <div class="mega-col-title">Quality</div>
-                <a href="/sustainability">Sustainability<span class="mega-sub">ESG & environmental commitments</span></a>
-                <a href="/quality">Testing Labs<span class="mega-sub">TI Lab, WW Lab, Chemical Lab</span></a>
-                <a href="/research-and-development">R&D<span class="mega-sub">Innovation in insulation technology</span></a>
+            <div class="mega-center">
+                <a class="mega-cat active" data-sub="companyAbout">About <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyPeople">People <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyQuality">Quality <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyDownloads">Download Center <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
-            <!-- Col 3: Download Center -->
-            <div class="mega-col">
-                <div class="mega-col-title">Download Center</div>
-                <a href="/certifications">Certifications<span class="mega-sub">ISO, NABL, PGCIL approvals</span></a>
-                <a href="/catalogues">Catalogues<span class="mega-sub">Product catalogues & brochures</span></a>
-                <a href="/tech-datasheets">Technical Datasheets<span class="mega-sub">Product specifications & data</span></a>
-                <a href="/tc-sales">T&C Sales<span class="mega-sub">Terms & conditions of sale</span></a>
-                <a href="/tc-purchase">T&C Purchase<span class="mega-sub">Terms & conditions of purchase</span></a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/code-of-conduct">Code of Conduct</a>
-            </div>
-            <!-- Col 4: Feature Card -->
-            <div class="mega-col">
-                <div class="mega-feature">
-                    <div>
-                        <div class="mega-feature-tag">Recognition</div>
-                        <div class="mega-feature-title">One Star Export House</div>
-                        <div class="mega-feature-desc">Recognised by the Government of India, DGFT — certified until March 2028.</div>
-                    </div>
-                    <a href="/certifications" class="mega-feature-cta" data-cursor="hover">View Certifications &rarr;</a>
+            <div class="mega-right">
+                <div class="mega-sub-panel active" id="companyAbout">
+                    <a href="/about-us">About Us</a>
+                    <a href="/leadership">Leadership</a>
+                    <a href="/company-history">Company History</a>
+                    <a href="/dhanuka-foundation">Dhanuka Foundation</a>
+                    <a href="/manufacturing-units">Manufacturing Units</a>
+                </div>
+                <div class="mega-sub-panel" id="companyPeople">
+                    <a href="/life-ubl">Life @ UBL</a>
+                    <a href="/careers">Careers</a>
+                    <a href="/training-and-development">Training & Development</a>
+                </div>
+                <div class="mega-sub-panel" id="companyQuality">
+                    <a href="/sustainability">Sustainability</a>
+                    <a href="/quality">Transformer Insulation Laboratory</a>
+                    <a href="/quality">Winding Wire Laboratory</a>
+                    <a href="/quality">Chemical Laboratory</a>
+                    <a href="/research-and-development">Research & Development</a>
+                </div>
+                <div class="mega-sub-panel" id="companyDownloads">
+                    <a href="/certifications">Certifications</a>
+                    <a href="/catalogues">Catalogues</a>
+                    <a href="/tech-datasheets">Technical Data Sheets</a>
+                    <a href="/tc-sales">Terms & Conditions Sales</a>
+                    <a href="/tc-purchase">Terms & Conditions Purchase</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/code-of-conduct">Code of Conduct</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- ================================================
-         MEGA MENU: PRODUCTS
+         MEGA MENU: PRODUCTS — TCS 3-panel layout
          ================================================ -->
     <div class="mega-menu" id="megaProducts">
-        <div class="mega-grid mega-grid-5">
-            <!-- Col 1: Pressboards -->
-            <div class="mega-col">
-                <div class="mega-col-title">Pressboards</div>
-                <a href="/pre-compressed-pressboards">Pre-Compressed Pressboards</a>
-                <a href="/laminated-pressboards">Laminated Pressboards</a>
-                <a href="/calendered-pressboards">Calendered Pressboards</a>
-                <a href="/moulded-pressboards">Moulded Pressboards</a>
+        <div class="mega-inner">
+            <div class="mega-left">
+                <h3 class="mega-left-title">Our Products</h3>
+                <p class="mega-left-desc">A vertically integrated product suite powering the world's electrical infrastructure — from cellulose pressboards to precision winding wires and specialty chemicals.</p>
+                <a href="/products" class="mega-left-cta" data-cursor="hover">Explore all products &rarr;</a>
             </div>
-            <!-- Col 2: Machined & Moulded -->
-            <div class="mega-col">
-                <div class="mega-col-title">Machined Components</div>
-                <a href="/spacers-and-blocks">Spacers & Blocks</a>
-                <a href="/rings-and-caps">Rings & Caps</a>
-                <a href="/lead-exit-assemblies">Lead Exit Assemblies</a>
-                <a href="/snouts-and-tubes">Snouts & Tubes</a>
-                <a href="/channels-and-angles">Channels & Angles</a>
-                <a href="/barriers-and-sectors">Barriers & Sectors</a>
-                <a href="/core-clamps">Core Clamps</a>
-                <a href="/custom-machined">Custom Machined Parts</a>
-                <div class="mega-col-divider"></div>
-                <div class="mega-col-title">Moulded Components</div>
-                <a href="/moulded-spacers">Moulded Spacers</a>
-                <a href="/moulded-rings">Moulded Rings</a>
-                <a href="/moulded-caps">Moulded Caps</a>
-                <a href="/moulded-snouts">Moulded Snouts</a>
-                <a href="/moulded-custom">Custom Moulded Parts</a>
+            <div class="mega-center">
+                <a class="mega-cat active" data-sub="prodInsulation">Transformer Insulation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="prodWires">Winding Wires <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="prodChemicals">Chemicals <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
-            <!-- Col 3: Papers & Accessories -->
-            <div class="mega-col">
-                <div class="mega-col-title">Insulation Papers</div>
-                <a href="/crepe-paper">Crepe Paper</a>
-                <a href="/ddp">Diamond Dotted Paper (DDP)</a>
-                <a href="/plain-kraft-paper">Plain Kraft Paper</a>
-                <a href="/paper-tubes">Paper Tubes</a>
-                <a href="/tissue-paper">Tissue Paper</a>
-                <div class="mega-col-divider"></div>
-                <div class="mega-col-title">Transformer Accessories</div>
-                <a href="/bushings">Bushings</a>
-                <a href="/conservators">Conservators</a>
-                <a href="/radiators">Radiators</a>
-                <a href="/tap-changers">Tap Changers</a>
-                <a href="/gaskets">Gaskets & Seals</a>
-            </div>
-            <!-- Col 4: Winding Wires & Chemicals -->
-            <div class="mega-col">
-                <div class="mega-col-title">Winding Wires</div>
-                <a href="/aluminium">Aluminium Winding Wires</a>
-                <a href="/copper">Copper Winding Wires</a>
-                <div class="mega-col-divider"></div>
-                <div class="mega-col-title">Insulating Chemicals</div>
-                <a href="/wire-enamels">Wire Enamels</a>
-                <a href="/impregnating-resins">Impregnating Resins</a>
-                <a href="/insulating-varnishes">Insulating Varnishes</a>
-                <a href="/bonding-agents">Bonding Agents</a>
-                <a href="/thinners-cleaners">Thinners & Cleaners</a>
-            </div>
-            <!-- Col 5: Feature Card -->
-            <div class="mega-col">
-                <div class="mega-feature">
-                    <div>
-                        <div class="mega-feature-tag">Milestone</div>
-                        <div class="mega-feature-title">400 kV Class Approved</div>
-                        <div class="mega-feature-desc">Officially approved by Power Grid Corporation of India for pressboards, laminated boards, and machined components up to 400 kV.</div>
+            <div class="mega-right mega-right-2col">
+                <div class="mega-sub-panel active" id="prodInsulation">
+                    <div class="mega-sub-col">
+                        <div class="mega-sub-heading">Pressboards</div>
+                        <a href="/pre-compressed-pressboards">High Density Pressboard</a>
+                        <a href="/laminated-pressboards">Laminated Pressboard</a>
+                        <a href="/calendered-pressboards">Calendered Pressboard</a>
+                        <a href="/moulded-pressboards">Mouldable Pressboard</a>
                     </div>
-                    <a href="/transformer-insulations" class="mega-feature-cta" data-cursor="hover">Explore Range &rarr;</a>
+                    <div class="mega-sub-col">
+                        <div class="mega-sub-heading">Machined & Moulded</div>
+                        <a href="/spacers-and-blocks">Spacer Strips & Rings</a>
+                        <a href="/channels-and-angles">L Profile / U Channel</a>
+                        <a href="/lead-exit-assemblies">Lead Exit Systems</a>
+                        <a href="/rings-and-caps">Angle Ring, Cap Ring, Snouts</a>
+                        <a href="/moulded-custom">Corner Collars & End Rings</a>
+                    </div>
+                    <div class="mega-sub-col">
+                        <div class="mega-sub-heading">Papers</div>
+                        <a href="/plain-kraft-paper">Insulation Kraft Paper</a>
+                        <a href="/crepe-paper">Crepe Paper</a>
+                        <a href="/ddp">Diamond Dotted Paper</a>
+                        <a href="/paper-tubes">Tubes (Crepe, TUP)</a>
+                        <a href="/tissue-paper">Thermally Upgraded Paper</a>
+                    </div>
+                    <div class="mega-sub-col">
+                        <div class="mega-sub-heading">Accessories</div>
+                        <a href="/bushings">Bushings & Sleeves</a>
+                        <a href="/radiators">Cooling Fans</a>
+                        <a href="/tap-changers">Valves & Relays</a>
+                        <a href="/gaskets">Cork Sheet / Perma Wood</a>
+                        <a href="/conservators">Metal Fixing Parts</a>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="prodWires">
+                    <div class="mega-sub-col">
+                        <div class="mega-sub-heading">Aluminium</div>
+                        <a href="/aluminium">Super Enameled Round Wire</a>
+                        <a href="/aluminium">Super Enameled Flat Wire</a>
+                        <a href="/aluminium">Paper Covered Round Wire</a>
+                        <a href="/aluminium">Paper Covered Flat Wire</a>
+                        <a href="/aluminium">Aluminium Foil</a>
+                    </div>
+                    <div class="mega-sub-col">
+                        <div class="mega-sub-heading">Copper</div>
+                        <a href="/copper">Super Enameled Round Wire</a>
+                        <a href="/copper">Super Enameled Flat Wire</a>
+                        <a href="/copper">Paper Covered Round Wire</a>
+                        <a href="/copper">Paper Covered Flat Wire</a>
+                        <a href="/copper">CTC</a>
+                        <a href="/copper">Fiberglass Covered Flat Wire</a>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="prodChemicals">
+                    <div class="mega-sub-col">
+                        <div class="mega-sub-heading">Wire Enamels</div>
+                        <a href="/wire-enamels">Polyester</a>
+                        <a href="/wire-enamels">Modified Polyester</a>
+                        <a href="/wire-enamels">Polyurethane</a>
+                        <a href="/wire-enamels">Polyester Imide</a>
+                        <a href="/wire-enamels">Polyimide Amide</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- ================================================
-         MEGA MENU: SOLUTIONS
+         MEGA MENU: SOLUTIONS — TCS 3-panel layout
          ================================================ -->
     <div class="mega-menu" id="megaSolutions">
-        <div class="mega-grid">
-            <!-- Col 1: Power & Distribution -->
-            <div class="mega-col">
-                <div class="mega-col-title">Transformer Solutions</div>
-                <a href="/solutions/power-transformers">Power Transformers<span class="mega-sub">400 kV class insulation systems</span></a>
-                <a href="/solutions/distribution-transformers">Distribution Transformers<span class="mega-sub">Cost-effective insulation solutions</span></a>
-                <a href="/solutions/instrument-transformers">Instrument Transformers<span class="mega-sub">Precision insulation components</span></a>
+        <div class="mega-inner">
+            <div class="mega-left">
+                <h3 class="mega-left-title">Solutions</h3>
+                <p class="mega-left-desc">End-to-end insulation solutions tailored for every transformer class and industrial application. From 400 kV power transformers to EV motors.</p>
+                <a href="/solutions" class="mega-left-cta" data-cursor="hover">View all solutions &rarr;</a>
             </div>
-            <!-- Col 2: Industrial -->
-            <div class="mega-col">
-                <div class="mega-col-title">Industrial Applications</div>
-                <a href="/solutions/data-centers">Data Centers<span class="mega-sub">High-reliability transformer insulation</span></a>
-                <a href="/solutions/renewables">Renewables<span class="mega-sub">Wind & solar transformer solutions</span></a>
-                <a href="/solutions/electric-motors">Electric Motors<span class="mega-sub">Motor winding wire & insulation</span></a>
+            <div class="mega-center">
+                <a class="mega-cat active" data-sub="solPower">Power Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solDist">Distribution Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solInstrument">Instrument Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solIndustrial">Industrial & EV <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
-            <!-- Col 3: Consumer & EV -->
-            <div class="mega-col">
-                <div class="mega-col-title">Consumer & EV</div>
-                <a href="/solutions/home-appliances">Home Appliances<span class="mega-sub">Enamelled wires for appliance motors</span></a>
-                <a href="/solutions/ev-motors">EV Motors<span class="mega-sub">High-temperature insulation for EVs</span></a>
-                <a href="/solutions/stabilizers">Stabilizers<span class="mega-sub">Winding wires for voltage regulators</span></a>
-            </div>
-            <!-- Col 4: Feature Card -->
-            <div class="mega-col">
-                <div class="mega-feature">
-                    <div>
-                        <div class="mega-feature-tag">End-to-End</div>
-                        <div class="mega-feature-title">Complete Insulation Systems</div>
-                        <div class="mega-feature-desc">From raw cellulose to finished components — vertically integrated manufacturing for complete transformer insulation solutions.</div>
+            <div class="mega-right">
+                <div class="mega-sub-panel active" id="solPower">
+                    <a href="/pre-compressed-pressboards">HD Pressboard</a>
+                    <a href="/laminated-pressboards">Laminated Pressboard</a>
+                    <a href="/rings-and-caps">Angle Ring, Cap Ring, Snouts</a>
+                    <a href="/lead-exit-assemblies">Lead Exit Systems</a>
+                    <a href="/copper">Enamelled Copper Wire (Round & Flat)</a>
+                    <a href="/copper">Paper Covered Copper Wire</a>
+                    <a href="/copper">CTC & Fiberglass Copper Wire</a>
+                    <a href="/ddp">DDP & TUP Paper</a>
+                </div>
+                <div class="mega-sub-panel" id="solDist">
+                    <a href="/calendered-pressboards">Calendered Boards</a>
+                    <a href="/pre-compressed-pressboards">HD Pressboards</a>
+                    <a href="/aluminium">Enamelled Aluminium Wire (Round & Flat)</a>
+                    <a href="/aluminium">Paper Covered Aluminium Wire</a>
+                    <a href="/plain-kraft-paper">Insulation Paper</a>
+                    <a href="/aluminium">Aluminium Foil</a>
+                    <a href="/crepe-paper">Crepe Paper Tubes</a>
+                </div>
+                <div class="mega-sub-panel" id="solInstrument">
+                    <a href="/copper">Fiberglass Covered Copper Wire</a>
+                    <a href="/calendered-pressboards">Calendered Board</a>
+                    <a href="/laminated-pressboards">Laminated Pressboard</a>
+                    <a href="/plain-kraft-paper">Insulation Paper</a>
+                </div>
+                <div class="mega-sub-panel" id="solIndustrial">
+                    <div class="mega-sub-col">
+                        <div class="mega-sub-heading">Data Centers & Renewables</div>
+                        <a href="/solutions/data-centers">Transformer Accessories</a>
+                        <a href="/solutions/renewables">Diamond Dotted Paper</a>
+                        <a href="/solutions/renewables">TUP Paper & Machined Components</a>
                     </div>
-                    <a href="/solutions" class="mega-feature-cta" data-cursor="hover">All Solutions &rarr;</a>
+                    <div class="mega-sub-col">
+                        <div class="mega-sub-heading">Motors, Appliances, EV & Stabilizers</div>
+                        <a href="/aluminium">Enamelled Aluminium Wire</a>
+                        <a href="/copper">Enamelled Copper Wire</a>
+                        <a href="/plain-kraft-paper">Insulation Paper</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================
+         MEGA MENU: INVESTORS — TCS 3-panel with stock widget
+         ================================================ -->
+    <div class="mega-menu" id="megaInvestors">
+        <div class="mega-inner">
+            <div class="mega-left">
+                <h3 class="mega-left-title">Umang Boards Limited</h3>
+                <div class="mega-stock-label">NSE: UMANGBOARD</div>
+                <div class="mega-stock-widget">
+                    <div class="mega-stock-price" id="megaStockPrice">&#8377; 42.50</div>
+                    <div class="mega-stock-change positive" id="megaStockChange">+1.20 (2.91%) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M18 15l-6-6-6 6"/></svg></div>
+                </div>
+                <a href="/investors" class="mega-left-cta" data-cursor="hover">Discover more &rarr;</a>
+            </div>
+            <div class="mega-center">
+                <a class="mega-cat active" data-sub="invFinancials">Financials <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="invGovernance">Governance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="invNews">News and Events <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="invResources">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="mega-right">
+                <div class="mega-sub-panel active" id="invFinancials">
+                    <a href="/annual-reports">Annual Reports</a>
+                    <a href="/quarterly-results">Quarterly Results</a>
+                    <a href="/financial-statements">Financial Statements</a>
+                    <a href="/investor-presentations">Investor Presentations</a>
+                </div>
+                <div class="mega-sub-panel" id="invGovernance">
+                    <a href="/corporate-governance">Corporate Governance</a>
+                    <a href="/board-of-directors">Board of Directors</a>
+                    <a href="/policies">Policies</a>
+                    <a href="/shareholder-info">Shareholder Information</a>
+                </div>
+                <div class="mega-sub-panel" id="invNews">
+                    <a href="/press-releases">Press Releases</a>
+                    <a href="/events">Events</a>
+                    <a href="/media-kit">Media Kit</a>
+                </div>
+                <div class="mega-sub-panel" id="invResources">
+                    <a href="/stock-exchange">NSE / BSE Listing</a>
+                    <a href="/shareholding-pattern">Shareholding Pattern</a>
+                    <a href="/credit-rating">Credit Rating</a>
+                    <a href="/downloads">Downloads</a>
                 </div>
             </div>
         </div>
