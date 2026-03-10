@@ -492,7 +492,7 @@ img { display: block; max-width: 100%; }
     transition: color 0.15s, background 0.15s, padding-left 0.15s;
 }
 .mega-sub-panel a:hover {
-    color: var(--navy); background: rgba(11,31,58,0.06); padding-left: 0.75rem;
+    color: var(--gold); background: rgba(11,31,58,0.06); padding-left: 0.75rem;
 }
 
 /* FEATURED CARD — right side of sub-panel */
