@@ -76,7 +76,7 @@
 .vc-stat-content { color: #fff; }
 .vc-stat-content .vc-number {
     font-family: var(--font-body); font-size: clamp(2.2rem, 3.5vw, 3.2rem);
-    font-weight: 800; line-height: 1; color: var(--gold); margin-bottom: 0.3rem;
+    font-weight: 800; line-height: 1; color: #FFFFFF; margin-bottom: 0.3rem;
 }
 .vc-stat-content .vc-label {
     font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.15em;
