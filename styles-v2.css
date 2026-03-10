@@ -83,24 +83,14 @@ img { display: block; max-width: 100%; }
 }
 .loader-inner { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
 .loader-logo { width: 100px; height: 100px; }
-.loader-svg {
+.loader-logo-img {
     width: 100%; height: auto;
+    opacity: 0;
+    animation: loaderLogoReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.15s;
 }
-.loader-svg .svg-draw {
-    fill: none;
-    stroke: var(--navy);
-    stroke-width: 2;
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-}
-.loader-svg .svg-draw-1 { animation: svgDraw 2s ease forwards 0.2s; }
-.loader-svg .svg-draw-2 { animation: svgDraw 1.6s ease forwards 0.6s; }
-.loader-svg .svg-draw-3 { animation: svgDraw 1.4s ease forwards 0.8s; }
-
-@keyframes svgDraw {
-    0% { stroke-dashoffset: 2000; fill: transparent; }
-    70% { stroke-dashoffset: 0; fill: transparent; }
-    100% { stroke-dashoffset: 0; fill: var(--navy); }
+@keyframes loaderLogoReveal {
+    0%   { opacity: 0; transform: scale(0.55) rotate(-8deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 .loader-progress { width: 200px; height: 2px; background: var(--border-medium); border-radius: 2px; overflow: hidden; }
@@ -345,7 +335,7 @@ img { display: block; max-width: 100%; }
     height: var(--header-h-scrolled);
 }
 
-/* Logo — white on navy */
+/* Logo — brand colours preserved on navy */
 .logo { display: flex; align-items: center; gap: 0.8rem; z-index: 10; text-decoration: none; }
 .logo-icon {
     width: 44px; height: auto;

@@ -645,17 +645,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Redraw SVG logo paths when each major section enters view
+            // Gold-glow pulse on logo when major sections enter view (brand colors preserved)
             const svgDrawSections = ['#sValue', '#sProducts', '#sGlobal', '#sInvestor'];
             svgDrawSections.forEach(sel => {
                 ScrollTrigger.create({
                     trigger: sel,
                     start: 'top 60%',
                     onEnter: () => {
-                        gsap.fromTo('.logo-icon',
-                            { filter: 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(200,168,75,0.6))' },
-                            { filter: 'brightness(0) invert(1) drop-shadow(0 0 0px rgba(200,168,75,0))',
-                              duration: 0.8, ease: 'power2.out' });
+                        gsap.timeline()
+                            .to('.logo-icon', {
+                                filter: 'drop-shadow(0 0 10px rgba(200,168,75,0.75))',
+                                scale: 1.08, duration: 0.35, ease: 'power2.out'
+                            })
+                            .to('.logo-icon', {
+                                filter: 'drop-shadow(0 0 0px rgba(200,168,75,0))',
+                                scale: 1, duration: 0.55, ease: 'elastic.out(1, 0.6)'
+                            });
                     },
                     once: false
                 });
