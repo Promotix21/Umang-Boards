@@ -553,6 +553,17 @@ document.addEventListener('DOMContentLoaded', () => {
             { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
               scrollTrigger: { trigger: '#sProducts', start: 'top 75%' } });
 
+        // --- Facility Parallax Strip ---
+        gsap.to('.facility-parallax', {
+            yPercent: 25,
+            ease: 'none',
+            scrollTrigger: { trigger: '#sFacility', start: 'top bottom', end: 'bottom top', scrub: true }
+        });
+        gsap.to('.facility-caption-inner', {
+            opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: '#sFacility', start: 'top 65%' }
+        });
+
         // --- Section 4: Global ---
         gsap.fromTo('#globalLeft', { opacity: 0, x: -40 },
             { opacity: 1, x: 0, duration: 1.2, ease: 'power3.out',

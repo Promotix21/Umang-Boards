@@ -358,6 +358,47 @@
 
 
 /* ============================================
+   FACILITY PARALLAX STRIP
+   ============================================ */
+.s-facility {
+    position: relative;
+    height: 55vh; min-height: 380px; max-height: 600px;
+    overflow: hidden;
+}
+.facility-parallax {
+    position: absolute; inset: -20% 0;
+    background: url('assets/images/facility-aerial.jpg') center center / cover no-repeat;
+    will-change: transform;
+}
+.facility-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(11,31,58,0.45) 0%,
+        rgba(11,31,58,0.25) 40%,
+        rgba(11,31,58,0.6) 100%
+    );
+}
+.facility-caption {
+    position: absolute; inset: 0;
+    display: flex; align-items: flex-end;
+    padding: 0 clamp(1.5rem, 5vw, 5rem) clamp(2rem, 4vw, 3.5rem);
+}
+.facility-caption-inner { opacity: 0; transform: translateY(18px); }
+.facility-tag {
+    font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
+}
+.facility-headline {
+    font-family: var(--font-body); font-size: clamp(1.6rem, 3.5vw, 3rem);
+    font-weight: 800; color: #FFFFFF; line-height: 1.1; margin-bottom: 0.5rem;
+}
+.facility-sub {
+    font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.6); text-transform: uppercase;
+}
+
+/* ============================================
    SECTION 4 — GLOBAL REACH
    ============================================ */
 .s-global {
