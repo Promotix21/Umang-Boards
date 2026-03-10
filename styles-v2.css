@@ -111,8 +111,8 @@ img { display: block; max-width: 100%; }
     position: fixed; top: 0; left: 0; right: 0; z-index: 101;
     height: var(--utility-h); background: var(--navy);
     display: flex; align-items: center;
-    font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.6);
+    font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.8);
     transform: translateY(-100%);
     animation: slideDown 0.5s var(--ease-out-expo) 2.2s forwards;
 }
@@ -144,15 +144,15 @@ img { display: block; max-width: 100%; }
 .ticker-change.positive { color: #4ADE80; }
 .ticker-change.negative { color: #F87171; }
 .ticker-sep { opacity: 0.3; color: rgba(255,255,255,0.4); }
-.utility-link { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 0.3rem; }
+.utility-link { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 0.3rem; }
 .utility-link:hover { color: var(--gold-light); }
 .utility-sep { opacity: 0.3; }
 
 /* Utility Search Button */
 .utility-search-btn {
     display: flex; align-items: center; gap: 0.3rem;
-    color: rgba(255,255,255,0.5); font-family: var(--font-mono);
-    font-size: 0.55rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.8); font-family: var(--font-mono);
+    font-size: 0.65rem; letter-spacing: 0.1em;
     transition: color 0.3s; cursor: none;
 }
 .utility-search-btn:hover { color: var(--gold-light); }
@@ -161,8 +161,8 @@ img { display: block; max-width: 100%; }
 .utility-lang { position: relative; }
 .utility-lang-btn {
     display: flex; align-items: center; gap: 0.3rem;
-    color: rgba(255,255,255,0.5); font-family: var(--font-mono);
-    font-size: 0.55rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.8); font-family: var(--font-mono);
+    font-size: 0.65rem; letter-spacing: 0.1em;
     transition: color 0.3s; cursor: none;
 }
 .utility-lang-btn:hover { color: var(--gold-light); }
