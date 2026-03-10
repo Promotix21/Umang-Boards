@@ -565,6 +565,35 @@
 
 
 /* ============================================
+   BOARDROOM PARALLAX STRIP
+   ============================================ */
+.s-boardroom {
+    position: relative;
+    height: 55vh; min-height: 380px; max-height: 600px;
+    overflow: hidden;
+}
+.boardroom-parallax {
+    position: absolute; inset: -20% 0;
+    background: url('assets/images/boardroom.jpg') center center / cover no-repeat;
+    will-change: transform;
+}
+.boardroom-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(11,31,58,0.72) 0%,
+        rgba(11,31,58,0.3) 55%,
+        rgba(11,31,58,0.55) 100%
+    );
+}
+.boardroom-caption {
+    position: absolute; inset: 0;
+    display: flex; align-items: center;
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+}
+.boardroom-caption-inner { opacity: 0; transform: translateY(18px); max-width: 520px; }
+
+/* ============================================
    SECTION 7 — INVESTOR RELATIONS
    ============================================ */
 .s-investor {

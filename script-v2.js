@@ -607,6 +607,17 @@ document.addEventListener('DOMContentLoaded', () => {
                   scrollTrigger: { trigger: card, start: 'top 90%' } });
         });
 
+        // --- Boardroom Parallax Strip ---
+        gsap.to('.boardroom-parallax', {
+            yPercent: 25,
+            ease: 'none',
+            scrollTrigger: { trigger: '#sBoardroom', start: 'top bottom', end: 'bottom top', scrub: true }
+        });
+        gsap.to('.boardroom-caption-inner', {
+            opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: '#sBoardroom', start: 'top 65%' }
+        });
+
         // --- Section 7: Investor ---
         gsap.fromTo('#investorHeader', { opacity: 0, y: 50 },
             { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
