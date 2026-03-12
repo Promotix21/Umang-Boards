@@ -39,36 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.readyState === 'complete') markLoaded();
     else window.addEventListener('load', markLoaded);
 
-    /* ============================================
-       CUSTOM CURSOR
-       ============================================ */
-    const cur = document.getElementById('cursor');
-    const dot = document.getElementById('cursorDot');
-    if (cur && dot && window.matchMedia('(hover: hover)').matches) {
-        let mx = 0, my = 0, cx = 0, cy = 0;
-        document.addEventListener('mousemove', e => {
-            mx = e.clientX; my = e.clientY;
-            dot.style.left = mx + 'px';
-            dot.style.top = my + 'px';
-        });
-        (function loop() {
-            cx += (mx - cx) * 0.12;
-            cy += (my - cy) * 0.12;
-            cur.style.left = cx + 'px';
-            cur.style.top = cy + 'px';
-            requestAnimationFrame(loop);
-        })();
-
-        function bindCursorHovers() {
-            document.querySelectorAll('[data-cursor="hover"]').forEach(el => {
-                if (el.__cursorBound) return;
-                el.__cursorBound = true;
-                el.addEventListener('mouseenter', () => { cur.classList.add('hover'); dot.classList.add('hover'); });
-                el.addEventListener('mouseleave', () => { cur.classList.remove('hover'); dot.classList.remove('hover'); });
-            });
-        }
-        bindCursorHovers();
-    }
+    /* CUSTOM CURSOR — removed per client feedback, using default browser cursor */
 
     /* ============================================
        HEADER SCROLL BEHAVIOR
