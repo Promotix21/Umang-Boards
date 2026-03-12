@@ -12,29 +12,31 @@
     // x = (lon + 180) / 360 * 100   |   y = (90 - lat) / 180 * 100
     // Then adjusted for the map's visible crop/padding.
 
-    const INDIA = { x: 71.8, y: 37.2, label: 'Jaipur, Rajasthan', sub: 'HQ & Manufacturing', type: 'hq' };
+    // Coordinates recalibrated using equirectangular projection anchored on
+    // USA/Brazil (west) and Japan (east). India corrected to Jaipur ~76°E.
+    const INDIA = { x: 65.3, y: 38.0, label: 'Jaipur, Rajasthan', sub: 'HQ & Manufacturing', type: 'hq' };
 
     const LOCATIONS = [
         // ── Offices ────────────────────────────────────────────────────────
-        { x: 78.9, y: 43.5,  label: 'Bangkok, Thailand',  sub: 'Regional Office',     type: 'office' },
+        { x: 73.0, y: 43.5,  label: 'Bangkok, Thailand',  sub: 'Regional Office',     type: 'office' },
         // ── Export Markets ─────────────────────────────────────────────────
-        { x: 56.9, y: 36.0,  label: 'UAE / Dubai',        sub: 'Export Market',       type: 'export' },
-        { x: 55.0, y: 38.0,  label: 'Saudi Arabia',       sub: 'Export Market',       type: 'export' },
-        { x: 57.8, y: 37.8,  label: 'Qatar',              sub: 'Export Market',       type: 'export' },
+        { x: 61.5, y: 36.5,  label: 'UAE / Dubai',        sub: 'Export Market',       type: 'export' },
+        { x: 59.0, y: 39.0,  label: 'Saudi Arabia',       sub: 'Export Market',       type: 'export' },
+        { x: 61.0, y: 37.5,  label: 'Qatar',              sub: 'Export Market',       type: 'export' },
         { x: 51.5, y: 26.0,  label: 'Germany',            sub: 'Export Market',       type: 'export' },
         { x: 49.7, y: 24.5,  label: 'United Kingdom',     sub: 'Export Market',       type: 'export' },
         { x: 53.0, y: 27.5,  label: 'Italy',              sub: 'Export Market',       type: 'export' },
         { x: 54.2, y: 26.8,  label: 'Poland',             sub: 'Export Market',       type: 'export' },
-        { x: 53.8, y: 43.5,  label: 'Egypt',              sub: 'Export Market',       type: 'export' },
-        { x: 52.2, y: 52.5,  label: 'Kenya',              sub: 'Export Market',       type: 'export' },
-        { x: 51.9, y: 62.5,  label: 'South Africa',       sub: 'Export Market',       type: 'export' },
-        { x: 50.2, y: 50.0,  label: 'Nigeria',            sub: 'Export Market',       type: 'export' },
-        { x: 79.4, y: 46.5,  label: 'Malaysia',           sub: 'Export Market',       type: 'export' },
-        { x: 79.7, y: 49.0,  label: 'Singapore',          sub: 'Export Market',       type: 'export' },
-        { x: 81.8, y: 46.5,  label: 'Indonesia',          sub: 'Export Market',       type: 'export' },
+        { x: 54.5, y: 43.5,  label: 'Egypt',              sub: 'Export Market',       type: 'export' },
+        { x: 55.0, y: 52.5,  label: 'Kenya',              sub: 'Export Market',       type: 'export' },
+        { x: 53.5, y: 62.5,  label: 'South Africa',       sub: 'Export Market',       type: 'export' },
+        { x: 50.5, y: 50.0,  label: 'Nigeria',            sub: 'Export Market',       type: 'export' },
+        { x: 73.5, y: 46.5,  label: 'Malaysia',           sub: 'Export Market',       type: 'export' },
+        { x: 74.0, y: 49.0,  label: 'Singapore',          sub: 'Export Market',       type: 'export' },
+        { x: 77.0, y: 46.5,  label: 'Indonesia',          sub: 'Export Market',       type: 'export' },
         { x: 84.3, y: 29.8,  label: 'Japan',              sub: 'Export Market',       type: 'export' },
-        { x: 80.9, y: 34.5,  label: 'China',              sub: 'Export Market',       type: 'export' },
-        { x: 74.5, y: 50.5,  label: 'Sri Lanka',          sub: 'Export Market',       type: 'export' },
+        { x: 77.5, y: 34.5,  label: 'China',              sub: 'Export Market',       type: 'export' },
+        { x: 68.0, y: 51.5,  label: 'Sri Lanka',          sub: 'Export Market',       type: 'export' },
         { x: 32.5, y: 52.5,  label: 'Brazil',             sub: 'Export Market',       type: 'export' },
         { x: 23.0, y: 31.5,  label: 'USA',                sub: 'Export Market',       type: 'export' },
         { x: 25.8, y: 52.5,  label: 'Mexico',             sub: 'Export Market',       type: 'export' },

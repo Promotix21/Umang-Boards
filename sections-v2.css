@@ -533,8 +533,7 @@
 .s-global {
     position: relative;
     padding: clamp(6rem, 12vh, 10rem) clamp(1.5rem, 4vw, 3.5rem);
-    background: var(--navy);
-    color: #FFFFFF;
+    background: #f8f9fb;
     overflow: hidden;
 }
 .s-global-inner { max-width: 1400px; margin: 0 auto; }
@@ -542,13 +541,13 @@
 .s-global-left { opacity: 0; }
 .global-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
 .g-stat { opacity: 0; }
-.g-stat-num { font-family: var(--font-body); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
-.g-stat-label { font-family: var(--font-mono); font-size: 0.48rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.g-stat-num { font-family: var(--font-body); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 0.3rem; }
+.g-stat-label { font-family: var(--font-mono); font-size: 0.48rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
 
-/* Map Container with Pins */
-.s-global-map { opacity: 0; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+/* Map Container */
+.s-global-map { opacity: 0; border-radius: 16px; overflow: hidden; background: #fff; border: 1px solid var(--border-medium); box-shadow: 0 4px 24px rgba(11,31,58,0.08); }
 .map-container { position: relative; overflow: hidden; }
-.global-map-img { width: 100%; height: auto; display: block; opacity: 0.55; filter: brightness(0.9) saturate(0.7); }
+.global-map-img { width: 100%; height: auto; display: block; opacity: 0.85; filter: brightness(1.05) saturate(0.8); }
 
 /* SVG Interactive Overlay */
 .map-svg-overlay {
@@ -628,11 +627,11 @@
 .global-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
 .g-tag {
     font-family: var(--font-mono); font-size: 0.48rem; letter-spacing: 0.08em;
-    text-transform: uppercase; color: rgba(255,255,255,0.4);
-    padding: 0.3rem 0.7rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08);
-    transition: all 0.3s;
+    text-transform: uppercase; color: var(--text-muted);
+    padding: 0.3rem 0.7rem; border-radius: 20px; border: 1px solid var(--border-medium);
+    transition: all 0.3s; background: #fff;
 }
-.g-tag:hover { border-color: var(--gold); color: var(--gold); }
+.g-tag:hover { border-color: var(--gold); color: var(--navy); background: var(--gold-pale); }
 
 
 /* ============================================
