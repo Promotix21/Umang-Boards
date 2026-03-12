@@ -43,27 +43,14 @@
 /* ---- RESET ---- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { font-size: 17px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; cursor: none; }
+body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; }
 a { text-decoration: none; color: inherit; }
-button { border: none; background: none; cursor: none; font-family: inherit; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
 img { display: block; max-width: 100%; }
 
-/* ---- CURSOR ---- */
-.cursor {
-    position: fixed; width: 20px; height: 20px;
-    border: 1.5px solid var(--navy); border-radius: 50%;
-    pointer-events: none; z-index: 10000;
-    transition: width 0.3s var(--ease-out-expo), height 0.3s var(--ease-out-expo), background 0.3s ease;
-    transform: translate(-50%, -50%); mix-blend-mode: difference;
-}
-.cursor.hover { width: 60px; height: 60px; background: var(--navy); }
-.cursor-dot {
-    position: fixed; width: 4px; height: 4px;
-    background: var(--navy); border-radius: 50%;
-    pointer-events: none; z-index: 10001;
-    transform: translate(-50%, -50%); transition: opacity 0.3s ease;
-}
-.cursor-dot.hover { opacity: 0; }
+/* ---- CURSOR (removed custom cursor per client feedback) ---- */
+.cursor, .cursor-dot { display: none; }
+a, button, [data-cursor] { cursor: pointer; }
 
 /* ---- GRAIN ---- */
 .grain {
@@ -153,7 +140,7 @@ img { display: block; max-width: 100%; }
     display: flex; align-items: center; gap: 0.3rem;
     color: rgba(255,255,255,0.8); font-family: var(--font-mono);
     font-size: 0.65rem; letter-spacing: 0.1em;
-    transition: color 0.3s; cursor: none;
+    transition: color 0.3s; cursor: pointer;
 }
 .utility-search-btn:hover { color: var(--gold-light); }
 
@@ -163,7 +150,7 @@ img { display: block; max-width: 100%; }
     display: flex; align-items: center; gap: 0.3rem;
     color: rgba(255,255,255,0.8); font-family: var(--font-mono);
     font-size: 0.65rem; letter-spacing: 0.1em;
-    transition: color 0.3s; cursor: none;
+    transition: color 0.3s; cursor: pointer;
 }
 .utility-lang-btn:hover { color: var(--gold-light); }
 .utility-lang-menu {
@@ -191,7 +178,7 @@ img { display: block; max-width: 100%; }
 /* Utility Hamburger (Panel Toggle) */
 .utility-hamburger {
     display: flex; flex-direction: column; gap: 3px; padding: 4px;
-    cursor: none;
+    cursor: pointer;
 }
 .utility-hamburger span {
     display: block; width: 16px; height: 1.5px;
