@@ -1195,22 +1195,29 @@
                 </div>
 
                 <div class="s-global-map" id="globalMap">
-                    <div class="map-container">
-                        <img src="assets/World-Map.png" alt="Umang Boards Global Presence" class="global-map-img">
-                        <!-- Map Pins -->
-                        <div class="map-pin" style="top:32%;left:73%;" data-label="Jaipur HQ" data-type="hq"></div>
-                        <div class="map-pin" style="top:32%;left:74.5%;" data-label="Mfg Facility" data-type="mfg"></div>
-                        <div class="map-pin" style="top:48%;left:80%;" data-label="Thailand Office" data-type="office"></div>
-                        <div class="map-pin" style="top:35%;left:62%;" data-label="Middle East" data-type="export"></div>
-                        <div class="map-pin" style="top:55%;left:55%;" data-label="Africa" data-type="export"></div>
-                        <div class="map-pin" style="top:28%;left:50%;" data-label="Europe" data-type="export"></div>
-                        <div class="map-pin" style="top:42%;left:85%;" data-label="SE Asia" data-type="export"></div>
+                    <!-- Interactive World Map -->
+                    <div class="map-container" id="mapContainer">
+                        <img src="assets/World-Map.png" alt="Umang Boards Global Presence" class="global-map-img" id="mapImg">
+                        <svg class="map-svg-overlay" id="mapSvg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                            <defs>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                                <radialGradient id="pulseGrad" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#C8A84B" stop-opacity="0.6"/>
+                                    <stop offset="100%" stop-color="#C8A84B" stop-opacity="0"/>
+                                </radialGradient>
+                            </defs>
+                            <g id="mapArcs"></g>
+                            <g id="mapMarkers"></g>
+                        </svg>
+                        <div class="map-tooltip" id="mapTooltip"></div>
                     </div>
                     <div class="map-legend">
-                        <span class="map-legend-item"><span class="map-legend-dot dot-hq"></span> HQ</span>
-                        <span class="map-legend-item"><span class="map-legend-dot dot-mfg"></span> Manufacturing</span>
+                        <span class="map-legend-item"><span class="map-legend-dot dot-hq"></span> HQ &amp; Manufacturing</span>
                         <span class="map-legend-item"><span class="map-legend-dot dot-office"></span> Office</span>
-                        <span class="map-legend-item"><span class="map-legend-dot dot-export"></span> Export</span>
+                        <span class="map-legend-item"><span class="map-legend-dot dot-export"></span> Export Markets</span>
                     </div>
                 </div>
             </div>
@@ -1603,5 +1610,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script-v2.js"></script>
+    <script src="world-map.js"></script>
 </body>
 </html>

@@ -547,49 +547,63 @@
 
 /* Map Container with Pins */
 .s-global-map { opacity: 0; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
-.map-container { position: relative; }
-.global-map-img { width: 100%; height: auto; display: block; opacity: 0.7; filter: brightness(1.2) contrast(0.9); transition: opacity 0.5s; }
-.s-global-map:hover .global-map-img { opacity: 0.9; }
+.map-container { position: relative; overflow: hidden; }
+.global-map-img { width: 100%; height: auto; display: block; opacity: 0.55; filter: brightness(0.9) saturate(0.7); }
 
-/* Map Pins */
-.map-pin {
-    position: absolute; width: 10px; height: 10px;
-    border-radius: 50%; transform: translate(-50%, -50%);
-    cursor: pointer; z-index: 2;
-    animation: pinPulse 2s ease-in-out infinite;
-}
-.map-pin::before {
-    content: ''; position: absolute; inset: -4px;
-    border-radius: 50%; border: 1px solid currentColor; opacity: 0.3;
-    animation: pinRipple 2s ease-out infinite;
-}
-.map-pin::after {
-    content: attr(data-label);
-    position: absolute; bottom: calc(100% + 6px); left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--font-mono); font-size: 0.42rem;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: #fff; white-space: nowrap;
-    background: rgba(11,31,58,0.9); padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-    opacity: 0; transition: opacity 0.3s;
+/* SVG Interactive Overlay */
+.map-svg-overlay {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
     pointer-events: none;
 }
-.map-pin:hover::after { opacity: 1; }
-
-.map-pin[data-type="hq"] { background: var(--gold); color: var(--gold); }
-.map-pin[data-type="mfg"] { background: #4CAF50; color: #4CAF50; }
-.map-pin[data-type="office"] { background: #2196F3; color: #2196F3; }
-.map-pin[data-type="export"] { background: rgba(255,255,255,0.6); color: rgba(255,255,255,0.6); width: 6px; height: 6px; }
-
-@keyframes pinPulse {
-    0%, 100% { box-shadow: 0 0 0 0 currentColor; }
-    50% { box-shadow: 0 0 0 4px transparent; }
+.map-svg-overlay .arc-path {
+    fill: none; stroke: var(--gold); stroke-width: 1.2;
+    stroke-linecap: round; opacity: 0.6;
+    stroke-dasharray: 600; stroke-dashoffset: 600;
+    transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+    filter: url(#glow);
 }
-@keyframes pinRipple {
-    0% { transform: scale(1); opacity: 0.4; }
-    100% { transform: scale(2.5); opacity: 0; }
+.map-svg-overlay .arc-path.drawn { stroke-dashoffset: 0; }
+.map-svg-overlay .arc-dot {
+    fill: transparent; stroke: var(--gold); stroke-width: 1;
+    opacity: 0; transition: opacity 0.4s;
 }
+.map-svg-overlay .arc-dot.shown { opacity: 0.5; }
+
+/* Marker styles rendered via JS */
+.map-svg-overlay .marker-hq { cursor: pointer; pointer-events: all; }
+.map-svg-overlay .marker-export { cursor: pointer; pointer-events: all; }
+.map-svg-overlay .marker-office { cursor: pointer; pointer-events: all; }
+
+/* Pulse animation for SVG circles */
+@keyframes svgPulse {
+    0%   { r: 4; opacity: 0.8; }
+    70%  { r: 12; opacity: 0; }
+    100% { r: 12; opacity: 0; }
+}
+@keyframes svgPulseSmall {
+    0%   { r: 3; opacity: 0.6; }
+    70%  { r: 8; opacity: 0; }
+    100% { r: 8; opacity: 0; }
+}
+.map-pulse-hq { animation: svgPulse 2s ease-out infinite; }
+.map-pulse-export { animation: svgPulseSmall 2.5s ease-out infinite; }
+
+/* Tooltip */
+.map-tooltip {
+    position: absolute; pointer-events: none;
+    background: rgba(8,14,22,0.92); backdrop-filter: blur(8px);
+    border: 1px solid rgba(200,168,75,0.35);
+    color: #fff; padding: 0.5rem 0.8rem;
+    border-radius: 6px; font-size: 0.72rem; line-height: 1.5;
+    white-space: nowrap; opacity: 0;
+    transform: translate(-50%, -110%);
+    transition: opacity 0.2s ease;
+    z-index: 10;
+}
+.map-tooltip.visible { opacity: 1; }
+.map-tooltip .tt-name { font-weight: 700; color: var(--gold); font-size: 0.75rem; }
+.map-tooltip .tt-type { color: rgba(255,255,255,0.55); font-size: 0.65rem; letter-spacing: 0.06em; }
 
 /* Map Legend */
 .map-legend {
