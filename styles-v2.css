@@ -29,6 +29,7 @@
     --header-bg: var(--navy);
 
     --font-body: 'Poppins', -apple-system, sans-serif;
+    --font-display: 'Poppins', -apple-system, sans-serif;
     --font-mono: 'DM Mono', 'Courier New', monospace;
 
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -784,7 +785,7 @@ a, button, [data-cursor] { cursor: pointer; }
 .section-eyebrow { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--navy); font-weight: 700; margin-bottom: 0.8rem; }
 .section-eyebrow-light { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 700; margin-bottom: 0.8rem; }
 .section-title { font-family: var(--font-body); font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 800; line-height: 1.08; color: var(--text-primary); letter-spacing: -0.02em; }
-.section-title em { font-style: normal; color: var(--navy); font-weight: 700; }
+.section-title em { font-style: normal; color: var(--gold-dark); font-weight: 700; }
 .section-title-light { font-family: var(--font-body); font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 800; line-height: 1.08; color: #FFFFFF; letter-spacing: -0.02em; }
 .section-title-light em { font-style: normal; color: var(--gold); font-weight: 700; }
 .section-desc { font-size: 1rem; line-height: 1.75; color: var(--text-muted); max-width: 600px; margin-top: 1rem; }
