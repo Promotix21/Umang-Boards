@@ -46,8 +46,8 @@
     --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
     --utility-h: 36px;
-    --header-h: 72px;
-    --header-h-scrolled: 64px;
+    --header-h: 80px;
+    --header-h-scrolled: 72px;
 }
 
 /* ---- RESET ---- */
@@ -339,7 +339,7 @@ a, button, [data-cursor] { cursor: pointer; }
 /* Logo — brand colours on light bg */
 .logo { display: flex; align-items: center; gap: 0.8rem; z-index: 10; text-decoration: none; }
 .logo-icon {
-    width: 44px; height: auto;
+    width: 60px; height: auto;
     transition: transform 0.4s var(--ease-out-expo);
 }
 .logo:hover .logo-icon { transform: scale(1.05); }
@@ -351,7 +351,7 @@ a, button, [data-cursor] { cursor: pointer; }
     50% { transform: scale(1.06); }
 }
 .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
-.logo-line { font-family: 'UmangLogo', var(--font-body); font-size: 0.85rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); display: block; }
+.logo-line { font-family: 'UmangLogo', var(--font-body); font-size: 0.85rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: #376eb4; display: block; }
 
 /* Desktop Nav — dark links on light bg */
 .nav-desktop { display: flex; align-items: center; }
@@ -943,8 +943,7 @@ a, button, [data-cursor] { cursor: pointer; }
   align-items: center;
   justify-content: center;
   background: var(--pre-bg);
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-              visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), visibility 1s;
 }
 
 .preloader.is-exiting {
@@ -973,7 +972,6 @@ a, button, [data-cursor] { cursor: pointer; }
   opacity: 1;
 }
 
-/* Noise texture (canvas-rendered) */
 .preloader .bg-layer--noise {
   mix-blend-mode: multiply;
   opacity: 0;
@@ -982,7 +980,6 @@ a, button, [data-cursor] { cursor: pointer; }
   opacity: 0.35;
 }
 
-/* Engineering grid */
 .preloader .bg-layer--grid {
   background-image:
     linear-gradient(var(--pre-grid-color) 1px, transparent 1px),
@@ -997,7 +994,6 @@ a, button, [data-cursor] { cursor: pointer; }
   background-position: center center;
 }
 
-/* Crosshair marks */
 .preloader .bg-layer--crosshairs {
   width: 100%;
   height: 100%;
@@ -1006,7 +1002,6 @@ a, button, [data-cursor] { cursor: pointer; }
   opacity: 0.6;
 }
 
-/* Radial vignette */
 .preloader .bg-layer--vignette {
   background: radial-gradient(
     ellipse 65% 65% at 50% 50%,
@@ -1022,18 +1017,6 @@ a, button, [data-cursor] { cursor: pointer; }
 }
 
 
-/* ---------- SPARK PARTICLE CANVAS ---------- */
-
-.preloader .spark-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-}
-
-
 /* ---------- CENTER STAGE ---------- */
 
 .preloader__stage {
@@ -1043,14 +1026,15 @@ a, button, [data-cursor] { cursor: pointer; }
   justify-content: center;
   position: relative;
   z-index: 3;
+  gap: 40px;
 }
 
 
 /* ---------- LOGO CONTAINER ---------- */
 
 .preloader .logo-wrap {
-  width: clamp(150px, 30vmin, 240px);
-  height: clamp(150px, 30vmin, 240px);
+  width: clamp(180px, 32vmin, 260px);
+  height: clamp(180px, 32vmin, 260px);
   position: relative;
   will-change: transform;
 }
@@ -1068,203 +1052,137 @@ a, button, [data-cursor] { cursor: pointer; }
 }
 
 
-/* ---------- Electric halo ring ---------- */
-.preloader .electric-halo {
+/* ---------- CAD-STYLE SVG PATH DRAWING ---------- */
+
+.preloader .logo-path {
+  fill: transparent;
+  stroke: #0ea5e9;
+  stroke-width: 2;
+  transition: fill 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+              stroke 1.2s ease,
+              stroke-width 1.2s ease;
+}
+
+.preloader .draw-active .logo-path {
+  animation: preDrawStroke 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes preDrawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Fill phase: paths get their real colors */
+.preloader .fill-active .color-1 .logo-path { fill: #566066; stroke: transparent; }
+.preloader .fill-active .color-2 .logo-path { fill: #e8caa4; stroke: transparent; }
+.preloader .fill-active .color-3 .logo-path {
+  fill: #f6f8f8;
+  stroke: #cbd5e1;
+  stroke-width: 1;
+}
+
+
+/* ---------- SCANNER LINE ---------- */
+
+.preloader .scanner {
   position: absolute;
-  inset: -18%;
-  border-radius: 50%;
-  border: 1.5px solid transparent;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 2px;
+  background: #0ea5e9;
+  box-shadow: 0 0 15px 2px rgba(14, 165, 233, 0.6);
   opacity: 0;
-  transition: opacity 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
-  pointer-events: none;
+  transform: translateY(0);
+  z-index: 20;
 }
 
-.preloader .electric-halo.is-active {
-  opacity: 1;
-  border-color: rgba(74, 144, 226, 0.2);
-  box-shadow:
-    0 0 20px rgba(74, 144, 226, 0.08),
-    inset 0 0 20px rgba(74, 144, 226, 0.04);
-  animation: preHaloPulse 1.2s ease-in-out infinite;
+.preloader .scan-active .scanner {
+  animation: preScanMove 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.preloader .electric-halo.is-stabilized {
-  animation: none;
-  border-color: rgba(232, 202, 164, 0.3);
-  box-shadow:
-    0 0 15px rgba(232, 202, 164, 0.06),
-    inset 0 0 15px rgba(232, 202, 164, 0.03);
-  transition: all 1s ease;
-}
-
-.preloader .electric-halo.is-fading {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-@keyframes preHaloPulse {
-  0%, 100% {
-    border-color: rgba(74, 144, 226, 0.15);
-    box-shadow: 0 0 15px rgba(74, 144, 226, 0.05), inset 0 0 15px rgba(74, 144, 226, 0.03);
-  }
-  50% {
-    border-color: rgba(74, 144, 226, 0.3);
-    box-shadow: 0 0 30px rgba(74, 144, 226, 0.1), inset 0 0 30px rgba(74, 144, 226, 0.06);
-  }
-}
-
-
-/* ---------- SVG LAYER VISIBILITY ---------- */
-
-.preloader .svg-layer[data-layer="main"] {
-  opacity: 0;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.preloader .svg-layer[data-layer="main"].is-visible {
-  opacity: 1;
-}
-
-.preloader .svg-layer[data-layer="zigzag"] {
-  opacity: 0;
-  transition: opacity 0.5s ease 0.1s;
-}
-.preloader .svg-layer[data-layer="zigzag"].is-visible {
-  opacity: 1;
-}
-
-
-/* ---------- ELECTRIC STROKE ANIMATION ---------- */
-
-.preloader .electric-stroke {
-  will-change: stroke-dashoffset, opacity;
-}
-
-.preloader .electric-stroke.is-drawing {
-  opacity: 1 !important;
-  transition: opacity 0.2s ease;
-}
-
-.preloader .electric-stroke.is-pulsing {
-  animation: preStrokeFlicker 0.3s ease-in-out infinite alternate;
-}
-
-@keyframes preStrokeFlicker {
-  0%   { opacity: 0.6; }
-  30%  { opacity: 1; }
-  60%  { opacity: 0.75; }
-  100% { opacity: 0.95; }
-}
-
-.preloader .electric-stroke.is-stabilizing {
-  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0 !important;
+@keyframes preScanMove {
+  0% { opacity: 0; transform: translateY(0); }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(340px); }
 }
 
 
 /* ---------- BRAND TEXT SYSTEM ---------- */
 
 .preloader .brand-text {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Decorative horizontal rules */
-.preloader .brand-rule {
-  width: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--pre-dark), transparent);
+  text-align: center;
   opacity: 0;
-  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.5s ease;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.preloader .brand-rule.is-visible {
-  width: clamp(120px, 30vw, 280px);
-  opacity: 0.25;
-}
-
-.preloader .brand-rule--bottom {
-  background: linear-gradient(90deg, transparent, var(--pre-board), transparent);
-}
-
-/* Company name — uses UmangLogo custom font */
-.preloader .company-name {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0 0.55em;
-  font-family: 'UmangLogo', var(--font-mono);
-  font-size: clamp(11px, 2.5vmin, 15px);
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  color: var(--pre-dark);
-  text-transform: uppercase;
-  line-height: 1.6;
-}
-
-.preloader .company-name__word {
-  display: inline-flex;
-}
-
-/* Individual character animation */
-.preloader .company-name__char {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(14px) scaleY(0.3);
-  transform-origin: bottom center;
-  filter: blur(4px);
-  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.preloader .company-name__char.is-revealed {
-  opacity: 1;
-  transform: translateY(0) scaleY(1);
-  filter: blur(0);
-}
-
-
-/* ---------- Tagline ---------- */
-.preloader .tagline {
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: clamp(9px, 1.5vmin, 12px);
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  color: var(--pre-text-muted);
-  text-transform: uppercase;
-  overflow: hidden;
-  position: relative;
-}
-
-.preloader .tagline__inner {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.preloader .tagline.is-visible .tagline__inner {
+.preloader .brand-text.text-active {
   opacity: 1;
   transform: translateY(0);
 }
 
-
-/* ---------- LOGO SCALE SETTLE (Phase 7) ---------- */
-
-@keyframes preSpringSettle {
-  0%   { transform: scale(1.05); }
-  40%  { transform: scale(0.985); }
-  70%  { transform: scale(1.01); }
-  100% { transform: scale(1.0); }
+.preloader .brand-name {
+  font-family: 'UmangLogo', var(--font-mono);
+  font-size: clamp(16px, 3vmin, 24px);
+  font-weight: 600;
+  color: var(--pre-dark, #0f172a);
+  letter-spacing: 12px;
+  margin-bottom: 8px;
+  position: relative;
+  display: inline-block;
+  transition: letter-spacing 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  white-space: nowrap;
 }
 
-.preloader .logo-wrap.is-settling {
-  animation: preSpringSettle 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+.preloader .brand-text.text-active .brand-name {
+  letter-spacing: 4px;
+}
+
+.preloader .sub-text {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: clamp(9px, 1.5vmin, 11px);
+  font-weight: 500;
+  color: var(--pre-text-muted, #64748b);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* Highlight sweep */
+.preloader .brand-name::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+  transform: skewX(-20deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader .sweep-active .brand-name::after {
+  animation: preSweep 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes preSweep {
+  0% { left: -100%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 200%; opacity: 0; }
+}
+
+
+/* ---------- DEPTH & SHADOW (Phase 7) ---------- */
+
+.preloader .depth-active .logo-wrap {
+  filter: drop-shadow(0 10px 15px rgba(15, 23, 42, 0.1));
+  transform: translateZ(0) scale(1.02);
+  transition: filter 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 
@@ -1281,16 +1199,16 @@ a, button, [data-cursor] { cursor: pointer; }
 /* ---------- PRELOADER RESPONSIVE ---------- */
 
 @media (max-width: 480px) {
-  .preloader .company-name {
-    letter-spacing: 0.14em;
-    gap: 0 0.4em;
+  .preloader .brand-name {
+    font-size: clamp(12px, 2.5vmin, 16px);
+    letter-spacing: 6px;
   }
-  .preloader .brand-text {
-    margin-top: 22px;
+  .preloader .brand-text.text-active .brand-name {
+    letter-spacing: 2px;
   }
   .preloader .logo-wrap {
-    width: clamp(120px, 38vmin, 180px);
-    height: clamp(120px, 38vmin, 180px);
+    width: clamp(140px, 38vmin, 200px);
+    height: clamp(140px, 38vmin, 200px);
   }
 }
 

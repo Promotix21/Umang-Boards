@@ -1338,8 +1338,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* =============================================================
-   PREMIUM PRELOADER — IIFE
-   8-phase animated brand reveal
+   PREMIUM PRELOADER — CAD-Style Animation
+   Phases: Grid → Stroke Draw → Scanner → Fill → Text → Sweep → Depth → Exit
    ============================================================= */
 ;(function () {
   'use strict';
@@ -1348,78 +1348,38 @@ document.addEventListener('DOMContentLoaded', () => {
      TIMING CONFIGURATION (ms)
      ======================================================================== */
   var T = {
-    BG_INITIAL_DELAY:       80,
-    BG_NOISE_FADE:          400,
-    BG_GRID_DELAY:          100,
-    BG_GRID_FADE:           600,
-    BG_CROSSHAIR_DELAY:     150,
-    BG_VIGNETTE_DELAY:      50,
-    STROKE_DELAY:           400,
-    STROKE_DRAW_DURATION:   1100,
-    STROKE_STAGGER:         80,
-    MAIN_SHAPE_DELAY:       200,
-    ZIGZAG_DELAY:           300,
-    GLOW_DELAY:             250,
-    GLOW_TRAVEL_DURATION:   1000,
-    GLOW_TRAIL_OFFSET:      0.06,
-    SPARK_DURATION:         1200,
-    BOARD_DELAY:            200,
-    BOARD_SLIDE_DURATION:   800,
-    BOARD_OVERSHOOT:        20,
-    STABILIZE_DELAY:        150,
-    STABILIZE_FADE:         1000,
-    RIPPLE_STAGGER:         200,
-    RIPPLE_EXPAND:          1200,
-    RIPPLE_MAX_RADIUS:      180,
-    TEXT_DELAY:             350,
-    RULE_EXPAND:            500,
-    CHAR_STAGGER:           45,
-    CHAR_ANIM_DURATION:     450,
-    TAGLINE_DELAY:          300,
-    SETTLE_DELAY:           150,
-    SHADOW_DELAY:           350,
-    EXIT_HOLD:              1100,
-    EXIT_DURATION:          800,
+    BG_INITIAL_DELAY:   80,
+    BG_NOISE_FADE:      400,
+    BG_GRID_DELAY:      100,
+    BG_CROSSHAIR_DELAY: 150,
+    BG_VIGNETTE_DELAY:  50,
+    PHASE_DRAW:         800,
+    PHASE_SCAN:         3000,
+    PHASE_FILL:         3800,
+    PHASE_TEXT:          4600,
+    PHASE_SWEEP:        5800,
+    PHASE_DEPTH:        6300,
+    PHASE_EXIT:         7500,
+    EXIT_DURATION:      800,
   };
 
   /* ========================================================================
      DOM CACHE
      ======================================================================== */
   var _$ = function(sel) { return document.querySelector(sel); };
-  var _$$ = function(sel) { return document.querySelectorAll(sel); };
 
   var dom = {
-    preloader:      _$('#preloader'),
-    noiseCanvas:    _$('#noiseCanvas'),
-    gridLayer:      _$('.preloader .bg-layer--grid'),
-    crosshairsSVG:  _$('#crosshairsSVG'),
-    vignetteLayer:  _$('.preloader .bg-layer--vignette'),
-    sparkCanvas:    _$('#sparkCanvas'),
-    logoWrap:       _$('#logoWrap'),
-    logoSVG:        _$('#logoSVG'),
-    electricHalo:   _$('#electricHalo'),
-    mainShape:      _$('#mainShape'),
-    zigzagDetail:   _$('#zigzagDetail'),
-    strokeOuter:    _$('#strokeOuter'),
-    strokeCore:     _$('#strokeCore'),
-    strokeCenter:   _$('#strokeCenter'),
-    glowComet:      _$('#glowComet'),
-    glowCore:       _$('#glowCore'),
-    trail1:         _$('#trail1'),
-    trail2:         _$('#trail2'),
-    trail3:         _$('#trail3'),
-    ripple1:        _$('#ripple1'),
-    ripple2:        _$('#ripple2'),
-    ripple3:        _$('#ripple3'),
-    boardClipRect:  _$('#boardClipRect'),
-    brandText:      _$('#brandText'),
-    brandRuleTop:   _$('#brandRuleTop'),
-    brandRuleBottom: _$('#brandRuleBottom'),
-    companyName:    _$('#companyName'),
-    tagline:        _$('#tagline'),
+    preloader:     _$('#preloader'),
+    noiseCanvas:   _$('#noiseCanvas'),
+    gridLayer:     _$('.preloader .bg-layer--grid'),
+    crosshairsSVG: _$('#crosshairsSVG'),
+    vignetteLayer: _$('.preloader .bg-layer--vignette'),
+    logoWrap:      _$('#logoWrap'),
+    logoSVG:       _$('#logoSVG'),
+    brandText:     _$('#brandText'),
+    companyName:   _$('#companyName'),
   };
 
-  // Early exit if preloader not in DOM
   if (!dom.preloader) return;
 
   /* ========================================================================
@@ -1427,84 +1387,6 @@ document.addEventListener('DOMContentLoaded', () => {
      ======================================================================== */
   function wait(ms) {
     return new Promise(function(r) { setTimeout(r, ms); });
-  }
-
-  function tween(from, to, duration, easeFn, onUpdate) {
-    return new Promise(function(resolve) {
-      var t0 = performance.now();
-      function tick(now) {
-        var raw = Math.min((now - t0) / duration, 1);
-        var eased = easeFn(raw);
-        var val = from + (to - from) * eased;
-        onUpdate(val, raw);
-        if (raw < 1) requestAnimationFrame(tick);
-        else resolve();
-      }
-      requestAnimationFrame(tick);
-    });
-  }
-
-  function tweenParallel() {
-    var configs = Array.prototype.slice.call(arguments);
-    return Promise.all(configs.map(function(c) { return tween.apply(null, c); }));
-  }
-
-  /* ========================================================================
-     EASING
-     ======================================================================== */
-  var ease = {
-    linear:     function(t) { return t; },
-    outCubic:   function(t) { return 1 - Math.pow(1 - t, 3); },
-    outQuart:   function(t) { return 1 - Math.pow(1 - t, 4); },
-    outQuint:   function(t) { return 1 - Math.pow(1 - t, 5); },
-    inOutCubic: function(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; },
-    inOutQuart: function(t) { return t < 0.5 ? 8*t*t*t*t : 1 - Math.pow(-2*t+2, 4)/2; },
-    outBack: function(t) {
-      var c1 = 1.70158;
-      var c3 = c1 + 1;
-      return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
-    },
-    outElastic: function(t) {
-      if (t === 0 || t === 1) return t;
-      return Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * (2 * Math.PI / 3)) + 1;
-    },
-  };
-
-  /* ========================================================================
-     POLYLINE UTILITIES
-     ======================================================================== */
-  function polylineLength(el) {
-    var pts = el.points;
-    var len = 0;
-    for (var i = 1; i < pts.numberOfItems; i++) {
-      var a = pts.getItem(i - 1), b = pts.getItem(i);
-      len += Math.hypot(b.x - a.x, b.y - a.y);
-    }
-    return len;
-  }
-
-  function polylinePointAt(el, frac) {
-    var pts = el.points;
-    var segs = [];
-    var total = 0;
-    for (var i = 1; i < pts.numberOfItems; i++) {
-      var a = pts.getItem(i - 1), b = pts.getItem(i);
-      var l = Math.hypot(b.x - a.x, b.y - a.y);
-      segs.push({ x0: a.x, y0: a.y, x1: b.x, y1: b.y, len: l });
-      total += l;
-    }
-    var target = Math.max(0, Math.min(1, frac)) * total;
-    var acc = 0;
-    for (var j = 0; j < segs.length; j++) {
-      var s = segs[j];
-      if (acc + s.len >= target) {
-        var f = (target - acc) / s.len;
-        return { x: s.x0 + (s.x1 - s.x0) * f, y: s.y0 + (s.y1 - s.y0) * f };
-      }
-      acc += s.len;
-    }
-    var last = pts.getItem(pts.numberOfItems - 1);
-    return { x: last.x, y: last.y };
   }
 
   /* ========================================================================
@@ -1556,125 +1438,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ========================================================================
-     SPARK PARTICLE SYSTEM
-     ======================================================================== */
-  var sparkSystem = {
-    canvas: null,
-    ctx: null,
-    particles: [],
-    running: false,
-    rafId: null,
-
-    init: function(canvas) {
-      this.canvas = canvas;
-      this.ctx = canvas.getContext('2d');
-      this.resize();
-      var self = this;
-      window.addEventListener('resize', function() { self.resize(); });
-    },
-
-    resize: function() {
-      this.canvas.width = window.innerWidth;
-      this.canvas.height = window.innerHeight;
-    },
-
-    emit: function(sx, sy, color, count, type) {
-      type = type || 'electric';
-      for (var i = 0; i < count; i++) {
-        var angle = Math.random() * Math.PI * 2;
-        var speed = 0.5 + Math.random() * 2.5;
-        var life = 300 + Math.random() * 500;
-        this.particles.push({
-          x: sx, y: sy,
-          vx: Math.cos(angle) * speed * (type === 'electric' ? 1.5 : 0.8),
-          vy: Math.sin(angle) * speed * (type === 'electric' ? 1.5 : 0.8),
-          life: life, maxLife: life,
-          size: 1 + Math.random() * 2,
-          color: color, type: type,
-        });
-      }
-      if (!this.running) this.start();
-    },
-
-    start: function() {
-      this.running = true;
-      var self = this;
-      var loop = function() {
-        if (!self.running) return;
-        self.update();
-        self.draw();
-        if (self.particles.length > 0) {
-          self.rafId = requestAnimationFrame(loop);
-        } else {
-          self.running = false;
-        }
-      };
-      this.rafId = requestAnimationFrame(loop);
-    },
-
-    stop: function() {
-      this.running = false;
-      if (this.rafId) cancelAnimationFrame(this.rafId);
-    },
-
-    update: function() {
-      for (var i = this.particles.length - 1; i >= 0; i--) {
-        var p = this.particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.03;
-        p.vx *= 0.98;
-        p.vy *= 0.98;
-        p.life -= 16;
-        if (p.life <= 0) this.particles.splice(i, 1);
-      }
-    },
-
-    draw: function() {
-      var ctx = this.ctx;
-      ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      for (var i = 0; i < this.particles.length; i++) {
-        var p = this.particles[i];
-        var alpha = Math.max(0, p.life / p.maxLife);
-        ctx.globalAlpha = alpha;
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * alpha, 0, Math.PI * 2);
-        ctx.fill();
-        if (p.type === 'electric') {
-          ctx.globalAlpha = alpha * 0.3;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * alpha * 3, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-      ctx.globalAlpha = 1;
-    },
-
-    clear: function() {
-      this.particles = [];
-      if (this.ctx) {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      }
-    }
-  };
-
-  /* ========================================================================
-     SVG TO SCREEN
-     ======================================================================== */
-  function svgToScreen(svgX, svgY) {
-    var svgEl = dom.logoSVG;
-    var rect = svgEl.getBoundingClientRect();
-    var viewBox = svgEl.viewBox.baseVal;
-    var scaleX = rect.width / viewBox.width;
-    var scaleY = rect.height / viewBox.height;
-    return {
-      x: rect.left + (svgX - viewBox.x) * scaleX,
-      y: rect.top + (svgY - viewBox.y) * scaleY,
-    };
-  }
-
-  /* ========================================================================
      PHASE 1: Background layers
      ======================================================================== */
   async function phase1() {
@@ -1693,208 +1456,64 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ========================================================================
-     PHASE 2: Lightning stroke draw
+     PHASE 2: CAD stroke draw
      ======================================================================== */
-  async function phase2() {
-    await wait(T.STROKE_DELAY);
-    dom.electricHalo.classList.add('is-active');
-
-    var strokes = [dom.strokeOuter, dom.strokeCore, dom.strokeCenter];
-    strokes.forEach(function(s) {
-      var len = polylineLength(s);
-      s.style.strokeDasharray = len;
-      s.style.strokeDashoffset = len;
-      s._totalLength = len;
-    });
-
-    var drawPromises = strokes.map(function(s, idx) {
-      return new Promise(async function(resolve) {
-        await wait(T.STROKE_STAGGER * idx);
-        s.classList.add('is-drawing');
-        await tween(s._totalLength, 0, T.STROKE_DRAW_DURATION, ease.inOutCubic, function(val) {
-          s.style.strokeDashoffset = val;
-        });
-        resolve();
-      });
+  function setupAndDraw() {
+    var logoPaths = dom.logoSVG.querySelectorAll('.logo-path');
+    logoPaths.forEach(function(path) {
+      var length = path.getTotalLength();
+      path.style.strokeDasharray = length;
+      path.style.strokeDashoffset = length;
     });
 
     setTimeout(function() {
-      dom.mainShape.classList.add('is-visible');
-    }, T.MAIN_SHAPE_DELAY);
-
-    await Promise.all(drawPromises);
-    await wait(T.ZIGZAG_DELAY);
-    dom.zigzagDetail.classList.add('is-visible');
+      dom.logoWrap.classList.add('draw-active');
+    }, T.PHASE_DRAW);
   }
 
   /* ========================================================================
-     PHASE 3: Energy comet travel + sparks
+     PHASES 3-7: Timed class additions
      ======================================================================== */
-  async function phase3() {
-    await wait(T.GLOW_DELAY);
-    sparkSystem.init(dom.sparkCanvas);
+  function schedulePhases() {
+    // Phase 3: Scanner
+    setTimeout(function() {
+      dom.logoWrap.classList.add('scan-active');
+    }, T.PHASE_SCAN);
 
-    [dom.strokeOuter, dom.strokeCore, dom.strokeCenter].forEach(function(s) {
-      s.classList.add('is-pulsing');
-    });
+    // Phase 4: Fill with color
+    setTimeout(function() {
+      dom.logoWrap.classList.add('fill-active');
+    }, T.PHASE_FILL);
 
-    var travelers = [dom.glowComet, dom.glowCore, dom.trail1, dom.trail2, dom.trail3];
-    travelers.forEach(function(t) { t.setAttribute('opacity', '0.9'); });
+    // Phase 5: Text appears with letter-spacing reduction
+    setTimeout(function() {
+      dom.brandText.classList.add('text-active');
+    }, T.PHASE_TEXT);
 
-    var pathEl = dom.strokeCore;
+    // Phase 6: Highlight sweep
+    setTimeout(function() {
+      dom.companyName.classList.add('sweep-active');
+    }, T.PHASE_SWEEP);
 
-    await tween(0, 1, T.GLOW_TRAVEL_DURATION, ease.inOutQuart, function(frac) {
-      var p = polylinePointAt(pathEl, frac);
-      dom.glowComet.setAttribute('cx', p.x);
-      dom.glowComet.setAttribute('cy', p.y);
-      dom.glowCore.setAttribute('cx', p.x);
-      dom.glowCore.setAttribute('cy', p.y);
-
-      var offsets = [T.GLOW_TRAIL_OFFSET, T.GLOW_TRAIL_OFFSET * 2, T.GLOW_TRAIL_OFFSET * 3];
-      var trails = [dom.trail1, dom.trail2, dom.trail3];
-      var trailOpacities = [0.6, 0.4, 0.2];
-
-      trails.forEach(function(trail, i) {
-        var trailFrac = Math.max(0, frac - offsets[i]);
-        var tp = polylinePointAt(pathEl, trailFrac);
-        trail.setAttribute('cx', tp.x);
-        trail.setAttribute('cy', tp.y);
-        trail.setAttribute('opacity', frac > offsets[i] ? trailOpacities[i] : 0);
-      });
-
-      if (Math.random() > 0.5) {
-        var screenPt = svgToScreen(p.x, p.y);
-        sparkSystem.emit(screenPt.x, screenPt.y, '#7BB3F0', 1, 'electric');
-      }
-      if (Math.random() > 0.85) {
-        var screenPt2 = svgToScreen(p.x, p.y);
-        sparkSystem.emit(screenPt2.x, screenPt2.y, '#FFFFFF', 1, 'electric');
-      }
-    });
-
-    [dom.strokeOuter, dom.strokeCore, dom.strokeCenter].forEach(function(s) {
-      s.classList.remove('is-pulsing');
-    });
-    travelers.forEach(function(t) { t.setAttribute('opacity', '0'); });
+    // Phase 7: Depth and shadow
+    setTimeout(function() {
+      dom.preloader.classList.add('depth-active');
+    }, T.PHASE_DEPTH);
   }
 
   /* ========================================================================
-     PHASE 4: Insulation board diagonal slide
+     PHASE 8: Exit
      ======================================================================== */
-  async function phase4() {
-    await wait(T.BOARD_DELAY);
-    var overshoot = T.BOARD_OVERSHOOT;
+  function scheduleExit() {
+    setTimeout(function() {
+      dom.preloader.classList.add('is-exiting');
+      document.body.style.overflow = 'auto';
 
-    await tween(-800, overshoot, T.BOARD_SLIDE_DURATION * 0.75, ease.outCubic, function(val) {
-      dom.boardClipRect.setAttribute('x', val);
-    });
-
-    await tween(overshoot, 0, T.BOARD_SLIDE_DURATION * 0.25, ease.outQuart, function(val) {
-      dom.boardClipRect.setAttribute('x', val);
-    });
-
-    var boardTop = svgToScreen(468, 83);
-    var boardBot = svgToScreen(166, 524);
-    for (var i = 0; i < 5; i++) {
-      var f = 0.2 + Math.random() * 0.6;
-      var sx = boardTop.x + (boardBot.x - boardTop.x) * f;
-      var sy = boardTop.y + (boardBot.y - boardTop.y) * f;
-      sparkSystem.emit(sx, sy, '#e8caa4', 3, 'warm');
-    }
-  }
-
-  /* ========================================================================
-     PHASE 5: Stabilization
-     ======================================================================== */
-  async function phase5() {
-    await wait(T.STABILIZE_DELAY);
-
-    dom.electricHalo.classList.remove('is-active');
-    dom.electricHalo.classList.add('is-stabilized');
-
-    [dom.strokeOuter, dom.strokeCore, dom.strokeCenter].forEach(function(s) {
-      s.classList.remove('is-drawing');
-      s.classList.add('is-stabilizing');
-    });
-
-    var ripples = [dom.ripple1, dom.ripple2, dom.ripple3];
-    ripples.forEach(function(ripple, idx) {
       setTimeout(function() {
-        ripple.setAttribute('opacity', '0.5');
-        tween(0, T.RIPPLE_MAX_RADIUS, T.RIPPLE_EXPAND, ease.outQuart, function(r) {
-          ripple.setAttribute('r', r);
-          var fadeStart = 0.3;
-          var progress = r / T.RIPPLE_MAX_RADIUS;
-          if (progress > fadeStart) {
-            var alpha = 0.5 * (1 - (progress - fadeStart) / (1 - fadeStart));
-            ripple.setAttribute('opacity', Math.max(0, alpha));
-          }
-        });
-      }, T.RIPPLE_STAGGER * idx);
-    });
-
-    await wait(T.STABILIZE_FADE);
-
-    dom.electricHalo.classList.remove('is-stabilized');
-    dom.electricHalo.classList.add('is-fading');
-
-    await wait(400);
-    sparkSystem.clear();
-  }
-
-  /* ========================================================================
-     PHASE 6: Brand text reveal
-     ======================================================================== */
-  async function phase6() {
-    await wait(T.TEXT_DELAY);
-    dom.brandRuleTop.classList.add('is-visible');
-    await wait(200);
-
-    var chars = dom.companyName.querySelectorAll('.company-name__char');
-    chars.forEach(function(char, i) {
-      setTimeout(function() {
-        char.classList.add('is-revealed');
-      }, i * T.CHAR_STAGGER);
-    });
-
-    await wait(chars.length * T.CHAR_STAGGER + T.CHAR_ANIM_DURATION);
-    await wait(T.TAGLINE_DELAY);
-    dom.tagline.classList.add('is-visible');
-    await wait(200);
-    dom.brandRuleBottom.classList.add('is-visible');
-  }
-
-  /* ========================================================================
-     PHASE 7: Polish
-     ======================================================================== */
-  async function phase7() {
-    await wait(T.SETTLE_DELAY);
-    dom.logoWrap.classList.add('is-settling');
-    await wait(T.SHADOW_DELAY);
-    dom.logoSVG.classList.add('has-shadow');
-  }
-
-  /* ========================================================================
-     PHASE 8: Choreographed exit — adds 'loaded' class to body
-     ======================================================================== */
-  async function phase8() {
-    await wait(T.EXIT_HOLD);
-
-    // Trigger exit transition
-    dom.preloader.classList.add('is-exiting');
-
-    // Wait for transition to complete
-    await wait(T.EXIT_DURATION);
-
-    // Add 'loaded' class to body (matching existing site behavior)
-    document.body.classList.add('loaded');
-
-    // Clean up: remove preloader from DOM
-    await wait(200);
-    dom.preloader.style.display = 'none';
-
-    // Final cleanup
-    sparkSystem.stop();
+        document.body.classList.add('loaded');
+        dom.preloader.style.display = 'none';
+      }, T.EXIT_DURATION);
+    }, T.PHASE_EXIT);
   }
 
   /* ========================================================================
@@ -1903,16 +1522,11 @@ document.addEventListener('DOMContentLoaded', () => {
   async function runPreloader() {
     try {
       await phase1();
-      await phase2();
-      await phase3();
-      await phase4();
-      await phase5();
-      await phase6();
-      await phase7();
-      await phase8();
+      setupAndDraw();
+      schedulePhases();
+      scheduleExit();
     } catch (err) {
       console.error('[Preloader] Animation error:', err);
-      // Graceful fallback
       dom.preloader.classList.add('is-exiting');
       setTimeout(function() {
         dom.preloader.style.display = 'none';
