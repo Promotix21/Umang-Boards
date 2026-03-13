@@ -1197,7 +1197,7 @@ a, button, [data-cursor] { cursor: pointer; }
   justify-content: center;
   flex-wrap: wrap;
   gap: 0 0.55em;
-  font-family: 'UmangLogo', 'DM Mono', monospace;
+  font-family: 'UmangLogo', var(--font-mono);
   font-size: clamp(11px, 2.5vmin, 15px);
   font-weight: 500;
   letter-spacing: 0.24em;
