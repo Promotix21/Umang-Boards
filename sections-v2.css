@@ -409,6 +409,247 @@
 }
 .app-card-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
 
+/* ============================================
+   APPLICATION CAROUSEL (By Applications mode)
+   ============================================ */
+.app-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+}
+
+/* Left content area */
+.app-carousel-left {
+    width: 38%;
+    flex-shrink: 0;
+    padding-right: clamp(1.5rem, 3vw, 3rem);
+    position: relative;
+    z-index: 2;
+}
+.app-carousel-title {
+    font-family: var(--font-body);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+.app-carousel-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 2rem;
+}
+.app-carousel-nav {
+    display: flex;
+    gap: 0.75rem;
+}
+.app-carousel-nav-mobile {
+    display: none;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+.app-carousel-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--border-medium);
+    background: #fff;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out-expo);
+    box-shadow: 0 2px 8px rgba(11,31,58,0.06);
+}
+.app-carousel-arrow:hover {
+    border-color: var(--navy);
+    color: var(--navy);
+    box-shadow: 0 4px 16px rgba(11,31,58,0.12);
+}
+
+/* Right carousel area */
+.app-carousel-right {
+    width: 62%;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+.app-carousel-bg-shape {
+    position: absolute;
+    top: -2rem;
+    right: -4rem;
+    bottom: -2rem;
+    left: 2rem;
+    background: var(--navy);
+    border-radius: 1.5rem 0 0 1.5rem;
+    z-index: 0;
+}
+.app-carousel-track {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 2rem 0 2rem 3rem;
+    position: relative;
+    z-index: 1;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.app-carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual carousel card */
+.app-carousel-card {
+    flex: 0 0 280px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(11,31,58,0.12);
+    scroll-snap-align: start;
+    transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+.app-carousel-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(11,31,58,0.18);
+}
+
+/* Card top accent bar */
+.app-carousel-card-accent {
+    height: 4px;
+    background: var(--gold);
+    width: 100%;
+}
+
+/* Card icon area */
+.app-carousel-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(200,168,75,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    margin: 1.5rem 1.5rem 0;
+    flex-shrink: 0;
+}
+.app-carousel-card-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Card text content */
+.app-carousel-card-body {
+    padding: 1rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.app-carousel-card-title {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+}
+.app-carousel-card-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    flex: 1;
+    margin-bottom: 1rem;
+}
+.app-carousel-card-link {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.2s;
+    align-self: flex-start;
+}
+.app-carousel-card-link:hover {
+    color: var(--gold);
+}
+.app-carousel-card-link svg {
+    color: var(--gold);
+}
+
+/* Responsive: Application Carousel */
+@media (max-width: 1024px) {
+    .app-carousel-wrapper {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .app-carousel-left {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 1.5rem;
+    }
+    .app-carousel-nav {
+        display: none;
+    }
+    .app-carousel-nav-mobile {
+        display: flex;
+    }
+    .app-carousel-right {
+        width: calc(100% + 3rem);
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+    }
+    .app-carousel-bg-shape {
+        top: -1rem;
+        right: 0;
+        bottom: -1rem;
+        left: 1rem;
+        border-radius: 1rem 0 0 1rem;
+    }
+    .app-carousel-track {
+        padding: 1.5rem 0 1.5rem 2rem;
+    }
+    .app-carousel-card {
+        flex: 0 0 260px;
+    }
+}
+@media (max-width: 768px) {
+    .app-carousel-bg-shape {
+        left: 0.5rem;
+    }
+    .app-carousel-track {
+        padding: 1.2rem 0 1.2rem 1rem;
+        gap: 1rem;
+    }
+    .app-carousel-card {
+        flex: 0 0 240px;
+    }
+    .app-carousel-card-icon {
+        margin: 1.2rem 1.2rem 0;
+    }
+    .app-carousel-card-body {
+        padding: 0.8rem 1.2rem 1.2rem;
+    }
+}
+
 /* Business Cards (By Business mode) */
 .business-cards {
     display: grid; grid-template-columns: repeat(3, 1fr);
@@ -919,7 +1160,7 @@
     .bento-grid .vc-wide { grid-column: span 2; }
     .bento-grid .vc-img-wide { grid-column: span 2; }
     .product-panel-grid { grid-template-columns: 1fr; }
-    .application-grid { grid-template-columns: repeat(2, 1fr); }
+    /* .application-grid replaced by .app-carousel-wrapper */
     .business-cards { grid-template-columns: repeat(2, 1fr); }
     .s-global-grid { grid-template-columns: 1fr; }
     .s-csr-grid { grid-template-columns: 1fr; }
@@ -937,7 +1178,7 @@
     .bento-grid .vc-img-tall,
     .bento-grid .vc-wide,
     .bento-grid .vc-img-wide { grid-column: span 1; grid-row: span 1; }
-    .application-grid { grid-template-columns: 1fr; }
+    /* .application-grid replaced by .app-carousel-wrapper */
     .business-cards { grid-template-columns: 1fr; }
     .events-grid { grid-template-columns: 1fr; }
     .investor-grid { grid-template-columns: 1fr; }
@@ -963,4 +1204,654 @@
     .sf-brand { grid-column: span 1; }
     .s-footer-bottom { flex-direction: column; text-align: center; }
     .investor-stock-info { flex-direction: column; }
+}
+
+
+/* =============================================================
+   INTERACTIVE EXPORT MAP SECTION
+   Namespaced variables to avoid conflicts with main site
+   ============================================================= */
+
+/* ---------- Map Section CSS Variables ---------- */
+:root {
+  /* Map section light palette */
+  --map-bg: #f4f6f9;
+  --map-bg-card: #ffffff;
+  --map-bg-map: #edf1f7;
+  --map-bg-map-country: #dce3ed;
+  --map-bg-map-country-hover: #c9d3e2;
+  --map-border: #d0d8e4;
+  --map-border-light: #e4e9f0;
+
+  /* Map text (scoped names) */
+  --map-text-primary: #1a1f2e;
+  --map-text-secondary: #5a6478;
+  --map-text-tertiary: #8994a8;
+
+  /* Accent — electric blue for energy/power theme */
+  --map-accent: #0066ff;
+  --map-accent-light: rgba(0, 102, 255, 0.12);
+  --map-accent-glow: rgba(0, 102, 255, 0.35);
+  --map-accent-faint: rgba(0, 102, 255, 0.06);
+
+  /* Region colors */
+  --map-europe: #0066ff;
+  --map-asia: #00b368;
+  --map-namerica: #e85d00;
+  --map-secondary-dot: #8994a8;
+
+  /* Route line color */
+  --map-route: #0066ff;
+  --map-route-dim: rgba(0, 102, 255, 0.08);
+}
+
+
+/* =============================================================
+   MAP SECTION — min-height 80vh, 40/60 split
+   ============================================================= */
+.export-map-section {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  overflow: hidden;
+  background: var(--map-bg);
+}
+
+/* Subtle background grid on the whole section */
+.export-map-section .bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--map-border-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--map-border-light) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* =============================================================
+   MAP LEFT COLUMN — 40%
+   ============================================================= */
+.export-map-section .col-left {
+  position: relative;
+  z-index: 10;
+  width: 40%;
+  min-width: 340px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--map-border);
+  background: var(--map-bg-card);
+}
+
+.export-map-section .col-left__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 40px 24px;
+  gap: 20px;
+}
+
+
+/* ---------- HUD micro bar ---------- */
+.export-map-section .hud-micro {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--map-border-light);
+  background: var(--map-bg);
+}
+
+.export-map-section .hud-micro--bottom {
+  border-bottom: none;
+  border-top: 1px solid var(--map-border-light);
+  margin-top: auto;
+  justify-content: space-between;
+}
+
+.export-map-section .hud-micro__text {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--map-text-tertiary);
+  text-transform: uppercase;
+}
+
+.export-map-section .hud-micro__time {
+  margin-left: auto;
+}
+
+/* Live indicator */
+.export-map-section .hud-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00c853;
+  box-shadow: 0 0 6px rgba(0, 200, 83, 0.5);
+  animation: mapPulse 2s ease-in-out infinite;
+}
+
+.export-map-section .hud-indicator--sm {
+  width: 5px;
+  height: 5px;
+}
+
+@keyframes mapPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+
+/* ---------- Map Typography ---------- */
+.export-map-section .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--map-accent);
+  opacity: 0;
+  animation: mapFadeInUp 0.7s ease forwards 0.2s;
+}
+
+.export-map-section .headline {
+  font-family: var(--font-body);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--map-text-primary);
+  opacity: 0;
+  animation: mapFadeInUp 0.7s ease forwards 0.35s;
+}
+
+.export-map-section .headline .accent {
+  background: linear-gradient(135deg, var(--map-accent), #4d00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.export-map-section .subtext {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--map-text-secondary);
+  max-width: 420px;
+  opacity: 0;
+  animation: mapFadeInUp 0.7s ease forwards 0.5s;
+}
+
+@keyframes mapFadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ---------- Stats Grid ---------- */
+.export-map-section .stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  opacity: 0;
+  animation: mapFadeInUp 0.7s ease forwards 0.65s;
+}
+
+.export-map-section .stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  background: var(--map-bg);
+  border: 1px solid var(--map-border-light);
+  border-radius: 8px;
+}
+
+.export-map-section .stat-card__number {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--map-accent);
+  line-height: 1;
+}
+
+.export-map-section .stat-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--map-text-tertiary);
+  text-transform: uppercase;
+}
+
+
+/* ---------- Legend ---------- */
+.export-map-section .legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: mapFadeInUp 0.7s ease forwards 0.8s;
+}
+
+.export-map-section .legend__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.export-map-section .legend__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.export-map-section .legend__dot--europe { background: var(--map-europe); }
+.export-map-section .legend__dot--asia { background: var(--map-asia); }
+.export-map-section .legend__dot--namerica { background: var(--map-namerica); }
+.export-map-section .legend__dot--secondary { background: var(--map-secondary-dot); opacity: 0.4; }
+
+.export-map-section .legend__text {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--map-text-tertiary);
+  text-transform: uppercase;
+}
+
+
+/* =============================================================
+   MAP RIGHT COLUMN — 60% (Map)
+   ============================================================= */
+.export-map-section .col-right {
+  position: relative;
+  z-index: 5;
+  width: 60%;
+  height: 100%;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--map-bg-map);
+  overflow: hidden;
+}
+
+.export-map-section .map-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.export-map-section #particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.export-map-section #world-map {
+  position: relative;
+  z-index: 1;
+  width: 95%;
+  height: auto;
+  max-height: 90%;
+}
+
+
+/* ---------- SVG Map Styles ---------- */
+
+/* Country fills */
+.export-map-section .countries-group path {
+  fill: var(--map-bg-map-country);
+  stroke: var(--map-bg-map);
+  stroke-width: 0.5;
+  transition: fill 0.3s ease;
+}
+
+/* Highlighted export countries get a tinted fill */
+.export-map-section .countries-group path.country--export {
+  fill: #c2d6f5;
+}
+
+.export-map-section .countries-group path.country--origin {
+  fill: #a8c4f0;
+}
+
+/* Route lines */
+.export-map-section .route-line-bg {
+  fill: none;
+  stroke: var(--map-route-dim);
+  stroke-width: 2.5;
+  stroke-dasharray: 3 6;
+}
+
+.export-map-section .route-line {
+  fill: none;
+  stroke: var(--map-route);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+/* Energy pulse dot on routes */
+.export-map-section .energy-pulse {
+  fill: var(--map-accent);
+  filter: url(#glow-soft);
+}
+
+/* Origin node (India) */
+.export-map-section .origin-glow-circle {
+  fill: url(#origin-glow);
+  animation: mapOriginGlow 3s ease-in-out infinite;
+}
+
+.export-map-section .origin-ring {
+  fill: transparent;
+  stroke: var(--map-accent);
+  stroke-width: 1.5;
+  animation: mapRingPulse 2.5s ease-in-out infinite;
+}
+
+.export-map-section .origin-core {
+  fill: var(--map-accent);
+  filter: url(#glow-origin);
+}
+
+@keyframes mapOriginGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes mapRingPulse {
+  0%, 100% { r: 14; opacity: 0.5; }
+  50% { r: 24; opacity: 0; }
+}
+
+/* Primary market nodes */
+.export-map-section .node-ring {
+  fill: transparent;
+  stroke-width: 1;
+  opacity: 0.5;
+  animation: mapNodeRingPulse 3s ease-in-out infinite;
+}
+
+.export-map-section .node-core {
+  filter: url(#glow-strong);
+  cursor: pointer;
+  transition: r 0.25s ease;
+}
+
+.export-map-section .node-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 6.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  fill: var(--map-text-secondary);
+}
+
+.export-map-section .node-hitarea {
+  fill: transparent;
+  stroke: none;
+  cursor: pointer;
+}
+
+@keyframes mapNodeRingPulse {
+  0%, 100% { r: 10; opacity: 0.4; }
+  50% { r: 16; opacity: 0; }
+}
+
+/* Secondary dots */
+.export-map-section .secondary-dot {
+  fill: var(--map-secondary-dot);
+  opacity: 0.18;
+  animation: mapSecPulse 4.5s ease-in-out infinite;
+}
+
+@keyframes mapSecPulse {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.28; }
+}
+
+/* Origin label */
+.export-map-section .origin-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 7.5px;
+  font-weight: 700;
+  fill: var(--map-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+
+/* =============================================================
+   MAP TOOLTIP — Glassmorphism on light
+   ============================================================= */
+.tooltip-panel {
+  position: fixed;
+  z-index: 200;
+  width: 280px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--map-border);
+  border-radius: 10px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px) scale(0.97);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 102, 255, 0.06);
+}
+
+.tooltip-panel.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.tooltip-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.tooltip-panel__region {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--map-accent);
+}
+
+.tooltip-panel__status {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #00c853;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tooltip-panel__country {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--map-text-primary);
+  margin-bottom: 10px;
+}
+
+.tooltip-panel__divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--map-accent-light), transparent);
+  margin-bottom: 12px;
+}
+
+.tooltip-panel__section {
+  margin-bottom: 10px;
+}
+
+.tooltip-panel__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--map-text-tertiary);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.tooltip-panel__products {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tooltip-panel__products li {
+  font-size: 0.72rem;
+  color: var(--map-text-secondary);
+  padding: 2px 0 2px 12px;
+  position: relative;
+}
+
+.tooltip-panel__products li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--map-accent);
+  transform: translateY(-50%);
+}
+
+.tooltip-panel__value {
+  font-size: 0.74rem;
+  color: var(--map-text-secondary);
+}
+
+.tooltip-panel__value--accent {
+  color: var(--map-accent);
+  font-weight: 600;
+}
+
+.tooltip-panel__metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.tooltip-panel__bar {
+  width: 100%;
+  height: 3px;
+  background: var(--map-border-light);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.tooltip-panel__bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--map-accent), #4d00ff);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =============================================================
+   MAP SECTION RESPONSIVE
+   ============================================================= */
+@media (max-width: 900px) {
+  .export-map-section {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+  }
+
+  .export-map-section .col-left {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--map-border);
+  }
+
+  .export-map-section .col-left__content {
+    padding: 24px 20px 16px;
+    gap: 14px;
+  }
+
+  .export-map-section .headline {
+    font-size: 1.3rem;
+  }
+
+  .export-map-section .col-right {
+    width: 100%;
+    height: 50vh;
+    min-height: 50vh;
+  }
+
+  .export-map-section .stats-grid {
+    gap: 8px;
+  }
+
+  .export-map-section .stat-card {
+    padding: 10px 12px;
+  }
+
+  .export-map-section .stat-card__number {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .export-map-section .col-right {
+    height: 45vh;
+    min-height: 300px;
+  }
+
+  .tooltip-panel {
+    /* On mobile, position tooltip at bottom of viewport */
+    left: 50% !important;
+    transform: translateX(-50%) translateY(6px) scale(0.97) !important;
+    bottom: 16px !important;
+    top: auto !important;
+    max-width: calc(100vw - 32px);
+  }
+
+  .tooltip-panel.visible {
+    transform: translateX(-50%) translateY(0) scale(1) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .export-map-section .legend {
+    gap: 10px;
+  }
+
+  .export-map-section .hud-micro {
+    padding: 8px 14px;
+  }
+
+  .tooltip-panel {
+    width: 240px;
+    padding: 14px;
+  }
 }

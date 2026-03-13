@@ -16,28 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ============================================
-       LOADER — SVG Draw Animation
+       LOADER — Handled by premium preloader (appended below).
+       The preloader JS calls document.body.classList.add('loaded')
+       when its Phase 8 exit completes.
        ============================================ */
-    const loaderBar = document.getElementById('loaderBar');
-    let loadProgress = 0;
-    let loadComplete = false;
-
-    const progressInterval = setInterval(() => {
-        if (loadComplete) {
-            loadProgress = 100;
-            if (loaderBar) loaderBar.style.width = '100%';
-            clearInterval(progressInterval);
-            setTimeout(() => document.body.classList.add('loaded'), 500);
-        } else {
-            const remaining = 90 - loadProgress;
-            loadProgress += remaining * 0.06;
-            if (loaderBar) loaderBar.style.width = loadProgress + '%';
-        }
-    }, 50);
-
-    const markLoaded = () => { loadComplete = true; };
-    if (document.readyState === 'complete') markLoaded();
-    else window.addEventListener('load', markLoaded);
 
     /* CUSTOM CURSOR — removed per client feedback, using default browser cursor */
 
@@ -281,6 +263,241 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    /* ============================================
+       APPLICATION CAROUSEL (inside By Applications mode)
+       Infinite horizontal scroll with auto-slide
+       ============================================ */
+    (function initAppCarousel() {
+        const track = document.getElementById('appCarouselTrack');
+        if (!track) return;
+
+        // Card data — all 9 applications with their SVGs
+        const appCards = [
+            {
+                title: 'Power Transformers',
+                desc: 'Pressboards, machined components, winding wires for transformers up to 400 kV class.',
+                href: '/solutions/power-transformers',
+                svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>'
+            },
+            {
+                title: 'Distribution Transformers',
+                desc: 'Cost-effective insulation and aluminium winding wire solutions.',
+                href: '/solutions/distribution-transformers',
+                svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>'
+            },
+            {
+                title: 'Instrument Transformers',
+                desc: 'Precision insulation components for current & potential transformers.',
+                href: '/solutions/instrument-transformers',
+                svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>'
+            },
+            {
+                title: 'Electric Motors',
+                desc: 'Enamelled wires and insulating varnishes for motor manufacturing.',
+                href: '/solutions/electric-motors',
+                svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>'
+            },
+            {
+                title: 'Renewables',
+                desc: 'Wind & solar transformer insulation solutions.',
+                href: '/solutions/renewables',
+                svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+            },
+            {
+                title: 'Data Centers',
+                desc: 'High-reliability transformer insulation for mission-critical infrastructure.',
+                href: '/solutions/data-centers',
+                svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>'
+            },
+            {
+                title: 'Home Appliances',
+                desc: 'Enamelled copper and aluminium wires for household appliance motors.',
+                href: '/solutions/home-appliances',
+                svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'
+            },
+            {
+                title: 'EV Motors',
+                desc: 'High-performance enamelled wires for electric vehicle motor applications.',
+                href: '/solutions/ev-motors',
+                svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>'
+            },
+            {
+                title: 'Stabilizers',
+                desc: 'Enamelled copper and aluminium round and flat wires for voltage stabilizers.',
+                href: '/solutions/stabilizers',
+                svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="2"/><line x1="17" y1="6" x2="17" y2="18"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="7" y1="8" x2="7" y2="16"/></svg>'
+            }
+        ];
+
+        // Triplicate for infinite scrolling
+        const extendedCards = [...appCards, ...appCards, ...appCards];
+
+        // Render cards into the track
+        function renderCards() {
+            track.innerHTML = extendedCards.map(function(card) {
+                return '<a href="' + card.href + '" class="app-carousel-card" data-cursor="hover">' +
+                    '<div class="app-carousel-card-accent"></div>' +
+                    '<div class="app-carousel-card-icon">' + card.svg + '</div>' +
+                    '<div class="app-carousel-card-body">' +
+                        '<div class="app-carousel-card-title">' + card.title + '</div>' +
+                        '<div class="app-carousel-card-desc">' + card.desc + '</div>' +
+                        '<span class="app-carousel-card-link">Explore <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg></span>' +
+                    '</div>' +
+                '</a>';
+            }).join('');
+        }
+        renderCards();
+
+        // Carousel state
+        var isAnimating = false;
+        var isPaused = false;
+        var autoInterval = null;
+        var scrollTimeout = null;
+        var initialized = false;
+
+        function getCardMetrics() {
+            var firstCard = track.children[0];
+            if (!firstCard) return { cardWidth: 280, gap: 20, setWidth: 2700 };
+            var gap = parseFloat(window.getComputedStyle(track).gap) || 20;
+            var cardWidth = firstCard.offsetWidth;
+            var setWidth = (cardWidth + gap) * appCards.length;
+            return { cardWidth: cardWidth, gap: gap, setWidth: setWidth };
+        }
+
+        // Position at the middle (2nd) set
+        function initScrollPosition() {
+            if (initialized) return;
+            var m = getCardMetrics();
+            track.style.scrollSnapType = 'none';
+            track.scrollLeft = m.setWidth;
+            void track.offsetHeight;
+            track.style.scrollSnapType = 'x mandatory';
+            initialized = true;
+        }
+
+        // Seamlessly reset when reaching 1st or 3rd set
+        function checkAndResetScroll() {
+            var m = getCardMetrics();
+            if (track.scrollLeft < m.setWidth - (m.cardWidth / 2)) {
+                track.style.scrollSnapType = 'none';
+                track.scrollLeft += m.setWidth;
+                void track.offsetHeight;
+                track.style.scrollSnapType = 'x mandatory';
+            } else if (track.scrollLeft >= m.setWidth * 2 - (m.cardWidth / 2)) {
+                track.style.scrollSnapType = 'none';
+                track.scrollLeft -= m.setWidth;
+                void track.offsetHeight;
+                track.style.scrollSnapType = 'x mandatory';
+            }
+        }
+
+        // Smooth scroll by one card
+        function scrollCarousel(direction) {
+            if (isAnimating) return;
+            var m = getCardMetrics();
+            var scrollAmount = m.cardWidth + m.gap;
+            var targetScroll = track.scrollLeft + (direction === 'right' ? scrollAmount : -scrollAmount);
+
+            isAnimating = true;
+            track.style.scrollSnapType = 'none';
+
+            var startScroll = track.scrollLeft;
+            var startTime = null;
+            var duration = 600; // ms
+
+            function easeInOutCubic(t) {
+                return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            }
+
+            function animate(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var elapsed = timestamp - startTime;
+                var progress = Math.min(elapsed / duration, 1);
+                var eased = easeInOutCubic(progress);
+                track.scrollLeft = startScroll + (targetScroll - startScroll) * eased;
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    track.style.scrollSnapType = 'x mandatory';
+                    isAnimating = false;
+                    checkAndResetScroll();
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // Arrow click handlers (desktop + mobile)
+        ['appCarouselPrev', 'appCarouselPrevMobile'].forEach(function(id) {
+            var btn = document.getElementById(id);
+            if (btn) btn.addEventListener('click', function() { scrollCarousel('left'); });
+        });
+        ['appCarouselNext', 'appCarouselNextMobile'].forEach(function(id) {
+            var btn = document.getElementById(id);
+            if (btn) btn.addEventListener('click', function() { scrollCarousel('right'); });
+        });
+
+        // Pause on hover / touch
+        track.addEventListener('mouseenter', function() { isPaused = true; });
+        track.addEventListener('mouseleave', function() { isPaused = false; });
+        track.addEventListener('touchstart', function() { isPaused = true; }, { passive: true });
+        track.addEventListener('touchend', function() { isPaused = false; });
+
+        // Handle manual scroll (swipes) — reset position after native snap settles
+        track.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                if (!isAnimating) checkAndResetScroll();
+            }, 150);
+        }, { passive: true });
+
+        // Auto-slide every 4 seconds
+        function startAutoSlide() {
+            stopAutoSlide();
+            autoInterval = setInterval(function() {
+                if (!isPaused && !isAnimating) scrollCarousel('right');
+            }, 4000);
+        }
+        function stopAutoSlide() {
+            if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
+        }
+
+        // Initialize when the panel becomes visible
+        // Use MutationObserver to detect when display changes from none to block
+        var appPanel = document.getElementById('modeByApplication');
+        if (appPanel) {
+            var observer = new MutationObserver(function() {
+                if (appPanel.style.display !== 'none' && !initialized) {
+                    setTimeout(function() {
+                        initScrollPosition();
+                        startAutoSlide();
+                    }, 120);
+                }
+            });
+            observer.observe(appPanel, { attributes: true, attributeFilter: ['style', 'class'] });
+
+            // Also check if it's already visible (in case it's the default active tab)
+            if (appPanel.style.display !== 'none' && appPanel.classList.contains('active')) {
+                setTimeout(function() {
+                    initScrollPosition();
+                    startAutoSlide();
+                }, 120);
+            }
+        }
+
+        // Re-init on window resize
+        var resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (initialized) {
+                    initialized = false;
+                    initScrollPosition();
+                }
+            }, 250);
+        });
+    })();
 
     /* ============================================
        PRODUCT TABS (inside By Products mode)
@@ -662,3 +879,1057 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+/* =============================================================
+   INTERACTIVE EXPORT MAP — IIFE
+   Renders real world map from Natural Earth (world-paths.js),
+   animated export routes, pulsing nodes, particles, hover tooltip.
+   ============================================================= */
+;(function () {
+  'use strict';
+
+  /* ==========================================================
+     1. CONFIGURATION
+     ========================================================== */
+
+  const ORIGIN = { name: 'India', x: 709.9, y: 181.4 };
+
+  const MARKETS = [
+    {
+      id: 'turkey', alpha2: 'TR', name: 'Turkey',
+      x: 588.6, y: 123.4,
+      region: 'EUROPE', cluster: 'europe',
+      color: '#0066ff',
+      years: '8+', strength: 85,
+      sector: 'Power \u00b7 Transformer \u00b7 Electrical'
+    },
+    {
+      id: 'russia', alpha2: 'RU', name: 'Russia',
+      x: 731.2, y: 55.3,
+      region: 'EUROPE', cluster: 'europe',
+      color: '#0066ff',
+      years: '6+', strength: 72,
+      sector: 'Power \u00b7 Transformer \u00b7 Electrical'
+    },
+    {
+      id: 'spain', alpha2: 'ES', name: 'Spain',
+      x: 490.6, y: 118.7,
+      region: 'EUROPE', cluster: 'europe',
+      color: '#0066ff',
+      years: '5+', strength: 68,
+      sector: 'Power \u00b7 Transformer \u00b7 Electrical'
+    },
+    {
+      id: 'mexico', alpha2: 'MX', name: 'Mexico',
+      x: 229.1, y: 171.8,
+      region: 'NORTH AMERICA', cluster: 'namerica',
+      color: '#e85d00',
+      years: '4+', strength: 60,
+      sector: 'Power \u00b7 Transformer \u00b7 Electrical'
+    },
+    {
+      id: 'thailand', alpha2: 'TH', name: 'Thailand',
+      x: 770.7, y: 196.2,
+      region: 'ASIA', cluster: 'asia',
+      color: '#00b368',
+      years: '7+', strength: 78,
+      sector: 'Power \u00b7 Transformer \u00b7 Electrical'
+    }
+  ];
+
+  const PRODUCTS = [
+    'Electrical Insulation Pressboards',
+    'Transformer Insulation Kraft Paper',
+    'Paperboard Transformer Components'
+  ];
+
+  const EXPORT_CODES = new Set(['TR', 'RU', 'ES', 'MX', 'TH']);
+  const ORIGIN_CODE = 'IN';
+
+  const ID_TO_ALPHA = {
+    '356': 'IN', '792': 'TR', '643': 'RU', '724': 'ES',
+    '484': 'MX', '764': 'TH'
+  };
+
+  const SECONDARY_DOTS = [
+    { x: 493.5, y: 77.7 },
+    { x: 489.8, y: 114.4 },
+    { x: 524.3, y: 85.9 },
+    { x: 530.1, y: 111.7 },
+    { x: 643.1, y: 171.0 },
+    { x: 617.5, y: 170.3 },
+    { x: 848.4, y: 127.7 },
+    { x: 357.2, y: 279.9 },
+    { x: 565.3, y: 337.1 },
+    { x: 762.6, y: 131.9 },
+    { x: 824.6, y: 131.4 },
+    { x: 612.5, y: 142.1 },
+    { x: 852.6, y: 326.8 },
+  ];
+
+
+  /* ==========================================================
+     2. RENDER WORLD MAP
+     ========================================================== */
+
+  var svg = document.getElementById('world-map');
+  if (!svg) return; // Exit if map section not in DOM
+
+  var ns = 'http://www.w3.org/2000/svg';
+
+  function svgEl(tag, attrs) {
+    attrs = attrs || {};
+    var el = document.createElementNS(ns, tag);
+    for (var k in attrs) {
+      if (attrs.hasOwnProperty(k)) el.setAttribute(k, attrs[k]);
+    }
+    return el;
+  }
+
+  var countriesGroup = document.getElementById('countries-group');
+
+  if (typeof WORLD_PATHS !== 'undefined') {
+    WORLD_PATHS.forEach(function(country) {
+      var path = svgEl('path', { d: country.d });
+      if (country.alpha2 && EXPORT_CODES.has(country.alpha2)) {
+        path.classList.add('country--export');
+      }
+      if (country.alpha2 === ORIGIN_CODE) {
+        path.classList.add('country--origin');
+      }
+      countriesGroup.appendChild(path);
+    });
+  }
+
+
+  /* ==========================================================
+     3. DRAW EXPORT ROUTES
+     ========================================================== */
+
+  var routesGroup = document.getElementById('routes-group');
+  var pulsesGroup = document.getElementById('pulses-group');
+  var nodesGroup = document.getElementById('nodes-group');
+
+  function routePath(ox, oy, dx, dy) {
+    var midX = (ox + dx) / 2;
+    var midY = (oy + dy) / 2;
+    var dist = Math.hypot(dx - ox, dy - oy);
+    var arc = Math.min(dist * 0.28, 100);
+    return 'M ' + ox + ' ' + oy + ' Q ' + midX + ' ' + (midY - arc) + ' ' + dx + ' ' + dy;
+  }
+
+  MARKETS.forEach(function(m, idx) {
+    var d = routePath(ORIGIN.x, ORIGIN.y, m.x, m.y);
+
+    routesGroup.appendChild(svgEl('path', { d: d, class: 'route-line-bg' }));
+
+    var line = svgEl('path', { d: d, class: 'route-line', stroke: m.color });
+    routesGroup.appendChild(line);
+
+    requestAnimationFrame(function() {
+      try {
+        var len = line.getTotalLength();
+        line.style.strokeDasharray = len;
+        line.style.strokeDashoffset = len;
+        line.style.transition = 'stroke-dashoffset 1.8s ease ' + (0.4 + idx * 0.25) + 's, opacity 0.5s ease ' + (0.4 + idx * 0.25) + 's';
+        line.style.opacity = '0.7';
+        requestAnimationFrame(function() { line.style.strokeDashoffset = '0'; });
+      } catch (e) {
+        line.style.opacity = '0.7';
+      }
+    });
+
+    var pulse = svgEl('circle', { r: 2.5, class: 'energy-pulse', opacity: '0' });
+    pulsesGroup.appendChild(pulse);
+
+    m._path = line;
+    m._pulse = pulse;
+  });
+
+
+  /* ==========================================================
+     4. DRAW NODES
+     ========================================================== */
+
+  var secGroup = document.getElementById('secondary-nodes');
+  SECONDARY_DOTS.forEach(function(dot, i) {
+    var c = svgEl('circle', { cx: dot.x, cy: dot.y, r: 2, class: 'secondary-dot' });
+    c.style.animationDelay = (i * 0.35) + 's';
+    secGroup.appendChild(c);
+  });
+
+  var originGroup = document.getElementById('origin-node');
+  originGroup.appendChild(svgEl('circle', {
+    cx: ORIGIN.x, cy: ORIGIN.y, r: 32, class: 'origin-glow-circle'
+  }));
+
+  var ring1 = svgEl('circle', { cx: ORIGIN.x, cy: ORIGIN.y, r: 14, class: 'origin-ring' });
+  var ring2 = svgEl('circle', { cx: ORIGIN.x, cy: ORIGIN.y, r: 14, class: 'origin-ring' });
+  ring2.style.animationDelay = '1.2s';
+  originGroup.appendChild(ring1);
+  originGroup.appendChild(ring2);
+
+  originGroup.appendChild(svgEl('circle', {
+    cx: ORIGIN.x, cy: ORIGIN.y, r: 4.5, class: 'origin-core'
+  }));
+
+  var oLabel = svgEl('text', {
+    x: ORIGIN.x, y: ORIGIN.y - 18,
+    class: 'origin-label', 'text-anchor': 'middle'
+  });
+  oLabel.textContent = 'INDIA \u2014 HQ';
+  originGroup.appendChild(oLabel);
+
+  MARKETS.forEach(function(m, idx) {
+    var g = svgEl('g', { class: 'market-node', 'data-id': m.id });
+
+    var ring = svgEl('circle', {
+      cx: m.x, cy: m.y, r: 10, class: 'node-ring', stroke: m.color
+    });
+    ring.style.animationDelay = (idx * 0.4) + 's';
+
+    var core = svgEl('circle', {
+      cx: m.x, cy: m.y, r: 3.5, class: 'node-core', fill: m.color
+    });
+
+    var label = svgEl('text', {
+      x: m.x, y: m.y + 18, class: 'node-label', 'text-anchor': 'middle'
+    });
+    label.textContent = m.name.toUpperCase();
+
+    var hit = svgEl('circle', {
+      cx: m.x, cy: m.y, r: 20, class: 'node-hitarea'
+    });
+
+    g.appendChild(ring);
+    g.appendChild(core);
+    g.appendChild(label);
+    g.appendChild(hit);
+    nodesGroup.appendChild(g);
+
+    m._nodeG = g;
+    m._core = core;
+  });
+
+
+  /* ==========================================================
+     5. ENERGY PULSE ANIMATION
+     ========================================================== */
+
+  function startPulses() {
+    MARKETS.forEach(function(m, idx) {
+      var pathEl = m._path;
+      var pulseEl = m._pulse;
+      if (!pathEl || !pulseEl) return;
+
+      var pathLen;
+      try { pathLen = pathEl.getTotalLength(); } catch (e) { return; }
+
+      var speed = 3200 + idx * 400;
+      var start = null;
+      var delay = idx * 500;
+
+      function step(ts) {
+        if (!start) start = ts + delay;
+        var elapsed = ts - start;
+        if (elapsed < 0) { requestAnimationFrame(step); return; }
+
+        var t = (elapsed % speed) / speed;
+        var pt = pathEl.getPointAtLength(t * pathLen);
+
+        pulseEl.setAttribute('cx', pt.x);
+        pulseEl.setAttribute('cy', pt.y);
+        var op = t < 0.05 ? t / 0.05 : t > 0.9 ? (1 - t) / 0.1 : 0.85;
+        pulseEl.setAttribute('opacity', op);
+
+        requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
+    });
+  }
+
+  setTimeout(startPulses, 1800);
+
+
+  /* ==========================================================
+     6. PARTICLE CANVAS
+     ========================================================== */
+
+  var canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var P_COUNT = 40;
+
+  function resizeCanvas() {
+    var r = canvas.parentElement.getBoundingClientRect();
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = r.width * dpr;
+    canvas.height = r.height * dpr;
+    canvas.style.width = r.width + 'px';
+    canvas.style.height = r.height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function initParticles() {
+    resizeCanvas();
+    particles = [];
+    var w = canvas.width / (window.devicePixelRatio || 1);
+    var h = canvas.height / (window.devicePixelRatio || 1);
+    for (var i = 0; i < P_COUNT; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        size: Math.random() * 1.2 + 0.4,
+        opacity: Math.random() * 0.15 + 0.03
+      });
+    }
+  }
+
+  function drawParticles() {
+    var w = canvas.width / (window.devicePixelRatio || 1);
+    var h = canvas.height / (window.devicePixelRatio || 1);
+    ctx.clearRect(0, 0, w, h);
+
+    particles.forEach(function(p) {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = w;
+      if (p.x > w) p.x = 0;
+      if (p.y < 0) p.y = h;
+      if (p.y > h) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 102, 255, ' + p.opacity + ')';
+      ctx.fill();
+    });
+
+    requestAnimationFrame(drawParticles);
+  }
+
+  initParticles();
+  drawParticles();
+  window.addEventListener('resize', initParticles);
+
+
+  /* ==========================================================
+     7. TOOLTIP INTERACTIONS
+     ========================================================== */
+
+  var tooltip = document.getElementById('tooltip-panel');
+  var ttCountry = document.getElementById('tooltip-country');
+  var ttRegion = document.getElementById('tooltip-region');
+  var ttSector = document.getElementById('tooltip-sector');
+  var ttYears = document.getElementById('tooltip-years');
+  var ttBar = document.getElementById('tooltip-bar');
+  var activeMarket = null;
+
+  function showTooltip(m, e) {
+    activeMarket = m;
+    ttCountry.textContent = m.name;
+    ttRegion.textContent = m.region;
+    ttSector.textContent = m.sector;
+    ttYears.textContent = m.years + ' Years';
+    ttBar.style.width = m.strength + '%';
+    tooltip.classList.add('visible');
+    posTooltip(e);
+  }
+
+  function hideTooltip() {
+    activeMarket = null;
+    tooltip.classList.remove('visible');
+    ttBar.style.width = '0%';
+  }
+
+  function posTooltip(e) {
+    var pad = 16;
+    var tw = 280;
+    var th = tooltip.offsetHeight || 280;
+    var x = e.clientX + pad;
+    var y = e.clientY - th / 2;
+    if (x + tw > window.innerWidth - pad) x = e.clientX - tw - pad;
+    if (y < pad) y = pad;
+    if (y + th > window.innerHeight - pad) y = window.innerHeight - th - pad;
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+  }
+
+  MARKETS.forEach(function(m) {
+    if (!m._nodeG) return;
+    m._nodeG.addEventListener('mouseenter', function(e) { showTooltip(m, e); });
+    m._nodeG.addEventListener('mousemove', function(e) { if (activeMarket) posTooltip(e); });
+    m._nodeG.addEventListener('mouseleave', hideTooltip);
+    // Touch support
+    m._nodeG.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      var t = e.touches[0];
+      showTooltip(m, { clientX: t.clientX, clientY: t.clientY });
+    });
+  });
+
+  document.addEventListener('touchstart', function(e) {
+    if (!e.target.closest('.market-node')) hideTooltip();
+  });
+
+
+  /* ==========================================================
+     8. ANIMATED COUNTERS
+     ========================================================== */
+
+  function animateCounters() {
+    document.querySelectorAll('[data-count]').forEach(function(el) {
+      var target = parseInt(el.dataset.count, 10);
+      var dur = 1800;
+      var t0 = performance.now();
+
+      function tick(now) {
+        var progress = Math.min((now - t0) / dur, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    });
+  }
+
+  var statsGrid = document.querySelector('.export-map-section .stats-grid');
+  if (statsGrid) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { animateCounters(); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    obs.observe(statsGrid);
+  }
+
+
+  /* ==========================================================
+     9. HUD CLOCK
+     ========================================================== */
+
+  function updateClock() {
+    var el = document.getElementById('hud-time');
+    if (!el) return;
+    var now = new Date();
+    var h = String(now.getUTCHours()).padStart(2, '0');
+    var m = String(now.getUTCMinutes()).padStart(2, '0');
+    el.textContent = h + ':' + m + ' UTC';
+  }
+  updateClock();
+  setInterval(updateClock, 10000);
+
+
+  /* ==========================================================
+     10. ENTRANCE ANIMATION
+     ========================================================== */
+
+  var section = document.getElementById('export-map-section');
+  if (section) {
+    section.style.opacity = '0';
+    section.style.transition = 'opacity 0.8s ease';
+    requestAnimationFrame(function() { section.style.opacity = '1'; });
+  }
+
+})();
+
+
+/* =============================================================
+   PREMIUM PRELOADER — IIFE
+   8-phase animated brand reveal
+   ============================================================= */
+;(function () {
+  'use strict';
+
+  /* ========================================================================
+     TIMING CONFIGURATION (ms)
+     ======================================================================== */
+  var T = {
+    BG_INITIAL_DELAY:       80,
+    BG_NOISE_FADE:          400,
+    BG_GRID_DELAY:          100,
+    BG_GRID_FADE:           600,
+    BG_CROSSHAIR_DELAY:     150,
+    BG_VIGNETTE_DELAY:      50,
+    STROKE_DELAY:           400,
+    STROKE_DRAW_DURATION:   1100,
+    STROKE_STAGGER:         80,
+    MAIN_SHAPE_DELAY:       200,
+    ZIGZAG_DELAY:           300,
+    GLOW_DELAY:             250,
+    GLOW_TRAVEL_DURATION:   1000,
+    GLOW_TRAIL_OFFSET:      0.06,
+    SPARK_DURATION:         1200,
+    BOARD_DELAY:            200,
+    BOARD_SLIDE_DURATION:   800,
+    BOARD_OVERSHOOT:        20,
+    STABILIZE_DELAY:        150,
+    STABILIZE_FADE:         1000,
+    RIPPLE_STAGGER:         200,
+    RIPPLE_EXPAND:          1200,
+    RIPPLE_MAX_RADIUS:      180,
+    TEXT_DELAY:             350,
+    RULE_EXPAND:            500,
+    CHAR_STAGGER:           45,
+    CHAR_ANIM_DURATION:     450,
+    TAGLINE_DELAY:          300,
+    SETTLE_DELAY:           150,
+    SHADOW_DELAY:           350,
+    EXIT_HOLD:              1100,
+    EXIT_DURATION:          800,
+  };
+
+  /* ========================================================================
+     DOM CACHE
+     ======================================================================== */
+  var _$ = function(sel) { return document.querySelector(sel); };
+  var _$$ = function(sel) { return document.querySelectorAll(sel); };
+
+  var dom = {
+    preloader:      _$('#preloader'),
+    noiseCanvas:    _$('#noiseCanvas'),
+    gridLayer:      _$('.preloader .bg-layer--grid'),
+    crosshairsSVG:  _$('#crosshairsSVG'),
+    vignetteLayer:  _$('.preloader .bg-layer--vignette'),
+    sparkCanvas:    _$('#sparkCanvas'),
+    logoWrap:       _$('#logoWrap'),
+    logoSVG:        _$('#logoSVG'),
+    electricHalo:   _$('#electricHalo'),
+    mainShape:      _$('#mainShape'),
+    zigzagDetail:   _$('#zigzagDetail'),
+    strokeOuter:    _$('#strokeOuter'),
+    strokeCore:     _$('#strokeCore'),
+    strokeCenter:   _$('#strokeCenter'),
+    glowComet:      _$('#glowComet'),
+    glowCore:       _$('#glowCore'),
+    trail1:         _$('#trail1'),
+    trail2:         _$('#trail2'),
+    trail3:         _$('#trail3'),
+    ripple1:        _$('#ripple1'),
+    ripple2:        _$('#ripple2'),
+    ripple3:        _$('#ripple3'),
+    boardClipRect:  _$('#boardClipRect'),
+    brandText:      _$('#brandText'),
+    brandRuleTop:   _$('#brandRuleTop'),
+    brandRuleBottom: _$('#brandRuleBottom'),
+    companyName:    _$('#companyName'),
+    tagline:        _$('#tagline'),
+  };
+
+  // Early exit if preloader not in DOM
+  if (!dom.preloader) return;
+
+  /* ========================================================================
+     UTILITIES
+     ======================================================================== */
+  function wait(ms) {
+    return new Promise(function(r) { setTimeout(r, ms); });
+  }
+
+  function tween(from, to, duration, easeFn, onUpdate) {
+    return new Promise(function(resolve) {
+      var t0 = performance.now();
+      function tick(now) {
+        var raw = Math.min((now - t0) / duration, 1);
+        var eased = easeFn(raw);
+        var val = from + (to - from) * eased;
+        onUpdate(val, raw);
+        if (raw < 1) requestAnimationFrame(tick);
+        else resolve();
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  function tweenParallel() {
+    var configs = Array.prototype.slice.call(arguments);
+    return Promise.all(configs.map(function(c) { return tween.apply(null, c); }));
+  }
+
+  /* ========================================================================
+     EASING
+     ======================================================================== */
+  var ease = {
+    linear:     function(t) { return t; },
+    outCubic:   function(t) { return 1 - Math.pow(1 - t, 3); },
+    outQuart:   function(t) { return 1 - Math.pow(1 - t, 4); },
+    outQuint:   function(t) { return 1 - Math.pow(1 - t, 5); },
+    inOutCubic: function(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; },
+    inOutQuart: function(t) { return t < 0.5 ? 8*t*t*t*t : 1 - Math.pow(-2*t+2, 4)/2; },
+    outBack: function(t) {
+      var c1 = 1.70158;
+      var c3 = c1 + 1;
+      return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+    },
+    outElastic: function(t) {
+      if (t === 0 || t === 1) return t;
+      return Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * (2 * Math.PI / 3)) + 1;
+    },
+  };
+
+  /* ========================================================================
+     POLYLINE UTILITIES
+     ======================================================================== */
+  function polylineLength(el) {
+    var pts = el.points;
+    var len = 0;
+    for (var i = 1; i < pts.numberOfItems; i++) {
+      var a = pts.getItem(i - 1), b = pts.getItem(i);
+      len += Math.hypot(b.x - a.x, b.y - a.y);
+    }
+    return len;
+  }
+
+  function polylinePointAt(el, frac) {
+    var pts = el.points;
+    var segs = [];
+    var total = 0;
+    for (var i = 1; i < pts.numberOfItems; i++) {
+      var a = pts.getItem(i - 1), b = pts.getItem(i);
+      var l = Math.hypot(b.x - a.x, b.y - a.y);
+      segs.push({ x0: a.x, y0: a.y, x1: b.x, y1: b.y, len: l });
+      total += l;
+    }
+    var target = Math.max(0, Math.min(1, frac)) * total;
+    var acc = 0;
+    for (var j = 0; j < segs.length; j++) {
+      var s = segs[j];
+      if (acc + s.len >= target) {
+        var f = (target - acc) / s.len;
+        return { x: s.x0 + (s.x1 - s.x0) * f, y: s.y0 + (s.y1 - s.y0) * f };
+      }
+      acc += s.len;
+    }
+    var last = pts.getItem(pts.numberOfItems - 1);
+    return { x: last.x, y: last.y };
+  }
+
+  /* ========================================================================
+     NOISE TEXTURE
+     ======================================================================== */
+  function generateNoise(canvas) {
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width = window.innerWidth;
+    var h = canvas.height = window.innerHeight;
+    var imageData = ctx.createImageData(w, h);
+    var data = imageData.data;
+    for (var i = 0; i < data.length; i += 4) {
+      var v = Math.random() * 255;
+      data[i] = data[i + 1] = data[i + 2] = v;
+      data[i + 3] = 18;
+    }
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  /* ========================================================================
+     CROSSHAIRS
+     ======================================================================== */
+  function generateCrosshairs(svg) {
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var gridSize = 64;
+    var armLen = 4;
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    svg.setAttribute('width', w);
+    svg.setAttribute('height', h);
+
+    var pathData = '';
+    var offsetX = (w % gridSize) / 2;
+    var offsetY = (h % gridSize) / 2;
+
+    for (var x = offsetX; x <= w; x += gridSize) {
+      for (var y = offsetY; y <= h; y += gridSize) {
+        pathData += 'M' + (x - armLen) + ',' + y + 'L' + (x + armLen) + ',' + y;
+        pathData += 'M' + x + ',' + (y - armLen) + 'L' + x + ',' + (y + armLen);
+      }
+    }
+
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', pathData);
+    path.setAttribute('stroke', 'rgba(86,96,102,0.1)');
+    path.setAttribute('stroke-width', '0.5');
+    path.setAttribute('fill', 'none');
+    svg.appendChild(path);
+  }
+
+  /* ========================================================================
+     SPARK PARTICLE SYSTEM
+     ======================================================================== */
+  var sparkSystem = {
+    canvas: null,
+    ctx: null,
+    particles: [],
+    running: false,
+    rafId: null,
+
+    init: function(canvas) {
+      this.canvas = canvas;
+      this.ctx = canvas.getContext('2d');
+      this.resize();
+      var self = this;
+      window.addEventListener('resize', function() { self.resize(); });
+    },
+
+    resize: function() {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    },
+
+    emit: function(sx, sy, color, count, type) {
+      type = type || 'electric';
+      for (var i = 0; i < count; i++) {
+        var angle = Math.random() * Math.PI * 2;
+        var speed = 0.5 + Math.random() * 2.5;
+        var life = 300 + Math.random() * 500;
+        this.particles.push({
+          x: sx, y: sy,
+          vx: Math.cos(angle) * speed * (type === 'electric' ? 1.5 : 0.8),
+          vy: Math.sin(angle) * speed * (type === 'electric' ? 1.5 : 0.8),
+          life: life, maxLife: life,
+          size: 1 + Math.random() * 2,
+          color: color, type: type,
+        });
+      }
+      if (!this.running) this.start();
+    },
+
+    start: function() {
+      this.running = true;
+      var self = this;
+      var loop = function() {
+        if (!self.running) return;
+        self.update();
+        self.draw();
+        if (self.particles.length > 0) {
+          self.rafId = requestAnimationFrame(loop);
+        } else {
+          self.running = false;
+        }
+      };
+      this.rafId = requestAnimationFrame(loop);
+    },
+
+    stop: function() {
+      this.running = false;
+      if (this.rafId) cancelAnimationFrame(this.rafId);
+    },
+
+    update: function() {
+      for (var i = this.particles.length - 1; i >= 0; i--) {
+        var p = this.particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.03;
+        p.vx *= 0.98;
+        p.vy *= 0.98;
+        p.life -= 16;
+        if (p.life <= 0) this.particles.splice(i, 1);
+      }
+    },
+
+    draw: function() {
+      var ctx = this.ctx;
+      ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      for (var i = 0; i < this.particles.length; i++) {
+        var p = this.particles[i];
+        var alpha = Math.max(0, p.life / p.maxLife);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * alpha, 0, Math.PI * 2);
+        ctx.fill();
+        if (p.type === 'electric') {
+          ctx.globalAlpha = alpha * 0.3;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size * alpha * 3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1;
+    },
+
+    clear: function() {
+      this.particles = [];
+      if (this.ctx) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      }
+    }
+  };
+
+  /* ========================================================================
+     SVG TO SCREEN
+     ======================================================================== */
+  function svgToScreen(svgX, svgY) {
+    var svgEl = dom.logoSVG;
+    var rect = svgEl.getBoundingClientRect();
+    var viewBox = svgEl.viewBox.baseVal;
+    var scaleX = rect.width / viewBox.width;
+    var scaleY = rect.height / viewBox.height;
+    return {
+      x: rect.left + (svgX - viewBox.x) * scaleX,
+      y: rect.top + (svgY - viewBox.y) * scaleY,
+    };
+  }
+
+  /* ========================================================================
+     PHASE 1: Background layers
+     ======================================================================== */
+  async function phase1() {
+    await wait(T.BG_INITIAL_DELAY);
+    generateNoise(dom.noiseCanvas);
+    dom.noiseCanvas.classList.add('is-visible');
+    await wait(T.BG_NOISE_FADE);
+    await wait(T.BG_GRID_DELAY);
+    dom.gridLayer.classList.add('is-visible');
+    await wait(T.BG_CROSSHAIR_DELAY);
+    generateCrosshairs(dom.crosshairsSVG);
+    dom.crosshairsSVG.classList.add('is-visible');
+    await wait(T.BG_VIGNETTE_DELAY);
+    dom.vignetteLayer.classList.add('is-visible');
+    await wait(200);
+  }
+
+  /* ========================================================================
+     PHASE 2: Lightning stroke draw
+     ======================================================================== */
+  async function phase2() {
+    await wait(T.STROKE_DELAY);
+    dom.electricHalo.classList.add('is-active');
+
+    var strokes = [dom.strokeOuter, dom.strokeCore, dom.strokeCenter];
+    strokes.forEach(function(s) {
+      var len = polylineLength(s);
+      s.style.strokeDasharray = len;
+      s.style.strokeDashoffset = len;
+      s._totalLength = len;
+    });
+
+    var drawPromises = strokes.map(function(s, idx) {
+      return new Promise(async function(resolve) {
+        await wait(T.STROKE_STAGGER * idx);
+        s.classList.add('is-drawing');
+        await tween(s._totalLength, 0, T.STROKE_DRAW_DURATION, ease.inOutCubic, function(val) {
+          s.style.strokeDashoffset = val;
+        });
+        resolve();
+      });
+    });
+
+    setTimeout(function() {
+      dom.mainShape.classList.add('is-visible');
+    }, T.MAIN_SHAPE_DELAY);
+
+    await Promise.all(drawPromises);
+    await wait(T.ZIGZAG_DELAY);
+    dom.zigzagDetail.classList.add('is-visible');
+  }
+
+  /* ========================================================================
+     PHASE 3: Energy comet travel + sparks
+     ======================================================================== */
+  async function phase3() {
+    await wait(T.GLOW_DELAY);
+    sparkSystem.init(dom.sparkCanvas);
+
+    [dom.strokeOuter, dom.strokeCore, dom.strokeCenter].forEach(function(s) {
+      s.classList.add('is-pulsing');
+    });
+
+    var travelers = [dom.glowComet, dom.glowCore, dom.trail1, dom.trail2, dom.trail3];
+    travelers.forEach(function(t) { t.setAttribute('opacity', '0.9'); });
+
+    var pathEl = dom.strokeCore;
+
+    await tween(0, 1, T.GLOW_TRAVEL_DURATION, ease.inOutQuart, function(frac) {
+      var p = polylinePointAt(pathEl, frac);
+      dom.glowComet.setAttribute('cx', p.x);
+      dom.glowComet.setAttribute('cy', p.y);
+      dom.glowCore.setAttribute('cx', p.x);
+      dom.glowCore.setAttribute('cy', p.y);
+
+      var offsets = [T.GLOW_TRAIL_OFFSET, T.GLOW_TRAIL_OFFSET * 2, T.GLOW_TRAIL_OFFSET * 3];
+      var trails = [dom.trail1, dom.trail2, dom.trail3];
+      var trailOpacities = [0.6, 0.4, 0.2];
+
+      trails.forEach(function(trail, i) {
+        var trailFrac = Math.max(0, frac - offsets[i]);
+        var tp = polylinePointAt(pathEl, trailFrac);
+        trail.setAttribute('cx', tp.x);
+        trail.setAttribute('cy', tp.y);
+        trail.setAttribute('opacity', frac > offsets[i] ? trailOpacities[i] : 0);
+      });
+
+      if (Math.random() > 0.5) {
+        var screenPt = svgToScreen(p.x, p.y);
+        sparkSystem.emit(screenPt.x, screenPt.y, '#7BB3F0', 1, 'electric');
+      }
+      if (Math.random() > 0.85) {
+        var screenPt2 = svgToScreen(p.x, p.y);
+        sparkSystem.emit(screenPt2.x, screenPt2.y, '#FFFFFF', 1, 'electric');
+      }
+    });
+
+    [dom.strokeOuter, dom.strokeCore, dom.strokeCenter].forEach(function(s) {
+      s.classList.remove('is-pulsing');
+    });
+    travelers.forEach(function(t) { t.setAttribute('opacity', '0'); });
+  }
+
+  /* ========================================================================
+     PHASE 4: Insulation board diagonal slide
+     ======================================================================== */
+  async function phase4() {
+    await wait(T.BOARD_DELAY);
+    var overshoot = T.BOARD_OVERSHOOT;
+
+    await tween(-800, overshoot, T.BOARD_SLIDE_DURATION * 0.75, ease.outCubic, function(val) {
+      dom.boardClipRect.setAttribute('x', val);
+    });
+
+    await tween(overshoot, 0, T.BOARD_SLIDE_DURATION * 0.25, ease.outQuart, function(val) {
+      dom.boardClipRect.setAttribute('x', val);
+    });
+
+    var boardTop = svgToScreen(468, 83);
+    var boardBot = svgToScreen(166, 524);
+    for (var i = 0; i < 5; i++) {
+      var f = 0.2 + Math.random() * 0.6;
+      var sx = boardTop.x + (boardBot.x - boardTop.x) * f;
+      var sy = boardTop.y + (boardBot.y - boardTop.y) * f;
+      sparkSystem.emit(sx, sy, '#e8caa4', 3, 'warm');
+    }
+  }
+
+  /* ========================================================================
+     PHASE 5: Stabilization
+     ======================================================================== */
+  async function phase5() {
+    await wait(T.STABILIZE_DELAY);
+
+    dom.electricHalo.classList.remove('is-active');
+    dom.electricHalo.classList.add('is-stabilized');
+
+    [dom.strokeOuter, dom.strokeCore, dom.strokeCenter].forEach(function(s) {
+      s.classList.remove('is-drawing');
+      s.classList.add('is-stabilizing');
+    });
+
+    var ripples = [dom.ripple1, dom.ripple2, dom.ripple3];
+    ripples.forEach(function(ripple, idx) {
+      setTimeout(function() {
+        ripple.setAttribute('opacity', '0.5');
+        tween(0, T.RIPPLE_MAX_RADIUS, T.RIPPLE_EXPAND, ease.outQuart, function(r) {
+          ripple.setAttribute('r', r);
+          var fadeStart = 0.3;
+          var progress = r / T.RIPPLE_MAX_RADIUS;
+          if (progress > fadeStart) {
+            var alpha = 0.5 * (1 - (progress - fadeStart) / (1 - fadeStart));
+            ripple.setAttribute('opacity', Math.max(0, alpha));
+          }
+        });
+      }, T.RIPPLE_STAGGER * idx);
+    });
+
+    await wait(T.STABILIZE_FADE);
+
+    dom.electricHalo.classList.remove('is-stabilized');
+    dom.electricHalo.classList.add('is-fading');
+
+    await wait(400);
+    sparkSystem.clear();
+  }
+
+  /* ========================================================================
+     PHASE 6: Brand text reveal
+     ======================================================================== */
+  async function phase6() {
+    await wait(T.TEXT_DELAY);
+    dom.brandRuleTop.classList.add('is-visible');
+    await wait(200);
+
+    var chars = dom.companyName.querySelectorAll('.company-name__char');
+    chars.forEach(function(char, i) {
+      setTimeout(function() {
+        char.classList.add('is-revealed');
+      }, i * T.CHAR_STAGGER);
+    });
+
+    await wait(chars.length * T.CHAR_STAGGER + T.CHAR_ANIM_DURATION);
+    await wait(T.TAGLINE_DELAY);
+    dom.tagline.classList.add('is-visible');
+    await wait(200);
+    dom.brandRuleBottom.classList.add('is-visible');
+  }
+
+  /* ========================================================================
+     PHASE 7: Polish
+     ======================================================================== */
+  async function phase7() {
+    await wait(T.SETTLE_DELAY);
+    dom.logoWrap.classList.add('is-settling');
+    await wait(T.SHADOW_DELAY);
+    dom.logoSVG.classList.add('has-shadow');
+  }
+
+  /* ========================================================================
+     PHASE 8: Choreographed exit — adds 'loaded' class to body
+     ======================================================================== */
+  async function phase8() {
+    await wait(T.EXIT_HOLD);
+
+    // Trigger exit transition
+    dom.preloader.classList.add('is-exiting');
+
+    // Wait for transition to complete
+    await wait(T.EXIT_DURATION);
+
+    // Add 'loaded' class to body (matching existing site behavior)
+    document.body.classList.add('loaded');
+
+    // Clean up: remove preloader from DOM
+    await wait(200);
+    dom.preloader.style.display = 'none';
+
+    // Final cleanup
+    sparkSystem.stop();
+  }
+
+  /* ========================================================================
+     MASTER SEQUENCE
+     ======================================================================== */
+  async function runPreloader() {
+    try {
+      await phase1();
+      await phase2();
+      await phase3();
+      await phase4();
+      await phase5();
+      await phase6();
+      await phase7();
+      await phase8();
+    } catch (err) {
+      console.error('[Preloader] Animation error:', err);
+      // Graceful fallback
+      dom.preloader.classList.add('is-exiting');
+      setTimeout(function() {
+        dom.preloader.style.display = 'none';
+        document.body.classList.add('loaded');
+      }, 100);
+    }
+  }
+
+  /* ========================================================================
+     INIT
+     ======================================================================== */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runPreloader);
+  } else {
+    runPreloader();
+  }
+
+})();
