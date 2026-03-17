@@ -260,17 +260,14 @@
                     <a href="/investors" class="nav-link" data-cursor="hover" data-mega="megaInvestors">Investors</a>
                 </div>
 
-                <!-- 5. CONTACT US -->
-                <a href="/contact-us" class="nav-link" data-cursor="hover">Contact Us</a>
+                <!-- 5. CONTACT US (Mega Menu) -->
+                <div class="mega-wrap">
+                    <a href="/contact-us" class="nav-link" data-cursor="hover" data-mega="megaContact">Contact Us</a>
+                </div>
 
-                <!-- 6. NEWSROOM (Dropdown) -->
-                <div class="nav-dropdown-wrap">
-                    <a href="/newsroom" class="nav-link" data-cursor="hover">Newsroom</a>
-                    <div class="nav-dropdown">
-                        <a href="/media-kit">Media Kit</a>
-                        <a href="/events">Events</a>
-                        <a href="/press-releases">Press Releases</a>
-                    </div>
+                <!-- 6. NEWSROOM (Mega Menu) -->
+                <div class="mega-wrap">
+                    <a href="/newsroom" class="nav-link" data-cursor="hover" data-mega="megaNewsroom">Newsroom</a>
                 </div>
             </nav>
 
@@ -289,24 +286,26 @@
     <div class="mega-menu" id="megaCompany">
         <div class="mega-inner">
             <div class="mega-left">
-                <h3 class="mega-left-title">About Us</h3>
+                <h3 class="mega-left-title">Company</h3>
                 <p class="mega-left-desc">We deliver excellence and create value for the global power sector. With 25+ years of manufacturing expertise, we help transformer OEMs build reliable infrastructure worldwide.</p>
                 <a href="/about-us" class="mega-left-cta" data-cursor="hover">Discover more &rarr;</a>
             </div>
             <div class="mega-center">
-                <a class="mega-cat active" data-sub="companyAbout">About <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat active" data-sub="companyAbout" href="/about-us">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyLeadership" href="/leadership">Leadership <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyHistory" href="/company-history">Company History <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyFoundation" href="/dhanuka-foundation">Dhanuka Foundation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyMfg" href="/manufacturing-units">Manufacturing Units <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyPeople">People <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                <a class="mega-cat" data-sub="companyQuality">Quality <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyDownloads">Download Center <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyQuality">Quality <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
             <div class="mega-right">
+                <!-- About Us — no L3, show description + card -->
                 <div class="mega-sub-panel active" id="companyAbout">
-                    <div class="mega-sub-links">
-                        <a href="/about-us">About Us</a>
-                        <a href="/leadership">Leadership</a>
-                        <a href="/company-history">Company History</a>
-                        <a href="/dhanuka-foundation">Dhanuka Foundation</a>
-                        <a href="/manufacturing-units">Manufacturing Units</a>
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Learn about our journey, mission, and the values that drive Umang Boards Limited as a global leader in transformer insulation materials.</p>
+                        <a href="/about-us" class="mega-sub-desc-cta">Visit About Us →</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="assets/images/Mfg Hero Background.jpg" alt="Umang Boards Manufacturing" class="mega-feature-img" loading="lazy">
@@ -317,11 +316,72 @@
                         </div>
                     </div>
                 </div>
+                <!-- Leadership — no L3 -->
+                <div class="mega-sub-panel" id="companyLeadership">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Meet our Board of Directors and senior management team steering Umang Boards towards global excellence in transformer insulation.</p>
+                        <a href="/leadership" class="mega-sub-desc-cta">Meet the Team →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/boardroom.jpg" alt="Leadership Team" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Board &amp; Management</div>
+                            <div class="mega-feature-title">Experienced Leadership, Proven Results</div>
+                            <a href="/leadership" class="mega-feature-link">Learn more →</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Company History — no L3 -->
+                <div class="mega-sub-panel" id="companyHistory">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Trace our evolution from a single-product startup in 1999 to India's leading vertically integrated transformer insulation manufacturer.</p>
+                        <a href="/company-history" class="mega-sub-desc-cta">View Timeline →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Mfg Hero Background.jpg" alt="Company History" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Est. 1999</div>
+                            <div class="mega-feature-title">From Jaipur to 61+ Countries Worldwide</div>
+                            <a href="/company-history" class="mega-feature-link">Our story →</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dhanuka Foundation — no L3 -->
+                <div class="mega-sub-panel" id="companyFoundation">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Discover how the Dhanuka Foundation is making a meaningful impact through education, healthcare, and community development initiatives.</p>
+                        <a href="/dhanuka-foundation" class="mega-sub-desc-cta">Learn More →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Main-Slideshow_0002_MS3.png" alt="Dhanuka Foundation" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">CSR Initiative</div>
+                            <div class="mega-feature-title">Giving Back to Society</div>
+                            <a href="/dhanuka-foundation" class="mega-feature-link">Explore →</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manufacturing Units — no L3 -->
+                <div class="mega-sub-panel" id="companyMfg">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Explore our state-of-the-art manufacturing facilities in Jaipur, equipped with modern machinery and NABL-accredited testing laboratories.</p>
+                        <a href="/manufacturing-units" class="mega-sub-desc-cta">View Facilities →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Mfg Hero Background.jpg" alt="Manufacturing Units" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Jaipur, Rajasthan</div>
+                            <div class="mega-feature-title">World-Class Manufacturing Infrastructure</div>
+                            <a href="/manufacturing-units" class="mega-feature-link">Take a tour →</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- People — has L3 -->
                 <div class="mega-sub-panel" id="companyPeople">
                     <div class="mega-sub-links">
                         <a href="/life-ubl">Life @ UBL</a>
                         <a href="/careers">Careers</a>
-                        <a href="/training-and-development">Training & Development</a>
+                        <a href="/training-and-development">Training &amp; Development</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="assets/images/Main-Slideshow_0002_MS3.png" alt="Umang Boards Team" class="mega-feature-img" loading="lazy">
@@ -332,30 +392,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="mega-sub-panel" id="companyQuality">
-                    <div class="mega-sub-links">
-                        <a href="/sustainability">Sustainability</a>
-                        <a href="/quality">Transformer Insulation Laboratory</a>
-                        <a href="/quality">Winding Wire Laboratory</a>
-                        <a href="/quality">Chemical Laboratory</a>
-                        <a href="/research-and-development">Research & Development</a>
-                    </div>
-                    <div class="mega-feature-card">
-                        <img src="assets/images/Secondary Static.jpg" alt="NABL Accredited Lab" class="mega-feature-img" loading="lazy">
-                        <div class="mega-feature-body">
-                            <div class="mega-feature-tag">NABL Accredited</div>
-                            <div class="mega-feature-title">In-House Testing &amp; R&amp;D Facilities</div>
-                            <a href="/quality" class="mega-feature-link">Explore labs →</a>
-                        </div>
-                    </div>
-                </div>
+                <!-- Download Center — has L3 -->
                 <div class="mega-sub-panel" id="companyDownloads">
                     <div class="mega-sub-links">
                         <a href="/certifications">Certifications</a>
                         <a href="/catalogues">Catalogues</a>
                         <a href="/tech-datasheets">Technical Data Sheets</a>
-                        <a href="/tc-sales">Terms & Conditions Sales</a>
-                        <a href="/tc-purchase">Terms & Conditions Purchase</a>
+                        <a href="/tc-sales">Terms &amp; Conditions Sales</a>
+                        <a href="/tc-purchase">Terms &amp; Conditions Purchase</a>
                         <a href="/privacy">Privacy Policy</a>
                         <a href="/code-of-conduct">Code of Conduct</a>
                     </div>
@@ -365,6 +409,24 @@
                             <div class="mega-feature-tag">ISO · NABL · PGCIL</div>
                             <div class="mega-feature-title">Certified for Global Standards</div>
                             <a href="/certifications" class="mega-feature-link">View certs →</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quality — has L3 -->
+                <div class="mega-sub-panel" id="companyQuality">
+                    <div class="mega-sub-links">
+                        <a href="/sustainability">Sustainability</a>
+                        <a href="/quality">Transformer Insulation Laboratory</a>
+                        <a href="/quality">Winding Wire Laboratory</a>
+                        <a href="/quality">Chemical Laboratory</a>
+                        <a href="/research-and-development">Research &amp; Development</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Secondary Static.jpg" alt="NABL Accredited Lab" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">NABL Accredited</div>
+                            <div class="mega-feature-title">In-House Testing &amp; R&amp;D Facilities</div>
+                            <a href="/quality" class="mega-feature-link">Explore labs →</a>
                         </div>
                     </div>
                 </div>
@@ -464,11 +526,16 @@
                 <p class="mega-left-desc">End-to-end insulation solutions tailored for every transformer class and industrial application. From 400 kV power transformers to EV motors.</p>
                 <a href="/solutions" class="mega-left-cta" data-cursor="hover">View all solutions &rarr;</a>
             </div>
-            <div class="mega-center">
+            <div class="mega-center mega-center-scroll">
                 <a class="mega-cat active" data-sub="solPower">Power Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="solDist">Distribution Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="solInstrument">Instrument Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                <a class="mega-cat" data-sub="solIndustrial">Industrial & EV <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solDataCenters">Data Centers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solRenewables">Renewables <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solMotors">Electric Motors <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solAppliances">Home Appliances <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solEV">EV Motors <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solStabilizers">Stabilizers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
             <div class="mega-right">
                 <div class="mega-sub-panel active" id="solPower">
@@ -477,10 +544,13 @@
                         <a href="/laminated-pressboards">Laminated Pressboard</a>
                         <a href="/rings-and-caps">Angle Ring, Cap Ring, Snouts</a>
                         <a href="/lead-exit-assemblies">Lead Exit Systems</a>
-                        <a href="/copper">Enamelled Copper Wire (Round & Flat)</a>
-                        <a href="/copper">Paper Covered Copper Wire</a>
-                        <a href="/copper">CTC & Fiberglass Copper Wire</a>
-                        <a href="/ddp">DDP & TUP Paper</a>
+                        <a href="/copper">Enamelled Copper Round Wire</a>
+                        <a href="/copper">Enamelled Copper Flat Wire</a>
+                        <a href="/copper">Paper Covered Copper Wire (Round &amp; Flat)</a>
+                        <a href="/copper">CTC</a>
+                        <a href="/copper">Fiberglass Covered Copper Wire</a>
+                        <a href="/tissue-paper">TUP Paper</a>
+                        <a href="/ddp">DDP Paper</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="assets/images/Transformer Insulations.jpg" alt="Power Transformer Insulation" class="mega-feature-img" loading="lazy">
@@ -495,8 +565,9 @@
                     <div class="mega-sub-links">
                         <a href="/calendered-pressboards">Calendered Boards</a>
                         <a href="/pre-compressed-pressboards">HD Pressboards</a>
-                        <a href="/aluminium">Enamelled Aluminium Wire (Round & Flat)</a>
-                        <a href="/aluminium">Paper Covered Aluminium Wire</a>
+                        <a href="/aluminium">Enamelled Aluminium Round Wire</a>
+                        <a href="/aluminium">Enamelled Aluminium Flat Wire</a>
+                        <a href="/aluminium">Paper Covered Aluminium Wire (Round &amp; Flat)</a>
                         <a href="/plain-kraft-paper">Insulation Paper</a>
                         <a href="/aluminium">Aluminium Foil</a>
                         <a href="/crepe-paper">Crepe Paper Tubes</a>
@@ -526,25 +597,89 @@
                         </div>
                     </div>
                 </div>
-                <div class="mega-sub-panel" id="solIndustrial">
-                    <div class="mega-sub-col">
-                        <div class="mega-sub-heading">Data Centers & Renewables</div>
+                <div class="mega-sub-panel" id="solDataCenters">
+                    <div class="mega-sub-links">
                         <a href="/solutions/data-centers">Transformer Accessories</a>
-                        <a href="/solutions/renewables">Diamond Dotted Paper</a>
-                        <a href="/solutions/renewables">TUP Paper & Machined Components</a>
+                        <a href="/tissue-paper">TUP Paper</a>
                     </div>
-                    <div class="mega-sub-col">
-                        <div class="mega-sub-heading">Motors, Appliances, EV & Stabilizers</div>
-                        <a href="/aluminium">Enamelled Aluminium Wire</a>
-                        <a href="/copper">Enamelled Copper Wire</a>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Transformer Insulations.jpg" alt="Data Center Solutions" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Mission Critical</div>
+                            <div class="mega-feature-title">Reliable Insulation for Data Infrastructure</div>
+                            <a href="/solutions/data-centers" class="mega-feature-link">View solution →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="solRenewables">
+                    <div class="mega-sub-links">
+                        <a href="/ddp">Diamond Dotted Paper</a>
+                        <a href="/tissue-paper">TUP Paper</a>
+                        <a href="/machined-and-milled-components">Machined Components</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Winding Wires.jpg" alt="Renewables Solutions" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Solar · Wind</div>
+                            <div class="mega-feature-title">Insulation for Renewable Energy Systems</div>
+                            <a href="/solutions/renewables" class="mega-feature-link">View solution →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="solMotors">
+                    <div class="mega-sub-links">
+                        <a href="/aluminium">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
+                        <a href="/copper">Super Enamelled Copper Wire (Round &amp; Flat)</a>
                         <a href="/plain-kraft-paper">Insulation Paper</a>
                     </div>
                     <div class="mega-feature-card">
-                        <img src="assets/images/Winding Wires.jpg" alt="Industrial and EV Applications" class="mega-feature-img" loading="lazy">
+                        <img src="assets/images/Winding Wires.jpg" alt="Electric Motor Solutions" class="mega-feature-img" loading="lazy">
                         <div class="mega-feature-body">
-                            <div class="mega-feature-tag">Motors · EV · Renewables</div>
-                            <div class="mega-feature-title">Insulation for Emerging Industrial Sectors</div>
-                            <a href="/solutions/industrial-ev" class="mega-feature-link">View solution →</a>
+                            <div class="mega-feature-tag">Industrial Grade</div>
+                            <div class="mega-feature-title">Premium Winding Wires for Motors</div>
+                            <a href="/solutions/electric-motors" class="mega-feature-link">View solution →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="solAppliances">
+                    <div class="mega-sub-links">
+                        <a href="/aluminium">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
+                        <a href="/copper">Super Enamelled Copper Wire (Round &amp; Flat)</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Winding Wires.jpg" alt="Home Appliance Solutions" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Consumer Grade</div>
+                            <div class="mega-feature-title">Reliable Wires for Home Appliances</div>
+                            <a href="/solutions/home-appliances" class="mega-feature-link">View solution →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="solEV">
+                    <div class="mega-sub-links">
+                        <a href="/aluminium">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
+                        <a href="/copper">Super Enamelled Copper Wire (Round &amp; Flat)</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Winding Wires.jpg" alt="EV Motor Solutions" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">EV Grade</div>
+                            <div class="mega-feature-title">High-Performance Wires for Electric Vehicles</div>
+                            <a href="/solutions/ev-motors" class="mega-feature-link">View solution →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="solStabilizers">
+                    <div class="mega-sub-links">
+                        <a href="/aluminium">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
+                        <a href="/copper">Super Enamelled Copper Wire (Round &amp; Flat)</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Winding Wires.jpg" alt="Stabilizer Solutions" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Voltage Control</div>
+                            <div class="mega-feature-title">Precision Wires for Voltage Stabilizers</div>
+                            <a href="/solutions/stabilizers" class="mega-feature-link">View solution →</a>
                         </div>
                     </div>
                 </div>
@@ -641,6 +776,145 @@
     </div>
 
     <!-- ================================================
+         MEGA MENU: CONTACT US
+         ================================================ -->
+    <div class="mega-menu" id="megaContact">
+        <div class="mega-inner">
+            <div class="mega-left">
+                <h3 class="mega-left-title">Contact Us</h3>
+                <p class="mega-left-desc">Get in touch with our team for sales enquiries, technical support, factory visits, or general information. We're here to help.</p>
+                <a href="/contact-us" class="mega-left-cta" data-cursor="hover">Get in touch &rarr;</a>
+            </div>
+            <div class="mega-center">
+                <a class="mega-cat active" data-sub="contactOverview" href="/contact-us">Get in Touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="contactLocations" href="/our-locations">Our Locations <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="contactHours" href="/contact-us#hours">Office Hours <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="contactFAQ" href="/contact-us#faq">FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="mega-right">
+                <div class="mega-sub-panel active" id="contactOverview">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Reach out to us via our contact form, email, or phone. Our sales and support teams are ready to assist with your transformer insulation requirements.</p>
+                        <a href="/contact-us" class="mega-sub-desc-cta">Contact Form →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Mfg Hero Background.jpg" alt="Contact Umang Boards" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Sales · Support · Enquiries</div>
+                            <div class="mega-feature-title">We Respond Within 24 Hours</div>
+                            <a href="/contact-us" class="mega-feature-link">Write to us →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="contactLocations">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Find our manufacturing facilities and offices on the map. Schedule a factory visit to see our state-of-the-art production lines firsthand.</p>
+                        <a href="/our-locations" class="mega-sub-desc-cta">View on Map →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Mfg Hero Background.jpg" alt="Our Locations" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Jaipur, Rajasthan</div>
+                            <div class="mega-feature-title">Schedule a Factory Visit</div>
+                            <a href="/our-locations" class="mega-feature-link">Get directions →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="contactHours">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text"><strong>Monday – Friday:</strong> 9:00 AM – 6:00 PM IST<br><strong>Saturday &amp; Sunday:</strong> Closed<br><br><strong>Response Times:</strong><br>WhatsApp/Chat: Within 2 hours<br>Email: Within 24 hours<br>Phone: Live during office hours</p>
+                        <a href="/contact-us" class="mega-sub-desc-cta">Contact Now →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Secondary Static.jpg" alt="Office Hours" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Mon – Fri · 9 AM – 6 PM</div>
+                            <div class="mega-feature-title">Fast Response Guaranteed</div>
+                            <a href="/contact-us" class="mega-feature-link">Reach out →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="contactFAQ">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Find quick answers to the most common questions about our products, ordering process, shipping, and technical specifications.</p>
+                        <a href="/contact-us#faq" class="mega-sub-desc-cta">View All FAQs →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Main-Slideshow_0000_MS1.png" alt="FAQ" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Quick Answers</div>
+                            <div class="mega-feature-title">Frequently Asked Questions</div>
+                            <a href="/contact-us#faq" class="mega-feature-link">Browse FAQs →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================
+         MEGA MENU: NEWSROOM
+         ================================================ -->
+    <div class="mega-menu" id="megaNewsroom">
+        <div class="mega-inner">
+            <div class="mega-left">
+                <h3 class="mega-left-title">Newsroom</h3>
+                <p class="mega-left-desc">Stay updated with the latest news, events, and media resources from Umang Boards Limited.</p>
+                <a href="/newsroom" class="mega-left-cta" data-cursor="hover">Visit Newsroom &rarr;</a>
+            </div>
+            <div class="mega-center">
+                <a class="mega-cat active" data-sub="newsMedia" href="/media-kit">Media Kit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="newsEvents" href="/events">Events <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="newsPress" href="/press-releases">Press Releases <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="mega-right">
+                <div class="mega-sub-panel active" id="newsMedia">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Access official logos, brand guidelines, press photos, and media assets for publications and press coverage.</p>
+                        <a href="/media-kit" class="mega-sub-desc-cta">Download Media Kit →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Mfg Hero Background.jpg" alt="Media Kit" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Brand Assets</div>
+                            <div class="mega-feature-title">Official Logos &amp; Press Resources</div>
+                            <a href="/media-kit" class="mega-feature-link">Download →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="newsEvents">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Discover upcoming trade shows, exhibitions, and industry events where you can meet our team and explore our latest innovations.</p>
+                        <a href="/events" class="mega-sub-desc-cta">View Events →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Main-Slideshow_0002_MS3.png" alt="Events" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Trade Shows · Exhibitions</div>
+                            <div class="mega-feature-title">Meet Us at Industry Events</div>
+                            <a href="/events" class="mega-feature-link">See calendar →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="newsPress">
+                    <div class="mega-sub-desc">
+                        <p class="mega-sub-desc-text">Read the latest press releases, announcements, and company news from Umang Boards Limited.</p>
+                        <a href="/press-releases" class="mega-sub-desc-cta">Read Releases →</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="assets/images/Secondary Static.jpg" alt="Press Releases" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">Latest Updates</div>
+                            <div class="mega-feature-title">Company News &amp; Announcements</div>
+                            <a href="/press-releases" class="mega-feature-link">Read more →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================
          MOBILE NAV
          ================================================ -->
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" data-lenis-prevent>
@@ -717,9 +991,29 @@
                     <svg class="mobile-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
                 </div>
                 <ul class="mobile-accordion-body">
-                    <li><a href="/solutions/power-transformers">Power Transformers</a></li>
-                    <li><a href="/solutions/distribution-transformers">Distribution Transformers</a></li>
-                    <li><a href="/solutions/instrument-transformers">Instrument Transformers</a></li>
+                    <li class="mobile-sub-group">
+                        <span class="mobile-sub-title">Power Transformers</span>
+                        <a href="/pre-compressed-pressboards">HD Pressboard</a>
+                        <a href="/laminated-pressboards">Laminated Pressboard</a>
+                        <a href="/rings-and-caps">Angle Ring, Cap Ring, Snouts</a>
+                        <a href="/lead-exit-assemblies">Lead Exit Systems</a>
+                        <a href="/copper">Enamelled Copper Wire</a>
+                        <a href="/tissue-paper">TUP Paper</a>
+                        <a href="/ddp">DDP Paper</a>
+                    </li>
+                    <li class="mobile-sub-group">
+                        <span class="mobile-sub-title">Distribution Transformers</span>
+                        <a href="/calendered-pressboards">Calendered Boards</a>
+                        <a href="/aluminium">Enamelled Aluminium Wire</a>
+                        <a href="/plain-kraft-paper">Insulation Paper</a>
+                        <a href="/crepe-paper">Crepe Paper Tubes</a>
+                    </li>
+                    <li class="mobile-sub-group">
+                        <span class="mobile-sub-title">Instrument Transformers</span>
+                        <a href="/copper">Fiberglass Copper Wire</a>
+                        <a href="/calendered-pressboards">Calendered Board</a>
+                        <a href="/plain-kraft-paper">Insulation Paper</a>
+                    </li>
                     <li><a href="/solutions/data-centers">Data Centers</a></li>
                     <li><a href="/solutions/renewables">Renewables</a></li>
                     <li><a href="/solutions/electric-motors">Electric Motors</a></li>
@@ -746,7 +1040,18 @@
             </li>
 
             <!-- 5. Contact Us -->
-            <li><a href="/contact-us" data-cursor="hover">Contact Us</a></li>
+            <li class="mobile-accordion">
+                <div class="mobile-accordion-header" data-cursor="hover">
+                    <span>Contact Us</span>
+                    <svg class="mobile-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <ul class="mobile-accordion-body">
+                    <li><a href="/contact-us">Get in Touch</a></li>
+                    <li><a href="/our-locations">Our Locations</a></li>
+                    <li><a href="/contact-us#hours">Office Hours</a></li>
+                    <li><a href="/contact-us#faq">FAQ</a></li>
+                </ul>
+            </li>
 
             <!-- 6. Newsroom -->
             <li class="mobile-accordion">

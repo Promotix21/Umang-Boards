@@ -524,6 +524,32 @@ a, button, [data-cursor] { cursor: pointer; }
 }
 .mega-feature-link:hover { gap: 0.5rem; color: var(--gold-dark); }
 
+/* CENTER PANEL — scrollable for many L2 items */
+.mega-center-scroll {
+    overflow-y: auto;
+    max-height: 420px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-medium) transparent;
+}
+.mega-center-scroll::-webkit-scrollbar { width: 3px; }
+.mega-center-scroll::-webkit-scrollbar-thumb { background: var(--border-medium); border-radius: 3px; }
+
+/* RIGHT PANEL — description for L2 items without L3 */
+.mega-sub-desc {
+    flex: 1; display: flex; flex-direction: column; justify-content: center;
+}
+.mega-sub-desc-text {
+    font-size: 0.85rem; color: var(--text-secondary); line-height: 1.75;
+    max-width: 320px;
+}
+.mega-sub-desc-cta {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+    color: var(--navy); margin-top: 1.2rem;
+    transition: gap 0.3s ease, color 0.2s ease;
+}
+.mega-sub-desc-cta:hover { gap: 0.6rem; color: var(--gold-dark); }
+
 /* ---- SIMPLE DROPDOWN ---- */
 .nav-dropdown-wrap { position: relative; }
 .nav-dropdown {
