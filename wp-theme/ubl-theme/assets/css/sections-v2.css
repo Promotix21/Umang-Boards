@@ -5,40 +5,51 @@
    ============================================ */
 
 /* ============================================
-   ENERGY FLOW PIPES (decorative SVG layer)
+   POWER LINES ANIMATION (circuit-trace style)
    ============================================ */
-.energy-pipes {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 50;
-    overflow: visible;
+.power-lines {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 50;
+    overflow: hidden; opacity: 0.35; mix-blend-mode: multiply;
 }
-.pipe-svg { width: 100%; height: 100%; }
-.pipe-outline {
-    fill: none;
-    stroke: var(--gold, #C8A84B);
-    stroke-width: 2;
-    stroke-opacity: 0.18;
-    stroke-linecap: round;
+.power-lines-svg { width: 100%; height: 100%; }
+.pl-track {
+    fill: none; stroke: rgba(11,31,58,0.08);
+    stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter;
 }
-.pipe-current {
-    fill: none;
-    stroke: url(#pipeGlow);
-    stroke-width: 4;
-    stroke-linecap: round;
-    filter: url(#pipeBlur);
+.pl-pulse {
+    fill: none; stroke-width: 2;
+    stroke-linecap: square; stroke-linejoin: miter;
+    stroke-dasharray: 15% 85%;
+    animation: plFlow 15s linear infinite;
+}
+.pl-gold { stroke: var(--gold); filter: url(#glow-gold); }
+.pl-light { stroke: var(--gold-light); filter: url(#glow-gold); }
+.pl-reverse { animation-direction: reverse; }
+/* Different durations for each trace */
+.pl-pulse:nth-of-type(2) { animation-duration: 15s; }
+.pl-pulse:nth-of-type(4) { animation-duration: 18s; animation-delay: 2s; }
+.pl-pulse:nth-of-type(6) { animation-duration: 16s; animation-delay: 1s; }
+.pl-pulse:nth-of-type(8) { animation-duration: 4s; animation-delay: 5s; }
+.pl-pulse:nth-of-type(10) { animation-duration: 5s; animation-delay: 7s; }
+.pl-pulse:nth-of-type(12) { animation-duration: 6s; animation-delay: 9s; }
+.pl-pulse:nth-of-type(14) { animation-duration: 5s; animation-delay: 11s; }
+
+@keyframes plFlow {
+    0% { stroke-dashoffset: 100%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { stroke-dashoffset: -15%; opacity: 0; }
 }
 @media (max-width: 1024px) {
-    .energy-pipes { display: none; }
+    .power-lines { display: none; }
 }
 
 /* ============================================
    All content sections above hero video overlay */
 .s-value, .s-products, .s-facility, .s-global, .export-map-section,
-.s-csr, .s-media-news, .s-boardroom, .s-investor-dark, .s-cta, .s-footer { z-index: 5; position: relative; background-color: var(--bg-primary); }
+.s-csr, .s-media-news, .s-investor-dark, .s-cta, .s-footer { z-index: 5; position: relative; background-color: var(--bg-primary); }
 
 /* ============================================
    SECTION 2 — VALUE PROPOSITION (9 Items)

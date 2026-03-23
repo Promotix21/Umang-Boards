@@ -9,35 +9,36 @@ get_header();
     <!-- ================================================
          ENERGY FLOW PIPES (SVG decorative layer)
          ================================================ -->
-    <div class="energy-pipes" id="energyPipes" aria-hidden="true">
-        <svg class="pipe-svg" id="pipeSvg" preserveAspectRatio="none">
+    <div class="power-lines" id="powerLines" aria-hidden="true">
+        <svg class="power-lines-svg" viewBox="0 0 1920 6000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs>
-                <linearGradient id="pipeGlow" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="transparent" />
-                    <stop offset="35%" stop-color="#C8A84B" stop-opacity="0.4" />
-                    <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.95" />
-                    <stop offset="65%" stop-color="#C8A84B" stop-opacity="0.4" />
-                    <stop offset="100%" stop-color="transparent" />
-                </linearGradient>
-                <filter id="pipeBlur" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="3" />
+                <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="6" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <filter id="glow-navy" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="5" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
             </defs>
-            <!-- Segment 1: Right side of hero, curves down -->
-            <g class="pipe-segment" data-pipe="1">
-                <path class="pipe-outline" />
-                <path class="pipe-current" />
-            </g>
-            <!-- Segment 2: Left side, between Products and Facility -->
-            <g class="pipe-segment" data-pipe="2">
-                <path class="pipe-outline" />
-                <path class="pipe-current" />
-            </g>
-            <!-- Segment 3: Right side, between Events and CTA -->
-            <g class="pipe-segment" data-pipe="3">
-                <path class="pipe-outline" />
-                <path class="pipe-current" />
-            </g>
+            <!-- Main center trunk (gold) -->
+            <path class="pl-track" d="M 960 -100 L 960 400 L 860 500 L 860 1500 L 960 1600 L 960 2800 L 1060 2900 L 1060 3800 L 960 3900 L 960 5500" />
+            <path class="pl-pulse pl-gold" d="M 960 -100 L 960 400 L 860 500 L 860 1500 L 960 1600 L 960 2800 L 1060 2900 L 1060 3800 L 960 3900 L 960 5500" />
+            <!-- Left trace (light gold) -->
+            <path class="pl-track" d="M 200 -100 L 200 800 L 300 900 L 300 2000 L 150 2150 L 150 3200 L 400 3450 L 400 4500 L 200 4700 L 200 5500" />
+            <path class="pl-pulse pl-light" d="M 200 -100 L 200 800 L 300 900 L 300 2000 L 150 2150 L 150 3200 L 400 3450 L 400 4500 L 200 4700 L 200 5500" />
+            <!-- Right trace (gold) -->
+            <path class="pl-track" d="M 1720 -100 L 1720 600 L 1620 700 L 1620 1800 L 1800 1980 L 1800 3000 L 1500 3300 L 1500 4200 L 1720 4420 L 1720 5500" />
+            <path class="pl-pulse pl-gold" d="M 1720 -100 L 1720 600 L 1620 700 L 1620 1800 L 1800 1980 L 1800 3000 L 1500 3300 L 1500 4200 L 1720 4420 L 1720 5500" />
+            <!-- Horizontal connectors -->
+            <path class="pl-track" d="M -100 850 L 300 850 L 400 950 L 860 950" />
+            <path class="pl-pulse pl-light" d="M -100 850 L 300 850 L 400 950 L 860 950" />
+            <path class="pl-track" d="M 2020 1800 L 1620 1800 L 1520 1900 L 960 1900" />
+            <path class="pl-pulse pl-gold pl-reverse" d="M 2020 1800 L 1620 1800 L 1520 1900 L 960 1900" />
+            <path class="pl-track" d="M -100 3450 L 400 3450 L 500 3550 L 1060 3550" />
+            <path class="pl-pulse pl-light" d="M -100 3450 L 400 3450 L 500 3550 L 1060 3550" />
+            <path class="pl-track" d="M 2020 4200 L 1500 4200 L 1400 4300 L 960 4300" />
+            <path class="pl-pulse pl-gold pl-reverse" d="M 2020 4200 L 1500 4200 L 1400 4300 L 960 4300" />
         </svg>
     </div>
 
@@ -123,7 +124,7 @@ get_header();
             <!-- FEATURE ROW 1: Manufacturing legacy — image + oversized stat -->
             <div class="vf-row">
                 <div class="vf-media">
-                    <img src="<?php echo UBL_URI; ?>/assets/images/Mfg Hero Background.jpg" alt="Umang Boards Manufacturing Facility" class="vf-media-img">
+                    <img src="<?php echo UBL_URI; ?>/assets/images/factory-aerial-drone.jpg" alt="Umang Boards Manufacturing Facility" class="vf-media-img">
                     <div class="vf-media-badge">Est. 1999 &mdash; Jaipur, Rajasthan</div>
                 </div>
                 <div class="vf-content">
@@ -181,7 +182,7 @@ get_header();
                     <a href="/certifications" class="vf-cta">View Certifications &rarr;</a>
                 </div>
                 <div class="vf-media">
-                    <img src="<?php echo UBL_URI; ?>/assets/images/Transformer Insulations.jpg" alt="Quality Manufacturing" class="vf-media-img">
+                    <img src="<?php echo UBL_URI; ?>/assets/images/product-transformer-insulation.jpg" alt="Quality Manufacturing" class="vf-media-img">
                     <div class="vf-media-badge vf-badge-right">
                         <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                         Make in India
@@ -230,7 +231,7 @@ get_header();
                 <div class="product-panel active" id="panelInsulation">
                     <div class="product-panel-grid">
                         <div class="product-panel-visual">
-                            <img src="<?php echo UBL_URI; ?>/assets/images/Transformer Insulations.jpg" alt="Transformer Insulations" class="product-panel-img">
+                            <img src="<?php echo UBL_URI; ?>/assets/images/product-transformer-insulation.jpg" alt="Transformer Insulations" class="product-panel-img">
                         </div>
                         <div>
                             <span class="product-tag">Core Business</span>
@@ -256,7 +257,7 @@ get_header();
                 <div class="product-panel" id="panelWires" style="display:none;">
                     <div class="product-panel-grid">
                         <div class="product-panel-visual">
-                            <img src="<?php echo UBL_URI; ?>/assets/images/Winding Wires.jpg" alt="Winding Wires" class="product-panel-img">
+                            <img src="<?php echo UBL_URI; ?>/assets/images/product-winding-wire.png" alt="Winding Wires" class="product-panel-img">
                         </div>
                         <div>
                             <span class="product-tag">Conductors</span>
@@ -279,7 +280,7 @@ get_header();
                 <div class="product-panel" id="panelChemicals" style="display:none;">
                     <div class="product-panel-grid">
                         <div class="product-panel-visual">
-                            <img src="<?php echo UBL_URI; ?>/assets/images/Insulating Chemicals.jpg" alt="Insulating Chemicals" class="product-panel-img">
+                            <img src="<?php echo UBL_URI; ?>/assets/images/product-insulating-chemicals.png" alt="Insulating Chemicals" class="product-panel-img">
                         </div>
                         <div>
                             <span class="product-tag">Specialty Chemicals</span>
@@ -424,22 +425,7 @@ get_header();
         </div>
     </section>
 
-    <!-- ================================================
-         FACILITY PARALLAX STRIP
-         ================================================ -->
-    <div class="s-facility" id="sFacility">
-        <div class="parallax-box">
-            <div class="facility-parallax"></div>
-            <div class="facility-overlay"></div>
-            <div class="facility-caption">
-                <div class="facility-caption-inner">
-                    <div class="facility-tag">Manufacturing Campus · Jaipur, Rajasthan</div>
-                    <div class="facility-headline">Built for Scale.<br>Engineered for Precision.</div>
-                    <div class="facility-sub">50,000 sq. ft. · 3 Production Lines · Export-Ready Logistics</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Facility parallax section removed -->
 
     <!-- ================================================
          SECTION 4 — GLOBAL REACH (Interactive Export Map)
@@ -763,22 +749,7 @@ get_header();
         </div>
     </section>
 
-    <!-- ================================================
-         BOARDROOM PARALLAX STRIP
-         ================================================ -->
-    <div class="s-boardroom" id="sBoardroom">
-        <div class="parallax-box">
-            <div class="boardroom-parallax"></div>
-            <div class="boardroom-overlay"></div>
-            <div class="boardroom-caption">
-                <div class="boardroom-caption-inner">
-                    <div class="facility-tag">Corporate Governance · NSE &amp; BSE Listed</div>
-                    <div class="facility-headline">Decisions Backed<br>by <em>Data &amp; Integrity.</em></div>
-                    <div class="facility-sub">Board-led · SEBI Compliant · CRISIL BBB Rated</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Boardroom section removed -->
 
     <!-- ================================================
          SECTION 7 — INVESTOR RESOURCES (Reliance-Style Dark)
