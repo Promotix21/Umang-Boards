@@ -38,7 +38,7 @@
 /* ============================================
    All content sections above hero video overlay */
 .s-value, .s-products, .s-facility, .s-global, .export-map-section,
-.s-csr, .s-events, .s-boardroom, .s-investor, .s-cta, .s-footer { z-index: 5; }
+.s-csr, .s-media-news, .s-boardroom, .s-investor-dark, .s-cta, .s-footer { z-index: 5; position: relative; background-color: var(--bg-primary); }
 
 /* ============================================
    SECTION 2 — VALUE PROPOSITION (9 Items)
@@ -972,6 +972,7 @@
    SECTION 6 — MEDIA & NEWS
    ============================================ */
 .s-media-news {
+    z-index: 5;
     position: relative;
     padding: clamp(6rem, 12vh, 10rem) clamp(1.5rem, 4vw, 3.5rem);
     background: var(--bg-primary);
@@ -1115,6 +1116,7 @@
    SECTION 7 — INVESTOR RELATIONS
    ============================================ */
 .s-investor-dark {
+    z-index: 5; background-color: var(--navy) !important;
     position: relative;
     padding: clamp(6rem, 12vh, 10rem) clamp(1.5rem, 4vw, 3.5rem);
     background: var(--navy);
@@ -1503,25 +1505,25 @@
   --map-border-light: #e4e9f0;
 
   /* Map text (scoped names) */
-  --map-text-primary: #1a1f2e;
+  --map-text-primary: var(--navy);
   --map-text-secondary: #5a6478;
   --map-text-tertiary: #8994a8;
 
   /* Accent — electric blue for energy/power theme */
-  --map-accent: #0066ff;
-  --map-accent-light: rgba(0, 102, 255, 0.12);
-  --map-accent-glow: rgba(0, 102, 255, 0.35);
-  --map-accent-faint: rgba(0, 102, 255, 0.06);
+  --map-accent: var(--gold);
+  --map-accent-light: rgba(200, 168, 75, 0.12);
+  --map-accent-glow: rgba(200, 168, 75, 0.35);
+  --map-accent-faint: rgba(200, 168, 75, 0.06);
 
   /* Region colors */
-  --map-europe: #0066ff;
+  --map-europe: var(--navy);
   --map-asia: #00b368;
   --map-namerica: #e85d00;
   --map-secondary-dot: #8994a8;
 
   /* Route line color */
-  --map-route: #0066ff;
-  --map-route-dim: rgba(0, 102, 255, 0.08);
+  --map-route: var(--gold);
+  --map-route-dim: rgba(200, 168, 75, 0.08);
 }
 
 
@@ -1557,7 +1559,7 @@
 .export-map-section .col-left {
   position: relative;
   z-index: 10;
-  width: 40%;
+  width: 50%;
   min-width: 340px;
   height: 100%;
   display: flex;
@@ -1649,10 +1651,7 @@
 }
 
 .export-map-section .headline .accent {
-  background: linear-gradient(135deg, var(--map-accent), #4d00ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--gold);
 }
 
 .export-map-section .subtext {
