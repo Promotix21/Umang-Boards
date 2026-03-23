@@ -935,19 +935,19 @@ document.addEventListener('DOMContentLoaded', () => {
             { opacity: 1, x: 0, scale: 1, duration: 1.2, delay: 0.2, ease: 'power3.out',
               scrollTrigger: { trigger: '#sCSR', start: 'top 65%' } });
 
-        // --- Section 6: Media & News (staggered header + cards) ---
+        // --- Section 6: Media & News (premium card animations) ---
         gsap.fromTo('#mediaNewsHeader', { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
               scrollTrigger: { trigger: '#sMediaNews', start: 'top 78%' } });
-        gsap.utils.toArray('.mn-news-item').forEach((item, i) => {
-            gsap.fromTo(item, { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 0.7, delay: i * 0.12, ease: 'power3.out',
-                  scrollTrigger: { trigger: '.mn-news-list', start: 'top 85%' } });
+        gsap.utils.toArray('.mn-card').forEach((card, i) => {
+            gsap.fromTo(card, { opacity: 0, y: 50, scale: 0.95 },
+                { opacity: 1, y: 0, scale: 1, duration: 0.9, delay: i * 0.15, ease: 'power3.out',
+                  scrollTrigger: { trigger: '.mn-cards-grid', start: 'top 85%' } });
         });
-        gsap.utils.toArray('.mn-event-card').forEach((card, i) => {
-            gsap.fromTo(card, { opacity: 0, y: 25 },
-                { opacity: 1, y: 0, duration: 0.7, delay: i * 0.15, ease: 'power3.out',
-                  scrollTrigger: { trigger: '.mn-events-col', start: 'top 85%' } });
+        gsap.utils.toArray('.mn-event-pill').forEach((pill, i) => {
+            gsap.fromTo(pill, { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.6, delay: i * 0.1, ease: 'power2.out',
+                  scrollTrigger: { trigger: '.mn-events-strip', start: 'top 90%' } });
         });
 
         // --- Boardroom Parallax Strip ---
@@ -961,23 +961,21 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollTrigger: { trigger: '#sBoardroom', start: 'top 65%' }
         });
 
-        // --- Section 7: Investor Resources Dark (staggered header + cards + graph animation) ---
-        gsap.fromTo('#investorHeader', { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+        // --- Section 7: Investor (Reliance-style staggered reveal + graph animation) ---
+        gsap.fromTo('#invHeroTitle', { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
               scrollTrigger: { trigger: '#sInvestor', start: 'top 78%' } });
-        gsap.utils.toArray('.inv-dark-card').forEach((card, i) => {
-            gsap.fromTo(card, { opacity: 0, y: 40, scale: 0.96 },
-                { opacity: 1, y: 0, scale: 1, duration: 0.8, delay: i * 0.15, ease: 'power3.out',
-                  scrollTrigger: { trigger: '.investor-dark-grid', start: 'top 85%' } });
+        gsap.utils.toArray('.inv-col').forEach((col, i) => {
+            gsap.fromTo(col, { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.8, delay: i * 0.2, ease: 'power3.out',
+                  scrollTrigger: { trigger: '.inv-cols', start: 'top 82%' } });
         });
-        // Animate SVG graph lines on scroll
         ScrollTrigger.create({
             trigger: '#sInvestor',
             start: 'top 70%',
             onEnter: function() {
                 document.querySelectorAll('.inv-graph-line').forEach(function(line) { line.classList.add('animated'); });
                 document.querySelectorAll('.inv-graph-fill').forEach(function(fill) { fill.classList.add('animated'); });
-                document.querySelectorAll('.inv-graph-dot').forEach(function(dot) { dot.classList.add('animated'); });
             },
             once: true
         });

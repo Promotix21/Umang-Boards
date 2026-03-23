@@ -653,95 +653,111 @@ get_header();
     </section>
 
     <!-- ================================================
-         SECTION 6 — MEDIA & NEWS
+         SECTION 6 — MEDIA & NEWS (Premium Redesign)
          ================================================ -->
     <section class="s-media-news" id="sMediaNews">
         <div class="s-media-news-inner">
-            <!-- Watermark -->
-            <div class="media-news-watermark" aria-hidden="true">UPDATES</div>
-
             <div class="s-media-news-header" id="mediaNewsHeader">
-                <div class="section-eyebrow">Media &amp; News</div>
-                <h2 class="section-title">Our Latest<br><em>Updates</em></h2>
-                <p class="section-desc">Being a R&amp;D oriented organization, we strive towards bringing innovation to the power distribution sector. All functions including supply chain, value chain, project scheduling, manufacturing, services and spares, technology, R&amp;D, etc. are integrated to give you the best results.</p>
+                <div>
+                    <div class="section-eyebrow">Media &amp; News</div>
+                    <h2 class="section-title">Our Latest<br><em>Updates</em></h2>
+                </div>
+                <a href="/news" class="btn-outline" data-cursor="hover">View All</a>
             </div>
 
-            <!-- News Updates -->
-            <div class="mn-news-block">
-                <h3 class="mn-block-title">News Updates</h3>
-                <div class="mn-news-list">
-                    <div class="mn-news-item" data-cursor="hover">
-                        <span class="mn-news-tag">Milestone</span>
-                        <h4 class="mn-news-title">Power Grid Corporation India Ltd 400 KV Class Approval</h4>
-                        <p class="mn-news-desc">Umang Boards Limited has been approved by Power Grid Corporation of India for supply of pre-compressed pressboard, laminated pressboard and machined and moulded components for up to 400 KV class rating transformers.</p>
+            <!-- News Cards Grid — 3 cards with images -->
+            <div class="mn-cards-grid">
+                <article class="mn-card" data-cursor="hover">
+                    <div class="mn-card-img">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/factory-aerial-drone.jpg" alt="Umang Boards Factory" loading="lazy">
+                        <span class="mn-card-badge">Milestone</span>
                     </div>
-                    <div class="mn-news-item" data-cursor="hover">
-                        <span class="mn-news-tag">Rating</span>
-                        <h4 class="mn-news-title">We Are Now BBB Rated by CRISIL</h4>
-                        <p class="mn-news-desc">It is an investment grade rating achieved by us — reflecting our strong financial position and creditworthiness in the market.</p>
+                    <div class="mn-card-body">
+                        <h3 class="mn-card-title">Power Grid Corporation India Ltd — 400 KV Class Approval</h3>
+                        <p class="mn-card-desc">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class rating transformers.</p>
+                        <div class="mn-card-footer">
+                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
                     </div>
-                    <div class="mn-news-item" data-cursor="hover">
-                        <span class="mn-news-tag">Recognition</span>
-                        <h4 class="mn-news-title">One Star Export House Certification</h4>
-                        <p class="mn-news-desc">Umang Boards Limited has been honoured with the prestigious One Star Export House Certificate by DGFT, Government of India. Valid from 11th November 2023 to 31 March 2028.</p>
+                </article>
+
+                <article class="mn-card" data-cursor="hover">
+                    <div class="mn-card-img">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/factory-front.jpg" alt="Umang Boards Facility" loading="lazy">
+                        <span class="mn-card-badge">Rating</span>
                     </div>
+                    <div class="mn-card-body">
+                        <h3 class="mn-card-title">CRISIL BBB Investment Grade Rating Achieved</h3>
+                        <p class="mn-card-desc">We are now BBB rated by CRISIL — reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
+                        <div class="mn-card-footer">
+                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="mn-card" data-cursor="hover">
+                    <div class="mn-card-img">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/facility-aerial.jpg" alt="Manufacturing Facility" loading="lazy">
+                        <span class="mn-card-badge">Recognition</span>
+                    </div>
+                    <div class="mn-card-body">
+                        <h3 class="mn-card-title">One Star Export House Certification by DGFT</h3>
+                        <p class="mn-card-desc">Honoured with the prestigious One Star Export House Certificate by the Directorate General of Foreign Trade, Government of India. Valid until March 2028.</p>
+                        <div class="mn-card-footer">
+                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Events & Social Row -->
+            <div class="mn-events-row">
+                <div class="mn-events-header">
+                    <div class="section-eyebrow">Upcoming Events</div>
+                    <h3 class="mn-events-title">Connect With Us</h3>
+                </div>
+                <div class="mn-events-strip">
+                    <a href="https://www.wire-tradefair.com/" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/event-messe-dusseldorf.png" alt="Messe Dusseldorf" class="mn-event-pill-img">
+                        <div class="mn-event-pill-text">
+                            <strong>Messe Dusseldorf</strong>
+                            <span>13–17 Apr 2026 · Booth C82-5</span>
+                        </div>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </a>
+                    <a href="https://berlin.cwiemeevents.com/exhibitors/umang-boards-limited" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/event-cwieme-berlin.png" alt="CWIEME Berlin" class="mn-event-pill-img">
+                        <div class="mn-event-pill-text">
+                            <strong>CWIEME Berlin</strong>
+                            <span>19–21 May 2026 · Booth 27A50</span>
+                        </div>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </a>
+                    <a href="https://elecrama.com" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/event-elecrama.png" alt="ELECRAMA" class="mn-event-pill-img">
+                        <div class="mn-event-pill-text">
+                            <strong>ELECRAMA 2027</strong>
+                            <span>20–24 Feb 2027 · 17th Edition</span>
+                        </div>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </a>
                 </div>
             </div>
 
-            <!-- Two-column: Social + Trade Fairs -->
-            <div class="mn-two-col">
-                <!-- Left: Instagram -->
-                <div class="mn-social-col">
-                    <h3 class="mn-block-title">Follow Us on Instagram</h3>
-                    <div class="mn-insta-grid">
-                        <a href="https://www.instagram.com/umangboards7/" target="_blank" rel="noopener" class="mn-insta-cta" data-cursor="hover">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-                            <span>@umangboards7</span>
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                        </a>
-                    </div>
-
-                    <h3 class="mn-block-title" style="margin-top: 2.5rem;">Follow Us on YouTube</h3>
-                    <div class="mn-youtube-embed">
-                        <iframe src="https://www.youtube.com/embed/svxX0oXME-8" title="Umang Boards Limited" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
+            <!-- YouTube -->
+            <div class="mn-video-row">
+                <div class="mn-video-embed">
+                    <iframe src="https://www.youtube.com/embed/svxX0oXME-8" title="Umang Boards Limited" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
-
-                <!-- Right: Trade Fairs -->
-                <div class="mn-events-col">
-                    <h3 class="mn-block-title">Connect With Us</h3>
-                    <div class="mn-event-cards">
-                        <a href="https://www.wire-tradefair.com/" target="_blank" rel="noopener" class="mn-event-card" data-cursor="hover">
-                            <div class="mn-event-banner">
-                                <img src="<?php echo UBL_URI; ?>/assets/images/event-messe-dusseldorf.png" alt="Wire Trade Fair - Messe Dusseldorf" loading="lazy">
-                            </div>
-                            <div class="mn-event-info">
-                                <h4>Messe Dusseldorf</h4>
-                                <span class="mn-event-date-text">13 April 2026 – 17 April 2026</span>
-                                <span class="mn-event-booth">Visit us at: C82-5</span>
-                            </div>
-                        </a>
-                        <a href="https://berlin.cwiemeevents.com/exhibitors/umang-boards-limited" target="_blank" rel="noopener" class="mn-event-card" data-cursor="hover">
-                            <div class="mn-event-banner">
-                                <img src="<?php echo UBL_URI; ?>/assets/images/event-cwieme-berlin.png" alt="CWIEME Berlin" loading="lazy">
-                            </div>
-                            <div class="mn-event-info">
-                                <h4>CWIEME Berlin</h4>
-                                <span class="mn-event-date-text">19 May 2026 – 21 May 2026</span>
-                                <span class="mn-event-booth">Visit us at: 27A50</span>
-                            </div>
-                        </a>
-                        <a href="https://elecrama.com" target="_blank" rel="noopener" class="mn-event-card" data-cursor="hover">
-                            <div class="mn-event-banner">
-                                <img src="<?php echo UBL_URI; ?>/assets/images/event-elecrama.png" alt="ELECRAMA" loading="lazy">
-                            </div>
-                            <div class="mn-event-info">
-                                <h4>ELECRAMA</h4>
-                                <span class="mn-event-date-text">20 February 2027 – 24 February 2027</span>
-                                <span class="mn-event-booth">17th Edition — Powering the Future of Energy</span>
-                            </div>
-                        </a>
-                    </div>
+                <div class="mn-social-links">
+                    <a href="https://www.instagram.com/umangboards7/" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        Follow on Instagram
+                    </a>
+                    <a href="https://www.youtube.com/@UmangBoards" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+                        Subscribe on YouTube
+                    </a>
                 </div>
             </div>
         </div>
@@ -765,96 +781,106 @@ get_header();
     </div>
 
     <!-- ================================================
-         SECTION 7 — INVESTOR RESOURCES (Dark)
+         SECTION 7 — INVESTOR RESOURCES (Reliance-Style Dark)
          ================================================ -->
     <section class="s-investor-dark" id="sInvestor">
         <div class="s-investor-dark-inner">
-            <!-- Watermark -->
-            <div class="investor-watermark" aria-hidden="true">INVESTORS</div>
+            <!-- Large serif title -->
+            <h2 class="inv-hero-title" id="invHeroTitle">Investors</h2>
 
-            <div class="s-investor-dark-header" id="investorHeader">
-                <div class="investor-dark-eyebrow"><span class="investor-dark-eyebrow-bar"></span> Investors</div>
-                <h2 class="investor-dark-title">Investor Resources</h2>
-            </div>
-
-            <!-- 3-Column Grid: NSE / BSE / Downloads -->
-            <div class="investor-dark-grid">
-                <!-- NSE Card -->
-                <div class="inv-dark-card" id="invCardNSE">
-                    <h3 class="inv-dark-card-heading">NSE</h3>
-                    <div class="inv-dark-card-box">
-                        <div class="inv-dark-status">Presently</div>
-                        <div class="inv-dark-status-val">Un listed</div>
+            <!-- 3-Column: Notices | Investor Documents | NSE/BSE -->
+            <div class="inv-cols">
+                <!-- Column 1: Notices -->
+                <div class="inv-col" id="invColNotices">
+                    <h3 class="inv-col-heading">Notices</h3>
+                    <div class="inv-notices-list">
+                        <div class="inv-notice-item">
+                            <span class="inv-notice-date">FEB 10, 2026</span>
+                            <p>Notice pursuant to SEBI Circular SEBI/HO/MIRSD/DOS3/CIR/P/2018...</p>
+                        </div>
+                        <div class="inv-notice-item">
+                            <span class="inv-notice-date">FEB 10, 2026</span>
+                            <p>Notice pursuant to SEBI Circular SEBI/HO/MIRSD/DOS3/CIR/P/2018...</p>
+                        </div>
                     </div>
-                    <!-- Decorative animated graph SVG -->
-                    <div class="inv-dark-graph">
-                        <svg viewBox="0 0 200 80" preserveAspectRatio="none" class="inv-graph-svg">
-                            <defs>
-                                <linearGradient id="graphGrad1" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.3"/>
-                                    <stop offset="100%" stop-color="var(--gold)" stop-opacity="0"/>
-                                </linearGradient>
-                            </defs>
-                            <path class="inv-graph-fill" d="M0,60 Q25,55 50,45 T100,35 T150,50 T200,30 V80 H0 Z" fill="url(#graphGrad1)"/>
-                            <path class="inv-graph-line" d="M0,60 Q25,55 50,45 T100,35 T150,50 T200,30" fill="none" stroke="var(--gold)" stroke-width="2"/>
-                            <circle class="inv-graph-dot" cx="200" cy="30" r="3" fill="var(--gold)"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- BSE Card -->
-                <div class="inv-dark-card" id="invCardBSE">
-                    <h3 class="inv-dark-card-heading">BSE</h3>
-                    <div class="inv-dark-card-box">
-                        <div class="inv-dark-status">Presently</div>
-                        <div class="inv-dark-status-val">Un listed</div>
-                    </div>
-                    <!-- Decorative animated graph SVG -->
-                    <div class="inv-dark-graph">
-                        <svg viewBox="0 0 200 80" preserveAspectRatio="none" class="inv-graph-svg">
-                            <defs>
-                                <linearGradient id="graphGrad2" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.3"/>
-                                    <stop offset="100%" stop-color="var(--gold)" stop-opacity="0"/>
-                                </linearGradient>
-                            </defs>
-                            <path class="inv-graph-fill" d="M0,50 Q30,40 60,55 T120,30 T180,45 T200,25 V80 H0 Z" fill="url(#graphGrad2)"/>
-                            <path class="inv-graph-line" d="M0,50 Q30,40 60,55 T120,30 T180,45 T200,25" fill="none" stroke="var(--gold)" stroke-width="2"/>
-                            <circle class="inv-graph-dot" cx="200" cy="25" r="3" fill="var(--gold)"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Investor Downloads Card -->
-                <div class="inv-dark-card inv-dark-card-downloads" id="invCardDownloads">
-                    <h3 class="inv-dark-card-heading">Investor Downloads</h3>
-                    <div class="inv-dark-downloads-list">
-                        <a href="/investor-login" class="inv-dark-dl-link" data-cursor="hover">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                            <span>Financial Report 2018-19</span>
-                        </a>
-                        <a href="/investor-login" class="inv-dark-dl-link" data-cursor="hover">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                            <span>Financial Report 2019-20</span>
-                        </a>
-                    </div>
-                    <a href="/investor-login" class="inv-dark-login-btn" data-cursor="hover">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                        <span>Investor Login</span>
+                    <a href="/investor-login" class="inv-know-more" data-cursor="hover">
+                        know more
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
-            </div>
 
-            <!-- Bottom CTA -->
-            <div class="investor-dark-bottom">
-                <a href="/investor-login" class="btn-gold" data-cursor="hover">
-                    Investor Relations Portal
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="/corporate-governance" class="btn-outline-light" data-cursor="hover">
-                    Corporate Governance
-                </a>
+                <!-- Column 2: Investor Documents -->
+                <div class="inv-col" id="invColDocs">
+                    <h3 class="inv-col-heading">Investor Documents</h3>
+                    <div class="inv-docs-list">
+                        <a href="/investor-login" class="inv-doc-item" data-cursor="hover">
+                            <div class="inv-doc-icon">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            </div>
+                            <div>
+                                <div class="inv-doc-title">2025-2026 Financial Presentation - Q3 Results</div>
+                                <div class="inv-doc-date">16, Jan | 2026</div>
+                            </div>
+                        </a>
+                        <a href="/investor-login" class="inv-doc-item" data-cursor="hover">
+                            <div class="inv-doc-icon">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            </div>
+                            <div>
+                                <div class="inv-doc-title">2025-2026 Financial Presentation - Q2 Results</div>
+                                <div class="inv-doc-date">17, Oct | 2025</div>
+                            </div>
+                        </a>
+                    </div>
+                    <a href="/investor-login" class="inv-know-more" data-cursor="hover">
+                        know more
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Column 3: NSE & BSE Cards -->
+                <div class="inv-col inv-col-stocks" id="invColStocks">
+                    <!-- NSE Card -->
+                    <div class="inv-stock-card">
+                        <div class="inv-stock-header">
+                            <h4>NSE</h4>
+                            <span class="inv-stock-status">Presently Unlisted</span>
+                        </div>
+                        <!-- Decorative animated graph -->
+                        <div class="inv-stock-graph">
+                            <svg viewBox="0 0 200 60" preserveAspectRatio="none" class="inv-graph-svg">
+                                <defs>
+                                    <linearGradient id="nseGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.25"/>
+                                        <stop offset="100%" stop-color="var(--gold)" stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+                                <path class="inv-graph-fill" d="M0,45 Q25,40 50,35 T100,28 T150,38 T200,22 V60 H0 Z" fill="url(#nseGrad)"/>
+                                <path class="inv-graph-line" d="M0,45 Q25,40 50,35 T100,28 T150,38 T200,22" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- BSE Card -->
+                    <div class="inv-stock-card">
+                        <div class="inv-stock-header">
+                            <h4>BSE</h4>
+                            <span class="inv-stock-status">Presently Unlisted</span>
+                        </div>
+                        <div class="inv-stock-graph">
+                            <svg viewBox="0 0 200 60" preserveAspectRatio="none" class="inv-graph-svg">
+                                <defs>
+                                    <linearGradient id="bseGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.25"/>
+                                        <stop offset="100%" stop-color="var(--gold)" stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+                                <path class="inv-graph-fill" d="M0,38 Q30,30 60,42 T120,25 T180,35 T200,18 V60 H0 Z" fill="url(#bseGrad)"/>
+                                <path class="inv-graph-line" d="M0,38 Q30,30 60,42 T120,25 T180,35 T200,18" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
