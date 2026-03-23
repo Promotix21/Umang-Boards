@@ -1051,6 +1051,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const pageH = document.documentElement.scrollHeight;
                 const pw = window.innerWidth;
                 pipeSvg.setAttribute('viewBox', '0 0 ' + pw + ' ' + pageH);
+                document.getElementById("energyPipes").style.height = pageH + "px";
 
                 // Helper to get section vertical position
                 function secTop(sel) {
@@ -1066,10 +1067,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const pipes = [
                     {
                         // Segment 1: Right side — hero area flowing down past value section
-                        d: 'M ' + (pw + 60) + ' ' + (secTop('.s-hero') + 200) +
-                           ' C ' + (pw - 180) + ' ' + (secTop('.s-hero') + 450) +
-                           ', ' + (pw - 120) + ' ' + (secBot('.s-hero') + 100) +
-                           ', ' + (pw + 60) + ' ' + (secTop('#sValue') + 300),
+                        d: 'M ' + (pw + 40) + ' ' + (secTop('.s-hero') + 200) +
+                           ' C ' + (pw * 0.5) + ' ' + (secTop('.s-hero') + 450) +
+                           ', ' + (pw * 0.6) + ' ' + (secBot('.s-hero') + 100) +
+                           ', ' + (pw + 40) + ' ' + (secTop('#sValue') + 300),
                         trigger: '.s-hero',
                         triggerEnd: '#sValue',
                     },
@@ -1077,18 +1078,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Segment 2: Left side — between Products and Facility
                         d: 'M -60 ' + (secBot('#sProducts') - 200) +
                            ' C 200 ' + (secBot('#sProducts') - 100) +
-                           ', 250 ' + (secTop('#sFacility') + 50) +
+                           ', ' + (pw * 0.35) + ' ' + (secTop('#sFacility') + 50) +
                            ', -60 ' + (secTop('#sFacility') + 300),
                         trigger: '#sProducts',
                         triggerEnd: '#sFacility',
                     },
                     {
                         // Segment 3: Right side — between Events and CTA
-                        d: 'M ' + (pw + 60) + ' ' + (secBot('#sEvents') - 200) +
-                           ' C ' + (pw - 200) + ' ' + (secBot('#sEvents') - 50) +
-                           ', ' + (pw - 180) + ' ' + (secTop('#sCTA') + 100) +
-                           ', ' + (pw + 60) + ' ' + (secTop('#sCTA') + 350),
-                        trigger: '#sEvents',
+                        d: 'M ' + (pw + 40) + ' ' + (secBot('#sMediaNews') - 200) +
+                           ' C ' + (pw * 0.45) + ' ' + (secBot('#sMediaNews') - 50) +
+                           ', ' + (pw * 0.5) + ' ' + (secTop('#sCTA') + 100) +
+                           ', ' + (pw + 40) + ' ' + (secTop('#sCTA') + 350),
+                        trigger: '#sMediaNews',
                         triggerEnd: '#sCTA',
                     },
                 ];
