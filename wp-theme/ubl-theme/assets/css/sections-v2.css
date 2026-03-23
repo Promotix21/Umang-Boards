@@ -2134,3 +2134,17 @@
     padding: 14px;
   }
 }
+
+/* Safety fallback: ensure sections become visible even if GSAP fails */
+@keyframes safeReveal { to { opacity: 1; transform: translateY(0); } }
+.s-value-header,
+.s-products-header,
+.s-csr-content,
+.s-investor-dark-header,
+.s-media-news-header,
+.mn-news-item,
+.mn-event-card,
+.inv-dark-card,
+.cta-actions {
+    animation: safeReveal 0.6s ease-out 5s forwards;
+}

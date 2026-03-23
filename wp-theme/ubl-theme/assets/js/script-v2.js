@@ -813,6 +813,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Refresh ScrollTrigger after hero pin setup to recalculate positions
+        setTimeout(function() { ScrollTrigger.refresh(); }, 500);
         // --- Section 2: Value Proposition (staggered text reveal) ---
         gsap.fromTo('#valueHeader .section-eyebrow', { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
