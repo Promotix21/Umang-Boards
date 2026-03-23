@@ -182,7 +182,9 @@ get_header();
                     <a href="/certifications" class="vf-cta">View Certifications &rarr;</a>
                 </div>
                 <div class="vf-media">
-                    <img src="<?php echo UBL_URI; ?>/assets/images/product-transformer-insulation.jpg" alt="Quality Manufacturing" class="vf-media-img">
+                    <video autoplay loop muted playsinline class="vf-media-img" style="object-fit: cover;">
+                        <source src="<?php echo UBL_URI; ?>/assets/images/made-in-india.mp4" type="video/mp4">
+                    </video>
                     <div class="vf-media-badge vf-badge-right">
                         <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                         Make in India
