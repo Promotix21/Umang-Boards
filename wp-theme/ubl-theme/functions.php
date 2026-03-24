@@ -97,6 +97,175 @@ add_action( 'wp_head', function () {
     echo '<link rel="icon" type="image/png" href="' . UBL_URI . '/assets/images/ubl-favicon.png">' . "\n";
 } );
 
+/* ─── Custom Login Page ─── */
+add_action( 'login_enqueue_scripts', function () {
+    wp_enqueue_style( 'ubl-google-fonts',
+        'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap',
+        [], null
+    );
+    ?>
+    <style>
+        :root {
+            --navy: #0B1F3A;
+            --navy-light: #1A3556;
+            --gold: #C8A84B;
+            --gold-light: #D4BA6A;
+            --gold-pale: #E8D9A8;
+        }
+        body.login {
+            background: var(--navy) !important;
+            display: flex; align-items: center; justify-content: center;
+            min-height: 100vh; margin: 0;
+            font-family: 'Poppins', -apple-system, sans-serif;
+            position: relative; overflow: hidden;
+        }
+        /* Watermark */
+        body.login::before {
+            content: 'UBL';
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Poppins', sans-serif;
+            font-size: 28vw; font-weight: 900;
+            color: rgba(255,255,255,0.02);
+            pointer-events: none; z-index: 0;
+            letter-spacing: 0.05em;
+        }
+        /* Logo */
+        #login h1 a {
+            background-image: url('<?php echo UBL_URI; ?>/assets/images/UBL_LOGO.png') !important;
+            background-size: contain !important;
+            background-position: center !important;
+            width: 80px !important; height: 80px !important;
+            margin-bottom: 1.5rem !important;
+        }
+        /* Form container */
+        #loginform, #registerform, #lostpasswordform {
+            background: rgba(255,255,255,0.04) !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            border-radius: 16px !important;
+            padding: 2.5rem 2.5rem 2rem !important;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+            backdrop-filter: blur(12px);
+        }
+        #login {
+            width: 380px !important; padding: 0 !important;
+            position: relative; z-index: 1;
+        }
+        /* Labels */
+        #loginform label, #registerform label, #lostpasswordform label {
+            color: rgba(255,255,255,0.5) !important;
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.72rem !important;
+            letter-spacing: 0.12em !important;
+            text-transform: uppercase !important;
+            font-weight: 500 !important;
+        }
+        /* Inputs */
+        #loginform input[type="text"],
+        #loginform input[type="password"],
+        #registerform input[type="text"],
+        #registerform input[type="email"],
+        #lostpasswordform input[type="text"] {
+            background: rgba(255,255,255,0.06) !important;
+            border: 1px solid rgba(255,255,255,0.12) !important;
+            border-radius: 8px !important;
+            color: #FFFFFF !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 0.9rem !important;
+            padding: 0.8rem 1rem !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            transition: border-color 0.3s, box-shadow 0.3s !important;
+            margin-top: 0.4rem !important;
+        }
+        #loginform input:focus, #registerform input:focus, #lostpasswordform input:focus {
+            border-color: var(--gold) !important;
+            box-shadow: 0 0 0 3px rgba(200,168,75,0.15) !important;
+            outline: none !important;
+        }
+        /* Submit button */
+        #wp-submit, .button-primary {
+            background: var(--gold) !important;
+            border: none !important;
+            border-radius: 6px !important;
+            color: var(--navy) !important;
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.15em !important;
+            text-transform: uppercase !important;
+            padding: 0.9rem 2rem !important;
+            width: 100% !important;
+            cursor: pointer !important;
+            transition: all 0.3s !important;
+            text-shadow: none !important;
+            box-shadow: none !important;
+            height: auto !important;
+            line-height: 1.4 !important;
+            margin-top: 0.5rem !important;
+        }
+        #wp-submit:hover, .button-primary:hover {
+            background: var(--gold-light) !important;
+            box-shadow: 0 8px 30px rgba(200,168,75,0.3) !important;
+            transform: translateY(-2px);
+        }
+        /* Remember me */
+        .forgetmenot {
+            margin-bottom: 1rem !important;
+        }
+        .forgetmenot label {
+            color: rgba(255,255,255,0.35) !important;
+            font-size: 0.75rem !important;
+        }
+        .forgetmenot input[type="checkbox"] {
+            accent-color: var(--gold);
+        }
+        /* Links */
+        #login #nav a, #login #backtoblog a, .login .privacy-policy-page-link a {
+            color: rgba(255,255,255,0.35) !important;
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.72rem !important;
+            letter-spacing: 0.08em !important;
+            transition: color 0.2s !important;
+        }
+        #login #nav a:hover, #login #backtoblog a:hover, .login .privacy-policy-page-link a:hover {
+            color: var(--gold) !important;
+        }
+        #login #nav, #login #backtoblog {
+            text-align: center !important;
+            padding: 0 !important;
+        }
+        /* Error/Message boxes */
+        #login .message, #login .success {
+            background: rgba(200,168,75,0.08) !important;
+            border-left: 4px solid var(--gold) !important;
+            color: rgba(255,255,255,0.7) !important;
+            border-radius: 8px !important;
+            padding: 0.8rem 1rem !important;
+            margin-bottom: 1.5rem !important;
+            box-shadow: none !important;
+        }
+        #login_error {
+            background: rgba(220,50,50,0.1) !important;
+            border-left: 4px solid #ff6b6b !important;
+            color: #ff8a8a !important;
+            border-radius: 8px !important;
+            padding: 0.8rem 1rem !important;
+            margin-bottom: 1.5rem !important;
+            box-shadow: none !important;
+        }
+        #login_error a { color: var(--gold) !important; }
+        /* Hide unnecessary elements */
+        .language-switcher { display: none !important; }
+        .login .privacy-policy-page-link { margin-top: 1rem !important; }
+    </style>
+    <?php
+} );
+
+/* Custom login logo URL & title */
+add_filter( 'login_headerurl', function () { return home_url(); } );
+add_filter( 'login_headertext', function () { return 'Umang Boards Limited'; } );
+
 /* ─── Remove unnecessary WP head bloat ─── */
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
