@@ -97,6 +97,57 @@ add_action( 'wp_head', function () {
     echo '<link rel="icon" type="image/png" href="' . UBL_URI . '/assets/images/ubl-favicon.png">' . "\n";
 } );
 
+/* ─── Cloudflare Cache Purge ─── */
+define( 'UBL_CF_ZONE', '272b4923ce32cbb684e169a1e4694fdd' );
+define( 'UBL_CF_TOKEN', 'cfut_vQ1y0nax6ufvH4SWHx71KU0miKXAAutV76TnBvhVb0f3828e' );
+
+function ubl_cf_purge_cache() {
+    $response = wp_remote_post( 'https://api.cloudflare.com/client/v4/zones/' . UBL_CF_ZONE . '/purge_cache', [
+        'headers' => [
+            'Authorization' => 'Bearer ' . UBL_CF_TOKEN,
+            'Content-Type'  => 'application/json',
+        ],
+        'body' => json_encode( [ 'purge_everything' => true ] ),
+    ] );
+    $body = json_decode( wp_remote_retrieve_body( $response ), true );
+    return ! empty( $body['success'] );
+}
+
+/* Admin bar "Purge Cache" button */
+add_action( 'admin_bar_menu', function ( $wp_admin_bar ) {
+    if ( ! current_user_can( 'manage_options' ) ) return;
+    $wp_admin_bar->add_node( [
+        'id'    => 'ubl-purge-cf',
+        'title' => '🔄 Purge CF Cache',
+        'href'  => wp_nonce_url( admin_url( 'admin-post.php?action=ubl_purge_cf' ), 'ubl_purge_cf' ),
+    ] );
+}, 999 );
+
+add_action( 'admin_post_ubl_purge_cf', function () {
+    if ( ! current_user_can( 'manage_options' ) || ! wp_verify_nonce( $_GET['_wpnonce'], 'ubl_purge_cf' ) ) {
+        wp_die( 'Unauthorized' );
+    }
+    $success = ubl_cf_purge_cache();
+    wp_redirect( add_query_arg( 'cf_purged', $success ? '1' : '0', wp_get_referer() ?: admin_url() ) );
+    exit;
+} );
+
+add_action( 'admin_notices', function () {
+    if ( isset( $_GET['cf_purged'] ) ) {
+        $ok = $_GET['cf_purged'] === '1';
+        printf( '<div class="notice notice-%s is-dismissible"><p>Cloudflare cache %s.</p></div>',
+            $ok ? 'success' : 'error',
+            $ok ? 'purged successfully' : 'purge failed'
+        );
+    }
+} );
+
+/* Auto-purge on post/page update */
+add_action( 'save_post', function ( $post_id ) {
+    if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) return;
+    ubl_cf_purge_cache();
+}, 20 );
+
 /* ─── Custom Login Page (Light Theme + Math Captcha) ─── */
 add_action( 'login_enqueue_scripts', function () {
     wp_enqueue_style( 'ubl-google-fonts',
