@@ -233,7 +233,7 @@ get_header();
                 <div class="product-panel active" id="panelInsulation">
                     <div class="product-panel-grid">
                         <div class="product-panel-visual">
-                            <img src="<?php echo UBL_URI; ?>/assets/images/product-transformer-insulation.jpg" alt="Transformer Insulations" class="product-panel-img">
+                            <img src="<?php echo UBL_URI; ?>/assets/images/product-transformer-insulation.png" alt="Transformer Insulations" class="product-panel-img">
                         </div>
                         <div>
                             <span class="product-tag">Core Business</span>
