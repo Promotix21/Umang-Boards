@@ -97,7 +97,7 @@ add_action( 'wp_head', function () {
     echo '<link rel="icon" type="image/png" href="' . UBL_URI . '/assets/images/ubl-favicon.png">' . "\n";
 } );
 
-/* ─── Custom Login Page ─── */
+/* ─── Custom Login Page (Light Theme + Math Captcha) ─── */
 add_action( 'login_enqueue_scripts', function () {
     wp_enqueue_style( 'ubl-google-fonts',
         'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap',
@@ -107,28 +107,14 @@ add_action( 'login_enqueue_scripts', function () {
     <style>
         :root {
             --navy: #0B1F3A;
-            --navy-light: #1A3556;
             --gold: #C8A84B;
             --gold-light: #D4BA6A;
-            --gold-pale: #E8D9A8;
         }
         body.login {
-            background: var(--navy) !important;
+            background: #F5F5F7 !important;
             display: flex; align-items: center; justify-content: center;
             min-height: 100vh; margin: 0;
             font-family: 'Poppins', -apple-system, sans-serif;
-            position: relative; overflow: hidden;
-        }
-        /* Watermark */
-        body.login::before {
-            content: 'UBL';
-            position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Poppins', sans-serif;
-            font-size: 28vw; font-weight: 900;
-            color: rgba(255,255,255,0.02);
-            pointer-events: none; z-index: 0;
-            letter-spacing: 0.05em;
         }
         /* Logo */
         #login h1 a {
@@ -136,65 +122,66 @@ add_action( 'login_enqueue_scripts', function () {
             background-size: contain !important;
             background-position: center !important;
             width: 80px !important; height: 80px !important;
-            margin-bottom: 1.5rem !important;
+            margin-bottom: 1.2rem !important;
         }
         /* Form container */
         #loginform, #registerform, #lostpasswordform {
-            background: rgba(255,255,255,0.04) !important;
-            border: 1px solid rgba(255,255,255,0.08) !important;
+            background: #FFFFFF !important;
+            border: 1px solid rgba(11,31,58,0.08) !important;
             border-radius: 16px !important;
             padding: 2.5rem 2.5rem 2rem !important;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
-            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 40px rgba(11,31,58,0.08) !important;
         }
         #login {
-            width: 380px !important; padding: 0 !important;
-            position: relative; z-index: 1;
+            width: 400px !important; padding: 0 !important;
         }
         /* Labels */
-        #loginform label, #registerform label, #lostpasswordform label {
-            color: rgba(255,255,255,0.5) !important;
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.72rem !important;
-            letter-spacing: 0.12em !important;
-            text-transform: uppercase !important;
-            font-weight: 500 !important;
+        #loginform label, #registerform label, #lostpasswordform label,
+        #loginform .ubl-captcha-label {
+            color: var(--navy) !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 0.82rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 0 !important;
+            text-transform: none !important;
         }
         /* Inputs */
         #loginform input[type="text"],
         #loginform input[type="password"],
+        #loginform input[type="number"],
         #registerform input[type="text"],
         #registerform input[type="email"],
         #lostpasswordform input[type="text"] {
-            background: rgba(255,255,255,0.06) !important;
-            border: 1px solid rgba(255,255,255,0.12) !important;
+            background: #F5F5F7 !important;
+            border: 1px solid rgba(11,31,58,0.12) !important;
             border-radius: 8px !important;
-            color: #FFFFFF !important;
+            color: var(--navy) !important;
             font-family: 'Poppins', sans-serif !important;
             font-size: 0.9rem !important;
             padding: 0.8rem 1rem !important;
             width: 100% !important;
             box-sizing: border-box !important;
             transition: border-color 0.3s, box-shadow 0.3s !important;
-            margin-top: 0.4rem !important;
+            margin-top: 0.3rem !important;
         }
         #loginform input:focus, #registerform input:focus, #lostpasswordform input:focus {
+            background: #FFFFFF !important;
             border-color: var(--gold) !important;
-            box-shadow: 0 0 0 3px rgba(200,168,75,0.15) !important;
+            box-shadow: 0 0 0 3px rgba(200,168,75,0.12) !important;
             outline: none !important;
         }
         /* Submit button */
         #wp-submit, .button-primary {
-            background: var(--gold) !important;
+            background: var(--navy) !important;
             border: none !important;
-            border-radius: 6px !important;
-            color: var(--navy) !important;
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.72rem !important;
-            font-weight: 700 !important;
-            letter-spacing: 0.15em !important;
-            text-transform: uppercase !important;
-            padding: 0.9rem 2rem !important;
+            border-radius: 8px !important;
+            color: #FFFFFF !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.02em !important;
+            text-transform: none !important;
+            padding: 0.85rem 2rem !important;
             width: 100% !important;
             cursor: pointer !important;
             transition: all 0.3s !important;
@@ -205,59 +192,67 @@ add_action( 'login_enqueue_scripts', function () {
             margin-top: 0.5rem !important;
         }
         #wp-submit:hover, .button-primary:hover {
-            background: var(--gold-light) !important;
-            box-shadow: 0 8px 30px rgba(200,168,75,0.3) !important;
-            transform: translateY(-2px);
+            background: var(--gold) !important;
+            color: var(--navy) !important;
+            box-shadow: 0 6px 20px rgba(200,168,75,0.25) !important;
+            transform: translateY(-1px);
         }
         /* Remember me */
-        .forgetmenot {
-            margin-bottom: 1rem !important;
-        }
+        .forgetmenot { margin-bottom: 1rem !important; }
         .forgetmenot label {
-            color: rgba(255,255,255,0.35) !important;
-            font-size: 0.75rem !important;
+            color: #6B6F7A !important;
+            font-size: 0.8rem !important;
         }
-        .forgetmenot input[type="checkbox"] {
-            accent-color: var(--gold);
-        }
+        .forgetmenot input[type="checkbox"] { accent-color: var(--gold); }
         /* Links */
         #login #nav a, #login #backtoblog a, .login .privacy-policy-page-link a {
-            color: rgba(255,255,255,0.35) !important;
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.72rem !important;
-            letter-spacing: 0.08em !important;
+            color: #6B6F7A !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 0.78rem !important;
             transition: color 0.2s !important;
         }
-        #login #nav a:hover, #login #backtoblog a:hover, .login .privacy-policy-page-link a:hover {
-            color: var(--gold) !important;
-        }
-        #login #nav, #login #backtoblog {
-            text-align: center !important;
-            padding: 0 !important;
-        }
-        /* Error/Message boxes */
+        #login #nav a:hover, #login #backtoblog a:hover { color: var(--gold) !important; }
+        #login #nav, #login #backtoblog { text-align: center !important; padding: 0 !important; }
+        /* Error/Message */
         #login .message, #login .success {
             background: rgba(200,168,75,0.08) !important;
             border-left: 4px solid var(--gold) !important;
-            color: rgba(255,255,255,0.7) !important;
+            color: var(--navy) !important;
             border-radius: 8px !important;
             padding: 0.8rem 1rem !important;
             margin-bottom: 1.5rem !important;
             box-shadow: none !important;
         }
         #login_error {
-            background: rgba(220,50,50,0.1) !important;
-            border-left: 4px solid #ff6b6b !important;
-            color: #ff8a8a !important;
+            background: #FEF2F2 !important;
+            border-left: 4px solid #EF4444 !important;
+            color: #991B1B !important;
             border-radius: 8px !important;
             padding: 0.8rem 1rem !important;
             margin-bottom: 1.5rem !important;
             box-shadow: none !important;
         }
         #login_error a { color: var(--gold) !important; }
-        /* Hide unnecessary elements */
         .language-switcher { display: none !important; }
-        .login .privacy-policy-page-link { margin-top: 1rem !important; }
+        /* Captcha field */
+        .ubl-captcha-wrap {
+            margin: 1rem 0 0.5rem;
+            padding: 1rem;
+            background: #F5F5F7;
+            border-radius: 8px;
+            border: 1px solid rgba(11,31,58,0.06);
+        }
+        .ubl-captcha-label {
+            display: block; margin-bottom: 0.5rem;
+        }
+        .ubl-captcha-question {
+            font-family: 'DM Mono', monospace;
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--navy); margin-bottom: 0.5rem;
+        }
+        .ubl-captcha-wrap input[type="number"] {
+            width: 100px !important; text-align: center;
+        }
     </style>
     <?php
 } );
@@ -265,6 +260,35 @@ add_action( 'login_enqueue_scripts', function () {
 /* Custom login logo URL & title */
 add_filter( 'login_headerurl', function () { return home_url(); } );
 add_filter( 'login_headertext', function () { return 'Umang Boards Limited'; } );
+
+/* ─── Math Captcha on Login ─── */
+add_action( 'login_form', function () {
+    $num1 = wp_rand( 2, 15 );
+    $num2 = wp_rand( 1, 10 );
+    $hash = wp_hash( $num1 + $num2, 'nonce' );
+    ?>
+    <div class="ubl-captcha-wrap">
+        <label class="ubl-captcha-label">Security Check</label>
+        <div class="ubl-captcha-question">What is <?php echo $num1; ?> + <?php echo $num2; ?>?</div>
+        <input type="number" name="ubl_captcha_answer" required placeholder="Answer" autocomplete="off">
+        <input type="hidden" name="ubl_captcha_hash" value="<?php echo esc_attr( $hash ); ?>">
+    </div>
+    <?php
+} );
+
+add_filter( 'authenticate', function ( $user, $username, $password ) {
+    if ( empty( $username ) && empty( $password ) ) return $user;
+    if ( defined( 'XMLRPC_REQUEST' ) || defined( 'REST_REQUEST' ) ) return $user;
+
+    $answer = isset( $_POST['ubl_captcha_answer'] ) ? intval( $_POST['ubl_captcha_answer'] ) : -1;
+    $hash   = isset( $_POST['ubl_captcha_hash'] ) ? sanitize_text_field( $_POST['ubl_captcha_hash'] ) : '';
+
+    if ( wp_hash( $answer, 'nonce' ) !== $hash ) {
+        return new \WP_Error( 'captcha_failed', '<strong>Security check failed.</strong> Please solve the math problem correctly.' );
+    }
+
+    return $user;
+}, 30, 3 );
 
 /* ─── Remove unnecessary WP head bloat ─── */
 remove_action( 'wp_head', 'wp_generator' );
