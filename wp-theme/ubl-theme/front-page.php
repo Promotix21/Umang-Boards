@@ -21,13 +21,15 @@ get_header();
                     <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
             </defs>
-            <!-- Main center trunk (gold) -->
-            <path class="pl-track" d="M 960 -100 L 960 400 L 860 500 L 860 1500 L 960 1600 L 960 2800 L 1060 2900 L 1060 3800 L 960 3900 L 960 5500" />
+            <!-- Main center trunk (DOUBLE line) -->
+            <path class="pl-track" d="M 956 -100 L 956 400 L 856 500 L 856 1500 L 956 1600 L 956 2800 L 1056 2900 L 1056 3800 L 956 3900 L 956 5500" />
+            <path class="pl-track" d="M 964 -100 L 964 400 L 864 500 L 864 1500 L 964 1600 L 964 2800 L 1064 2900 L 1064 3800 L 964 3900 L 964 5500" />
             <path class="pl-pulse pl-gold" d="M 960 -100 L 960 400 L 860 500 L 860 1500 L 960 1600 L 960 2800 L 1060 2900 L 1060 3800 L 960 3900 L 960 5500" />
-            <!-- Left trace (light gold) -->
-            <path class="pl-track" d="M 200 -100 L 200 800 L 300 900 L 300 2000 L 150 2150 L 150 3200 L 400 3450 L 400 4500 L 200 4700 L 200 5500" />
+            <!-- Left trace (DOUBLE line) -->
+            <path class="pl-track" d="M 196 -100 L 196 800 L 296 900 L 296 2000 L 146 2150 L 146 3200 L 396 3450 L 396 4500 L 196 4700 L 196 5500" />
+            <path class="pl-track" d="M 204 -100 L 204 800 L 304 900 L 304 2000 L 154 2150 L 154 3200 L 404 3450 L 404 4500 L 204 4700 L 204 5500" />
             <path class="pl-pulse pl-light" d="M 200 -100 L 200 800 L 300 900 L 300 2000 L 150 2150 L 150 3200 L 400 3450 L 400 4500 L 200 4700 L 200 5500" />
-            <!-- Right trace (gold) -->
+            <!-- Right trace (single line) -->
             <path class="pl-track" d="M 1720 -100 L 1720 600 L 1620 700 L 1620 1800 L 1800 1980 L 1800 3000 L 1500 3300 L 1500 4200 L 1720 4420 L 1720 5500" />
             <path class="pl-pulse pl-gold" d="M 1720 -100 L 1720 600 L 1620 700 L 1620 1800 L 1800 1980 L 1800 3000 L 1500 3300 L 1500 4200 L 1720 4420 L 1720 5500" />
             <!-- Horizontal connectors -->
