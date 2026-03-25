@@ -183,7 +183,36 @@ document.addEventListener('DOMContentLoaded', () => {
             menu.querySelectorAll('.mega-sub-panel').forEach(p => p.classList.remove('active'));
             cat.classList.add('active');
             const panel = document.getElementById(subId);
-            if (panel) panel.classList.add('active');
+            if (panel) {
+                panel.classList.add('active');
+                // Auto-activate first L3 + L4 in the newly opened panel
+                const firstL3 = panel.querySelector('.mega-l3');
+                if (firstL3) {
+                    panel.querySelectorAll('.mega-l3').forEach(l => l.classList.remove('active'));
+                    panel.querySelectorAll('.mega-l4-panel').forEach(p => p.classList.remove('active'));
+                    firstL3.classList.add('active');
+                    const firstL4 = document.getElementById(firstL3.dataset.l4);
+                    if (firstL4) firstL4.classList.add('active');
+                }
+            }
+        });
+    });
+
+    /* ============================================
+       MEGA MENU — L3 category hover → L4 sub-items (Products)
+       ============================================ */
+    document.querySelectorAll('.mega-l3').forEach(l3 => {
+        l3.addEventListener('mouseenter', () => {
+            const l4Id = l3.dataset.l4;
+            if (!l4Id) return;
+            const panel = l3.closest('.mega-sub-panel');
+            if (!panel) return;
+            // Deactivate all L3 + L4 panels within this sub-panel
+            panel.querySelectorAll('.mega-l3').forEach(l => l.classList.remove('active'));
+            panel.querySelectorAll('.mega-l4-panel').forEach(p => p.classList.remove('active'));
+            l3.classList.add('active');
+            const l4Panel = document.getElementById(l4Id);
+            if (l4Panel) l4Panel.classList.add('active');
         });
     });
 
@@ -219,9 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ============================================
-       HERO STAT COUNTERS
+       HERO STAT COUNTERS — starts after preloader
        ============================================ */
-    setTimeout(() => {
+    function runHeroCounters() {
         document.querySelectorAll('.hero-stat-num').forEach(el => {
             const target = parseInt(el.dataset.target, 10);
             const suffix = el.dataset.suffix || '';
@@ -235,7 +264,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (progress < 1) requestAnimationFrame(tick);
             })(performance.now());
         });
-    }, 3000);
+    }
+    // Wait for preloader to finish, then run counters
+    if (document.body.classList.contains('loaded')) {
+        runHeroCounters();
+    } else {
+        var counterObserver = new MutationObserver(function(mutations) {
+            if (document.body.classList.contains('loaded')) {
+                counterObserver.disconnect();
+                setTimeout(runHeroCounters, 500);
+            }
+        });
+        counterObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        // Fallback if preloader never adds 'loaded'
+        setTimeout(runHeroCounters, 8000);
+    }
 
     /* ============================================
        PRODUCT TAB MODE SWITCHER
@@ -278,63 +321,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: 'Power Transformers',
                 desc: 'Pressboards, machined components, winding wires for transformers up to 400 kV class.',
                 href: '/solutions/power-transformers',
-                img: 'assets/images/Transformer Insulations.jpg',
+                img: 'assets/images/app-power-transformers.jpg',
                 svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>'
             },
             {
                 title: 'Distribution Transformers',
                 desc: 'Cost-effective insulation and aluminium winding wire solutions.',
                 href: '/solutions/distribution-transformers',
-                img: 'assets/images/Winding Wires.jpg',
+                img: 'assets/images/app-distribution-transformers.jpg',
                 svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>'
             },
             {
                 title: 'Instrument Transformers',
                 desc: 'Precision insulation components for current & potential transformers.',
                 href: '/solutions/instrument-transformers',
-                img: 'assets/images/Insulating Chemicals.jpg',
+                img: 'assets/images/app-instrument-transformers.jpg',
                 svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>'
             },
             {
                 title: 'Electric Motors',
                 desc: 'Enamelled wires and insulating varnishes for motor manufacturing.',
                 href: '/solutions/electric-motors',
-                img: 'assets/images/Winding Wires.jpg',
+                img: 'assets/images/app-electric-motors.jpg',
                 svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>'
             },
             {
                 title: 'Renewables',
                 desc: 'Wind & solar transformer insulation solutions.',
                 href: '/solutions/renewables',
-                img: 'assets/images/Transformer Insulations.jpg',
+                img: 'assets/images/app-renewables.jpg',
                 svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
             },
             {
                 title: 'Data Centers',
                 desc: 'High-reliability transformer insulation for mission-critical infrastructure.',
                 href: '/solutions/data-centers',
-                img: 'assets/images/Insulating Chemicals.jpg',
+                img: 'assets/images/app-data-centers.jpg',
                 svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>'
             },
             {
                 title: 'Home Appliances',
                 desc: 'Enamelled copper and aluminium wires for household appliance motors.',
                 href: '/solutions/home-appliances',
-                img: 'assets/images/Winding Wires.jpg',
+                img: 'assets/images/app-home-appliances.jpg',
                 svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'
             },
             {
                 title: 'EV Motors',
                 desc: 'High-performance enamelled wires for electric vehicle motor applications.',
                 href: '/solutions/ev-motors',
-                img: 'assets/images/Transformer Insulations.jpg',
+                img: 'assets/images/app-ev-motors.jpg',
                 svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>'
             },
             {
                 title: 'Stabilizers',
                 desc: 'Enamelled copper and aluminium round and flat wires for voltage stabilizers.',
                 href: '/solutions/stabilizers',
-                img: 'assets/images/Insulating Chemicals.jpg',
+                img: 'assets/images/app-stabilizers.jpg',
                 svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="2"/><line x1="17" y1="6" x2="17" y2="18"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="7" y1="8" x2="7" y2="16"/></svg>'
             }
         ];
@@ -347,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
             track.innerHTML = extendedCards.map(function(card) {
                 return '<a href="' + card.href + '" class="app-carousel-card" data-cursor="hover">' +
                     '<div class="app-carousel-card-img">' +
-                        '<img src="' + card.img + '" alt="' + card.title + '" loading="lazy">' +
+                        '<img src="' + (typeof ublData !== 'undefined' ? ublData.themeUri + '/' : '') + card.img + '" alt="' + card.title + '" loading="lazy">' +
                         '<div class="app-carousel-card-icon-badge">' + card.svg + '</div>' +
                     '</div>' +
                     '<div class="app-carousel-card-body">' +
@@ -813,18 +856,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Refresh ScrollTrigger after hero pin setup to recalculate positions
-        setTimeout(function() { ScrollTrigger.refresh(); }, 500);
+        // Refresh ScrollTrigger AFTER hero pin setup (3800ms + buffer) to recalculate positions
+        setTimeout(function() { ScrollTrigger.refresh(true); }, 4500);
+        // And again after fonts/images load
+        window.addEventListener('load', function() { setTimeout(function() { ScrollTrigger.refresh(true); }, 1000); });
         // --- Section 2: Value Proposition (staggered text reveal) ---
         gsap.fromTo('#valueHeader .section-eyebrow', { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
-              scrollTrigger: { trigger: '#sValue', start: 'top 78%' } });
+              scrollTrigger: { trigger: '#sValue', start: 'top 65%' } });
         gsap.fromTo('#valueHeader .section-title', { opacity: 0, y: 40, clipPath: 'inset(0 0 100% 0)' },
             { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 1, delay: 0.15, ease: 'power3.out',
-              scrollTrigger: { trigger: '#sValue', start: 'top 78%' } });
+              scrollTrigger: { trigger: '#sValue', start: 'top 65%' } });
         gsap.fromTo('#valueHeader .section-desc', { opacity: 0, y: 25 },
             { opacity: 1, y: 0, duration: 0.8, delay: 0.35, ease: 'power2.out',
-              scrollTrigger: { trigger: '#sValue', start: 'top 78%' } });
+              scrollTrigger: { trigger: '#sValue', start: 'top 65%' } });
 
         // Value feature rows — stagger in
         gsap.utils.toArray('.vf-row').forEach((row, i) => {
@@ -832,19 +877,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const content = row.querySelector('.vf-content');
             const isReversed = row.classList.contains('vf-row-rev');
             if (media) {
-                gsap.fromTo(media, { opacity: 0, x: isReversed ? 60 : -60 },
-                    { opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-                      scrollTrigger: { trigger: row, start: 'top 80%' } });
+                var clipFrom = isReversed ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)';
+                gsap.fromTo(media, { clipPath: clipFrom, opacity: 0 },
+                    { clipPath: 'inset(0 0 0 0)', opacity: 1, duration: 1.2, ease: 'power3.inOut',
+                      scrollTrigger: { trigger: row, start: 'top 65%' } });
             }
             if (content) {
-                gsap.fromTo(content, { opacity: 0, x: isReversed ? -60 : 60 },
+                gsap.fromTo(content, { opacity: 0, x: isReversed ? -40 : 40 },
                     { opacity: 1, x: 0, duration: 1, delay: 0.15, ease: 'power3.out',
-                      scrollTrigger: { trigger: row, start: 'top 80%' } });
-                // Stagger children inside content
+                      scrollTrigger: { trigger: row, start: 'top 65%' } });
                 const children = content.querySelectorAll('.vf-eyebrow, .vf-giant-num, .vf-giant-label, .vf-heading, .vf-body, .vf-cta, .vf-cert-item');
                 gsap.fromTo(children, { opacity: 0, y: 20 },
                     { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, delay: 0.3, ease: 'power2.out',
-                      scrollTrigger: { trigger: row, start: 'top 75%' } });
+                      scrollTrigger: { trigger: row, start: 'top 60%' } });
             }
         });
 
@@ -852,30 +897,36 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.utils.toArray('.vf-fact').forEach((fact, i) => {
             gsap.fromTo(fact, { opacity: 0, y: 30 },
                 { opacity: 1, y: 0, duration: 0.7, delay: i * 0.12, ease: 'power3.out',
-                  scrollTrigger: { trigger: '.vf-facts-band', start: 'top 85%' } });
+                  scrollTrigger: { trigger: '.vf-facts-band', start: 'top 75%' } });
         });
         gsap.utils.toArray('.vf-fact-rule').forEach((rule, i) => {
             gsap.fromTo(rule, { scaleY: 0 },
                 { scaleY: 1, duration: 0.5, delay: 0.2 + i * 0.12, ease: 'power2.out',
-                  scrollTrigger: { trigger: '.vf-facts-band', start: 'top 85%' } });
+                  scrollTrigger: { trigger: '.vf-facts-band', start: 'top 75%' } });
         });
 
         gsap.utils.toArray('.value-card').forEach((card, i) => {
             gsap.fromTo(card, { opacity: 0, y: 40 },
                 { opacity: 1, y: 0, duration: 0.8, delay: i * 0.08, ease: 'power3.out',
-                  scrollTrigger: { trigger: card, start: 'top 90%' } });
+                  scrollTrigger: { trigger: card, start: 'top 80%' } });
         });
 
         // --- Section 3: Products (staggered header) ---
         gsap.fromTo('#productsHeader .section-eyebrow', { opacity: 0, y: 15 },
             { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-              scrollTrigger: { trigger: '#sProducts', start: 'top 78%' } });
+              scrollTrigger: { trigger: '#sProducts', start: 'top 65%' } });
         gsap.fromTo('#productsHeader .section-title', { opacity: 0, y: 40, clipPath: 'inset(0 0 100% 0)' },
             { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 1, delay: 0.12, ease: 'power3.out',
-              scrollTrigger: { trigger: '#sProducts', start: 'top 78%' } });
+              scrollTrigger: { trigger: '#sProducts', start: 'top 65%' } });
         gsap.fromTo('#productsHeader .section-desc', { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.7, delay: 0.3, ease: 'power2.out',
-              scrollTrigger: { trigger: '#sProducts', start: 'top 78%' } });
+              scrollTrigger: { trigger: '#sProducts', start: 'top 65%' } });
+        // Product panel images — clip reveal
+        gsap.utils.toArray('.product-panel-visual').forEach(function(vis) {
+            gsap.fromTo(vis, { clipPath: 'inset(0 100% 0 0)', opacity: 0 },
+                { clipPath: 'inset(0 0 0 0)', opacity: 1, duration: 1, ease: 'power3.inOut',
+                  scrollTrigger: { trigger: '#sProducts', start: 'top 55%' } });
+        });
 
         // --- Facility Parallax Strip ---
         gsap.to('.facility-parallax', {
@@ -892,19 +943,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const mapSection = '#export-map-section';
         gsap.fromTo('.col-left', { opacity: 0, x: -50 },
             { opacity: 1, x: 0, duration: 1.2, ease: 'power3.out',
-              scrollTrigger: { trigger: mapSection, start: 'top 70%' } });
+              scrollTrigger: { trigger: mapSection, start: 'top 60%' } });
         gsap.fromTo('.col-left .eyebrow', { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.6, delay: 0.1, ease: 'power2.out',
-              scrollTrigger: { trigger: mapSection, start: 'top 70%' } });
-        gsap.fromTo('.col-left .headline', { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: 'power3.out',
-              scrollTrigger: { trigger: mapSection, start: 'top 70%' } });
+              scrollTrigger: { trigger: mapSection, start: 'top 60%' } });
+        gsap.fromTo('.col-left .headline', { opacity: 0, y: 30, clipPath: 'inset(0 0 100% 0)' },
+            { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.8, delay: 0.2, ease: 'power3.out',
+              scrollTrigger: { trigger: mapSection, start: 'top 60%' } });
         gsap.fromTo('.col-left .subtext', { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.7, delay: 0.35, ease: 'power2.out',
-              scrollTrigger: { trigger: mapSection, start: 'top 70%' } });
-        gsap.fromTo('#map-container', { opacity: 0, scale: 0.9 },
-            { opacity: 1, scale: 1, duration: 1.2, delay: 0.3, ease: 'back.out(1.4)',
-              scrollTrigger: { trigger: mapSection, start: 'top 65%' } });
+              scrollTrigger: { trigger: mapSection, start: 'top 60%' } });
+        gsap.fromTo('#map-container', { clipPath: 'inset(0 0 0 100%)', opacity: 0 },
+            { clipPath: 'inset(0 0 0 0)', opacity: 1, duration: 1.2, delay: 0.3, ease: 'power3.inOut',
+              scrollTrigger: { trigger: mapSection, start: 'top 55%' } });
         gsap.utils.toArray('.stat-card').forEach((s, i) => {
             gsap.fromTo(s, { opacity: 0, y: 30 },
                 { opacity: 1, y: 0, duration: 0.7, delay: 0.4 + i * 0.1, ease: 'power3.out',
@@ -919,35 +970,80 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Section 5: CSR (staggered text + visual) ---
         gsap.fromTo('#csrContent .section-eyebrow', { opacity: 0, y: 15 },
             { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-              scrollTrigger: { trigger: '#sCSR', start: 'top 75%' } });
+              scrollTrigger: { trigger: '#sCSR', start: 'top 65%' } });
         gsap.fromTo('#csrContent .section-title', { opacity: 0, y: 40, clipPath: 'inset(0 0 100% 0)' },
             { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 1, delay: 0.12, ease: 'power3.out',
-              scrollTrigger: { trigger: '#sCSR', start: 'top 75%' } });
+              scrollTrigger: { trigger: '#sCSR', start: 'top 65%' } });
         gsap.fromTo('#csrContent .section-desc', { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.7, delay: 0.25, ease: 'power2.out',
-              scrollTrigger: { trigger: '#sCSR', start: 'top 75%' } });
+              scrollTrigger: { trigger: '#sCSR', start: 'top 65%' } });
         gsap.utils.toArray('.csr-item').forEach((item, i) => {
-            gsap.fromTo(item, { opacity: 0, x: -30 },
-                { opacity: 1, x: 0, duration: 0.7, delay: 0.35 + i * 0.12, ease: 'power3.out',
+            gsap.fromTo(item, { x: -30 },
+                { x: 0, duration: 0.7, delay: 0.35 + i * 0.12, ease: 'power3.out',
                   scrollTrigger: { trigger: '#sCSR', start: 'top 65%' } });
         });
-        gsap.fromTo('#csrVisual', { opacity: 0, x: 60, scale: 0.95 },
-            { opacity: 1, x: 0, scale: 1, duration: 1.2, delay: 0.2, ease: 'power3.out',
-              scrollTrigger: { trigger: '#sCSR', start: 'top 65%' } });
+        gsap.fromTo('#csrVisual', { clipPath: 'inset(0 100% 0 0)', opacity: 0 },
+            { clipPath: 'inset(0 0 0 0)', opacity: 1, duration: 1.2, delay: 0.2, ease: 'power3.inOut',
+              scrollTrigger: { trigger: '#sCSR', start: 'top 60%' } });
 
-        // --- Section 6: Media & News (premium card animations) ---
+        // CSR slideshow — auto-rotate items + crossfade images
+        (function() {
+            var csrItems = document.querySelectorAll('.csr-item[data-csr-img]');
+            var csrSlides = document.querySelectorAll('.csr-slide');
+            if (!csrItems.length || !csrSlides.length) return;
+            var csrIdx = 0;
+            var csrTimer = null;
+
+            function activateCSR(idx) {
+                csrItems.forEach(function(it) { it.classList.remove('active'); });
+                csrSlides.forEach(function(sl) { sl.classList.remove('active'); });
+                csrItems[idx].classList.add('active');
+                if (csrSlides[idx]) csrSlides[idx].classList.add('active');
+                csrIdx = idx;
+            }
+
+            function nextCSR() {
+                activateCSR((csrIdx + 1) % csrItems.length);
+            }
+
+            function startCSRTimer() {
+                clearInterval(csrTimer);
+                csrTimer = setInterval(nextCSR, 4000);
+            }
+
+            csrItems.forEach(function(item, i) {
+                item.addEventListener('mouseenter', function() {
+                    clearInterval(csrTimer);
+                    activateCSR(i);
+                });
+                item.addEventListener('mouseleave', function() {
+                    startCSRTimer();
+                });
+            });
+
+            startCSRTimer();
+        })();
+
+        // --- Section 6: Media & News (premium card animations + clip reveal images) ---
         gsap.fromTo('#mediaNewsHeader', { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-              scrollTrigger: { trigger: '#sMediaNews', start: 'top 78%' } });
+              scrollTrigger: { trigger: '#sMediaNews', start: 'top 65%' } });
         gsap.utils.toArray('.mn-card').forEach((card, i) => {
             gsap.fromTo(card, { opacity: 0, y: 50, scale: 0.95 },
                 { opacity: 1, y: 0, scale: 1, duration: 0.9, delay: i * 0.15, ease: 'power3.out',
-                  scrollTrigger: { trigger: '.mn-cards-grid', start: 'top 85%' } });
+                  scrollTrigger: { trigger: '.mn-cards-grid', start: 'top 70%' } });
+            // Clip-reveal the card image
+            var cardImg = card.querySelector('.mn-card-img');
+            if (cardImg) {
+                gsap.fromTo(cardImg, { clipPath: 'inset(100% 0 0 0)' },
+                    { clipPath: 'inset(0 0 0 0)', duration: 1, delay: 0.2 + i * 0.15, ease: 'power3.inOut',
+                      scrollTrigger: { trigger: '.mn-cards-grid', start: 'top 65%' } });
+            }
         });
         gsap.utils.toArray('.mn-event-pill').forEach((pill, i) => {
             gsap.fromTo(pill, { opacity: 0, y: 20 },
                 { opacity: 1, y: 0, duration: 0.6, delay: i * 0.1, ease: 'power2.out',
-                  scrollTrigger: { trigger: '.mn-events-strip', start: 'top 90%' } });
+                  scrollTrigger: { trigger: '.mn-events-strip', start: 'top 75%' } });
         });
 
         // --- Boardroom Parallax Strip ---
@@ -964,11 +1060,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Section 7: Investor (Reliance-style staggered reveal + graph animation) ---
         gsap.fromTo('#invHeroTitle', { opacity: 0, y: 40 },
             { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-              scrollTrigger: { trigger: '#sInvestor', start: 'top 78%' } });
+              scrollTrigger: { trigger: '#sInvestor', start: 'top 65%' } });
         gsap.utils.toArray('.inv-col').forEach((col, i) => {
             gsap.fromTo(col, { opacity: 0, y: 30 },
                 { opacity: 1, y: 0, duration: 0.8, delay: i * 0.2, ease: 'power3.out',
-                  scrollTrigger: { trigger: '.inv-cols', start: 'top 82%' } });
+                  scrollTrigger: { trigger: '.inv-cols', start: 'top 70%' } });
         });
         ScrollTrigger.create({
             trigger: '#sInvestor',
@@ -997,7 +1093,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Footer ---
         gsap.fromTo('.s-footer-top', { opacity: 0, y: 40 },
             { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-              scrollTrigger: { trigger: '.s-footer', start: 'top 85%' } });
+              scrollTrigger: { trigger: '.s-footer', start: 'top 75%' } });
 
         // --- Logo Scroll Animation (Tech Mahindra style) ---
         // Logo re-draws SVG paths when scrolling back to top

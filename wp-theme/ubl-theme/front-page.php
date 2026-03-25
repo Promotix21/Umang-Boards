@@ -79,7 +79,7 @@ get_header();
                             <div class="hero-stat-label">Years of Excellence</div>
                         </div>
                         <div class="hero-stat">
-                            <div class="hero-stat-num" data-target="61" data-suffix="+">0</div>
+                            <div class="hero-stat-num" data-target="15" data-suffix="+">0</div>
                             <div class="hero-stat-label">Countries Served</div>
                         </div>
                         <div class="hero-stat">
@@ -165,7 +165,7 @@ get_header();
             <div class="vf-row vf-row-rev">
                 <div class="vf-content">
                     <div class="vf-eyebrow">Quality &amp; Certifications</div>
-                    <h3 class="vf-heading">Made in India.<br>Certified for the World.</h3>
+                    <h3 class="vf-heading">Made in India.<br>Certified for the <em>World.</em></h3>
                     <p class="vf-body">Every product leaving our facility carries the weight of internationally recognised certifications — not as a formality, but as proof of process.</p>
                     <div class="vf-cert-list">
                         <div class="vf-cert-item">
@@ -235,7 +235,7 @@ get_header();
                 <div class="product-panel active" id="panelInsulation">
                     <div class="product-panel-grid">
                         <div class="product-panel-visual">
-                            <img src="<?php echo UBL_URI; ?>/assets/images/product-transformer-insulation.png" alt="Transformer Insulations" class="product-panel-img">
+                            <img src="<?php echo UBL_URI; ?>/assets/images/product-transformer-insulation.jpg" alt="Transformer Insulations" class="product-panel-img">
                         </div>
                         <div>
                             <span class="product-tag">Core Business</span>
@@ -261,7 +261,7 @@ get_header();
                 <div class="product-panel" id="panelWires" style="display:none;">
                     <div class="product-panel-grid">
                         <div class="product-panel-visual">
-                            <img src="<?php echo UBL_URI; ?>/assets/images/product-winding-wire.png" alt="Winding Wires" class="product-panel-img">
+                            <img src="<?php echo UBL_URI; ?>/assets/images/product-winding-wire.jpg" alt="Winding Wires" class="product-panel-img">
                         </div>
                         <div>
                             <span class="product-tag">Conductors</span>
@@ -284,7 +284,7 @@ get_header();
                 <div class="product-panel" id="panelChemicals" style="display:none;">
                     <div class="product-panel-grid">
                         <div class="product-panel-visual">
-                            <img src="<?php echo UBL_URI; ?>/assets/images/product-insulating-chemicals.png" alt="Insulating Chemicals" class="product-panel-img">
+                            <img src="<?php echo UBL_URI; ?>/assets/images/product-insulating-chemicals.jpg" alt="Insulating Chemicals" class="product-panel-img">
                         </div>
                         <div>
                             <span class="product-tag">Specialty Chemicals</span>
@@ -488,11 +488,7 @@ get_header();
                 </div>
             </div>
 
-            <!-- Bottom HUD line -->
-            <div class="hud-micro hud-micro--bottom">
-                <span class="hud-micro__text">ORIGIN: INDIA 20.59°N 78.96°E</span>
-                <span class="hud-micro__text">ROUTES: 5 PRIMARY</span>
-            </div>
+            <!-- Bottom HUD line removed -->
         </div>
 
         <!-- ===== RIGHT COLUMN — Map (60%) ===== -->
@@ -600,7 +596,7 @@ get_header();
                     <p class="section-desc">At Umang Boards, we believe in sustainable growth that creates a positive impact on communities, the environment, and our stakeholders.</p>
 
                     <div class="csr-highlights">
-                        <div class="csr-item">
+                        <div class="csr-item active" data-csr-img="<?php echo UBL_URI; ?>/assets/images/csr-environmental.jpg">
                             <div class="csr-item-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                             </div>
@@ -609,7 +605,7 @@ get_header();
                                 <div class="csr-item-desc">ISO 14001 certified operations with a commitment to minimising environmental footprint through responsible manufacturing practices.</div>
                             </div>
                         </div>
-                        <div class="csr-item">
+                        <div class="csr-item" data-csr-img="<?php echo UBL_URI; ?>/assets/images/csr-community.jpg">
                             <div class="csr-item-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
                             </div>
@@ -618,7 +614,7 @@ get_header();
                                 <div class="csr-item-desc">Investing in education, healthcare, and skill development initiatives in the communities surrounding our manufacturing facilities.</div>
                             </div>
                         </div>
-                        <div class="csr-item">
+                        <div class="csr-item" data-csr-img="<?php echo UBL_URI; ?>/assets/images/csr-safety.jpg">
                             <div class="csr-item-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             </div>
@@ -636,127 +632,16 @@ get_header();
                 </div>
 
                 <div class="s-csr-visual" id="csrVisual">
-                    <img src="<?php echo UBL_URI; ?>/assets/images/Secondary Static.jpg" alt="CSR Initiatives at Umang Boards" class="csr-img">
+                    <img src="<?php echo UBL_URI; ?>/assets/images/csr-environmental.jpg" alt="Environmental Stewardship" class="csr-slide active" data-csr-slide="0">
+                    <img src="<?php echo UBL_URI; ?>/assets/images/csr-community.jpg" alt="Community Development" class="csr-slide" data-csr-slide="1">
+                    <img src="<?php echo UBL_URI; ?>/assets/images/csr-safety.jpg" alt="Workplace Safety" class="csr-slide" data-csr-slide="2">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================================================
-         SECTION 6 — MEDIA & NEWS (Premium Redesign)
-         ================================================ -->
-    <section class="s-media-news" id="sMediaNews">
-        <div class="s-media-news-inner">
-            <div class="s-media-news-header" id="mediaNewsHeader">
-                <div>
-                    <div class="section-eyebrow">Media &amp; News</div>
-                    <h2 class="section-title">Our Latest<br><em>Updates</em></h2>
-                </div>
-                <a href="/news" class="btn-outline" data-cursor="hover">View All</a>
-            </div>
-
-            <!-- News Cards Grid — 3 cards with images -->
-            <div class="mn-cards-grid">
-                <article class="mn-card" data-cursor="hover">
-                    <div class="mn-card-img">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/factory-aerial-drone.jpg" alt="Umang Boards Factory" loading="lazy">
-                        <span class="mn-card-badge">Milestone</span>
-                    </div>
-                    <div class="mn-card-body">
-                        <h3 class="mn-card-title">Power Grid Corporation India Ltd — 400 KV Class Approval</h3>
-                        <p class="mn-card-desc">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class rating transformers.</p>
-                        <div class="mn-card-footer">
-                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="mn-card" data-cursor="hover">
-                    <div class="mn-card-img">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/factory-front.jpg" alt="Umang Boards Facility" loading="lazy">
-                        <span class="mn-card-badge">Rating</span>
-                    </div>
-                    <div class="mn-card-body">
-                        <h3 class="mn-card-title">CRISIL BBB Investment Grade Rating Achieved</h3>
-                        <p class="mn-card-desc">We are now BBB rated by CRISIL — reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
-                        <div class="mn-card-footer">
-                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="mn-card" data-cursor="hover">
-                    <div class="mn-card-img">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/facility-aerial.jpg" alt="Manufacturing Facility" loading="lazy">
-                        <span class="mn-card-badge">Recognition</span>
-                    </div>
-                    <div class="mn-card-body">
-                        <h3 class="mn-card-title">One Star Export House Certification by DGFT</h3>
-                        <p class="mn-card-desc">Honoured with the prestigious One Star Export House Certificate by the Directorate General of Foreign Trade, Government of India. Valid until March 2028.</p>
-                        <div class="mn-card-footer">
-                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Events & Social Row -->
-            <div class="mn-events-row">
-                <div class="mn-events-header">
-                    <div class="section-eyebrow">Upcoming Events</div>
-                    <h3 class="mn-events-title">Connect With Us</h3>
-                </div>
-                <div class="mn-events-strip">
-                    <a href="https://www.wire-tradefair.com/" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/event-messe-dusseldorf.png" alt="Messe Dusseldorf" class="mn-event-pill-img">
-                        <div class="mn-event-pill-text">
-                            <strong>Messe Dusseldorf</strong>
-                            <span>13–17 Apr 2026 · Booth C82-5</span>
-                        </div>
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                    </a>
-                    <a href="https://berlin.cwiemeevents.com/exhibitors/umang-boards-limited" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/event-cwieme-berlin.png" alt="CWIEME Berlin" class="mn-event-pill-img">
-                        <div class="mn-event-pill-text">
-                            <strong>CWIEME Berlin</strong>
-                            <span>19–21 May 2026 · Booth 27A50</span>
-                        </div>
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                    </a>
-                    <a href="https://elecrama.com" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/event-elecrama.png" alt="ELECRAMA" class="mn-event-pill-img">
-                        <div class="mn-event-pill-text">
-                            <strong>ELECRAMA 2027</strong>
-                            <span>20–24 Feb 2027 · 17th Edition</span>
-                        </div>
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- YouTube -->
-            <div class="mn-video-row">
-                <div class="mn-video-embed">
-                    <iframe src="https://www.youtube.com/embed/svxX0oXME-8" title="Umang Boards Limited" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="mn-social-links">
-                    <a href="https://www.instagram.com/umangboards7/" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-                        Follow on Instagram
-                    </a>
-                    <a href="https://www.youtube.com/@UmangBoards" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
-                        Subscribe on YouTube
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Boardroom section removed -->
-
-    <!-- ================================================
-         SECTION 7 — INVESTOR RESOURCES (Reliance-Style Dark)
+         SECTION 6 — INVESTOR RESOURCES (Reliance-Style Dark)
          ================================================ -->
     <section class="s-investor-dark" id="sInvestor">
         <div class="s-investor-dark-inner">
@@ -813,49 +698,174 @@ get_header();
                     </a>
                 </div>
 
-                <!-- Column 3: NSE & BSE Cards -->
+                <!-- Column 3: TradingView Market Widgets -->
                 <div class="inv-col inv-col-stocks" id="invColStocks">
-                    <!-- NSE Card -->
-                    <div class="inv-stock-card">
-                        <div class="inv-stock-header">
-                            <h4>NSE</h4>
-                            <span class="inv-stock-status">Presently Unlisted</span>
-                        </div>
-                        <!-- Decorative animated graph -->
-                        <div class="inv-stock-graph">
-                            <svg viewBox="0 0 200 60" preserveAspectRatio="none" class="inv-graph-svg">
-                                <defs>
-                                    <linearGradient id="nseGrad" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.25"/>
-                                        <stop offset="100%" stop-color="var(--gold)" stop-opacity="0"/>
-                                    </linearGradient>
-                                </defs>
-                                <path class="inv-graph-fill" d="M0,45 Q25,40 50,35 T100,28 T150,38 T200,22 V60 H0 Z" fill="url(#nseGrad)"/>
-                                <path class="inv-graph-line" d="M0,45 Q25,40 50,35 T100,28 T150,38 T200,22" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
-                            </svg>
+                    <!-- TradingView NIFTY 50 Widget -->
+                    <div class="inv-tv-widget">
+                        <div class="tradingview-widget-container" style="height:160px;">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                            {
+                                "symbol": "NSE:NIFTY",
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "dateRange": "3M",
+                                "colorTheme": "light",
+                                "isTransparent": true,
+                                "autosize": true,
+                                "largeChartUrl": ""
+                            }
+                            </script>
                         </div>
                     </div>
-
-                    <!-- BSE Card -->
-                    <div class="inv-stock-card">
-                        <div class="inv-stock-header">
-                            <h4>BSE</h4>
-                            <span class="inv-stock-status">Presently Unlisted</span>
-                        </div>
-                        <div class="inv-stock-graph">
-                            <svg viewBox="0 0 200 60" preserveAspectRatio="none" class="inv-graph-svg">
-                                <defs>
-                                    <linearGradient id="bseGrad" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.25"/>
-                                        <stop offset="100%" stop-color="var(--gold)" stop-opacity="0"/>
-                                    </linearGradient>
-                                </defs>
-                                <path class="inv-graph-fill" d="M0,38 Q30,30 60,42 T120,25 T180,35 T200,18 V60 H0 Z" fill="url(#bseGrad)"/>
-                                <path class="inv-graph-line" d="M0,38 Q30,30 60,42 T120,25 T180,35 T200,18" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
-                            </svg>
+                    <!-- TradingView BSE SENSEX Widget -->
+                    <div class="inv-tv-widget">
+                        <div class="tradingview-widget-container" style="height:160px;">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                            {
+                                "symbol": "BSE:SENSEX",
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "dateRange": "3M",
+                                "colorTheme": "light",
+                                "isTransparent": true,
+                                "autosize": true,
+                                "largeChartUrl": ""
+                            }
+                            </script>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SECTION 7 — MEDIA & NEWS (Premium Redesign)
+         ================================================ -->
+    <section class="s-media-news" id="sMediaNews">
+        <div class="s-media-news-inner">
+            <div class="s-media-news-header" id="mediaNewsHeader">
+                <div>
+                    <div class="section-eyebrow">Media &amp; News</div>
+                    <h2 class="section-title">Our Latest<br><em>Updates</em></h2>
+                </div>
+                <a href="/newsroom" class="btn-outline" data-cursor="hover">View All</a>
+            </div>
+
+            <!-- News Cards Grid — 3 cards with images -->
+            <div class="mn-cards-grid">
+                <article class="mn-card" data-cursor="hover">
+                    <div class="mn-card-img">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/news-pgcil-approval.jpg" alt="PGCIL 400 KV Class Approval" loading="lazy">
+                        <span class="mn-card-badge">Milestone</span>
+                    </div>
+                    <div class="mn-card-body">
+                        <h3 class="mn-card-title">Power Grid Corporation India Ltd — 400 KV Class Approval</h3>
+                        <p class="mn-card-desc">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class rating transformers.</p>
+                        <div class="mn-card-footer">
+                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="mn-card" data-cursor="hover">
+                    <div class="mn-card-img">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/news-crisil-rating.jpg" alt="CRISIL BBB Investment Rating" loading="lazy">
+                        <span class="mn-card-badge">Rating</span>
+                    </div>
+                    <div class="mn-card-body">
+                        <h3 class="mn-card-title">CRISIL BBB Investment Grade Rating Achieved</h3>
+                        <p class="mn-card-desc">We are now BBB rated by CRISIL — reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
+                        <div class="mn-card-footer">
+                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="mn-card" data-cursor="hover">
+                    <div class="mn-card-img">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/news-export-house.jpg" alt="One Star Export House Certification" loading="lazy">
+                        <span class="mn-card-badge">Recognition</span>
+                    </div>
+                    <div class="mn-card-body">
+                        <h3 class="mn-card-title">One Star Export House Certification by DGFT</h3>
+                        <p class="mn-card-desc">Honoured with the prestigious One Star Export House Certificate by the Directorate General of Foreign Trade, Government of India. Valid until March 2028.</p>
+                        <div class="mn-card-footer">
+                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Events & Social Row -->
+            <div class="mn-events-row">
+                <div class="mn-events-header">
+                    <div class="section-eyebrow">Upcoming Events</div>
+                    <h3 class="mn-events-title">Connect With Us</h3>
+                </div>
+                <div class="mn-events-strip">
+                    <a href="https://www.wire-tradefair.com/" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/event-messe-dusseldorf.png" alt="Messe Dusseldorf" class="mn-event-pill-img">
+                        <div class="mn-event-pill-text">
+                            <strong>Messe Dusseldorf</strong>
+                            <span>13–17 Apr 2026 · Booth C82-5</span>
+                        </div>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </a>
+                    <a href="https://berlin.cwiemeevents.com/exhibitors/umang-boards-limited" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/event-cwieme-berlin.png" alt="CWIEME Berlin" class="mn-event-pill-img">
+                        <div class="mn-event-pill-text">
+                            <strong>CWIEME Berlin</strong>
+                            <span>19–21 May 2026 · Booth 27A50</span>
+                        </div>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </a>
+                    <a href="https://elecrama.com" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/event-elecrama.png" alt="ELECRAMA" class="mn-event-pill-img">
+                        <div class="mn-event-pill-text">
+                            <strong>ELECRAMA 2027</strong>
+                            <span>20–24 Feb 2027 · 17th Edition</span>
+                        </div>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- YouTube + Social -->
+            <div class="mn-video-row">
+                <div class="mn-video-embed">
+                    <iframe src="https://www.youtube.com/embed/svxX0oXME-8" title="Umang Boards Limited" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="mn-social-links">
+                    <a href="https://www.instagram.com/umangboards7/" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        Follow on Instagram
+                    </a>
+                    <a href="https://www.youtube.com/@UmangBoards" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+                        Subscribe on YouTube
+                    </a>
+                </div>
+            </div>
+
+            <!-- Instagram Feed Placeholder -->
+            <div class="mn-insta-feed" id="instaFeed">
+                <div class="mn-insta-header">
+                    <div class="section-eyebrow">@umangboards7</div>
+                    <h3 class="mn-events-title">Instagram Feed</h3>
+                </div>
+                <div class="mn-insta-grid">
+                    <?php for ($i = 0; $i < 6; $i++) : ?>
+                    <div class="mn-insta-placeholder">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="rgba(11,31,58,0.12)" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+                    </div>
+                    <?php endfor; ?>
+                </div>
+                <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:1rem;">Instagram feed will be connected soon</p>
             </div>
         </div>
     </section>

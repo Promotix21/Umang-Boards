@@ -7,7 +7,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'UBL_VERSION', '2.6.0' );
+define( 'UBL_VERSION', '2.16.0' );
 define( 'UBL_DIR', get_template_directory() );
 define( 'UBL_URI', get_template_directory_uri() );
 
@@ -30,7 +30,7 @@ add_action( 'after_setup_theme', function () {
 add_action( 'wp_enqueue_scripts', function () {
     // Google Fonts
     wp_enqueue_style( 'ubl-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=DM+Mono:wght@400;500&display=swap',
+        'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Inter:wght@400;500;600;700&display=swap',
         [], null
     );
 
@@ -38,6 +38,11 @@ add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style( 'ubl-main', UBL_URI . '/assets/css/styles-v2.css', [], UBL_VERSION );
     wp_enqueue_style( 'ubl-sections', UBL_URI . '/assets/css/sections-v2.css', [ 'ubl-main' ], UBL_VERSION );
     wp_enqueue_style( 'ubl-theme-style', get_stylesheet_uri(), [ 'ubl-sections' ], UBL_VERSION );
+
+    // Blue theme variant (toggle in Site Settings)
+    if ( function_exists( 'get_field' ) && get_field( 'color_mode', 'option' ) === 'blue' ) {
+        wp_enqueue_style( 'ubl-blue', UBL_URI . '/assets/css/style-blue.css', [ 'ubl-theme-style' ], UBL_VERSION );
+    }
 
     // Libraries (CDN)
     wp_enqueue_script( 'lenis', 'https://unpkg.com/lenis@1.1.18/dist/lenis.min.js', [], '1.1.18', true );
@@ -47,7 +52,14 @@ add_action( 'wp_enqueue_scripts', function () {
     // Theme JS
     wp_enqueue_script( 'ubl-world-paths', UBL_URI . '/assets/js/world-paths.js', [], UBL_VERSION, true );
     wp_enqueue_script( 'ubl-main-js', UBL_URI . '/assets/js/script-v2.js', [ 'lenis', 'gsap', 'gsap-scroll' ], UBL_VERSION, true );
+    wp_localize_script( 'ubl-main-js', 'ublData', [ 'themeUri' => UBL_URI ] );
     wp_enqueue_script( 'ubl-world-map', UBL_URI . '/assets/js/world-map.js', [ 'ubl-main-js' ], UBL_VERSION, true );
+
+    // Product pages — conditional loading (digitaldadi-ecom CPT)
+    if ( is_singular( 'dd_product' ) || is_tax( 'dd_product_cat' ) || is_post_type_archive( 'dd_product' ) ) {
+        wp_enqueue_style( 'ubl-products', UBL_URI . '/assets/css/product-pages.css', [ 'ubl-sections' ], UBL_VERSION );
+        wp_enqueue_script( 'ubl-products-js', UBL_URI . '/assets/js/product-pages.js', [ 'gsap', 'gsap-scroll' ], UBL_VERSION, true );
+    }
 } );
 
 /* ─── ACF Options Page (Site-wide settings) ─── */
@@ -65,6 +77,7 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 /* ─── ACF Field Registrations ─── */
 add_action( 'acf/init', function () {
     require_once UBL_DIR . '/inc/acf-fields.php';
+    require_once UBL_DIR . '/inc/acf-product-fields.php';
 } );
 
 /* ─── Helper: get ACF field with fallback ─── */
@@ -151,7 +164,7 @@ add_action( 'save_post', function ( $post_id ) {
 /* ─── Custom Login Page (Light Theme + Math Captcha) ─── */
 add_action( 'login_enqueue_scripts', function () {
     wp_enqueue_style( 'ubl-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap',
+        'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap',
         [], null
     );
     ?>
@@ -297,7 +310,7 @@ add_action( 'login_enqueue_scripts', function () {
             display: block; margin-bottom: 0.5rem;
         }
         .ubl-captcha-question {
-            font-family: 'DM Mono', monospace;
+            font-family: 'Inter', sans-serif;
             font-size: 1.1rem; font-weight: 700;
             color: var(--navy); margin-bottom: 0.5rem;
         }
@@ -340,6 +353,9 @@ add_filter( 'authenticate', function ( $user, $username, $password ) {
 
     return $user;
 }, 30, 3 );
+
+/* ─── Customer Portal AJAX Handlers ─── */
+require_once UBL_DIR . '/inc/portal-handlers.php';
 
 /* ─── Remove unnecessary WP head bloat ─── */
 remove_action( 'wp_head', 'wp_generator' );
