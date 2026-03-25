@@ -1499,6 +1499,15 @@
 }
 
 
+/* Footer fix: on split-layout pages, footer sits ABOVE the fixed left pane */
+body:has(.pd-page) .site-footer,
+body:has(.ld-page) .site-footer,
+body:has(.ct-page) .site-footer {
+    position: relative;
+    z-index: 20;
+    background: inherit;
+}
+
 /* ════════════════════════════════════════════
    RESPONSIVE
    ════════════════════════════════════════════ */

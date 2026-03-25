@@ -560,7 +560,7 @@
                 <p class="mega-left-desc">End-to-end insulation solutions tailored for every transformer class and industrial application. From 400 kV power transformers to EV motors.</p>
                 <a href="/solutions" class="mega-left-cta" data-cursor="hover">View all solutions &rarr;</a>
             </div>
-            <div class="mega-center mega-center-scroll">
+            <div class="mega-center mega-center-grid">
                 <a class="mega-cat active" data-sub="solPower">Power Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="solDist">Distribution Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="solInstrument">Instrument Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
