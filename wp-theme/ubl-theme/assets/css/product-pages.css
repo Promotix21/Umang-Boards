@@ -766,6 +766,7 @@
     width: 55%;
     margin-left: 45%;
     padding: clamp(2rem, 4vw, 6rem);
+    padding-top: calc(var(--utility-h) + var(--header-h) + 3rem);
     background: var(--bg-primary);
     min-height: 100vh;
 }
@@ -1499,13 +1500,18 @@
 }
 
 
-/* Footer fix: on split-layout pages, footer sits ABOVE the fixed left pane */
+/* Footer fix: on split-layout pages, footer breaks free of the fixed left pane */
 body:has(.pd-page) .site-footer,
 body:has(.ld-page) .site-footer,
 body:has(.ct-page) .site-footer {
     position: relative;
     z-index: 20;
-    background: inherit;
+}
+/* Hide the fixed left pane behind the footer */
+body:has(.pd-page) .pd-left,
+body:has(.ld-page) .ld-left,
+body:has(.ct-page) .ct-left {
+    z-index: 10;
 }
 
 /* ════════════════════════════════════════════

@@ -686,4 +686,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script>
+(function(){
+    var lp = document.querySelector('.ld-left');
+    var ft = document.querySelector('.site-footer');
+    if (!lp || !ft) return;
+    window.addEventListener('scroll', function() {
+        var r = ft.getBoundingClientRect();
+        lp.style.clipPath = r.top < window.innerHeight ? 'inset(0 0 ' + (window.innerHeight - r.top) + 'px 0)' : '';
+    }, { passive: true });
+})();
+</script>
+
 <?php get_footer(); ?>

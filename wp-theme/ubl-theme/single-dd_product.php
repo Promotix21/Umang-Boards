@@ -271,4 +271,26 @@ $section_num = 1;
     </div>
 </main>
 
+<script>
+// Hide left pane when user scrolls to footer area
+(function() {
+    var leftPane = document.querySelector('.pd-left');
+    var footer = document.querySelector('.site-footer');
+    if (!leftPane || !footer) return;
+
+    function checkFooterOverlap() {
+        var footerRect = footer.getBoundingClientRect();
+        if (footerRect.top < window.innerHeight) {
+            var overlap = window.innerHeight - footerRect.top;
+            leftPane.style.clipPath = 'inset(0 0 ' + overlap + 'px 0)';
+        } else {
+            leftPane.style.clipPath = '';
+        }
+    }
+
+    window.addEventListener('scroll', checkFooterOverlap, { passive: true });
+    checkFooterOverlap();
+})();
+</script>
+
 <?php get_footer(); ?>

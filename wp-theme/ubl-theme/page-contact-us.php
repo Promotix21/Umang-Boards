@@ -24,6 +24,7 @@ $uri = UBL_URI;
 }
 .ct-right {
     width: 55%; margin-left: 45%; padding: clamp(2rem, 4vw, 6rem);
+    padding-top: calc(var(--utility-h, 36px) + var(--header-h, 80px) + 3rem);
     background: var(--bg-primary); min-height: 100vh;
 }
 
@@ -450,6 +451,18 @@ document.addEventListener('DOMContentLoaded', function() {
         fadeUp(unitCards, { trigger: unitCards[0], stagger: 0.15 });
     }
 });
+</script>
+
+<script>
+(function(){
+    var lp = document.querySelector('.ct-left');
+    var ft = document.querySelector('.site-footer');
+    if (!lp || !ft) return;
+    window.addEventListener('scroll', function() {
+        var r = ft.getBoundingClientRect();
+        lp.style.clipPath = r.top < window.innerHeight ? 'inset(0 0 ' + (window.innerHeight - r.top) + 'px 0)' : '';
+    }, { passive: true });
+})();
 </script>
 
 <?php get_footer(); ?>
