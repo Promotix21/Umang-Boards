@@ -1,0 +1,150 @@
+/* ============================================
+   UMANG BOARDS — BLUE THEME VARIANT
+   Override navy (#0B1F3A) with logo blue (#376eb4)
+   Enqueued conditionally via Site Settings toggle
+   ============================================ */
+
+:root {
+    --navy: #376eb4;
+    --navy-light: #4a82c4;
+    --navy-pale: #5a92d0;
+    --gold: #D4A843;
+    --gold-dark: #B8922E;
+    --gold-light: #E0BC5A;
+    --heading-color: #1A1D24;
+}
+
+/* ============================================
+   HEADING COLOR OVERRIDES
+   Section titles use dark text, NOT blue
+   ============================================ */
+
+/* Homepage hero */
+.hero-title { color: var(--heading-color) !important; }
+.hero-stat-num { color: var(--heading-color) !important; }
+
+/* Global section headings */
+.section-title { color: var(--heading-color) !important; }
+.section-title em { color: var(--gold) !important; }
+
+/* Value proposition */
+.vf-giant-num { color: var(--heading-color); }
+.vf-fact-num { color: var(--heading-color); }
+.vf-cert-name { color: var(--heading-color); }
+
+/* Product tabs & cards */
+.product-tab.active { color: var(--heading-color); }
+.app-carousel-card-title { color: var(--heading-color); }
+
+/* Media & News */
+.mn-card-title { color: var(--heading-color); }
+.mn-events-title { color: var(--heading-color); }
+.mn-event-pill-text strong { color: var(--heading-color); }
+
+/* Investor section */
+.inv-col-heading { color: var(--heading-color); }
+
+/* Global map */
+.g-stat-num { color: var(--heading-color); }
+
+/* Product pages */
+.p-section-title { color: var(--heading-color); }
+.p-card-title { color: var(--heading-color); }
+.p-card-link { color: var(--heading-color); }
+.pc-product-row-title { color: var(--heading-color); }
+.pc-list-heading { color: var(--heading-color); }
+.pc-related-name { color: var(--heading-color); }
+.pd-section-title { color: var(--heading-color); }
+.pd-spec-prop { color: var(--heading-color); }
+.pd-doc-name { color: var(--heading-color); }
+
+/* Hover states — gold not blue */
+.p-card:hover .p-card-link { color: var(--gold); }
+.pc-product-row:hover .pc-product-row-title { color: var(--gold); }
+.pd-doc-row:hover .pd-doc-name { color: var(--gold); }
+
+/* ============================================
+   HERO BANNER OVERRIDES
+   Dark navy (#1a3056) not bright blue
+   ============================================ */
+
+/* Page heroes — !important needed to override inline <style> in page templates */
+.pc-header,
+.ch-hero,
+.au-hero,
+.sol-hero,
+.nr-hero,
+.cr-hero,
+.dl-hero,
+.ev-hero,
+.qa-hero,
+.cert-hero,
+.csr-hero,
+.sp-hero {
+    background: #1a3056 !important;
+}
+
+/* Split layout left panes */
+.ld-left,
+.ct-left,
+.pd-left {
+    background: #1a3056 !important;
+}
+
+/* Split pane gradients */
+.ld-left-gradient { background: linear-gradient(to bottom, rgba(26,48,86,0.5), rgba(26,48,86,0.8), #1a3056) !important; }
+.ct-left-gradient { background: linear-gradient(to bottom, rgba(26,48,86,0.5), rgba(26,48,86,0.8), #1a3056) !important; }
+.pd-left-gradient { background: linear-gradient(to bottom, rgba(26,48,86,0.5), rgba(26,48,86,0.8), #1a3056) !important; }
+
+/* About page sections */
+.au-bento-story { background: #1a3056 !important; border-color: #1a3056 !important; }
+.au-pillars { background: #1a3056 !important; }
+.au-cta { background: #1a3056 !important; }
+
+/* Company history */
+.ch-quote { background: #1a3056 !important; }
+
+/* Enquiry panel */
+.pd-enquiry-panel { background: #1a3056 !important; }
+
+/* ============================================
+   FOOTER & DARK SECTIONS
+   ============================================ */
+
+.site-footer {
+    background: linear-gradient(145deg, #1a3056 0%, rgba(26,48,86,0.9) 50%, #1a3056 100%);
+}
+
+.s-investor-dark {
+    background: #1a3056;
+}
+
+.pc-cta {
+    background: #1a3056;
+}
+
+/* ============================================
+   EXISTING OVERRIDES
+   ============================================ */
+
+.product-cta-card {
+    background: linear-gradient(135deg, #376eb4 0%, #4a82c4 100%);
+}
+
+.hamburger span { background: #376eb4; }
+.header.scrolled .hamburger span { background: #376eb4; }
+.loader-progress-bar { background: #376eb4; }
+.loader-text { color: #376eb4; }
+.preloader { --pre-dark: #376eb4; }
+
+/* Gold buttons — dark text */
+.btn-gold,
+.btn-gold:hover,
+.p-btn-gold,
+.p-btn-gold:hover,
+.fab-email,
+.product-cta-btn,
+.product-cta-btn:hover,
+.inv-login-btn {
+    color: #1A1D24;
+}
