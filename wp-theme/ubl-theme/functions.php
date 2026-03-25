@@ -357,6 +357,9 @@ add_filter( 'authenticate', function ( $user, $username, $password ) {
 /* ─── Customer Portal AJAX Handlers ─── */
 require_once UBL_DIR . '/inc/portal-handlers.php';
 
+/* ─── Form Submission Handlers ─── */
+require_once UBL_DIR . '/inc/form-handlers.php';
+
 /* ─── Remove unnecessary WP head bloat ─── */
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'wlwmanifest_link' );

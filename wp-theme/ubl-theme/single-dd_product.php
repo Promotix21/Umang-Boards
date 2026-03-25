@@ -188,6 +188,12 @@ $section_num = 1;
         <!-- ENQUIRY FORM -->
         <div class="pd-enquiry-panel" id="pd-enquiry" data-anim="fade-up">
             <div class="pd-enquiry-inner">
+                <?php if ( isset( $_GET['enquiry'] ) && $_GET['enquiry'] === 'sent' ) : ?>
+                <div class="pd-success" style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;color:#065F46;font-weight:600;font-size:0.95rem;">
+                    <svg style="width:22px;height:22px;color:#10B981;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Your enquiry has been sent successfully. Our team will respond shortly.
+                </div>
+                <?php endif; ?>
                 <h2 class="pd-enquiry-title">Request a Quote</h2>
                 <p class="pd-enquiry-text">Our engineering team is available to discuss custom specifications and material tolerances for your application.</p>
 

@@ -268,6 +268,118 @@ $uri = UBL_URI;
     flex-shrink: 0;
 }
 
+/* --- SUCCESS BANNER --- */
+.cr-success {
+    max-width: 1400px;
+    margin: 2rem auto 0;
+    padding: 0 clamp(1.5rem, 4vw, 3.5rem);
+}
+.cr-success-inner {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-left: 4px solid #10B981;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.cr-success-inner svg { width: 28px; height: 28px; color: #10B981; flex-shrink: 0; }
+.cr-success-inner h3 { font-size: 1.1rem; font-weight: 700; color: #065F46; margin: 0 0 0.25rem; }
+.cr-success-inner p { font-size: 0.9rem; color: #047857; margin: 0; line-height: 1.5; }
+
+/* --- APPLICATION MODAL --- */
+.cr-modal-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(11,31,58,0.6);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.cr-modal-overlay.active { opacity: 1; visibility: visible; }
+.cr-modal {
+    background: #fff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    transform: translateY(40px);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    box-shadow: 0 24px 80px rgba(11,31,58,0.2);
+}
+.cr-modal-overlay.active .cr-modal { transform: translateY(0); }
+.cr-modal-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 2rem;
+}
+.cr-modal-header h2 {
+    font-size: 1.5rem; font-weight: 700; color: var(--navy);
+    margin: 0; letter-spacing: -0.02em;
+}
+.cr-modal-header p {
+    font-size: 0.9rem; color: var(--text-secondary); margin: 0.5rem 0 0;
+    font-weight: 300; line-height: 1.5;
+}
+.cr-modal-close {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(11,31,58,0.1); background: transparent;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-left: 1rem;
+    transition: all 0.3s;
+}
+.cr-modal-close:hover { background: #f5f5f7; border-color: rgba(11,31,58,0.2); }
+.cr-modal-close svg { width: 16px; height: 16px; color: var(--navy); }
+.cr-modal-field {
+    margin-bottom: 1.25rem;
+}
+.cr-modal-field label {
+    display: block;
+    font-size: 0.78rem; font-weight: 700; color: var(--navy);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+.cr-modal-field input,
+.cr-modal-field textarea {
+    width: 100%; padding: 0.85rem 1rem;
+    background: #F5F5F7; border: 1px solid rgba(11,31,58,0.08);
+    border-radius: 8px; font-family: var(--font-body);
+    font-size: 0.95rem; color: var(--navy);
+    outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+.cr-modal-field input:focus,
+.cr-modal-field textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200,168,75,0.12);
+    background: #fff;
+}
+.cr-modal-field textarea { resize: none; height: 100px; }
+.cr-modal-field input[type="file"] {
+    padding: 0.7rem 1rem; cursor: pointer;
+}
+.cr-modal-field .cr-file-hint {
+    font-size: 0.75rem; color: var(--text-muted);
+    margin-top: 0.4rem;
+}
+.cr-modal-submit {
+    display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+    width: 100%; height: 56px; margin-top: 1.5rem;
+    background: var(--navy); color: #fff; border: none;
+    border-radius: 8px; font-family: var(--font-body);
+    font-size: 0.9rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    cursor: pointer; transition: all 0.4s var(--ease-out-expo);
+}
+.cr-modal-submit:hover {
+    background: var(--gold); color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+.cr-modal-submit svg { width: 18px; height: 18px; }
+
 /* --- CTA --- */
 .cr-cta {
     background: var(--navy);
@@ -350,6 +462,19 @@ $uri = UBL_URI;
         </div>
     </section>
 
+    <!-- ─── SUCCESS MESSAGE ─── -->
+    <?php if ( isset( $_GET['applied'] ) && $_GET['applied'] === 'success' ) : ?>
+    <div class="cr-success">
+        <div class="cr-success-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div>
+                <h3>Application Submitted Successfully</h3>
+                <p>Thank you for your interest in joining UBL. Our HR team will review your application and get back to you shortly.</p>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <!-- ─── SECTION 01: LIFE @ UBL ─── -->
     <section class="cr-section">
         <div class="cr-eyebrow">01. Life @ UBL</div>
@@ -416,10 +541,10 @@ $uri = UBL_URI;
                         </span>
                     </div>
                 </div>
-                <a href="mailto:hr@umangboards.com?subject=Application%20-%20Chemical%20Engineer" class="job-apply">
+                <button type="button" class="job-apply" data-position="Chemical Engineer" onclick="openApplyModal(this)">
                     Apply
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                </button>
             </div>
 
             <!-- Job 2 -->
@@ -441,10 +566,10 @@ $uri = UBL_URI;
                         </span>
                     </div>
                 </div>
-                <a href="mailto:hr@umangboards.com?subject=Application%20-%20GM%20Sales%20%26%20Marketing" class="job-apply">
+                <button type="button" class="job-apply" data-position="GM — Sales &amp; Marketing" onclick="openApplyModal(this)">
                     Apply
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                </button>
             </div>
 
             <!-- Job 3 -->
@@ -466,10 +591,10 @@ $uri = UBL_URI;
                         </span>
                     </div>
                 </div>
-                <a href="mailto:hr@umangboards.com?subject=Application%20-%20Mechanical%20Engineer" class="job-apply">
+                <button type="button" class="job-apply" data-position="Mechanical Engineer" onclick="openApplyModal(this)">
                     Apply
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                </button>
             </div>
 
             <!-- Job 4 -->
@@ -491,10 +616,10 @@ $uri = UBL_URI;
                         </span>
                     </div>
                 </div>
-                <a href="mailto:hr@umangboards.com?subject=Application%20-%20Sales%20Engineer%20(Jaipur)" class="job-apply">
+                <button type="button" class="job-apply" data-position="Sales Engineer (Jaipur)" onclick="openApplyModal(this)">
                     Apply
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                </button>
             </div>
 
             <!-- Job 5 -->
@@ -516,10 +641,10 @@ $uri = UBL_URI;
                         </span>
                     </div>
                 </div>
-                <a href="mailto:hr@umangboards.com?subject=Application%20-%20Sr.%20Quality%20Manager" class="job-apply">
+                <button type="button" class="job-apply" data-position="Sr. Quality Manager" onclick="openApplyModal(this)">
                     Apply
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                </button>
             </div>
 
             <!-- Job 6 -->
@@ -541,10 +666,10 @@ $uri = UBL_URI;
                         </span>
                     </div>
                 </div>
-                <a href="mailto:hr@umangboards.com?subject=Application%20-%20Sales%20Engineer%20(Baroda)" class="job-apply">
+                <button type="button" class="job-apply" data-position="Sales Engineer (Baroda)" onclick="openApplyModal(this)">
                     Apply
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                </button>
             </div>
 
             <!-- Job 7 -->
@@ -566,10 +691,10 @@ $uri = UBL_URI;
                         </span>
                     </div>
                 </div>
-                <a href="mailto:hr@umangboards.com?subject=Application%20-%20Sales%20Engineer%20(Hyderabad)" class="job-apply">
+                <button type="button" class="job-apply" data-position="Sales Engineer (Hyderabad)" onclick="openApplyModal(this)">
                     Apply
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                </button>
             </div>
 
         </div>
@@ -608,16 +733,89 @@ $uri = UBL_URI;
         <div class="cr-cta-inner">
             <h2 class="cr-cta-title">Interested in Joining Us?</h2>
             <p class="cr-cta-desc">Send your resume to our HR team and we'll get back to you. We're always looking for talented individuals who share our passion for quality and innovation.</p>
-            <a href="mailto:hr@umangboards.com?subject=Career%20Inquiry" class="cr-cta-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                Email hr@umangboards.com
-            </a>
+            <button type="button" class="cr-cta-btn" onclick="openApplyModal(this)" data-position="General Application">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Submit Your Application
+            </button>
         </div>
     </section>
+
+    <!-- ─── APPLICATION MODAL ─── -->
+    <div class="cr-modal-overlay" id="applyModal">
+        <div class="cr-modal">
+            <div class="cr-modal-header">
+                <div>
+                    <h2>Apply for Position</h2>
+                    <p id="applyModalPosition"></p>
+                </div>
+                <button type="button" class="cr-modal-close" onclick="closeApplyModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="ubl_apply">
+                <input type="hidden" name="position" id="applyPositionField" value="">
+                <?php wp_nonce_field( 'ubl_apply', 'ubl_apply_nonce' ); ?>
+
+                <div class="cr-modal-field">
+                    <label for="applicant_name">Full Name *</label>
+                    <input type="text" id="applicant_name" name="applicant_name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="cr-modal-field">
+                    <label for="applicant_email">Email Address *</label>
+                    <input type="email" id="applicant_email" name="applicant_email" required placeholder="your.email@example.com">
+                </div>
+
+                <div class="cr-modal-field">
+                    <label for="applicant_phone">Phone Number *</label>
+                    <input type="tel" id="applicant_phone" name="applicant_phone" required placeholder="+91-XXXXX-XXXXX">
+                </div>
+
+                <div class="cr-modal-field">
+                    <label for="cover_letter">Cover Letter</label>
+                    <textarea id="cover_letter" name="cover_letter" placeholder="Tell us about yourself and why you'd be a great fit..."></textarea>
+                </div>
+
+                <div class="cr-modal-field">
+                    <label for="resume">Resume / CV *</label>
+                    <input type="file" id="resume" name="resume" required accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                    <div class="cr-file-hint">Accepted formats: PDF, DOC, DOCX (max 5 MB)</div>
+                </div>
+
+                <button type="submit" class="cr-modal-submit">
+                    Submit Application
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
 
 </main>
 
 <script>
+/* ── Application Modal ── */
+function openApplyModal(btn) {
+    var position = btn.getAttribute('data-position') || '';
+    document.getElementById('applyPositionField').value = position;
+    document.getElementById('applyModalPosition').textContent = position;
+    document.getElementById('applyModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeApplyModal() {
+    document.getElementById('applyModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+/* Close on overlay click */
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'applyModal') closeApplyModal();
+});
+/* Close on Escape */
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeApplyModal();
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);

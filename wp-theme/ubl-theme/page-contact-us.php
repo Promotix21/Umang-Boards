@@ -237,6 +237,17 @@ $uri = UBL_URI;
     <!-- ─── RIGHT PANE ─── -->
     <div class="ct-right">
 
+        <!-- Success Message -->
+        <?php if ( isset( $_GET['contact'] ) && $_GET['contact'] === 'sent' ) : ?>
+        <div class="ct-success" style="background:#F0FDF4;border:1px solid #BBF7D0;border-left:4px solid #10B981;border-radius:12px;padding:2rem 2.5rem;margin-bottom:3rem;display:flex;align-items:flex-start;gap:1rem;">
+            <svg style="width:28px;height:28px;color:#10B981;flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div>
+                <h3 style="font-size:1.2rem;font-weight:700;color:#065F46;margin:0 0 0.5rem;">Message Sent Successfully</h3>
+                <p style="font-size:0.95rem;color:#047857;line-height:1.6;margin:0;">Thank you for contacting us. Our team will respond within 24 hours.</p>
+            </div>
+        </div>
+        <?php endif; ?>
+
         <!-- Section 01: Contact Form -->
         <div class="ct-section">
             <div class="ct-section-eyebrow">01. Send a Message</div>
