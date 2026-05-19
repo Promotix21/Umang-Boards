@@ -1020,52 +1020,32 @@ $uri = UBL_URI;
     color: var(--text-primary);
     letter-spacing: -0.02em;
 }
-.au-values-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-}
-.au-values-card {
-    background: #fff;
-    padding: clamp(1.5rem, 2.5vw, 2.5rem);
-    border: 1px solid rgba(11,31,58,0.06);
-    border-top: 3px solid transparent;
-    transition: all 0.4s var(--ease-out-expo, cubic-bezier(0.16,1,0.3,1));
-}
-.au-values-card:hover {
-    border-top-color: var(--gold);
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(11,31,58,0.1);
-}
-.au-values-card-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(11,31,58,0.04);
+.au-values-pills {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
-    margin-bottom: 1.5rem;
-    transition: background 0.3s;
 }
-.au-values-card:hover .au-values-card-icon {
-    background: rgba(212,168,67,0.1);
+.au-value-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.85rem 1.75rem;
+    background: #fff;
+    border: 1px solid rgba(200,168,75,0.35);
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #0b1f3a;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
-.au-values-card-icon svg {
-    width: 22px;
-    height: 22px;
-    color: var(--gold);
-}
-.au-values-card h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 0.75rem;
-}
-.au-values-card p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    font-weight: 400;
+.au-value-pill:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #0b1f3a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(200,168,75,0.3);
 }
 
 /* --- SOLID BG SECTIONS above curved lines --- */
@@ -1096,6 +1076,81 @@ $uri = UBL_URI;
     .au-values-grid { grid-template-columns: 1fr; }
     .au-vm-cert-grid { gap: 0.75rem; }
     .au-vm-cert-item { flex: 1 1 calc(50% - 0.75rem); }
+}
+
+/* --- OUR TEAM GATEWAY --- */
+.au-team-gateway {
+    background: linear-gradient(135deg, #0b1f3a 0%, #1a3556 100%);
+    padding: clamp(5rem, 10vh, 8rem) clamp(1.5rem, 4vw, 3.5rem);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+.au-team-gateway::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(200,168,75,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+}
+.au-team-gateway-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+}
+.au-team-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+.au-team-eyebrow::before,
+.au-team-eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+}
+.au-team-body {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    color: rgba(255,255,255,0.82);
+    line-height: 1.8;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+}
+
+/* --- NEWS / EVENTS / CONNECT ROW HEADER --- */
+.au-updates-header {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border-bottom: 1px solid rgba(11,31,58,0.08);
+    padding: 0 clamp(1.5rem, 4vw, 3.5rem);
+    margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+.au-updates-header-item {
+    flex: 1;
+    padding: 1.5rem 0;
+    padding-right: 2rem;
+    border-right: 1px solid rgba(11,31,58,0.08);
+}
+.au-updates-header-item:last-child {
+    border-right: none;
+    padding-right: 0;
+    padding-left: 2rem;
+}
+.au-updates-header-item:not(:first-child):not(:last-child) {
+    padding-left: 2rem;
 }
 
 /* --- QUICK FACTS (stat icons redesign) --- */
@@ -1316,10 +1371,9 @@ $uri = UBL_URI;
                 </div>
                 <div class="au-hero-badge">About Us</div>
                 <h1 class="au-hero-title">Powering Critical <em>Electrical Infrastructure</em> Worldwide</h1>
-                <p class="au-hero-subhead">Advanced insulation materials and precision winding solutions enabling reliable power transmission across global energy systems.</p>
                 <div class="au-hero-body">
                     <p>Founded with a vision to reduce India's dependence on imported electrical insulation products, Umang Boards Limited has evolved into a globally trusted manufacturing partner serving power utilities, transformer OEMs, and industrial equipment manufacturers.</p>
-                    <p>We manufacture high-performance cellulose insulation materials, precision super enameled and paper-coated winding wires in copper and aluminum, along with specialized insulating chemicals—delivering integrated solutions for critical electrical applications.</p>
+                    <p>We manufacture high-performance cellulose insulation materials, precision super enameled and paper-coated winding wires in copper and aluminum, along with specialized insulating chemicals, delivering integrated solutions for critical electrical applications.</p>
                     <p>Serving industries across six continents, we support infrastructure that powers economies, industries, and emerging energy systems.</p>
                 </div>
             </div>
@@ -1470,59 +1524,18 @@ $uri = UBL_URI;
                 <div class="au-overview-eyebrow">Corporate Overview</div>
                 <h2 class="au-overview-heading">From Jaipur to the <em>World</em></h2>
                 <div class="au-overview-body-text">
-                    <p>What began in 1999 as a focused manufacturing venture has grown into a trusted name in the power and energy sector. At Umang Boards Limited, we build the components that quietly keep electrical systems running — from high-performance cellulose insulation materials to precision super enameled and paper-coated winding wires in copper and aluminum, along with specialized insulating chemicals.</p>
-                    <p>Headquartered in Jaipur, India, our journey has been shaped by continuous investment in advanced manufacturing, skilled people, and rigorous in-house testing. With two modern production facilities and globally recognized ISO certifications, we combine technical depth with disciplined quality systems — ensuring every product that leaves our floor is built for reliability.</p>
+                    <p>What began in 1999 as a focused manufacturing venture has grown into a trusted name in the power and energy sector. At Umang Boards Limited, we build the components that quietly keep electrical systems running: from high-performance cellulose insulation materials to precision super enameled and paper-coated winding wires in copper and aluminum, along with specialized insulating chemicals.</p>
+                    <p>Headquartered in Jaipur, India, our journey has been shaped by continuous investment in advanced manufacturing, skilled people, and rigorous in-house testing. With two modern production facilities and globally recognized ISO certifications, we combine technical depth with disciplined quality systems, ensuring every product that leaves our floor is built for reliability.</p>
                 </div>
                 <div class="au-overview-callout">
                     <div class="au-overview-callout-label">Local Roots, Global Reach</div>
                     <h4>Manufacturing from Jaipur, Rajasthan</h4>
-                    <p>From our manufacturing base in Jaipur, Rajasthan, we serve customers across India and in over 15 countries worldwide — building long-term partnerships through consistent quality and dependable delivery.</p>
+                    <p>From our manufacturing base in Jaipur, Rajasthan, we serve customers across India and in over 15 countries worldwide, building long-term partnerships through consistent quality and dependable delivery.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================================================
-         OUR STORY — Annual-Report Row Layout
-         ================================================ -->
-    <section class="au-pillars">
-        <div class="au-pillars-inner">
-            <div class="au-pillars-header">
-                <div class="au-pillars-eyebrow">Our Story</div>
-                <h2 class="au-pillars-heading">Built to power the world's <em>critical infrastructure.</em></h2>
-            </div>
-            <div class="au-pillars-rows">
-                <div class="au-pillar-row">
-                    <div class="au-pillar-meta">
-                        <span class="au-pillar-num">01</span>
-                        <span class="au-pillar-label">Innovation &amp; Products</span>
-                    </div>
-                    <p>Built on a technology-driven foundation, we continuously invest in innovation, advanced processes and product development to stay ahead of evolving electrical demands. Our insulation materials support critical transformer applications, while our winding wire division powers a wide spectrum of industries — from industrial motors to consumer and heavy electrical systems. Complemented by specialized insulating chemicals, our integrated capabilities allow us to deliver complete, high-performance electrical component solutions.</p>
-                </div>
-                <div class="au-pillar-row">
-                    <div class="au-pillar-meta">
-                        <span class="au-pillar-num">02</span>
-                        <span class="au-pillar-label">Quality &amp; Reliability</span>
-                    </div>
-                    <p>Across markets, we are known for consistent quality, disciplined manufacturing, dependable delivery and long-term customer partnerships — serving clients in India and globally.</p>
-                </div>
-                <div class="au-pillar-row">
-                    <div class="au-pillar-meta">
-                        <span class="au-pillar-num">03</span>
-                        <span class="au-pillar-label">Leadership &amp; Growth</span>
-                    </div>
-                    <p>Guided by committed leadership and a clear growth vision, Umang Boards has expanded steadily, strengthening its presence while maintaining operational rigor and financial discipline.</p>
-                </div>
-                <div class="au-pillar-row">
-                    <div class="au-pillar-meta">
-                        <span class="au-pillar-num">04</span>
-                        <span class="au-pillar-label">Social Responsibility</span>
-                    </div>
-                    <p>We also believe that meaningful growth extends beyond business. Through structured social initiatives and our wholly owned subsidiary Dhanuka Foundation, we actively contribute to community development and sustainable progress.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ================================================
          VISION, MISSION & PILLARS — Tab Slider
@@ -1586,11 +1599,8 @@ $uri = UBL_URI;
                             <div class="au-vm-panel-num">01</div>
                             <div class="au-vm-panel-tag">Vision</div>
                             <h3 class="au-vm-panel-title">The Global Benchmark in Electrical Insulation</h3>
-                            <p class="au-vm-panel-desc">To be the global benchmark in electrical insulation and winding solutions, powering the world's transition to ultra-high voltage (1200 kV) and sustainable energy systems — forming the backbone of reliable power networks across continents.</p>
-                            <button class="au-vm-panel-link" data-modal="au-vision-modal">
-                                Read Full Vision
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </button>
+                            <p class="au-vm-panel-desc">To be the world's most trusted partner in electrical power infrastructure, leading the transformation of global energy systems through innovative insulation and winding solutions. We envision a future where our products spanning from distribution transformers to cutting-edge 1200 kV ultra-high voltage systems form the backbone of reliable, sustainable power networks across continents.</p>
+                            <p class="au-vm-panel-desc">We aspire to be the innovation partner that transformer manufacturers, renewable energy developers, and electrical equipment makers turn to when they need solutions that don't yet exist - a globally recognized brand synonymous with quality, reliability, and innovation, proudly Made in India for the world.</p>
                         </div>
                     </div>
 
@@ -1603,11 +1613,8 @@ $uri = UBL_URI;
                             <div class="au-vm-panel-num">02</div>
                             <div class="au-vm-panel-tag">Mission</div>
                             <h3 class="au-vm-panel-title">World-Class Solutions That Power Critical Infrastructure</h3>
-                            <p class="au-vm-panel-desc">We deliver high-quality, cost-efficient electrical components through advanced technology and operational excellence. From 1200 kV transformers to renewable energy, data centers, and industrial motors — we empower global infrastructure with reliability and a 'can-do' attitude.</p>
-                            <button class="au-vm-panel-link" data-modal="au-mission-modal">
-                                Read Full Mission
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </button>
+                            <p class="au-vm-panel-desc">To design, manufacture, and deliver world-class electrical insulation and winding wire solutions that power critical infrastructure and enable technological progress. We serve as the essential link in the power value chain, ensuring electricity flows safely and reliably from generation to end-use.</p>
+                            <p class="au-vm-panel-desc">From 1200 kV transformers to renewable energy, data centers, and industrial motors - we leverage state-of-the-art manufacturing, rigorous quality systems, and sustainable practices to empower global infrastructure with reliability and a can-do attitude.</p>
                         </div>
                     </div>
 
@@ -1620,7 +1627,7 @@ $uri = UBL_URI;
                             <div class="au-vm-panel-num">03</div>
                             <div class="au-vm-panel-tag">In Power &amp; Distribution</div>
                             <h3 class="au-vm-panel-title">Powering Grids Up to 1200 kV</h3>
-                            <p class="au-vm-panel-desc">We manufacture high-performance pressboards, machined components, moulded components, insulation papers, and winding wires for power transformers up to 1200 kV and distribution transformers — enabling utilities and grid operators to deliver stable electricity worldwide.</p>
+                            <p class="au-vm-panel-desc">We manufacture high-performance pressboards, machined components, moulded components, insulation papers, and winding wires for power transformers up to 1200 kV and distribution transformers, enabling utilities and grid operators to deliver stable electricity worldwide.</p>
                         </div>
                     </div>
 
@@ -1646,7 +1653,7 @@ $uri = UBL_URI;
                             <div class="au-vm-panel-num">05</div>
                             <div class="au-vm-panel-tag">Through Operational Excellence</div>
                             <h3 class="au-vm-panel-title">World-Class Manufacturing Standards</h3>
-                            <p class="au-vm-panel-desc">We leverage state-of-the-art manufacturing technology, rigorous quality management systems, and maintain zero liquid discharge (ZLD) and sustainable practices including solar energy and biomass fuels — delivering products that meet the highest international standards.</p>
+                            <p class="au-vm-panel-desc">We leverage state-of-the-art manufacturing technology, rigorous quality management systems, and maintain zero liquid discharge (ZLD) and sustainable practices including solar energy and biomass fuels, delivering products that meet the highest international standards.</p>
                         </div>
                     </div>
 
@@ -1672,7 +1679,7 @@ $uri = UBL_URI;
                             <div class="au-vm-panel-num">07</div>
                             <div class="au-vm-panel-tag">Through Responsible Growth</div>
                             <h3 class="au-vm-panel-title">Growth That Gives Back</h3>
-                            <p class="au-vm-panel-desc">We are committed to sustainable business practices that protect the environment, support local communities through the Dhanuka Foundation, and create value for all stakeholders — guided by principles of responsible manufacturing, ethical business conduct, and positive social impact.</p>
+                            <p class="au-vm-panel-desc">We are committed to sustainable business practices that protect the environment, support local communities through the Dhanuka Foundation, and create value for all stakeholders, guided by principles of responsible manufacturing, ethical business conduct, and positive social impact.</p>
                         </div>
                     </div>
 
@@ -1695,7 +1702,7 @@ $uri = UBL_URI;
                             <div class="au-vm-panel-num">09</div>
                             <div class="au-vm-panel-tag">Our Accreditations</div>
                             <h3 class="au-vm-panel-title">Certified to the World's Highest Standards</h3>
-                            <p class="au-vm-panel-desc">Every product we manufacture is backed by internationally recognized quality, safety, and environmental management certifications — reflecting our commitment to excellence, reliability, and responsible operations.</p>
+                            <p class="au-vm-panel-desc">Every product we manufacture is backed by internationally recognized quality, safety, and environmental management certifications, reflecting our commitment to excellence, reliability, and responsible operations.</p>
                             <div class="au-vm-cert-grid">
                                 <div class="au-vm-cert-item">
                                     <img src="<?php echo $uri; ?>/assets/images/cert-nabl.png" alt="NABL Accredited Laboratories">
@@ -1746,8 +1753,8 @@ $uri = UBL_URI;
                         <div class="au-vm-panel-content">
                             <div class="au-vm-panel-tag">Vision</div>
                             <h3 class="au-vm-panel-title">The Global Benchmark in Electrical Insulation</h3>
-                            <p class="au-vm-panel-desc">To be the global benchmark in electrical insulation and winding solutions, powering the world's transition to ultra-high voltage (1200 kV) and sustainable energy systems — forming the backbone of reliable power networks across continents.</p>
-                            <button class="au-vm-panel-link" data-modal="au-vision-modal">Read Full Vision <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                            <p class="au-vm-panel-desc">To be the world's most trusted partner in electrical power infrastructure, leading the transformation of global energy systems through innovative insulation and winding solutions - from distribution transformers to cutting-edge 1200 kV ultra-high voltage systems.</p>
+                            <p class="au-vm-panel-desc">A globally recognized brand synonymous with quality, reliability, and innovation - proudly Made in India for the world.</p>
                         </div>
                     </div>
                 </div>
@@ -1762,8 +1769,7 @@ $uri = UBL_URI;
                         <div class="au-vm-panel-content">
                             <div class="au-vm-panel-tag">Mission</div>
                             <h3 class="au-vm-panel-title">World-Class Solutions That Power Critical Infrastructure</h3>
-                            <p class="au-vm-panel-desc">We deliver high-quality, cost-efficient electrical components through advanced technology and operational excellence. From 1200 kV transformers to renewable energy, data centers, and industrial motors — we empower global infrastructure with reliability.</p>
-                            <button class="au-vm-panel-link" data-modal="au-mission-modal">Read Full Mission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                            <p class="au-vm-panel-desc">To design, manufacture, and deliver world-class electrical insulation and winding wire solutions that power critical infrastructure. From 1200 kV transformers to renewable energy, data centers, and industrial motors - we empower global infrastructure with reliability and a can-do attitude.</p>
                         </div>
                     </div>
                 </div>
@@ -1778,7 +1784,7 @@ $uri = UBL_URI;
                         <div class="au-vm-panel-content">
                             <div class="au-vm-panel-tag">In Power &amp; Distribution</div>
                             <h3 class="au-vm-panel-title">Powering Grids Up to 1200 kV</h3>
-                            <p class="au-vm-panel-desc">We manufacture high-performance pressboards, machined components, moulded components, insulation papers, and winding wires for power transformers up to 1200 kV and distribution transformers — enabling utilities and grid operators to deliver stable electricity worldwide.</p>
+                            <p class="au-vm-panel-desc">We manufacture high-performance pressboards, machined components, moulded components, insulation papers, and winding wires for power transformers up to 1200 kV and distribution transformers, enabling utilities and grid operators to deliver stable electricity worldwide.</p>
                         </div>
                     </div>
                 </div>
@@ -1808,7 +1814,7 @@ $uri = UBL_URI;
                         <div class="au-vm-panel-content">
                             <div class="au-vm-panel-tag">Through Operational Excellence</div>
                             <h3 class="au-vm-panel-title">World-Class Manufacturing Standards</h3>
-                            <p class="au-vm-panel-desc">We leverage state-of-the-art manufacturing technology, rigorous quality management systems, and maintain zero liquid discharge (ZLD) and sustainable practices including solar energy and biomass fuels — delivering products that meet the highest international standards.</p>
+                            <p class="au-vm-panel-desc">We leverage state-of-the-art manufacturing technology, rigorous quality management systems, and maintain zero liquid discharge (ZLD) and sustainable practices including solar energy and biomass fuels, delivering products that meet the highest international standards.</p>
                         </div>
                     </div>
                 </div>
@@ -1838,7 +1844,7 @@ $uri = UBL_URI;
                         <div class="au-vm-panel-content">
                             <div class="au-vm-panel-tag">Through Responsible Growth</div>
                             <h3 class="au-vm-panel-title">Growth That Gives Back</h3>
-                            <p class="au-vm-panel-desc">We are committed to sustainable business practices that protect the environment, support local communities through the Dhanuka Foundation, and create value for all stakeholders — guided by principles of responsible manufacturing, ethical business conduct, and positive social impact.</p>
+                            <p class="au-vm-panel-desc">We are committed to sustainable business practices that protect the environment, support local communities through the Dhanuka Foundation, and create value for all stakeholders, guided by principles of responsible manufacturing, ethical business conduct, and positive social impact.</p>
                         </div>
                     </div>
                 </div>
@@ -1867,7 +1873,7 @@ $uri = UBL_URI;
                         <div class="au-vm-panel-content">
                             <div class="au-vm-panel-tag">Our Accreditations</div>
                             <h3 class="au-vm-panel-title">Certified to the World's Highest Standards</h3>
-                            <p class="au-vm-panel-desc">Every product we manufacture is backed by internationally recognized quality, safety, and environmental management certifications — reflecting our commitment to excellence, reliability, and responsible operations.</p>
+                            <p class="au-vm-panel-desc">Every product we manufacture is backed by internationally recognized quality, safety, and environmental management certifications, reflecting our commitment to excellence, reliability, and responsible operations.</p>
                             <div class="au-vm-cert-grid">
                                 <div class="au-vm-cert-item">
                                     <img src="<?php echo $uri; ?>/assets/images/cert-nabl.png" alt="NABL Accredited Laboratories">
@@ -1906,71 +1912,15 @@ $uri = UBL_URI;
                 <div class="au-values-eyebrow">What Drives Us</div>
                 <h2 class="au-values-title">Our Core Values</h2>
             </div>
-            <div class="au-values-grid">
-                <!-- 1. Quality & Excellence -->
-                <div class="au-values-card">
-                    <div class="au-values-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </div>
-                    <h3>Quality &amp; Excellence</h3>
-                    <p>Uncompromising standards, continuous improvement, zero-defect mindset.</p>
-                </div>
-                <!-- 2. Innovation & Technology -->
-                <div class="au-values-card">
-                    <div class="au-values-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-                    </div>
-                    <h3>Innovation &amp; Technology</h3>
-                    <p>Cutting-edge R&amp;D, advanced automation, next-generation solutions.</p>
-                </div>
-                <!-- 3. Customer Centricity -->
-                <div class="au-values-card">
-                    <div class="au-values-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-                    </div>
-                    <h3>Customer Centricity</h3>
-                    <p>Long-term partnerships, responsive service, collaborative problem-solving.</p>
-                </div>
-                <!-- 4. Sustainability & Responsibility -->
-                <div class="au-values-card">
-                    <div class="au-values-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M7 12.5s1.5 2 5 2 5-2 5-2"/><path d="M8 9h.01M16 9h.01"/></svg>
-                    </div>
-                    <h3>Sustainability &amp; Responsibility</h3>
-                    <p>Environmental stewardship, zero liquid discharge, community impact.</p>
-                </div>
-                <!-- 5. Operational Excellence -->
-                <div class="au-values-card">
-                    <div class="au-values-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M6 20V4M18 20v-4"/></svg>
-                    </div>
-                    <h3>Operational Excellence</h3>
-                    <p>Process discipline, efficiency, data-driven optimization.</p>
-                </div>
-                <!-- 6. Integrity & Trust -->
-                <div class="au-values-card">
-                    <div class="au-values-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3>Integrity &amp; Trust</h3>
-                    <p>Honesty, transparency, ethical business practices.</p>
-                </div>
-                <!-- 7. Teamwork & Dedication -->
-                <div class="au-values-card">
-                    <div class="au-values-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                    </div>
-                    <h3>Teamwork &amp; Dedication</h3>
-                    <p>Talented people, continuous learning, shared success.</p>
-                </div>
-                <!-- 8. Cost Leadership -->
-                <div class="au-values-card">
-                    <div class="au-values-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                    </div>
-                    <h3>Cost Leadership</h3>
-                    <p>Economical solutions without quality compromise.</p>
-                </div>
+            <div class="au-values-pills">
+                <span class="au-value-pill">Quality &amp; Excellence</span>
+                <span class="au-value-pill">Innovation &amp; Technology</span>
+                <span class="au-value-pill">Customer Centricity</span>
+                <span class="au-value-pill">Sustainability &amp; Responsibility</span>
+                <span class="au-value-pill">Operational Excellence</span>
+                <span class="au-value-pill">Integrity &amp; Trust</span>
+                <span class="au-value-pill">Teamwork &amp; Dedication</span>
+                <span class="au-value-pill">Cost Leadership</span>
             </div>
         </div>
     </section>
@@ -2208,17 +2158,41 @@ $uri = UBL_URI;
     </section>
 
     <!-- ================================================
+         OUR TEAM GATEWAY
+         ================================================ -->
+    <section class="au-team-gateway">
+        <div class="au-team-gateway-inner">
+            <div class="au-team-eyebrow">Our Team</div>
+            <p class="au-team-body">Great companies are shaped by the people who understand them most deeply. At Umang Boards, our leadership team carries between them decades of experience in transformer insulation, manufacturing operations, and business growth - a team that has built this company and continues to steer it with the same conviction it started with. Get to know them.</p>
+            <a href="<?php echo home_url('/leadership'); ?>" class="btn-gold">Meet the Team</a>
+        </div>
+    </section>
+
+    <!-- ================================================
+         UPDATES / EVENTS / CONNECT — Row Header
+         ================================================ -->
+    <div class="au-updates-row-wrap" style="background:#fff;padding-top:clamp(4rem,8vh,7rem);position:relative;z-index:2;">
+        <div class="au-updates-header">
+            <div class="au-updates-header-item">
+                <div class="au-news-eyebrow">Media &amp; News</div>
+                <h2 class="au-news-title" style="font-size:clamp(1.6rem,3vw,2.4rem)">Our Latest <em>Updates</em></h2>
+            </div>
+            <div class="au-updates-header-item">
+                <div class="au-news-eyebrow">Schedule</div>
+                <h2 class="au-news-title" style="font-size:clamp(1.6rem,3vw,2.4rem)"><em>Events</em></h2>
+            </div>
+            <div class="au-updates-header-item">
+                <div class="au-news-eyebrow">Social</div>
+                <h2 class="au-news-title" style="font-size:clamp(1.6rem,3vw,2.4rem)">Connect <em>With Us</em></h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================
          LATEST NEWS
          ================================================ -->
-    <section class="au-news" id="auNews">
+    <section class="au-news" id="auNews" style="padding-top:0;">
         <div class="au-news-wrap">
-            <div class="au-news-header">
-                <div>
-                    <div class="au-news-eyebrow">Media &amp; News</div>
-                    <h2 class="au-news-title">Our Latest<br><em>Updates</em></h2>
-                </div>
-                <a href="<?php echo home_url('/newsroom'); ?>" class="btn-outline">View All</a>
-            </div>
             <div class="au-news-grid">
                 <article class="au-news-card">
                     <div class="au-news-card-img-wrap">
@@ -2226,7 +2200,7 @@ $uri = UBL_URI;
                         <img src="<?php echo $uri; ?>/assets/images/news-pgcil-approval.jpg" alt="PGCIL 400 KV Approval" loading="lazy">
                     </div>
                     <div class="au-news-card-body">
-                        <h3 class="au-news-card-title">Power Grid Corporation India Ltd &mdash; 400 KV Class Approval</h3>
+                        <h3 class="au-news-card-title">Power Grid Corporation India Ltd: 400 KV Class Approval</h3>
                         <p class="au-news-card-excerpt">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class rating transformers.</p>
                         <a href="<?php echo home_url('/newsroom'); ?>" class="au-news-card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                     </div>
@@ -2238,7 +2212,7 @@ $uri = UBL_URI;
                     </div>
                     <div class="au-news-card-body">
                         <h3 class="au-news-card-title">CRISIL BBB Investment Grade Rating Achieved</h3>
-                        <p class="au-news-card-excerpt">We are now BBB rated by CRISIL &mdash; reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
+                        <p class="au-news-card-excerpt">We are now BBB rated by CRISIL, reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
                         <a href="<?php echo home_url('/newsroom'); ?>" class="au-news-card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                     </div>
                 </article>
@@ -2366,10 +2340,10 @@ $uri = UBL_URI;
                 </button>
             </div>
             <div class="au-vm-modal-body">
-                <p>To be the world's most trusted partner in electrical power infrastructure, leading the transformation of global energy systems through innovative insulation and winding solutions. We envision a future where our products—spanning from distribution transformers to cutting-edge 1200 kV ultra-high voltage systems—form the backbone of reliable, sustainable power networks across continents.</p>
+                <p>To be the world's most trusted partner in electrical power infrastructure, leading the transformation of global energy systems through innovative insulation and winding solutions. We envision a future where our products spanning from distribution transformers to cutting-edge 1200 kV ultra-high voltage systems form the backbone of reliable, sustainable power networks across continents.</p>
                 <p>As pioneers in the electrical insulation industry, we are committed to advancing the boundaries of what's possible in power transmission and distribution. We see ourselves as enablers of the world's electric future, supporting the global transition to renewable energy, powering smart cities, enabling efficient data centers, and driving the electrification of transportation and industry.</p>
-                <p>Our vision extends beyond manufacturing excellence to becoming a catalyst for technological advancement in the electrical sector. We aspire to be the innovation partner that transformer manufacturers, renewable energy developers, and electrical equipment makers turn to when they need solutions that don't yet exist—solutions that we will create through relentless research, development, and engineering excellence.</p>
-                <p>We envision Umang Boards Limited as a globally recognized brand synonymous with quality, reliability, and innovation—proudly Made in India for the world, contributing to energy security and sustainable development across emerging and developed markets alike.</p>
+                <p>Our vision extends beyond manufacturing excellence to becoming a catalyst for technological advancement in the electrical sector. We aspire to be the innovation partner that transformer manufacturers, renewable energy developers, and electrical equipment makers turn to when they need solutions that don't yet exist, solutions that we will create through relentless research, development, and engineering excellence.</p>
+                <p>We envision Umang Boards Limited as a globally recognized brand synonymous with quality, reliability, and innovation, proudly Made in India for the world, contributing to energy security and sustainable development across emerging and developed markets alike.</p>
             </div>
         </div>
     </div>

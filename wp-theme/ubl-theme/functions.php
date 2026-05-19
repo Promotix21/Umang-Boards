@@ -7,7 +7,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'UBL_VERSION', time() );
+define( 'UBL_VERSION', '2.17.0' );
 define( 'UBL_DIR', get_template_directory() );
 define( 'UBL_URI', get_template_directory_uri() );
 

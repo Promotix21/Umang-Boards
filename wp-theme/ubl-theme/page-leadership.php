@@ -16,11 +16,10 @@ $people = [
     'linkedin'=> '#',
     'meta'    => ['Promoter','B.Com, Univ. of Rajasthan (1993)','26+ yrs in Power T&D'],
     'bio'     => [
-      "Mr. Anoop Kumar Dhanuka is the Promoter, Chairman & Managing Director of Umang Boards Limited. He holds a Bachelor of Commerce degree from the University of Rajasthan (1993) and brings over 26 years of leadership experience in the power transmission and distribution sector.",
-      "As Chairman & Managing Director, Mr. Dhanuka provides strategic direction to the Company, overseeing its long-term growth and operational excellence. His executive focus centers on guiding future expansion initiatives, directing R&D and product development strategy, and overseeing strategic capital allocation across the business to drive sustained growth and operational strength.",
-      "Under his stewardship, Umang Boards has evolved from a regional supplier into a global player, serving customers across multiple continents. The Company now supplies critical insulation solutions—including high-performance pressboards, precision-machined components, moulded systems, and winding wires—to leading transformer manufacturers worldwide, with technical capabilities extending to 1200 kV class applications.",
-      "A strong advocate for responsible manufacturing, Mr. Dhanuka ensures that the Company's operations prioritize environmental sustainability through energy-efficient practices, low carbon footprint initiatives, and sustainable resource management.",
-      "Driven by a vision to power the \"world's electric future,\" he is deeply committed to the \"Make in India\" initiative. By focusing on innovation and disciplined execution, Mr. Dhanuka has positioned Umang Boards as a world-class technology partner for next-generation electrical infrastructure, renewable energy, and high-efficiency power networks globally.",
+      "Anoop Kumar Dhanuka is the Promoter, Chairman &amp; Managing Director of Umang Boards Limited. A commerce graduate from the University of Rajasthan, he brings over 26 years of expertise in power transmission and distribution, and has been the principal force behind the Company's evolution from a regional manufacturer to a globally recognised supplier of transformer insulation solutions.",
+      "As Chairman &amp; Managing Director, Mr. Dhanuka sets the strategic direction of the Company, with a particular focus on long-term expansion, R&amp;D leadership, and capital allocation. His approach to growth has been deliberate and consistent: building technical capabilities that anticipate industry demand rather than follow it.",
+      "Under his stewardship, Umang Boards now serves leading transformer manufacturers across multiple continents, offering solutions across high-performance pressboards, precision-machined components, moulded systems, and winding wires, with technical capabilities extending to 1200 KV class applications.",
+      "Mr. Dhanuka is a committed advocate of the Make in India initiative, and has positioned Umang Boards as a world-class technology partner for the infrastructure of the global energy transition.",
     ],
   ],
   'alok' => [
@@ -42,10 +41,10 @@ $people = [
     'linkedin'=> '#',
     'meta'    => ['Promoter','B.Sc. Industrial Engg., Purdue (2018)','BIS ETD-02 Principal Member','IEEE Member'],
     'bio'     => [
-      "Mr. Umang Dhanuka is a Promoter and Whole-Time Director of Umang Boards Limited. He holds a Bachelor of Science in Industrial Engineering from Purdue University, USA (2018), and is a Principal Member of the Bureau of Indian Standards ETD-02 Sectional Committee on Solid Electrical Insulating Materials and Insulation Systems. He is also an active member of the Institute of Electrical and Electronics Engineers (IEEE).",
-      "Joining the Company in 2018 and appointed to the Board in 2025, Mr. Dhanuka brings over seven years of hands-on experience in the power transmission and distribution sector. He provides strategic leadership across production, operations, vendor management, marketing, and business development, driving growth through operational rigor and customer-centric innovation.",
-      "Currently, he oversees the end-to-end operations of the Insulation business, ensuring seamless integration from manufacturing to market delivery. He also leads new product development initiatives, driving innovation in high-performance insulation solutions for next-generation electrical applications.",
-      "In addition to his operational responsibilities, Mr. Dhanuka actively engages in investor relations, effectively communicating the Company's strategic vision and performance to stakeholders.",
+      "Umang Dhanuka is a Promoter and Whole-Time Director of Umang Boards Limited. He holds a Bachelor of Science in Industrial Engineering from Purdue University, USA, and brings with him a rigorous, systems-oriented approach to manufacturing and operations that is rare in the industry at his level of experience.",
+      "Appointed to the Board in 2025, Mr. Dhanuka oversees the end-to-end operations of the Company's insulation business, from production and vendor management to marketing and business development. He also leads new product development, with a focus on high-performance insulation solutions for next-generation electrical applications.",
+      "A Principal Member of the Bureau of Indian Standards ETD-02 Sectional Committee on Solid Electrical Insulating Materials, and an active member of the IEEE, Mr. Dhanuka is not only a practitioner of the industry but a participant in shaping its standards.",
+      "He additionally manages investor relations, serving as a direct bridge between the Company's operational realities and its strategic narrative to stakeholders.",
     ],
   ],
   'dhruv' => [
@@ -436,11 +435,11 @@ $people = [
 .lp-modal{
   background:#fff;max-width:760px;width:100%;max-height:88vh;
   position:relative;transform:translateY(30px);transition:transform .4s cubic-bezier(.16,1,.3,1);
-  overflow:hidden;
+  display:flex;flex-direction:column;
 }
 .lp-modal::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-dark) 100%);z-index:2}
 .lp-modal-scrim.open .lp-modal{transform:none}
-.lp-modal-body{padding:2.6rem;overflow-y:auto;max-height:88vh}
+.lp-modal-body{padding:2.6rem;overflow-y:auto;flex:1;min-height:0}
 .lp-modal-head{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem}
 .lp-modal-thumb{
   width:88px;height:88px;flex-shrink:0;border-radius:50%;overflow:hidden;
@@ -598,7 +597,7 @@ $people = [
   <div class="hero-inner">
     <span class="eyebrow" data-reveal>Leadership</span>
     <h1 class="hero-title" data-reveal>Leading with <em>Transparency,</em><br>Growing with <em>Integrity.</em></h1>
-    <p class="hero-sub" data-reveal>Our leadership team is defined by a commitment to robust corporate governance and long-term value creation. We believe that sustainable growth is only possible when technical excellence is paired with ethical transparency. At Umang Boards, we lead by example—fostering a culture of accountability that ensures we remain a trusted partner to the global power industry.</p>
+    <p class="hero-sub" data-reveal>When we started this journey in Jaipur, the ambition was simple - to make something the industry could genuinely depend on. Twenty-five years on, that ambition has only grown sharper. The team we have built, the standards we hold ourselves to, and the customers who trust us with their most critical supply needs are all a reflection of one belief: that in this business, quality is not a differentiator. It is the only currency that matters.</p>
   </div>
 </section>
 
@@ -611,7 +610,7 @@ $people = [
         <span class="quote-glyph" aria-hidden="true">"</span>
         <p class="founder-lead">Driven by a vision to power the <em>world's electric future,</em> we remain deeply committed to the Make-in-India initiative.</p>
       </div>
-      <p class="founder-body">Under Mr. Anoop Kumar Dhanuka's stewardship, Umang Boards has evolved from a regional supplier into a global player, serving customers across multiple continents. The Company now supplies critical insulation solutions—including high-performance pressboards, precision-machined components, moulded systems, and winding wires—to leading transformer manufacturers worldwide, with technical capabilities extending to 1200 kV class applications.</p>
+      <p class="founder-body">Under Mr. Anoop Kumar Dhanuka's stewardship, Umang Boards has evolved from a regional supplier into a global player, serving customers across multiple continents. The Company now supplies critical insulation solutions including high-performance pressboards, precision-machined components, moulded systems, and winding wires to leading transformer manufacturers worldwide, with technical capabilities extending to 1200 kV class applications.</p>
       <div class="founder-sig">
         <span class="founder-sig-rule"></span>
         <div>
@@ -751,7 +750,7 @@ $people = [
           <img src="<?php echo esc_url($uri); ?>/assets/images/news-pgcil-approval.jpg" alt="PGCIL 400 KV Approval" loading="lazy">
         </div>
         <div class="au-news-card-body">
-          <h3 class="au-news-card-title">Power Grid Corporation India Ltd &mdash; 400 KV Class Approval</h3>
+          <h3 class="au-news-card-title">Power Grid Corporation India Ltd: 400 KV Class Approval</h3>
           <p class="au-news-card-excerpt">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class rating transformers.</p>
           <a href="<?php echo home_url('/newsroom'); ?>" class="au-news-card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
@@ -763,7 +762,7 @@ $people = [
         </div>
         <div class="au-news-card-body">
           <h3 class="au-news-card-title">CRISIL BBB Investment Grade Rating Achieved</h3>
-          <p class="au-news-card-excerpt">We are now BBB rated by CRISIL &mdash; reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
+          <p class="au-news-card-excerpt">We are now BBB rated by CRISIL, reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
           <a href="<?php echo home_url('/newsroom'); ?>" class="au-news-card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </article>
