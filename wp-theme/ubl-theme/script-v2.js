@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
        ============================================ */
     const header = document.getElementById('header');
     const utilityBar = document.getElementById('utilityBar');
+    const utilityH = 32;
+
     if (utilityBar) {
         utilityBar.addEventListener('animationend', () => {
             utilityBar.style.animation = 'none';
@@ -62,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const shouldBeSticky = y > 80;
         if (header) header.classList.toggle('scrolled', shouldBeSticky);
         if (utilityBar) {
-            const utilityH = utilityBar.offsetHeight;
             if (shouldBeSticky) {
                 utilityBar.style.transform = 'translateY(-100%)';
                 utilityBar.style.transition = 'transform 0.4s ease';
@@ -307,15 +308,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!wasActive) parent.classList.add('active');
             });
         });
-        const mobileNavClose = document.getElementById('mobileNavClose');
-        if (mobileNavClose) {
-            mobileNavClose.addEventListener('click', () => {
-                mobileNav.classList.remove('active');
-                menuToggle.classList.remove('active');
-                mobileNav.querySelectorAll('.mobile-accordion.active').forEach(ac => ac.classList.remove('active'));
-                lenis.start();
-            });
-        }
     }
 
     /* ============================================

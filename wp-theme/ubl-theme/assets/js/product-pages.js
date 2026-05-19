@@ -206,6 +206,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     /* ────────────────────────────────────────
+       PRODUCT GALLERY — Thumbnail switcher
+       ──────────────────────────────────────── */
+    var mainImg = document.getElementById('pdMainImage');
+    var thumbs = document.querySelectorAll('.pd-gallery-thumb');
+    if (mainImg && thumbs.length) {
+        thumbs.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                thumbs.forEach(function (t) { t.classList.remove('active'); });
+                btn.classList.add('active');
+                mainImg.style.opacity = '0';
+                setTimeout(function () {
+                    mainImg.src = btn.dataset.full;
+                    mainImg.alt = btn.dataset.alt || '';
+                    mainImg.style.opacity = '1';
+                }, 200);
+            });
+        });
+    }
+
+    /* ────────────────────────────────────────
        Refresh ScrollTrigger after page load
        ──────────────────────────────────────── */
     window.addEventListener('load', function () {

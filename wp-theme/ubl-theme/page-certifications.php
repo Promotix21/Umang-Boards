@@ -15,15 +15,15 @@ $uri = UBL_URI;
 /* --- HERO --- */
 .cert-hero {
     position: relative;
-    background: var(--navy);
-    color: #fff;
+    background: #fdf9f4;
+    color: #0b1f3a;
     padding: calc(var(--utility-h) + var(--header-h) + 4rem) 0 6rem;
     overflow: hidden;
 }
 .cert-hero-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, var(--navy), rgba(11,31,58,0.95));
+    background: none;
 }
 .cert-hero-glow {
     position: absolute;
@@ -34,12 +34,19 @@ $uri = UBL_URI;
 .cert-hero-pattern {
     position: absolute;
     inset: 0;
-    opacity: 0.04;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 60px 60px;
+    opacity: 1;
+    background-image: radial-gradient(circle, rgba(11,31,58,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
     pointer-events: none;
+}
+.cert-hero-accent {
+    position: absolute;
+    left: clamp(1.5rem, 4vw, 3.5rem);
+    top: calc(var(--utility-h) + var(--header-h) + 2rem);
+    bottom: 2rem;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--gold), rgba(212,168,67,0.2));
+    z-index: 1;
 }
 .cert-hero-inner {
     position: relative;
@@ -56,11 +63,11 @@ $uri = UBL_URI;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.5);
+    color: rgba(11,31,58,0.6);
     margin-bottom: 2rem;
 }
 .cert-breadcrumb a {
-    color: rgba(255,255,255,0.5);
+    color: rgba(11,31,58,0.6);
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -72,8 +79,8 @@ $uri = UBL_URI;
     align-items: center;
     gap: 0.5rem;
     padding: 0.4rem 1rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(212,168,67,0.1);
+    border: 1px solid rgba(212,168,67,0.25);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -93,16 +100,16 @@ $uri = UBL_URI;
 .cert-hero-title em { font-style: normal; color: var(--gold); }
 .cert-hero-subtitle {
     font-size: clamp(1.05rem, 1.8vw, 1.3rem);
-    color: rgba(255,255,255,0.7);
+    color: rgba(11,31,58,0.75);
     max-width: 600px;
     line-height: 1.65;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* --- CERTIFICATIONS GRID --- */
 .cert-grid-section {
     padding: clamp(4rem, 8vh, 7rem) 0;
-    background: var(--bg-primary);
+    background: #fff;
 }
 .cert-grid-wrap {
     max-width: 1400px;
@@ -125,7 +132,7 @@ $uri = UBL_URI;
 .cert-section-label p {
     font-size: clamp(1.4rem, 2.5vw, 2rem);
     font-weight: 700;
-    color: var(--text-primary);
+    color: #0b1f3a;
     letter-spacing: -0.02em;
     margin: 0;
     line-height: 1.2;
@@ -177,7 +184,7 @@ $uri = UBL_URI;
     width: 28px;
     height: 28px;
     fill: none;
-    stroke: var(--navy);
+    stroke: #0b1f3a;
     stroke-width: 1.5;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -186,21 +193,21 @@ $uri = UBL_URI;
     font-family: var(--font-body);
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #0b1f3a;
     margin: 0 0 0.35rem;
     letter-spacing: -0.01em;
 }
 .cert-full {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--navy);
+    color: #0b1f3a;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: 1rem;
 }
 .cert-desc {
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: rgba(11,31,58,0.65);
     line-height: 1.65;
     margin: 0;
 }
@@ -208,7 +215,7 @@ $uri = UBL_URI;
 /* --- NABL HIGHLIGHT --- */
 .cert-nabl {
     padding: clamp(4rem, 8vh, 7rem) 0;
-    background: var(--bg-secondary);
+    background: #f8f9fb;
 }
 .cert-nabl-wrap {
     max-width: 1400px;
@@ -232,14 +239,14 @@ $uri = UBL_URI;
     font-family: var(--font-body);
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 700;
-    color: var(--text-primary);
+    color: #0b1f3a;
     letter-spacing: -0.02em;
     line-height: 1.15;
     margin: 0 0 1.5rem;
 }
 .cert-nabl-text {
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: rgba(11,31,58,0.65);
     line-height: 1.7;
     margin: 0 0 1.5rem;
 }
@@ -254,7 +261,7 @@ $uri = UBL_URI;
     gap: 0.75rem;
     padding: 0.6rem 0;
     font-size: 0.92rem;
-    color: var(--text-secondary);
+    color: rgba(11,31,58,0.65);
     line-height: 1.5;
 }
 .cert-nabl-points li svg {
@@ -285,7 +292,7 @@ $uri = UBL_URI;
 /* --- PGCIL SECTION --- */
 .cert-pgcil {
     padding: clamp(4rem, 8vh, 7rem) 0;
-    background: var(--bg-primary);
+    background: #fff;
 }
 .cert-pgcil-wrap {
     max-width: 1400px;
@@ -300,7 +307,7 @@ $uri = UBL_URI;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-secondary);
+    background: #f8f9fb;
     border: 1px solid rgba(0,0,0,0.06);
     padding: 3rem;
     min-height: 300px;
@@ -316,19 +323,38 @@ $uri = UBL_URI;
     width: 80px;
     height: 80px;
     fill: none;
-    stroke: var(--navy);
+    stroke: #0b1f3a;
     stroke-width: 1.2;
 }
 .cert-pgcil-visual .pgcil-badge-label {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--navy);
+    color: #0b1f3a;
     letter-spacing: -0.02em;
 }
 .cert-pgcil-visual .pgcil-badge-sub {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: rgba(11,31,58,0.65);
     font-weight: 500;
+}
+.cert-pgcil-visual .pgcil-badges {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+.cert-pgcil-visual .pgcil-badge-divider {
+    width: 1px;
+    height: 80px;
+    background: rgba(0,0,0,0.1);
+}
+.cert-pgcil-visual .pgcil-badge-note {
+    font-size: 0.8rem;
+    color: rgba(11,31,58,0.65);
+    font-weight: 500;
+    margin-top: 0.5rem;
+    max-width: 160px;
+    text-align: center;
+    line-height: 1.4;
 }
 .cert-pgcil-content {}
 .cert-pgcil-eyebrow {
@@ -343,31 +369,31 @@ $uri = UBL_URI;
     font-family: var(--font-body);
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 700;
-    color: var(--text-primary);
+    color: #0b1f3a;
     letter-spacing: -0.02em;
     line-height: 1.15;
     margin: 0 0 1.5rem;
 }
 .cert-pgcil-text {
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: rgba(11,31,58,0.65);
     line-height: 1.7;
     margin: 0 0 1.5rem;
 }
 
 /* --- CTA --- */
 .cert-cta {
-    background: var(--navy);
+    background: linear-gradient(145deg, #f2e0c8 0%, #e8caa4 45%, #ddb880 100%);
     padding: clamp(4rem, 8vh, 6rem) 0;
     text-align: center;
-    color: #fff;
+    color: #0b1f3a;
     position: relative;
     overflow: hidden;
 }
 .cert-cta-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(212,168,67,0.1) 0%, transparent 60%);
+    background: radial-gradient(circle at center, rgba(212,168,67,0.15) 0%, transparent 60%);
     pointer-events: none;
 }
 .cert-cta-inner {
@@ -386,7 +412,7 @@ $uri = UBL_URI;
 }
 .cert-cta-subtitle {
     font-size: 1rem;
-    color: rgba(255,255,255,0.7);
+    color: rgba(11,31,58,0.65);
     margin-bottom: 2.5rem;
     line-height: 1.6;
 }
@@ -396,44 +422,8 @@ $uri = UBL_URI;
     gap: 1rem;
     flex-wrap: wrap;
 }
-.cert-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.9rem 2rem;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    transition: all 0.3s var(--ease-out-expo);
-    cursor: pointer;
-}
-.cert-cta-btn--primary {
-    background: var(--gold);
-    color: var(--navy);
-    border: 2px solid var(--gold);
-}
-.cert-cta-btn--primary:hover {
-    background: transparent;
-    color: var(--gold);
-}
-.cert-cta-btn--secondary {
-    background: transparent;
-    color: #fff;
-    border: 2px solid rgba(255,255,255,0.3);
-}
-.cert-cta-btn--secondary:hover {
-    border-color: #fff;
-    background: rgba(255,255,255,0.05);
-}
-.cert-cta-btn svg {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-}
+.cert-cta .btn-outline { color: #0b1f3a; border-color: rgba(11,31,58,0.25); }
+.cert-cta .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
@@ -479,6 +469,7 @@ $uri = UBL_URI;
         <div class="cert-hero-gradient"></div>
         <div class="cert-hero-glow"></div>
         <div class="cert-hero-pattern"></div>
+        <div class="cert-hero-accent"></div>
         <div class="cert-hero-inner">
             <nav class="cert-breadcrumb">
                 <a href="/">Home</a>
@@ -554,7 +545,7 @@ $uri = UBL_URI;
                     </div>
                     <h3 class="cert-name">PGCIL Approved</h3>
                     <div class="cert-full">Power Grid Corporation of India</div>
-                    <p class="cert-desc">Approved by PGCIL for supply of transformer insulation materials up to 400 kV class, qualifying Umang Boards for the most demanding power transmission projects in India.</p>
+                    <p class="cert-desc">Approved by PGCIL for supply of transformer insulation materials up to 400 kV class (2025). Additionally, 525 kV class performance validated by ATEF, Azerbaijan for insulation pressboards and laminated boards.</p>
                 </div>
 
                 <!-- CRISIL -->
@@ -611,10 +602,19 @@ $uri = UBL_URI;
     <section class="cert-pgcil">
         <div class="cert-pgcil-wrap">
             <div class="cert-pgcil-visual">
-                <div class="pgcil-badge">
-                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    <div class="pgcil-badge-label">400 kV</div>
-                    <div class="pgcil-badge-sub">PGCIL Approved Class</div>
+                <div class="pgcil-badges">
+                    <div class="pgcil-badge">
+                        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <div class="pgcil-badge-label">400 kV</div>
+                        <div class="pgcil-badge-sub">PGCIL Approved Class</div>
+                    </div>
+                    <div class="pgcil-badge-divider"></div>
+                    <div class="pgcil-badge">
+                        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <div class="pgcil-badge-label">525 kV</div>
+                        <div class="pgcil-badge-sub">Performance Validated</div>
+                        <div class="pgcil-badge-note">ATEF, Azerbaijan</div>
+                    </div>
                 </div>
             </div>
             <div class="cert-pgcil-content">
@@ -622,6 +622,7 @@ $uri = UBL_URI;
                 <h2 class="cert-pgcil-title">PGCIL Approved up to 400 kV Class</h2>
                 <p class="cert-pgcil-text">Approval by Power Grid Corporation of India Limited (PGCIL) — India's central transmission utility — qualifies Umang Boards to supply transformer insulation materials for the country's highest-voltage power transmission projects.</p>
                 <p class="cert-pgcil-text">This approval is granted only after rigorous type-testing, factory inspection, and consistent performance validation, reflecting the highest manufacturing standards in the Indian power sector.</p>
+                <p class="cert-pgcil-text"><strong>525 kV class performance validated by ATEF, Azerbaijan</strong> — Received performance letter from ATEF, Azerbaijan for successfully using our insulation pressboards and laminated boards in their 525 KV Class transformers.</p>
             </div>
         </div>
     </section>
@@ -635,11 +636,11 @@ $uri = UBL_URI;
             <h2 class="cert-cta-title">Need Certification Documents?</h2>
             <p class="cert-cta-subtitle">Request copies of our certifications, test reports, or quality documentation. Our team is ready to assist with your compliance requirements.</p>
             <div class="cert-cta-btns">
-                <a href="/contact-us" class="cert-cta-btn cert-cta-btn--primary" data-cursor="hover">
+                <a href="/contact-us" class="btn-gold" data-cursor="hover">
                     <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     Contact Us
                 </a>
-                <a href="/downloads" class="cert-cta-btn cert-cta-btn--secondary" data-cursor="hover">
+                <a href="/downloads" class="btn-outline" data-cursor="hover">
                     <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Downloads
                 </a>
@@ -662,18 +663,30 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
-        gsap.from('[data-cert]', {
-            scrollTrigger: {
-                trigger: '.cert-grid',
-                start: 'top 80%',
-                once: true
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.7,
-            stagger: 0.1,
-            ease: 'power3.out'
-        });
+        gsap.fromTo('[data-cert]',
+            { opacity: 0, y: 40 },
+            {
+                scrollTrigger: {
+                    trigger: '.cert-grid',
+                    start: 'top 85%',
+                    once: true,
+                    onEnter: function() { gsap.set('[data-cert]', { clearProps: 'all' }); }
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: 'power3.out'
+            }
+        );
+        /* Fallback: ensure cards are visible after 4s regardless */
+        setTimeout(function() {
+            document.querySelectorAll('[data-cert]').forEach(function(el) { el.style.opacity = '1'; el.style.transform = 'none'; });
+        }, 4000);
+
+        UBL.wipeIn('.cert-nabl-title', { delay: 0.1, start: 'top 75%' });
+        UBL.wipeIn('.cert-pgcil-title', { delay: 0.1, start: 'top 75%' });
+        UBL.wipeIn('.cert-cta-title', { delay: 0.1 });
 
         gsap.from('.cert-nabl-content', {
             scrollTrigger: {

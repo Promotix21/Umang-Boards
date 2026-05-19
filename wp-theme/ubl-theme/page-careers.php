@@ -15,15 +15,24 @@ $uri = UBL_URI;
 /* --- HERO --- */
 .cr-hero {
     position: relative;
-    background: var(--navy);
-    color: #fff;
+    background: #fdf9f4;
+    color: #0b1f3a;
     padding: calc(var(--utility-h) + var(--header-h) + 4rem) 0 6rem;
     overflow: hidden;
 }
 .cr-hero-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, var(--navy), rgba(11,31,58,0.95));
+    background: none;
+}
+.cr-hero-accent {
+    position: absolute;
+    left: clamp(1.5rem, 4vw, 3.5rem);
+    top: calc(var(--utility-h) + var(--header-h) + 2rem);
+    bottom: 2rem;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--gold), rgba(212,168,67,0.2));
+    z-index: 1;
 }
 .cr-hero-glow {
     position: absolute;
@@ -46,10 +55,10 @@ $uri = UBL_URI;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.5);
+    color: rgba(11,31,58,0.6);
     margin-bottom: 2rem;
 }
-.cr-breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
+.cr-breadcrumb a { color: rgba(11,31,58,0.6); text-decoration: none; transition: color 0.3s; }
 .cr-breadcrumb a:hover { color: var(--gold); }
 .cr-breadcrumb .active { color: var(--gold); }
 .cr-breadcrumb svg { width: 12px; height: 12px; }
@@ -57,8 +66,8 @@ $uri = UBL_URI;
     display: inline-flex;
     align-items: center;
     padding: 0.4rem 1rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(212,168,67,0.1);
+    border: 1px solid rgba(212,168,67,0.25);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -77,10 +86,10 @@ $uri = UBL_URI;
 .cr-hero-title em { font-style: normal; color: var(--gold); }
 .cr-hero-subtitle {
     font-size: clamp(1rem, 1.8vw, 1.25rem);
-    color: rgba(255,255,255,0.7);
+    color: var(--text-secondary);
     max-width: 560px;
     line-height: 1.65;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* --- SECTIONS --- */
@@ -101,15 +110,15 @@ $uri = UBL_URI;
 .cr-title {
     font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     font-weight: 700;
-    color: var(--navy);
+    color: var(--text-primary);
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
 }
 .cr-desc {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     line-height: 1.65;
-    font-weight: 300;
+    font-weight: 400;
     max-width: 700px;
     margin-bottom: 3rem;
 }
@@ -122,10 +131,10 @@ $uri = UBL_URI;
     align-items: start;
 }
 .cr-life-text {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     line-height: 1.75;
-    font-weight: 300;
+    font-weight: 400;
 }
 .cr-life-text p { margin-bottom: 1.5rem; }
 .cr-culture-cards {
@@ -160,7 +169,7 @@ $uri = UBL_URI;
 .cr-culture-label {
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--navy);
+    color: #0b1f3a;
     line-height: 1.3;
 }
 
@@ -185,7 +194,7 @@ $uri = UBL_URI;
 .job-title {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--navy);
+    color: #0b1f3a;
     margin-bottom: 0.5rem;
 }
 .job-meta {
@@ -208,7 +217,7 @@ $uri = UBL_URI;
     height: 42px;
     padding: 0 1.5rem;
     background: var(--gold);
-    color: var(--navy);
+    color: #0b1f3a;
     border: none;
     border-radius: 6px;
     font-family: var(--font-body);
@@ -223,7 +232,7 @@ $uri = UBL_URI;
     margin-left: 2rem;
 }
 .job-apply:hover {
-    background: var(--navy);
+    background: #0b1f3a;
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(11,31,58,0.12);
@@ -257,7 +266,7 @@ $uri = UBL_URI;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: var(--text-secondary);
     font-weight: 400;
 }
@@ -316,12 +325,12 @@ $uri = UBL_URI;
     margin-bottom: 2rem;
 }
 .cr-modal-header h2 {
-    font-size: 1.5rem; font-weight: 700; color: var(--navy);
+    font-size: 1.5rem; font-weight: 700; color: #0b1f3a;
     margin: 0; letter-spacing: -0.02em;
 }
 .cr-modal-header p {
     font-size: 0.9rem; color: var(--text-secondary); margin: 0.5rem 0 0;
-    font-weight: 300; line-height: 1.5;
+    font-weight: 400; line-height: 1.5;
 }
 .cr-modal-close {
     width: 36px; height: 36px; border-radius: 50%;
@@ -331,13 +340,13 @@ $uri = UBL_URI;
     transition: all 0.3s;
 }
 .cr-modal-close:hover { background: #f5f5f7; border-color: rgba(11,31,58,0.2); }
-.cr-modal-close svg { width: 16px; height: 16px; color: var(--navy); }
+.cr-modal-close svg { width: 16px; height: 16px; color: #0b1f3a; }
 .cr-modal-field {
     margin-bottom: 1.25rem;
 }
 .cr-modal-field label {
     display: block;
-    font-size: 0.78rem; font-weight: 700; color: var(--navy);
+    font-size: 0.78rem; font-weight: 700; color: #0b1f3a;
     text-transform: uppercase; letter-spacing: 0.1em;
     margin-bottom: 0.5rem;
 }
@@ -346,7 +355,7 @@ $uri = UBL_URI;
     width: 100%; padding: 0.85rem 1rem;
     background: #F5F5F7; border: 1px solid rgba(11,31,58,0.08);
     border-radius: 8px; font-family: var(--font-body);
-    font-size: 0.95rem; color: var(--navy);
+    font-size: 0.95rem; color: #0b1f3a;
     outline: none; transition: border-color 0.3s, box-shadow 0.3s;
     box-sizing: border-box;
 }
@@ -357,6 +366,23 @@ $uri = UBL_URI;
     background: #fff;
 }
 .cr-modal-field textarea { resize: none; height: 100px; }
+.cr-modal-field select {
+    width: 100%; padding: 0.85rem 1rem;
+    background: #F5F5F7; border: 1px solid rgba(11,31,58,0.08);
+    border-radius: 8px; font-family: var(--font-body);
+    font-size: 0.95rem; color: #0b1f3a;
+    outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230B1F3A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    cursor: pointer;
+}
+.cr-modal-field select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200,168,75,0.12);
+    background-color: #fff;
+}
 .cr-modal-field input[type="file"] {
     padding: 0.7rem 1rem; cursor: pointer;
 }
@@ -367,14 +393,14 @@ $uri = UBL_URI;
 .cr-modal-submit {
     display: flex; align-items: center; justify-content: center; gap: 0.75rem;
     width: 100%; height: 56px; margin-top: 1.5rem;
-    background: var(--navy); color: #fff; border: none;
+    background: #0b1f3a; color: #fff; border: none;
     border-radius: 8px; font-family: var(--font-body);
     font-size: 0.9rem; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.12em;
     cursor: pointer; transition: all 0.4s var(--ease-out-expo);
 }
 .cr-modal-submit:hover {
-    background: var(--gold); color: var(--navy);
+    background: var(--gold); color: #0b1f3a;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
@@ -382,10 +408,10 @@ $uri = UBL_URI;
 
 /* --- CTA --- */
 .cr-cta {
-    background: var(--navy);
+    background: linear-gradient(145deg, #f2e0c8 0%, #e8caa4 45%, #ddb880 100%);
     padding: 5rem 0;
     text-align: center;
-    color: #fff;
+    color: #0b1f3a;
 }
 .cr-cta-inner {
     max-width: 700px;
@@ -399,10 +425,10 @@ $uri = UBL_URI;
     letter-spacing: -0.02em;
 }
 .cr-cta-desc {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    color: var(--text-secondary);
     line-height: 1.65;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 2rem;
 }
 .cr-cta-btn {
@@ -412,7 +438,7 @@ $uri = UBL_URI;
     height: 56px;
     padding: 0 2.5rem;
     background: var(--gold);
-    color: var(--navy);
+    color: #0b1f3a;
     border: none;
     border-radius: 8px;
     font-family: var(--font-body);
@@ -448,6 +474,7 @@ $uri = UBL_URI;
     <section class="cr-hero">
         <div class="cr-hero-gradient"></div>
         <div class="cr-hero-glow"></div>
+        <div class="cr-hero-accent"></div>
         <div class="cr-hero-inner">
             <nav class="cr-breadcrumb">
                 <a href="<?php echo home_url(); ?>">Home</a>
@@ -755,7 +782,6 @@ $uri = UBL_URI;
 
             <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="ubl_apply">
-                <input type="hidden" name="position" id="applyPositionField" value="">
                 <?php wp_nonce_field( 'ubl_apply', 'ubl_apply_nonce' ); ?>
 
                 <div class="cr-modal-field">
@@ -771,6 +797,21 @@ $uri = UBL_URI;
                 <div class="cr-modal-field">
                     <label for="applicant_phone">Phone Number *</label>
                     <input type="tel" id="applicant_phone" name="applicant_phone" required placeholder="+91-XXXXX-XXXXX">
+                </div>
+
+                <div class="cr-modal-field">
+                    <label for="position_select">Position Applied For *</label>
+                    <select id="position_select" name="position" required>
+                        <option value="" disabled selected>Select a position</option>
+                        <option value="Chemical Engineer">Chemical Engineer</option>
+                        <option value="GM — Sales &amp; Marketing">GM &mdash; Sales &amp; Marketing</option>
+                        <option value="Mechanical Engineer">Mechanical Engineer</option>
+                        <option value="Sales Engineer (Jaipur)">Sales Engineer (Jaipur)</option>
+                        <option value="Sr. Quality Manager">Sr. Quality Manager</option>
+                        <option value="Sales Engineer (Baroda)">Sales Engineer (Baroda)</option>
+                        <option value="Sales Engineer (Hyderabad)">Sales Engineer (Hyderabad)</option>
+                        <option value="General Application">General Application</option>
+                    </select>
                 </div>
 
                 <div class="cr-modal-field">
@@ -798,7 +839,11 @@ $uri = UBL_URI;
 /* ── Application Modal ── */
 function openApplyModal(btn) {
     var position = btn.getAttribute('data-position') || '';
-    document.getElementById('applyPositionField').value = position;
+    var sel = document.getElementById('position_select');
+    /* Pre-select matching option in dropdown */
+    for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === position) { sel.selectedIndex = i; break; }
+    }
     document.getElementById('applyModalPosition').textContent = position;
     document.getElementById('applyModal').classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -833,6 +878,9 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollTrigger: { trigger: sec, start: 'top 85%', toggleActions: 'play none none none' }
         });
     });
+
+    /* Section titles */
+    UBL.wipeIn('.cr-title', { delay: 0.1 });
 
     /* Job cards */
     gsap.from('.job-card', {

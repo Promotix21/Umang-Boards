@@ -75,11 +75,11 @@ get_header();
                         <?php endforeach;
                     else : ?>
                         <div class="hero-stat">
-                            <div class="hero-stat-num" data-target="25" data-suffix="+">0</div>
+                            <div class="hero-stat-num" data-target="27" data-suffix="+">0</div>
                             <div class="hero-stat-label">Years of Excellence</div>
                         </div>
                         <div class="hero-stat">
-                            <div class="hero-stat-num" data-target="15" data-suffix="+">0</div>
+                            <div class="hero-stat-num" data-target="28" data-suffix="+">0</div>
                             <div class="hero-stat-label">Countries Served</div>
                         </div>
                         <div class="hero-stat">
@@ -141,7 +141,7 @@ get_header();
             <!-- HORIZONTAL FACTS BAND — no boxes, pure typography -->
             <div class="vf-facts-band">
                 <div class="vf-fact">
-                    <div class="vf-fact-num">15<span>+</span></div>
+                    <div class="vf-fact-num">28<span>+</span></div>
                     <div class="vf-fact-label">Export Countries</div>
                 </div>
                 <div class="vf-fact-rule"></div>
@@ -445,12 +445,12 @@ get_header();
             <div class="col-left__content">
                 <div class="eyebrow">INFRASTRUCTURE NETWORK MAP</div>
                 <h2 class="headline">Powering Transformers <span class="accent">Across the Globe</span></h2>
-                <p class="subtext">Real-time visualization of export routes for electrical insulation materials from India to 15+ countries worldwide.</p>
+                <p class="subtext">Real-time visualization of export routes for electrical insulation materials from India to 28+ countries worldwide.</p>
 
                 <!-- Stats grid -->
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <span class="stat-card__number" data-count="15">0</span>
+                        <span class="stat-card__number" data-count="28">0</span>
                         <span class="stat-card__label">Export Countries</span>
                     </div>
                     <div class="stat-card">

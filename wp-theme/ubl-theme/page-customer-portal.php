@@ -58,11 +58,51 @@ $catalogues = [
 .portal-page { margin: 0; padding: 0; }
 .portal-page * { box-sizing: border-box; }
 
+/* --- PORTAL HEADER (mobile-visible, desktop-hidden when site header exists) --- */
+.portal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1.5rem;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.portal-header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--portal-text);
+}
+.portal-header-logo img { width: 32px; height: 32px; }
+.portal-header-logo span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+}
+.portal-header-back {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--portal-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.portal-header-back:hover { color: var(--portal-navy); }
+.portal-header-back svg { width: 16px; height: 16px; }
+
 /* ─── AUTH LAYOUT (Not logged in) ─── */
 .portal-auth {
     display: flex;
     min-height: 100vh;
-    padding-top: calc(var(--utility-h, 0px) + var(--header-h, 80px));
 }
 
 /* Left Branding Pane */
@@ -667,6 +707,18 @@ $catalogues = [
 </style>
 
 <div class="portal-page">
+
+<!-- Portal Header -->
+<div class="portal-header">
+    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="portal-header-logo">
+        <img src="<?php echo UBL_URI; ?>/assets/images/ubl-favicon.svg" alt="UBL">
+        <span>UMANG BOARDS<br>LIMITED</span>
+    </a>
+    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="portal-header-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Website
+    </a>
+</div>
 
 <?php if ( ! $is_logged ) : ?>
 <!-- ═══════════════════════════════════════════════════

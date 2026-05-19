@@ -71,19 +71,18 @@ $uri = UBL_URI;
 }
 @media (max-width: 1024px) { .au-curved-lines { display: none; } }
 
-/* ============================================
-   HERO — Full cinematic: solid-left overlay, full-width content
-   ============================================ */
+/* --- HERO — Video + Content Overlay --- */
 .au-hero {
     position: relative;
     color: #fff;
+    padding: calc(var(--utility-h) + var(--header-h) + 3rem) 0 0;
     overflow: hidden;
     z-index: 2;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: calc(var(--utility-h) + var(--header-h));
 }
+/* Video background */
 .au-hero-video-wrap {
     position: absolute;
     inset: 0;
@@ -95,42 +94,30 @@ $uri = UBL_URI;
     object-fit: cover;
     display: block;
 }
-/* Solid dark LEFT → fully transparent RIGHT — video visible on right half */
-.au-hero-overlay {
+.au-hero-video-overlay {
     position: absolute;
     inset: 0;
-    z-index: 1;
     background:
-        linear-gradient(to right,
-            rgba(8,15,28,0.96) 0%,
-            rgba(8,15,28,0.93) 32%,
-            rgba(8,15,28,0.62) 56%,
-            rgba(8,15,28,0.06) 100%
-        ),
-        linear-gradient(to bottom,
-            rgba(8,15,28,0.28) 0%,
-            transparent 18%,
-            transparent 70%,
-            rgba(8,15,28,0.50) 100%
-        );
+        linear-gradient(180deg, rgba(11,31,58,0.65) 0%, rgba(11,31,58,0.35) 40%, rgba(11,31,58,0.55) 100%),
+        linear-gradient(90deg, rgba(11,31,58,0.4) 0%, transparent 60%);
+    z-index: 1;
 }
-/* Inner: single-column, content fills left ~62% naturally */
+/* Hero content */
 .au-hero-inner {
     position: relative;
     z-index: 2;
-    flex: 1;
     max-width: 1400px;
-    width: 100%;
     margin: 0 auto;
-    padding: clamp(3.5rem, 9vh, 6.5rem) clamp(1.5rem, 4vw, 3.5rem);
+    padding: clamp(3rem, 8vh, 6rem) clamp(1.5rem, 4vw, 3.5rem);
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 .au-hero-content {
-    max-width: 62%;
     display: flex;
     flex-direction: column;
+    max-width: 720px;
 }
 .au-hero-breadcrumb {
     display: flex;
@@ -141,7 +128,7 @@ $uri = UBL_URI;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: rgba(255,255,255,0.5);
-    margin-bottom: 1.75rem;
+    margin-bottom: 2rem;
 }
 .au-hero-breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
 .au-hero-breadcrumb a:hover { color: var(--gold); }
@@ -163,179 +150,22 @@ $uri = UBL_URI;
 }
 .au-hero-title {
     font-family: var(--font-body);
-    font-size: clamp(2.8rem, 5vw, 4.8rem);
+    font-size: clamp(3rem, 6.5vw, 5.5rem);
     font-weight: 700;
-    line-height: 1.08;
+    line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 1.5rem;
     color: #fff;
 }
 .au-hero-title em { font-style: normal; color: var(--gold); }
-.au-hero-subhead {
-    font-size: clamp(1rem, 1.5vw, 1.1rem);
-    color: rgba(255,255,255,0.88);
-    line-height: 1.65;
-    font-weight: 500;
-    margin-bottom: 1.75rem;
-    border-left: 3px solid var(--gold);
-    padding-left: 1.1rem;
-}
-.au-hero-body {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-}
-.au-hero-body p {
-    font-size: 0.92rem;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.8;
+.au-hero-subtitle {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    color: rgba(255,255,255,0.8);
+    max-width: 560px;
+    line-height: 1.7;
     font-weight: 400;
-    margin: 0;
+    margin-bottom: 2.5rem;
 }
-
-/* ============================================
-   CERTIFICATIONS STRIP — white bar directly below hero
-   ============================================ */
-.au-cert-strip {
-    position: relative;
-    z-index: 3;
-    background: #fff;
-    border-bottom: 1px solid rgba(11,31,58,0.08);
-    box-shadow: 0 4px 20px rgba(11,31,58,0.06);
-}
-.au-cert-strip-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 2.5rem clamp(1.5rem, 4vw, 3.5rem);
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-}
-.au-cert-strip-label {
-    flex-shrink: 0;
-    border-right: 1px solid rgba(11,31,58,0.1);
-    padding-right: 3rem;
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: rgba(11,31,58,0.5);
-    line-height: 1.8;
-    white-space: nowrap;
-}
-.au-cert-strip-label em { color: var(--gold); font-style: normal; display: block; }
-.au-cert-strip-items {
-    display: flex;
-    align-items: stretch;
-    flex: 1;
-}
-.au-cert-strip-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.9rem;
-    padding: 1rem 2rem;
-    flex: 1;
-    border-right: 1px solid rgba(11,31,58,0.07);
-    cursor: pointer;
-    transition: background 0.2s;
-    text-align: center;
-}
-.au-cert-strip-item:last-child { border-right: none; }
-.au-cert-strip-item:hover { background: #f8f9fb; }
-.au-cert-strip-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    opacity: 0.85;
-    display: block;
-    transition: opacity 0.2s, transform 0.25s;
-}
-.au-cert-strip-item:hover img { opacity: 1; transform: scale(1.07); }
-.au-cert-strip-item-text strong {
-    display: block;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: #0b1f3a;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    line-height: 1.3;
-    margin-bottom: 0.2rem;
-}
-.au-cert-strip-item-text span {
-    display: block;
-    font-size: 0.62rem;
-    color: rgba(11,31,58,0.45);
-    line-height: 1.4;
-}
-.au-cert-strip-item .cert-click-hint {
-    font-size: 0.55rem;
-    color: rgba(11,31,58,0.28);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-/* Cert lightbox */
-.au-cert-lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(8,15,28,0.88);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-.au-cert-lightbox.is-open { display: flex; }
-.au-cert-lightbox-inner {
-    position: relative;
-    background: #fff;
-    padding: 3rem 2.5rem 2.5rem;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
-    animation: certLbIn 0.22s ease;
-}
-@keyframes certLbIn {
-    from { opacity: 0; transform: scale(0.90); }
-    to   { opacity: 1; transform: scale(1); }
-}
-.au-cert-lb-img {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 1.5rem;
-}
-.au-cert-lb-title {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #0b1f3a;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.4rem;
-}
-.au-cert-lb-desc {
-    font-size: 0.8rem;
-    color: rgba(11,31,58,0.55);
-    line-height: 1.55;
-}
-.au-cert-lb-close {
-    position: absolute;
-    top: 0.85rem; right: 0.85rem;
-    width: 30px; height: 30px;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(11,31,58,0.08);
-    border: none; cursor: pointer; color: #0b1f3a;
-    transition: background 0.2s;
-    line-height: 1;
-}
-.au-cert-lb-close:hover { background: rgba(11,31,58,0.16); }
-.au-cert-lb-close svg { width: 14px; height: 14px; }
 /* Stats strip at bottom of hero */
 .au-hero-stats {
     position: relative;
@@ -372,173 +202,145 @@ $uri = UBL_URI;
     color: rgba(255,255,255,0.5);
 }
 
-/* --- CORPORATE OVERVIEW — Photo + Editorial Split --- */
-.au-overview {
-    background: #fff;
+/* --- CERTIFICATIONS ROW --- */
+.au-feature {
     position: relative;
-    z-index: 2;
-    overflow: hidden;
+    z-index: 20;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(3rem, 5vh, 5rem) clamp(1.5rem, 4vw, 3.5rem);
 }
-.au-overview-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 600px;
+
+/* --- BENTO GRID (Story + Vision/Mission) --- */
+.au-bento {
+    padding: clamp(5rem, 10vh, 8rem) clamp(1.5rem, 4vw, 3.5rem);
+    max-width: 1400px;
+    margin: 0 auto;
 }
-.au-overview-photo {
-    position: relative;
-    overflow: hidden;
-    min-height: 500px;
+.au-bento-label {
+    border-left: 4px solid var(--gold);
+    padding-left: 1.5rem;
+    margin-bottom: clamp(3rem, 5vh, 4rem);
 }
-.au-overview-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-}
-.au-overview-photo-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(11,31,58,0.18) 0%, transparent 60%);
-}
-.au-overview-content {
-    padding: clamp(4rem, 7vw, 7rem) clamp(2.5rem, 5vw, 5rem);
-    display: flex; flex-direction: column; justify-content: center;
-    background: #fff;
-}
-.au-overview-eyebrow {
-    font-size: 0.68rem; font-weight: 700; color: rgba(11,31,58,0.45);
-    text-transform: uppercase; letter-spacing: 0.22em;
-    margin-bottom: 1.25rem;
-    display: flex; align-items: center; gap: 0.75rem;
-}
-.au-overview-eyebrow::before {
-    content: ''; display: inline-block;
-    width: 28px; height: 1px; background: var(--gold);
-}
-.au-overview-heading {
-    font-family: var(--font-body);
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 700; color: #0b1f3a;
-    letter-spacing: -0.02em; line-height: 1.15;
-    margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
-}
-.au-overview-heading em { color: var(--gold); font-style: normal; }
-.au-overview-body-text p {
-    font-size: 1rem; color: rgba(11,31,58,0.68); line-height: 1.8;
-    font-weight: 400; margin-bottom: 1.25rem;
-}
-.au-overview-body-text p:last-child { margin-bottom: 0; }
-.au-overview-callout {
-    margin-top: clamp(2rem, 4vh, 3rem);
-    padding: 1.5rem 1.75rem;
-    border-left: 3px solid var(--gold);
-    background: linear-gradient(135deg, #f9f5ee, #f2e8d8);
-}
-.au-overview-callout-label {
-    font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.18em; color: rgba(11,31,58,0.5);
+.au-bento-label h3 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(11,31,58,0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
     margin-bottom: 0.5rem;
 }
-.au-overview-callout h4 {
-    font-size: 1rem; font-weight: 700; color: #0b1f3a;
-    margin-bottom: 0.6rem; line-height: 1.35;
+.au-bento-label h2 {
+    font-family: var(--font-body);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
 }
-.au-overview-callout p {
-    font-size: 0.88rem; color: rgba(11,31,58,0.7); line-height: 1.65;
-    font-weight: 400; margin: 0;
+.au-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
 }
-
-/* --- OUR STORY — Annual-Report Row Layout --- */
-.au-pillars {
-    background: #f8f9fb;
-    padding: clamp(5rem, 10vh, 8rem) clamp(1.5rem, 4vw, 3.5rem);
+.au-bento-story {
+    grid-column: span 8;
+    background: linear-gradient(165deg, #f8fafd 0%, #ffffff 100%);
+    color: #0b1f3a;
+    padding: clamp(2.5rem, 4vw, 4rem);
     position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(11,31,58,0.05);
+    box-shadow: 0 4px 24px rgba(11,31,58,0.07), 0 1px 4px rgba(11,31,58,0.04);
     z-index: 2;
 }
-.au-pillars-inner { max-width: 1400px; margin: 0 auto; }
-.au-pillars-header {
-    display: grid;
-    grid-template-columns: 1fr 1.8fr;
-    gap: clamp(3rem, 6vw, 8rem);
-    align-items: end;
-    margin-bottom: clamp(3rem, 5vh, 4rem);
-    padding-bottom: clamp(2rem, 3vh, 2.5rem);
-    border-bottom: 1px solid rgba(11,31,58,0.12);
+.au-bento-story-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(200,168,75,0.08) 0%, transparent 70%);
+    transform: translate(30%, -30%);
+    pointer-events: none;
 }
-.au-pillars-eyebrow {
-    font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.22em; color: var(--gold);
-    display: flex; align-items: center; gap: 0.6rem;
-    align-self: start; padding-top: 0.5rem;
+.au-bento-story-icon { width: 48px; height: 48px; color: var(--gold); opacity: 0.9; margin-bottom: 2rem; }
+.au-bento-story h3 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--navy);
 }
-.au-pillars-eyebrow::before {
-    content: ''; display: inline-block;
-    width: 24px; height: 1px; background: var(--gold); flex-shrink: 0;
-}
-.au-pillars-heading {
-    font-family: var(--font-body);
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800; color: #0b1f3a;
-    letter-spacing: -0.02em; line-height: 1.15; margin: 0;
-}
-.au-pillars-heading em { font-style: normal; color: var(--gold); }
-.au-pillars-rows { display: flex; flex-direction: column; }
-.au-pillar-row {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: clamp(2rem, 4vw, 5rem);
-    align-items: start;
-    padding: clamp(2rem, 3.5vh, 2.75rem) 0;
-    border-top: 1px solid rgba(11,31,58,0.1);
-}
-.au-pillar-row:last-child { border-bottom: 1px solid rgba(11,31,58,0.1); }
-.au-pillar-meta { display: flex; flex-direction: column; gap: 0.4rem; padding-top: 0.15rem; }
-.au-pillar-num {
-    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
-    color: var(--gold); opacity: 0.7;
-}
-.au-pillar-label {
-    font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.1em; color: #0b1f3a; line-height: 1.4;
-}
-.au-pillar-row p {
-    font-size: 1rem; color: rgba(11,31,58,0.65); line-height: 1.8;
-    font-weight: 400; margin: 0;
-}
+.au-bento-story p { font-size: 1rem; color: rgba(11,31,58,0.75); line-height: 1.7; max-width: 600px; font-weight: 400; }
 
-/* --- CERT PANEL inside Vision/Mission tab --- */
-.au-vm-panel.au-vm-panel-certs {
-    grid-template-columns: 1fr !important;
-    flex-direction: column;
-}
-.au-vm-cert-wrap {
+.au-bento-local {
+    grid-column: span 4;
+    background: linear-gradient(145deg, #f2e0c8 0%, #e8caa4 45%, #ddb880 100%);
+    color: #0b1f3a;
     padding: clamp(2rem, 3vw, 3rem);
-    background: rgba(255,255,255,0.55);
-    display: flex; flex-direction: column; justify-content: center;
-    min-height: 520px;
-}
-.au-vm-cert-grid {
     display: flex;
-    gap: 1.25rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.au-bento-local-icon { width: 40px; height: 40px; margin-bottom: 1.5rem; }
+.au-bento-local h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.au-bento-local p { color: rgba(11,31,58,0.8); font-weight: 500; line-height: 1.6; margin-bottom: 0; }
+.au-bento-local-kpi {
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(11,31,58,0.15);
     margin-top: 2rem;
 }
-.au-vm-cert-item {
-    flex: 1 1 120px;
-    display: flex; flex-direction: column; align-items: center;
-    gap: 0.75rem; text-align: center;
-    background: rgba(255,255,255,0.7);
-    border: 1px solid rgba(11,31,58,0.07);
-    padding: 1.75rem 1.25rem;
-    transition: background 0.25s, box-shadow 0.25s;
+.au-bento-local-kpi-num {
+    display: block;
+    font-family: var(--font-body);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 0.3rem;
 }
-.au-vm-cert-item:hover { background: #fff; box-shadow: 0 4px 16px rgba(11,31,58,0.08); }
-.au-vm-cert-item img {
-    height: 80px; width: 80px; object-fit: contain;
-    opacity: 0.85; transition: opacity 0.25s;
+.au-bento-local-kpi-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(11,31,58,0.6);
 }
-.au-vm-cert-item:hover img { opacity: 1; }
-.au-vm-cert-item span {
-    font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.1em; color: #0b1f3a; line-height: 1.4; max-width: 110px;
+
+.au-bento-vm {
+    grid-column: span 6;
+    background: #fff;
+    border: 1px solid rgba(11,31,58,0.06);
+    padding: clamp(2rem, 3vw, 3rem);
+    transition: border-color 0.3s;
 }
+.au-bento-vm:hover { border-color: var(--gold); }
+.au-bento-vm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(11,31,58,0.06);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+.au-bento-vm-header h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.au-bento-vm-header span { color: var(--gold); font-size: 0.85rem; }
+.au-bento-vm p { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; font-weight: 400; }
 
 /* --- VISION MISSION TAB SLIDER --- */
 .au-vm {
@@ -719,6 +521,7 @@ $uri = UBL_URI;
     .au-vm-body { display: none; }
     .au-vm-progress { display: none; }
     .au-vm-swipe-hint { display: none; }
+    .au-vm-accordion { display: block; }
 }
 
 /* --- MOBILE ACCORDION (Vision/Mission) --- */
@@ -778,10 +581,6 @@ $uri = UBL_URI;
 .au-vm-acc-body .au-vm-panel-num { font-size: 3rem; }
 .au-vm-acc-body .au-vm-panel-title { font-size: 1.2rem; }
 .au-vm-acc-body .au-vm-panel-desc { font-size: 0.9rem; }
-/* Show accordion on mobile — must come AFTER .au-vm-accordion { display: none } default above */
-@media (max-width: 768px) {
-    .au-vm-accordion { display: block; }
-}
 /* swipe hint — hidden on desktop, shown on mobile via above rule */
 .au-vm-swipe-hint {
     display: none;
@@ -901,7 +700,95 @@ $uri = UBL_URI;
     flex-shrink: 0;
 }
 
-/* --- STORY CONTINUATION — merged into .au-pillars above --- */
+/* --- STORY CONTINUATION --- */
+.au-story-section {
+    padding: clamp(5rem, 10vh, 8rem) 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: clamp(1.5rem, 4vw, 3.5rem);
+    padding-right: clamp(1.5rem, 4vw, 3.5rem);
+}
+.au-story-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: clamp(3rem, 6vw, 8rem);
+    align-items: start;
+}
+.au-story-left {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+}
+.au-story-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.au-story-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+}
+.au-story-pull {
+    font-family: var(--font-body);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0 0 2rem;
+    padding: 0;
+    border: none;
+}
+.au-story-pull em {
+    font-style: normal;
+    color: var(--gold);
+}
+.au-story-divider {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), rgba(200,168,75,0.2));
+    border-radius: 2px;
+}
+.au-story-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.au-story-block {
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(11,31,58,0.1);
+}
+.au-story-block:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+.au-story-block-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+}
+.au-story-block p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    font-weight: 400;
+    margin: 0;
+}
+@media (max-width: 768px) {
+    .au-story-inner { grid-template-columns: 1fr; }
+    .au-story-left { position: static; }
+}
 
 /* --- VISION/MISSION MODALS --- */
 .au-vm-read-link {
@@ -1069,33 +956,29 @@ $uri = UBL_URI;
 }
 
 /* --- SOLID BG SECTIONS above curved lines --- */
-.au-overview, .au-pillars, .au-values-section, .au-news, .au-events, .au-insta { position: relative; z-index: 2; }
+.au-bento, .au-story-section, .au-values-section, .au-news, .au-events, .au-insta,
+.au-cert-badges { position: relative; z-index: 2; background: #fff; }
 .au-values-section, .au-events { background: var(--bg-secondary); }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .au-stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .au-overview-inner { grid-template-columns: 1fr; }
-    .au-overview-photo { min-height: 340px; }
-    .au-pillars-header { grid-template-columns: 1fr; gap: 1rem; }
-    .au-pillar-row { grid-template-columns: 180px 1fr; }
+    .au-bento-grid { grid-template-columns: 1fr; }
+    .au-bento-story, .au-bento-local, .au-bento-vm { grid-column: span 1; }
     .au-values-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-    .au-hero { min-height: 85vh; }
-    .au-hero-content { max-width: 80%; }
-    .au-cert-strip-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-    .au-cert-strip-label { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.08); padding-right: 0; padding-bottom: 1.25rem; width: 100%; }
-    .au-cert-strip-items { flex-wrap: wrap; width: 100%; }
-    .au-cert-strip-item { flex: 1 1 45%; border-right: none; border-bottom: 1px solid rgba(11,31,58,0.07); }
+    .au-hero { padding-bottom: 8rem; }
+    .au-hero-inner { grid-template-columns: 1fr; }
+    .au-hero-aside { display: none; }
     .au-stats-grid { grid-template-columns: 1fr 1fr; }
-    .au-pillar-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .au-cert-badges { flex-wrap: wrap; }
+    .au-cert-logo-card { flex: 1 1 33%; border-bottom: 1px solid rgba(11,31,58,0.07); }
     .au-cta-actions { flex-direction: column; align-items: center; }
 }
 @media (max-width: 480px) {
     .au-values-grid { grid-template-columns: 1fr; }
-    .au-vm-cert-grid { gap: 0.75rem; }
-    .au-vm-cert-item { flex: 1 1 calc(50% - 0.75rem); }
+    .au-cert-badges { justify-content: flex-start; }
 }
 
 /* --- QUICK FACTS (stat icons redesign) --- */
@@ -1246,7 +1129,6 @@ $uri = UBL_URI;
 @media (max-width: 900px) {
     .au-news-grid { grid-template-columns: 1fr; }
     .au-events-grid { grid-template-columns: 1fr; }
-    .au-event-info { text-align: center; }
     .au-news-header { flex-direction: column; align-items: flex-start; }
     .au-insta-grid { grid-template-columns: repeat(3, 1fr); }
     .au-insta-header { flex-direction: column; align-items: flex-start; }
@@ -1258,9 +1140,6 @@ $uri = UBL_URI;
     .au-cert-badges { flex-wrap: wrap; }
     .au-cert-logo-card { flex: 1 1 50%; min-width: 0; padding: 1.5rem 1rem; border-bottom: 1px solid rgba(11,31,58,0.07); }
     .au-cert-logo-card img { height: 60px; width: 60px; }
-    /* Instagram: reduce gap, fix invisible white button on white bg */
-    .au-insta-header { margin-bottom: 1rem; }
-    .au-insta-follow { color: #0b1f3a; border-color: rgba(11,31,58,0.25); }
 }
 @media (max-width: 480px) {
     .au-insta-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1292,19 +1171,15 @@ $uri = UBL_URI;
     </div>
 
     <!-- ================================================
-         HERO — Full-width cinematic: solid-left overlay, video right
+         HERO — Cinematic Video Hero
          ================================================ -->
     <section class="au-hero">
-        <!-- Video background (full coverage) -->
         <div class="au-hero-video-wrap">
             <video autoplay muted loop playsinline poster="<?php echo $uri; ?>/assets/images/facility-aerial.jpg">
                 <source src="<?php echo $uri; ?>/assets/videos/about-hero.mp4" type="video/mp4">
             </video>
+            <div class="au-hero-video-overlay"></div>
         </div>
-        <!-- Solid left → transparent right overlay -->
-        <div class="au-hero-overlay"></div>
-
-        <!-- Content: left-aligned, spreads to ~62% width -->
         <div class="au-hero-inner">
             <div class="au-hero-content">
                 <div class="au-hero-breadcrumb">
@@ -1315,29 +1190,23 @@ $uri = UBL_URI;
                     <span class="active">About Us</span>
                 </div>
                 <div class="au-hero-badge">About Us</div>
-                <h1 class="au-hero-title">Powering Critical <em>Electrical Infrastructure</em> Worldwide</h1>
-                <p class="au-hero-subhead">Advanced insulation materials and precision winding solutions enabling reliable power transmission across global energy systems.</p>
-                <div class="au-hero-body">
-                    <p>Founded with a vision to reduce India's dependence on imported electrical insulation products, Umang Boards Limited has evolved into a globally trusted manufacturing partner serving power utilities, transformer OEMs, and industrial equipment manufacturers.</p>
-                    <p>We manufacture high-performance cellulose insulation materials, precision super enameled and paper-coated winding wires in copper and aluminum, along with specialized insulating chemicals—delivering integrated solutions for critical electrical applications.</p>
-                    <p>Serving industries across six continents, we support infrastructure that powers economies, industries, and emerging energy systems.</p>
-                </div>
+                <h1 class="au-hero-title">About <em>Us</em></h1>
+                <p class="au-hero-subtitle">Founded with a vision to reduce India's dependence on imported electrical insulation products, Umang Boards Limited has evolved into a globally trusted manufacturer serving power utilities, transformer OEMs, and industrial equipment makers across six continents.</p>
             </div>
         </div>
-
-        <!-- Stats strip — frosted glass bar at bottom of hero -->
+        <!-- Stats strip at bottom of hero -->
         <div class="au-hero-stats">
             <div class="au-hero-stat">
                 <div class="au-hero-stat-num">1999</div>
-                <div class="au-hero-stat-label">Established</div>
+                <div class="au-hero-stat-label">Founded in Jaipur</div>
             </div>
             <div class="au-hero-stat">
                 <div class="au-hero-stat-num">27+</div>
-                <div class="au-hero-stat-label">Years of Excellence</div>
+                <div class="au-hero-stat-label">Years in Operation</div>
             </div>
             <div class="au-hero-stat">
                 <div class="au-hero-stat-num">500+</div>
-                <div class="au-hero-stat-label">Workforce</div>
+                <div class="au-hero-stat-label">Employees</div>
             </div>
             <div class="au-hero-stat">
                 <div class="au-hero-stat-num">15+</div>
@@ -1347,180 +1216,100 @@ $uri = UBL_URI;
     </section>
 
     <!-- ================================================
-         CERTIFICATIONS TRUST STRIP — white bar below hero
+         CERTIFICATIONS ROW
          ================================================ -->
-    <div class="au-cert-strip">
-        <div class="au-cert-strip-inner">
-            <div class="au-cert-strip-label">
-                Built on Trust.<br><em>Certified for Excellence.</em>
+    <section class="au-feature">
+        <div class="au-cert-badges">
+            <div class="au-cert-logo-card">
+                <img src="<?php echo $uri; ?>/assets/images/cert-nabl.png" alt="NABL Accredited Laboratories">
+                <span>NABL Accredited Laboratories</span>
             </div>
-            <div class="au-cert-strip-items">
-                <div class="au-cert-strip-item"
-                     data-cert-img="<?php echo $uri; ?>/assets/images/cert-iso-9001.png"
-                     data-cert-title="ISO 9001:2015"
-                     data-cert-desc="Quality Management System — ensuring consistent product quality across all manufacturing operations.">
-                    <img src="<?php echo $uri; ?>/assets/images/cert-iso-9001.png" alt="ISO 9001:2015">
-                    <div class="au-cert-strip-item-text">
-                        <strong>ISO 9001:2015</strong>
-                        <span>Quality Management</span>
-                    </div>
-                    <span class="cert-click-hint">Click to view</span>
-                </div>
-                <div class="au-cert-strip-item"
-                     data-cert-img="<?php echo $uri; ?>/assets/images/cert-iso-14001.png"
-                     data-cert-title="ISO 14001:2015"
-                     data-cert-desc="Environmental Management System — reflecting our commitment to responsible and sustainable manufacturing.">
-                    <img src="<?php echo $uri; ?>/assets/images/cert-iso-14001.png" alt="ISO 14001:2015">
-                    <div class="au-cert-strip-item-text">
-                        <strong>ISO 14001:2015</strong>
-                        <span>Environmental Management</span>
-                    </div>
-                    <span class="cert-click-hint">Click to view</span>
-                </div>
-                <div class="au-cert-strip-item"
-                     data-cert-img="<?php echo $uri; ?>/assets/images/cert-iso-45001.png"
-                     data-cert-title="ISO 45001:2018"
-                     data-cert-desc="Occupational Health &amp; Safety Management — prioritising the wellbeing of every member of our workforce.">
-                    <img src="<?php echo $uri; ?>/assets/images/cert-iso-45001.png" alt="ISO 45001:2018">
-                    <div class="au-cert-strip-item-text">
-                        <strong>ISO 45001:2018</strong>
-                        <span>Occupational Health &amp; Safety</span>
-                    </div>
-                    <span class="cert-click-hint">Click to view</span>
-                </div>
-                <div class="au-cert-strip-item"
-                     data-cert-img="<?php echo $uri; ?>/assets/images/cert-nabl.png"
-                     data-cert-title="NABL Accredited Laboratory"
-                     data-cert-desc="Our in-house testing laboratory is NABL accredited under IEC/ISO 17025 for dielectric and mechanical testing of insulation materials.">
-                    <img src="<?php echo $uri; ?>/assets/images/cert-nabl.png" alt="NABL Accredited">
-                    <div class="au-cert-strip-item-text">
-                        <strong>NABL Accredited</strong>
-                        <span>In-house Testing Laboratory</span>
-                    </div>
-                    <span class="cert-click-hint">Click to view</span>
-                </div>
-                <div class="au-cert-strip-item"
-                     data-cert-img="<?php echo $uri; ?>/assets/images/cert-pgcil-400kv.png"
-                     data-cert-title="Approved by PGCIL"
-                     data-cert-desc="Approved by Power Grid Corporation of India Ltd for 400 kV class — India's highest voltage class approval for insulation manufacturers.">
-                    <img src="<?php echo $uri; ?>/assets/images/cert-pgcil-400kv.png" alt="Approved by PGCIL">
-                    <div class="au-cert-strip-item-text">
-                        <strong>Approved by PGCIL</strong>
-                        <span>400 kV Class</span>
-                    </div>
-                    <span class="cert-click-hint">Click to view</span>
-                </div>
+            <div class="au-cert-logo-card">
+                <img src="<?php echo $uri; ?>/assets/images/cert-iso-9001.png" alt="ISO 9001 Certified">
+                <span>ISO 9001 Certified</span>
+            </div>
+            <div class="au-cert-logo-card">
+                <img src="<?php echo $uri; ?>/assets/images/cert-iso-14001.png" alt="ISO 14001 Certified">
+                <span>ISO 14001 Certified</span>
+            </div>
+            <div class="au-cert-logo-card">
+                <img src="<?php echo $uri; ?>/assets/images/cert-iso-45001.png" alt="ISO 45001 Certified">
+                <span>ISO 45001 Certified</span>
+            </div>
+            <div class="au-cert-logo-card">
+                <img src="<?php echo $uri; ?>/assets/images/cert-pgcil-400kv.png" alt="PGCIL 400 KV Approved Vendor">
+                <span>PGCIL 400 KV Approved</span>
             </div>
         </div>
-    </div>
-
-    <!-- Cert lightbox modal -->
-    <div class="au-cert-lightbox" id="certLightbox" role="dialog" aria-modal="true">
-        <div class="au-cert-lightbox-inner">
-            <button class="au-cert-lb-close" id="certLbClose" aria-label="Close">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
-            </button>
-            <img class="au-cert-lb-img" id="certLbImg" src="" alt="">
-            <div class="au-cert-lb-title" id="certLbTitle"></div>
-            <div class="au-cert-lb-desc" id="certLbDesc"></div>
-        </div>
-    </div>
-
-    <script>
-    (function(){
-        var lb = document.getElementById('certLightbox');
-        var lbImg = document.getElementById('certLbImg');
-        var lbTitle = document.getElementById('certLbTitle');
-        var lbDesc = document.getElementById('certLbDesc');
-        var lbClose = document.getElementById('certLbClose');
-
-        document.querySelectorAll('.au-cert-strip-item').forEach(function(el){
-            el.addEventListener('click', function(){
-                lbImg.src = el.dataset.certImg;
-                lbImg.alt = el.dataset.certTitle;
-                lbTitle.textContent = el.dataset.certTitle;
-                lbDesc.innerHTML = el.dataset.certDesc;
-                lb.classList.add('is-open');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        function closeLb(){
-            lb.classList.remove('is-open');
-            document.body.style.overflow = '';
-        }
-        lbClose.addEventListener('click', closeLb);
-        lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
-        document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
-    })();
-    </script>
+    </section>
 
     <!-- ================================================
-         CORPORATE OVERVIEW — Photo + Editorial Split
+         BENTO GRID — Corporate Overview
          ================================================ -->
-    <section class="au-overview">
-        <div class="au-overview-inner">
-            <!-- Left: facility photo -->
-            <div class="au-overview-photo">
-                <img src="<?php echo $uri; ?>/assets/images/mission-operational-excellence.jpg" alt="Umang Boards Manufacturing Facility">
-                <div class="au-overview-photo-overlay"></div>
-            </div>
-            <!-- Right: editorial content -->
-            <div class="au-overview-content">
-                <div class="au-overview-eyebrow">Corporate Overview</div>
-                <h2 class="au-overview-heading">From Jaipur to the <em>World</em></h2>
-                <div class="au-overview-body-text">
-                    <p>What began in 1999 as a focused manufacturing venture has grown into a trusted name in the power and energy sector. At Umang Boards Limited, we build the components that quietly keep electrical systems running — from high-performance cellulose insulation materials to precision super enameled and paper-coated winding wires in copper and aluminum, along with specialized insulating chemicals.</p>
-                    <p>Headquartered in Jaipur, India, our journey has been shaped by continuous investment in advanced manufacturing, skilled people, and rigorous in-house testing. With two modern production facilities and globally recognized ISO certifications, we combine technical depth with disciplined quality systems — ensuring every product that leaves our floor is built for reliability.</p>
+    <section class="au-bento">
+        <div class="au-bento-label">
+            <h3>Corporate Overview</h3>
+            <h2>From Jaipur to the <em>World</em></h2>
+        </div>
+        <div class="au-bento-grid">
+            <!-- Navy story block (8 col) -->
+            <div class="au-bento-story">
+                <div class="au-bento-story-glow"></div>
+                <div class="au-bento-story-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                 </div>
-                <div class="au-overview-callout">
-                    <div class="au-overview-callout-label">Local Roots, Global Reach</div>
-                    <h4>Manufacturing from Jaipur, Rajasthan</h4>
-                    <p>From our manufacturing base in Jaipur, Rajasthan, we serve customers across India and in over 15 countries worldwide — building long-term partnerships through consistent quality and dependable delivery.</p>
+                <h3>We build the components that quietly keep electrical systems running</h3>
+                <p>What began in 1999 as a focused manufacturing venture has grown into a trusted name in the power and energy sector. At Umang Boards Limited, we build the components that quietly keep electrical systems running — from high-performance cellulose insulation materials to precision super enameled and paper-coated winding wires in copper and aluminum, along with specialized insulating chemicals.</p>
+                <p style="margin-top: 1rem;">Headquartered in Jaipur, India, our journey has been shaped by continuous investment in advanced manufacturing, skilled people, and rigorous in-house testing. With two modern production facilities and globally recognized ISO certifications, we combine technical depth with disciplined quality systems — ensuring every product that leaves our floor is built for reliability.</p>
+            </div>
+            <!-- Gold local block (4 col) -->
+            <div class="au-bento-local">
+                <div class="au-bento-local-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3>Local Roots, Global Reach</h3>
+                <p>From our manufacturing base in Jaipur, Rajasthan, we serve customers across India and in over 15 countries worldwide — building long-term partnerships through consistent quality and dependable delivery.</p>
+                <div class="au-bento-local-kpi">
+                    <span class="au-bento-local-kpi-num">15+</span>
+                    <span class="au-bento-local-kpi-label">Countries Worldwide</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================================================
-         OUR STORY — Annual-Report Row Layout
+         STORY CONTINUATION — Editorial paragraphs
          ================================================ -->
-    <section class="au-pillars">
-        <div class="au-pillars-inner">
-            <div class="au-pillars-header">
-                <div class="au-pillars-eyebrow">Our Story</div>
-                <h2 class="au-pillars-heading">Built to power the world's <em>critical infrastructure.</em></h2>
+    <section class="au-story-section">
+        <div class="au-story-inner">
+
+            <!-- Left: sticky anchor -->
+            <div class="au-story-left">
+                <div class="au-story-eyebrow">Our Story</div>
+                <h2 class="au-story-pull">Built to power the world's <em>critical infrastructure.</em></h2>
+                <div class="au-story-divider"></div>
             </div>
-            <div class="au-pillars-rows">
-                <div class="au-pillar-row">
-                    <div class="au-pillar-meta">
-                        <span class="au-pillar-num">01</span>
-                        <span class="au-pillar-label">Innovation &amp; Products</span>
-                    </div>
+
+            <!-- Right: structured paragraphs -->
+            <div class="au-story-right">
+                <div class="au-story-block">
+                    <div class="au-story-block-label">Innovation &amp; Products</div>
                     <p>Built on a technology-driven foundation, we continuously invest in innovation, advanced processes and product development to stay ahead of evolving electrical demands. Our insulation materials support critical transformer applications, while our winding wire division powers a wide spectrum of industries — from industrial motors to consumer and heavy electrical systems. Complemented by specialized insulating chemicals, our integrated capabilities allow us to deliver complete, high-performance electrical component solutions.</p>
                 </div>
-                <div class="au-pillar-row">
-                    <div class="au-pillar-meta">
-                        <span class="au-pillar-num">02</span>
-                        <span class="au-pillar-label">Quality &amp; Reliability</span>
-                    </div>
+                <div class="au-story-block">
+                    <div class="au-story-block-label">Quality &amp; Reliability</div>
                     <p>Across markets, we are known for consistent quality, disciplined manufacturing, dependable delivery and long-term customer partnerships — serving clients in India and globally.</p>
                 </div>
-                <div class="au-pillar-row">
-                    <div class="au-pillar-meta">
-                        <span class="au-pillar-num">03</span>
-                        <span class="au-pillar-label">Leadership &amp; Growth</span>
-                    </div>
+                <div class="au-story-block">
+                    <div class="au-story-block-label">Leadership &amp; Growth</div>
                     <p>Guided by committed leadership and a clear growth vision, Umang Boards has expanded steadily, strengthening its presence while maintaining operational rigor and financial discipline.</p>
                 </div>
-                <div class="au-pillar-row">
-                    <div class="au-pillar-meta">
-                        <span class="au-pillar-num">04</span>
-                        <span class="au-pillar-label">Social Responsibility</span>
-                    </div>
+                <div class="au-story-block">
+                    <div class="au-story-block-label">Social Responsibility</div>
                     <p>We also believe that meaningful growth extends beyond business. Through structured social initiatives and our wholly owned subsidiary Dhanuka Foundation, we actively contribute to community development and sustainable progress.</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -1567,10 +1356,6 @@ $uri = UBL_URI;
                     <div class="au-vm-tab" data-panel="7">
                         <span class="au-vm-tab-num">08</span>
                         <span class="au-vm-tab-label">Innovation Leadership</span>
-                    </div>
-                    <div class="au-vm-tab" data-panel="8">
-                        <span class="au-vm-tab-num">09</span>
-                        <span class="au-vm-tab-label">Certifications</span>
                     </div>
                 </div>
 
@@ -1686,38 +1471,6 @@ $uri = UBL_URI;
                             <div class="au-vm-panel-tag">Through Innovation Leadership</div>
                             <h3 class="au-vm-panel-title">R&amp;D at the Frontier of Electrical Engineering</h3>
                             <p class="au-vm-panel-desc">We invest in R&amp;D to anticipate market needs, develop next-generation products, and solve complex technical challenges. Our engineering teams create customized solutions that improve performance, reduce costs, and enable new applications in the rapidly evolving electrical industry.</p>
-                        </div>
-                    </div>
-
-                    <!-- 09: Certifications -->
-                    <div class="au-vm-panel au-vm-panel-certs">
-                        <div class="au-vm-cert-wrap">
-                            <div class="au-vm-panel-num">09</div>
-                            <div class="au-vm-panel-tag">Our Accreditations</div>
-                            <h3 class="au-vm-panel-title">Certified to the World's Highest Standards</h3>
-                            <p class="au-vm-panel-desc">Every product we manufacture is backed by internationally recognized quality, safety, and environmental management certifications — reflecting our commitment to excellence, reliability, and responsible operations.</p>
-                            <div class="au-vm-cert-grid">
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-nabl.png" alt="NABL Accredited Laboratories">
-                                    <span>NABL Accredited Laboratories</span>
-                                </div>
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-iso-9001.png" alt="ISO 9001 Certified">
-                                    <span>ISO 9001 Certified</span>
-                                </div>
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-iso-14001.png" alt="ISO 14001 Certified">
-                                    <span>ISO 14001 Certified</span>
-                                </div>
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-iso-45001.png" alt="ISO 45001 Certified">
-                                    <span>ISO 45001 Certified</span>
-                                </div>
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-pgcil-400kv.png" alt="PGCIL 400 KV Approved Vendor">
-                                    <span>PGCIL 400 KV Approved</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -1854,42 +1607,6 @@ $uri = UBL_URI;
                             <div class="au-vm-panel-tag">Through Innovation Leadership</div>
                             <h3 class="au-vm-panel-title">R&amp;D at the Frontier of Electrical Engineering</h3>
                             <p class="au-vm-panel-desc">We invest in R&amp;D to anticipate market needs, develop next-generation products, and solve complex technical challenges. Our engineering teams create customized solutions that improve performance, reduce costs, and enable new applications in the rapidly evolving electrical industry.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="au-vm-acc-item">
-                    <div class="au-vm-acc-header" data-acc="8">
-                        <span class="au-vm-acc-num">09</span>
-                        <span class="au-vm-acc-label">Certifications</span>
-                        <svg class="au-vm-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </div>
-                    <div class="au-vm-acc-body">
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-tag">Our Accreditations</div>
-                            <h3 class="au-vm-panel-title">Certified to the World's Highest Standards</h3>
-                            <p class="au-vm-panel-desc">Every product we manufacture is backed by internationally recognized quality, safety, and environmental management certifications — reflecting our commitment to excellence, reliability, and responsible operations.</p>
-                            <div class="au-vm-cert-grid">
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-nabl.png" alt="NABL Accredited Laboratories">
-                                    <span>NABL Accredited Laboratories</span>
-                                </div>
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-iso-9001.png" alt="ISO 9001 Certified">
-                                    <span>ISO 9001 Certified</span>
-                                </div>
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-iso-14001.png" alt="ISO 14001 Certified">
-                                    <span>ISO 14001 Certified</span>
-                                </div>
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-iso-45001.png" alt="ISO 45001 Certified">
-                                    <span>ISO 45001 Certified</span>
-                                </div>
-                                <div class="au-vm-cert-item">
-                                    <img src="<?php echo $uri; ?>/assets/images/cert-pgcil-400kv.png" alt="PGCIL 400 KV Approved Vendor">
-                                    <span>PGCIL 400 KV Approved</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

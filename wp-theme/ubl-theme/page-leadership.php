@@ -224,6 +224,25 @@ $people = [
   font-size:1.02rem;line-height:1.7;color:rgba(11,31,58,.65);
   max-width:580px;margin:0;font-weight:400;
 }
+.lp-wrap .hero-side{
+  position:absolute;top:0;right:0;bottom:0;width:55%;
+  z-index:2;pointer-events:none;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 38%, #000 65%),
+    linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 38%, #000 65%),
+    linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+          mask-composite: intersect;
+}
+.lp-wrap .hero-side img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  opacity:.92;
+}
+.lp-wrap .hero-inner{max-width:1440px;margin:0 auto}
+.lp-wrap .hero-title,.lp-wrap .hero-sub{position:relative;z-index:1}
 
 
 /* ── Section scaffolding ── */
@@ -557,6 +576,9 @@ $people = [
   .lp-modal-body{max-height:92vh}
   .lp-modal-thumb{width:68px;height:68px}
 }
+@media(max-width:960px){
+  .lp-wrap .hero-side{display:none}
+}
 @media(max-width:600px){
   .lp-wrap .lp-grid--3,.lp-wrap .lp-grid--2{grid-template-columns:1fr}
   .lp-wrap .hero-mark{display:none}
@@ -569,6 +591,9 @@ $people = [
 <section class="hero" id="lp-hero">
   <div class="hero-media">
     <img src="<?php echo $bd; ?>" alt="" aria-hidden="true">
+  </div>
+  <div class="hero-side" aria-hidden="true">
+    <img src="<?php echo esc_url( $uri ); ?>/assets/images/leadership/leadership-hero-side.webp" alt="" loading="eager">
   </div>
   <div class="hero-inner">
     <span class="eyebrow" data-reveal>Leadership</span>

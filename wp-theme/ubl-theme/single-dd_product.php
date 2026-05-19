@@ -76,6 +76,10 @@ $section_num = 1;
 
             <div class="pd-left-footer">
                 <a href="#pd-enquiry" class="p-btn p-btn-gold">Request Technical Details</a>
+                <button class="pd-compare-add" data-id="<?php echo $product_id; ?>" onclick="addToCompare('<?php echo $product_id; ?>', '<?php echo esc_js( get_the_title() ); ?>', '<?php echo esc_js( get_permalink() ); ?>')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>
+                    + Compare
+                </button>
                 <div class="pd-left-cert">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     ISO 9001 Certified Manufacturing
@@ -86,6 +90,56 @@ $section_num = 1;
 
     <!-- RIGHT SCROLLABLE PANE -->
     <div class="pd-right">
+
+        <!-- PRODUCT IMAGE GALLERY -->
+        <?php
+        $gallery_images = [];
+        // Featured image first
+        if ( has_post_thumbnail() ) {
+            $gallery_images[] = get_post_thumbnail_id();
+        }
+        // ACF gallery field (if exists)
+        $acf_gallery = ubl_field( 'product_gallery', [] );
+        if ( ! empty( $acf_gallery ) ) {
+            foreach ( $acf_gallery as $img ) {
+                $img_id = is_array( $img ) ? $img['ID'] : $img;
+                if ( $img_id && ! in_array( $img_id, $gallery_images ) ) {
+                    $gallery_images[] = $img_id;
+                }
+            }
+        }
+        // Fallback: attached images
+        if ( count( $gallery_images ) <= 1 ) {
+            $attached = get_posts( [
+                'post_parent'    => $product_id,
+                'post_type'      => 'attachment',
+                'post_mime_type' => 'image',
+                'posts_per_page' => 5,
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+                'exclude'        => $gallery_images,
+            ] );
+            foreach ( $attached as $att ) {
+                $gallery_images[] = $att->ID;
+            }
+        }
+        if ( ! empty( $gallery_images ) ) :
+        ?>
+        <div class="pd-gallery" data-anim="fade-up">
+            <div class="pd-gallery-main">
+                <?php echo wp_get_attachment_image( $gallery_images[0], 'large', false, [ 'class' => 'pd-gallery-img', 'id' => 'pdMainImage' ] ); ?>
+            </div>
+            <?php if ( count( $gallery_images ) > 1 ) : ?>
+            <div class="pd-gallery-thumbs">
+                <?php foreach ( $gallery_images as $i => $img_id ) : ?>
+                    <button class="pd-gallery-thumb<?php echo $i === 0 ? ' active' : ''; ?>" data-full="<?php echo esc_url( wp_get_attachment_image_url( $img_id, 'large' ) ); ?>" data-alt="<?php echo esc_attr( get_post_meta( $img_id, '_wp_attachment_image_alt', true ) ); ?>">
+                        <?php echo wp_get_attachment_image( $img_id, 'thumbnail', false, [ 'loading' => 'lazy' ] ); ?>
+                    </button>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
 
         <!-- 01. Overview -->
         <?php if ( $long_desc || ! empty( $key_features ) ) : ?>
@@ -185,6 +239,23 @@ $section_num = 1;
         </div>
         <?php endif; ?>
 
+        <!-- SOMETHING CAUGHT YOUR EYE? -->
+        <div class="pd-cta-catch" data-anim="fade-up" style="background:var(--bg-secondary);border:1px solid rgba(11,31,58,0.06);border-radius:16px;padding:3rem;text-align:center;margin-top:2rem;">
+            <div style="font-size:2.5rem;margin-bottom:1rem;">&#128064;</div>
+            <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--navy);margin:0 0 0.75rem;letter-spacing:-0.02em;">Something Caught Your Eye?</h2>
+            <p style="font-size:1.05rem;color:var(--text-secondary);line-height:1.65;font-weight:300;max-width:500px;margin:0 auto 2rem;">Our sales engineering team is ready to discuss specifications, pricing, and custom solutions for your project.</p>
+            <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+                <a href="#pd-enquiry" class="p-btn p-btn-gold" style="display:inline-flex;align-items:center;gap:0.5rem;">
+                    <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Connect with Sales
+                </a>
+                <a href="mailto:<?php echo esc_attr( $sales_email ); ?>?subject=Enquiry%20about%20<?php echo rawurlencode( get_the_title() ); ?>&body=Hi%2C%0A%0AI%27m%20interested%20in%20<?php echo rawurlencode( get_the_title() ); ?>.%20Please%20share%20technical%20details%20and%20pricing.%0A%0AThank%20you." class="p-btn" style="display:inline-flex;align-items:center;gap:0.5rem;height:52px;padding:0 2rem;background:transparent;border:1px solid rgba(11,31,58,0.15);color:var(--navy);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;transition:all 0.3s;">
+                    <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    Email Sales Directly
+                </a>
+            </div>
+        </div>
+
         <!-- ENQUIRY FORM -->
         <div class="pd-enquiry-panel" id="pd-enquiry" data-anim="fade-up">
             <div class="pd-enquiry-inner">
@@ -270,6 +341,110 @@ $section_num = 1;
 
     </div>
 </main>
+
+<!-- COMPARE BAR -->
+<div class="pd-compare-bar" id="pdCompareBar">
+    <div class="pd-compare-items" id="pdCompareItems"></div>
+    <div class="pd-compare-actions">
+        <button class="pd-compare-btn pd-compare-btn-go" onclick="showCompare()">Compare Now</button>
+        <button class="pd-compare-btn pd-compare-btn-clear" onclick="clearCompare()">Clear</button>
+    </div>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="pd-compare-overlay" id="pdCompareOverlay">
+    <div class="pd-compare-modal" style="position:relative;">
+        <button class="pd-compare-close" onclick="closeCompare()">
+            <svg style="width:16px;height:16px;color:var(--navy);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <h2>Product Comparison</h2>
+        <div id="pdCompareTableWrap"></div>
+    </div>
+</div>
+
+<script>
+/* ── Product Comparison Tool ── */
+(function() {
+    var KEY = 'ubl_compare';
+    var MAX = 4;
+
+    function getItems() {
+        try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e) { return []; }
+    }
+    function saveItems(items) { localStorage.setItem(KEY, JSON.stringify(items)); }
+
+    function renderBar() {
+        var items = getItems();
+        var bar = document.getElementById('pdCompareBar');
+        var wrap = document.getElementById('pdCompareItems');
+        if (!bar || !wrap) return;
+        if (items.length === 0) { bar.classList.remove('visible'); return; }
+        bar.classList.add('visible');
+        wrap.innerHTML = items.map(function(item, i) {
+            return '<div class="pd-compare-item">' + item.name +
+                '<button class="pd-compare-item-remove" onclick="removeCompare(' + i + ')">&times;</button></div>';
+        }).join('');
+        // Update add buttons
+        document.querySelectorAll('.pd-compare-add').forEach(function(btn) {
+            var id = btn.getAttribute('data-id');
+            var exists = items.some(function(it) { return it.id === id; });
+            btn.classList.toggle('added', exists);
+            btn.textContent = exists ? 'Added' : '+ Compare';
+        });
+    }
+
+    window.addToCompare = function(id, name, url) {
+        var items = getItems();
+        if (items.some(function(it) { return it.id === id; })) {
+            items = items.filter(function(it) { return it.id !== id; });
+        } else {
+            if (items.length >= MAX) { alert('Maximum ' + MAX + ' products can be compared.'); return; }
+            items.push({ id: id, name: name, url: url });
+        }
+        saveItems(items);
+        renderBar();
+    };
+
+    window.removeCompare = function(index) {
+        var items = getItems();
+        items.splice(index, 1);
+        saveItems(items);
+        renderBar();
+    };
+
+    window.clearCompare = function() {
+        saveItems([]);
+        renderBar();
+    };
+
+    window.showCompare = function() {
+        var items = getItems();
+        if (items.length < 2) { alert('Please add at least 2 products to compare.'); return; }
+        var html = '<table class="pd-compare-table"><thead><tr><th>Feature</th>';
+        items.forEach(function(item) { html += '<th>' + item.name + '</th>'; });
+        html += '</tr></thead><tbody>';
+        html += '<tr><td><strong>Product Page</strong></td>';
+        items.forEach(function(item) { html += '<td><a href="' + item.url + '" style="color:var(--gold);font-weight:600;text-decoration:none;">View Details</a></td>'; });
+        html += '</tr>';
+        html += '<tr><td colspan="' + (items.length + 1) + '" style="text-align:center;color:var(--text-muted);padding:2rem;font-style:italic;">Detailed spec comparison will populate once products have technical specifications entered in WordPress.</td></tr>';
+        html += '</tbody></table>';
+        document.getElementById('pdCompareTableWrap').innerHTML = html;
+        document.getElementById('pdCompareOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeCompare = function() {
+        document.getElementById('pdCompareOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    document.addEventListener('click', function(e) { if (e.target.id === 'pdCompareOverlay') closeCompare(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCompare(); });
+
+    // Init on load
+    document.addEventListener('DOMContentLoaded', renderBar);
+})();
+</script>
 
 <script>
 // Hide left pane when user scrolls to footer area

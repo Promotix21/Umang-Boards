@@ -4,7 +4,7 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umang Boards Limited — Powering World's Electric Future</title>
-    <meta name="description" content="India's leading manufacturer of cellulose transformer insulation, winding wires and insulating chemicals. Exporting to 61+ countries since 1999.">
+    <meta name="description" content="India's leading manufacturer of cellulose transformer insulation, winding wires and insulating chemicals. Exporting to 15+ countries since 1999.">
     <?php wp_head(); ?>
 </head>
 <body <?php body_class( is_front_page() ? '' : 'loaded' ); ?>>
@@ -72,6 +72,10 @@
 
         </div>
     </div>
+    <?php endif; ?>
+
+    <?php if ( ! is_front_page() ) : ?>
+    <style>.utility-bar{transform:none !important;animation:none !important;}.header{top:var(--utility-h) !important;}</style>
     <?php endif; ?>
 
     <!-- ================================================
@@ -217,6 +221,20 @@
                     <span>Blogs</span>
                 </a>
             </nav>
+            <div class="utility-panel-socials">
+                <a href="https://www.linkedin.com/company/umang-boards-limited/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://x.com/umangboards" target="_blank" rel="noopener" aria-label="X / Twitter">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@umangboardslimited" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/umangboardslimited/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -286,7 +304,7 @@
                 <a href="/about-us" class="mega-left-cta" data-cursor="hover">Discover more &rarr;</a>
             </div>
             <div class="mega-center">
-                <a class="mega-cat active" data-sub="companyAbout" href="/about-us">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyAbout" href="/about-us">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyLeadership" href="/leadership">Leadership <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyHistory" href="/company-history">Company History <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyFoundation" href="/dhanuka-foundation">Dhanuka Foundation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -297,7 +315,7 @@
             </div>
             <div class="mega-right">
                 <!-- About Us — no L3, show description + card -->
-                <div class="mega-sub-panel active" id="companyAbout">
+                <div class="mega-sub-panel" id="companyAbout">
                     <div class="mega-sub-desc">
                         <p class="mega-sub-desc-text">Learn about our journey, mission, and the values that drive Umang Boards Limited as a global leader in transformer insulation materials.</p>
                         <a href="/about-us" class="mega-sub-desc-cta">Visit About Us →</a>
@@ -336,7 +354,7 @@
                         <img src="<?php echo UBL_URI; ?>/assets/images/Mfg Hero Background.jpg" alt="Company History" class="mega-feature-img" loading="lazy">
                         <div class="mega-feature-body">
                             <div class="mega-feature-tag">Est. 1999</div>
-                            <div class="mega-feature-title">From Jaipur to 61+ Countries Worldwide</div>
+                            <div class="mega-feature-title">From Jaipur to 15+ Countries Worldwide</div>
                             <a href="/company-history" class="mega-feature-link">Our story →</a>
                         </div>
                     </div>
@@ -390,13 +408,13 @@
                 <!-- Download Center — has L3 -->
                 <div class="mega-sub-panel" id="companyDownloads">
                     <div class="mega-sub-links">
-                        <a href="/certifications">Certifications</a>
-                        <a href="/catalogues">Catalogues</a>
-                        <a href="/tech-datasheets">Technical Data Sheets</a>
-                        <a href="/tc-sales">Terms &amp; Conditions Sales</a>
-                        <a href="/tc-purchase">Terms &amp; Conditions Purchase</a>
-                        <a href="/privacy">Privacy Policy</a>
-                        <a href="/code-of-conduct">Code of Conduct</a>
+                        <a href="/certifications/">Certifications</a>
+                        <a href="/downloads/">Catalogues</a>
+                        <a href="/downloads/#tech-datasheets">Technical Data Sheets</a>
+                        <a href="/terms-conditions-sales/">Terms &amp; Conditions Sales</a>
+                        <a href="/terms-conditions-purchase/">Terms &amp; Conditions Purchase</a>
+                        <a href="/privacy-policy/">Privacy Policy</a>
+                        <a href="/code-of-conduct/">Code of Conduct</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Main-Slideshow_0000_MS1.png" alt="Umang Boards Certifications" class="mega-feature-img" loading="lazy">
@@ -410,11 +428,11 @@
                 <!-- Quality — has L3 -->
                 <div class="mega-sub-panel" id="companyQuality">
                     <div class="mega-sub-links">
-                        <a href="/sustainability">Sustainability</a>
-                        <a href="/quality">Transformer Insulation Laboratory</a>
-                        <a href="/quality">Winding Wire Laboratory</a>
-                        <a href="/quality">Chemical Laboratory</a>
-                        <a href="/research-and-development">Research &amp; Development</a>
+                        <a href="/sustainability/">Sustainability</a>
+                        <a href="/quality/#insulation-lab">Transformer Insulation Laboratory</a>
+                        <a href="/quality/#winding-wire-lab">Winding Wire Laboratory</a>
+                        <a href="/quality/#chemical-lab">Chemical Laboratory</a>
+                        <a href="/research-and-development/">Research &amp; Development</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Secondary Static.jpg" alt="NABL Accredited Lab" class="mega-feature-img" loading="lazy">
@@ -440,21 +458,21 @@
                 <a href="/products" class="mega-left-cta" data-cursor="hover">Explore all products &rarr;</a>
             </div>
             <div class="mega-center">
-                <a class="mega-cat active" data-sub="prodInsulation">Transformer Insulation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                <a class="mega-cat" data-sub="prodWires">Winding Wires <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                <a class="mega-cat" data-sub="prodChemicals">Chemicals <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" href="/products/cellulose-transformer-insulation-boards/" data-sub="prodInsulation">Transformer Insulation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" href="/products/winding-wires/" data-sub="prodWires">Winding Wires <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" href="/products/insulating-chemicals/" data-sub="prodChemicals">Chemicals <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
             <div class="mega-right mega-right-products">
                 <!-- L2: Transformer Insulation -->
-                <div class="mega-sub-panel active" id="prodInsulation">
+                <div class="mega-sub-panel" id="prodInsulation">
                     <div class="mega-l3-list">
-                        <a class="mega-l3 active" data-l4="l4InsPress">Pressboards <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                        <a class="mega-l3" data-l4="l4InsMach">Machined &amp; Moulded <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                        <a class="mega-l3" data-l4="l4InsPaper">Papers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                        <a class="mega-l3" data-l4="l4InsAccess">Accessories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                        <a class="mega-l3" href="/products/cellulose-transformer-insulation-boards/" data-l4="l4InsPress">Pressboards <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                        <a class="mega-l3" href="/products/machined-and-milled-components/" data-l4="l4InsMach">Machined &amp; Moulded <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                        <a class="mega-l3" href="/products/insulation-papers/" data-l4="l4InsPaper">Papers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                        <a class="mega-l3" href="/products/transformer-accessories/" data-l4="l4InsAccess">Accessories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                     </div>
                     <div class="mega-l4-wrap">
-                        <div class="mega-l4-panel active" id="l4InsPress">
+                        <div class="mega-l4-panel" id="l4InsPress">
                             <a href="/products/cellulose-transformer-insulation-boards/high-density-pressboards/">High Density Pressboard</a>
                             <a href="/products/cellulose-transformer-insulation-boards/laminated-pressboards/">Laminated Pressboard</a>
                             <a href="/products/cellulose-transformer-insulation-boards/calendered-pressboards/">Calendered Pressboard</a>
@@ -475,11 +493,16 @@
                             <a href="/products/insulation-papers/electrical-grade-press-paper/">Press Paper</a>
                         </div>
                         <div class="mega-l4-panel" id="l4InsAccess">
-                            <a href="/products/paper-and-board/">Bushings &amp; Sleeves</a>
-                            <a href="/products/paper-and-board/">Cooling Fans</a>
-                            <a href="/products/paper-and-board/">Valves &amp; Relays</a>
-                            <a href="/products/paper-and-board/">Cork Sheet / Perma Wood</a>
-                            <a href="/products/paper-and-board/">Metal Fixing Parts</a>
+                            <a href="/products/transformer-accessories/bushings/">Bushings</a>
+                            <a href="/products/transformer-accessories/sleeves/">Sleeves</a>
+                            <a href="/products/transformer-accessories/cooling-fans/">Fans &amp; Cooling Fans</a>
+                            <a href="/products/transformer-accessories/valves/">Valves</a>
+                            <a href="/products/transformer-accessories/relays/">Relays</a>
+                            <a href="/products/transformer-accessories/cork-sheet/">Cork Sheet</a>
+                            <a href="/products/transformer-accessories/perma-wood/">Perma Wood</a>
+                            <a href="/products/transformer-accessories/backlite-sheet/">Backlite Sheet</a>
+                            <a href="/products/transformer-accessories/protection-accessories/">Protection Accessories</a>
+                            <a href="/products/transformer-accessories/metal-fixing-parts/">Metal Fixing Parts</a>
                         </div>
                     </div>
                     <div class="mega-feature-card">
@@ -494,11 +517,11 @@
                 <!-- L2: Winding Wires -->
                 <div class="mega-sub-panel" id="prodWires">
                     <div class="mega-l3-list">
-                        <a class="mega-l3 active" data-l4="l4WireAlum">Aluminium <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                        <a class="mega-l3" data-l4="l4WireCopper">Copper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                        <a class="mega-l3" href="/products/aluminium/" data-l4="l4WireAlum">Aluminium <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                        <a class="mega-l3" href="/products/copper/" data-l4="l4WireCopper">Copper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                     </div>
                     <div class="mega-l4-wrap">
-                        <div class="mega-l4-panel active" id="l4WireAlum">
+                        <div class="mega-l4-panel" id="l4WireAlum">
                             <a href="/products/aluminium/super-enamelled-al-round-wire/">Super Enameled Round Wire</a>
                             <a href="/products/aluminium/super-enamelled-al-flat-wire/">Super Enameled Flat Wire</a>
                             <a href="/products/aluminium/kraft-crepe-coated-al-round-wire/">Paper Covered Round Wire</a>
@@ -526,10 +549,10 @@
                 <!-- L2: Chemicals -->
                 <div class="mega-sub-panel" id="prodChemicals">
                     <div class="mega-l3-list">
-                        <a class="mega-l3 active" data-l4="l4ChemEnamels">Wire Enamels <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                        <a class="mega-l3" href="/products/insulating-chemicals/" data-l4="l4ChemEnamels">Wire Enamels <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                     </div>
                     <div class="mega-l4-wrap">
-                        <div class="mega-l4-panel active" id="l4ChemEnamels">
+                        <div class="mega-l4-panel" id="l4ChemEnamels">
                             <a href="/products/polyester/">Polyester</a>
                             <a href="/products/modified-polyester/">Modified Polyester</a>
                             <a href="/products/polyurethane/">Polyurethane</a>
@@ -561,7 +584,7 @@
                 <a href="/solutions" class="mega-left-cta" data-cursor="hover">View all solutions &rarr;</a>
             </div>
             <div class="mega-center mega-center-grid">
-                <a class="mega-cat active" data-sub="solPower">Power Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="solPower">Power Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="solDist">Distribution Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="solInstrument">Instrument Transformers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="solDataCenters">Data Centers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -572,7 +595,7 @@
                 <a class="mega-cat" data-sub="solStabilizers">Stabilizers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
             <div class="mega-right">
-                <div class="mega-sub-panel active" id="solPower">
+                <div class="mega-sub-panel" id="solPower">
                     <div class="mega-sub-links">
                         <a href="/products/cellulose-transformer-insulation-boards/high-density-pressboards/">HD Pressboard</a>
                         <a href="/products/cellulose-transformer-insulation-boards/laminated-pressboards/">Laminated Pressboard</a>
@@ -647,7 +670,7 @@
                 </div>
                 <div class="mega-sub-panel" id="solRenewables">
                     <div class="mega-sub-links">
-                        <a href="/ddp">Diamond Dotted Paper</a>
+                        <a href="/products/insulation-papers/electrical-grade-diamond-dotted-paper/">Diamond Dotted Paper</a>
                         <a href="/products/insulation-papers/electrical-grade-press-paper/">TUP Paper</a>
                         <a href="/products/machined-and-milled-components/">Machined Components</a>
                     </div>
@@ -662,9 +685,9 @@
                 </div>
                 <div class="mega-sub-panel" id="solMotors">
                     <div class="mega-sub-links">
-                        <a href="/aluminium">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
-                        <a href="/copper">Super Enamelled Copper Wire (Round &amp; Flat)</a>
-                        <a href="/plain-kraft-paper">Insulation Paper</a>
+                        <a href="/products/aluminium/super-enamelled-al-round-wire/">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
+                        <a href="/products/copper/super-enamelled-cu-round-wire/">Super Enamelled Copper Wire (Round &amp; Flat)</a>
+                        <a href="/products/insulation-papers/electrical-grade-kraft-paper/">Insulation Paper</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Winding Wires.jpg" alt="Electric Motor Solutions" class="mega-feature-img" loading="lazy">
@@ -677,8 +700,8 @@
                 </div>
                 <div class="mega-sub-panel" id="solAppliances">
                     <div class="mega-sub-links">
-                        <a href="/aluminium">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
-                        <a href="/copper">Super Enamelled Copper Wire (Round &amp; Flat)</a>
+                        <a href="/products/aluminium/super-enamelled-al-round-wire/">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
+                        <a href="/products/copper/super-enamelled-cu-round-wire/">Super Enamelled Copper Wire (Round &amp; Flat)</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Winding Wires.jpg" alt="Home Appliance Solutions" class="mega-feature-img" loading="lazy">
@@ -691,8 +714,8 @@
                 </div>
                 <div class="mega-sub-panel" id="solEV">
                     <div class="mega-sub-links">
-                        <a href="/aluminium">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
-                        <a href="/copper">Super Enamelled Copper Wire (Round &amp; Flat)</a>
+                        <a href="/products/aluminium/super-enamelled-al-round-wire/">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
+                        <a href="/products/copper/super-enamelled-cu-round-wire/">Super Enamelled Copper Wire (Round &amp; Flat)</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Winding Wires.jpg" alt="EV Motor Solutions" class="mega-feature-img" loading="lazy">
@@ -705,8 +728,8 @@
                 </div>
                 <div class="mega-sub-panel" id="solStabilizers">
                     <div class="mega-sub-links">
-                        <a href="/aluminium">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
-                        <a href="/copper">Super Enamelled Copper Wire (Round &amp; Flat)</a>
+                        <a href="/products/aluminium/super-enamelled-al-round-wire/">Super Enamelled Aluminium Wire (Round &amp; Flat)</a>
+                        <a href="/products/copper/super-enamelled-cu-round-wire/">Super Enamelled Copper Wire (Round &amp; Flat)</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Winding Wires.jpg" alt="Stabilizer Solutions" class="mega-feature-img" loading="lazy">
@@ -736,18 +759,19 @@
                 <a href="/investors" class="mega-left-cta" data-cursor="hover">Discover more &rarr;</a>
             </div>
             <div class="mega-center">
-                <a class="mega-cat active" data-sub="invFinancials">Financials <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="invFinancials">Financials <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="invGovernance">Governance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                <a class="mega-cat" data-sub="invNews">News and Events <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                <a class="mega-cat" data-sub="invResources">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="invDisclosures">Disclosures <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="invShareholders">Shareholders <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="invResources">IPO &amp; More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
             <div class="mega-right">
-                <div class="mega-sub-panel active" id="invFinancials">
+                <div class="mega-sub-panel" id="invFinancials">
                     <div class="mega-sub-links">
-                        <a href="/annual-reports">Annual Reports</a>
-                        <a href="/quarterly-results">Quarterly Results</a>
-                        <a href="/financial-statements">Financial Statements</a>
-                        <a href="/investor-presentations">Investor Presentations</a>
+                        <a href="/investors/company-financial-information/">Company Financial Information</a>
+                        <a href="/investors/group-company-financials/">Group Company Financials</a>
+                        <a href="/investors/annual-reports/">Annual Reports</a>
+                        <a href="/investors/analyst-investor-meets/">Schedule of Analyst / Investor Meets</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/boardroom.jpg" alt="Investor Relations" class="mega-feature-img" loading="lazy">
@@ -760,48 +784,63 @@
                 </div>
                 <div class="mega-sub-panel" id="invGovernance">
                     <div class="mega-sub-links">
-                        <a href="/corporate-governance">Corporate Governance</a>
-                        <a href="/board-of-directors">Board of Directors</a>
-                        <a href="/policies">Policies</a>
-                        <a href="/shareholder-info">Shareholder Information</a>
+                        <a href="/investors/corporate-governance/">Corporate Governance</a>
+                        <a href="/investors/board-and-committees/">Board &amp; Committees</a>
+                        <a href="/investors/policies/">Policies</a>
+                        <a href="/investors/corporate-social-responsibility/">Corporate Social Responsibility</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/boardroom.jpg" alt="Corporate Governance" class="mega-feature-img" loading="lazy">
                         <div class="mega-feature-body">
                             <div class="mega-feature-tag">SEBI Compliant</div>
                             <div class="mega-feature-title">Board-Led Governance &amp; Ethics</div>
-                            <a href="/corporate-governance" class="mega-feature-link">Learn more →</a>
+                            <a href="/investors/corporate-governance/" class="mega-feature-link">Learn more →</a>
                         </div>
                     </div>
                 </div>
-                <div class="mega-sub-panel" id="invNews">
+                <div class="mega-sub-panel" id="invDisclosures">
                     <div class="mega-sub-links">
-                        <a href="/press-releases">Press Releases</a>
-                        <a href="/events">Events</a>
-                        <a href="/media-kit">Media Kit</a>
+                        <a href="/investors/disclosure-regulation-46/">Disclosure under Regulation 46</a>
+                        <a href="/investors/stock-exchange-disclosures/">Stock Exchange Disclosures</a>
+                        <a href="/investors/material-documents/">Material Documents &amp; Contracts</a>
                     </div>
                     <div class="mega-feature-card">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/Mfg Hero Background.jpg" alt="News and Events" class="mega-feature-img" loading="lazy">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/Mfg Hero Background.jpg" alt="Disclosures" class="mega-feature-img" loading="lazy">
                         <div class="mega-feature-body">
-                            <div class="mega-feature-tag">Latest Updates</div>
-                            <div class="mega-feature-title">News, Events &amp; Media Resources</div>
-                            <a href="/newsroom" class="mega-feature-link">Visit newsroom →</a>
+                            <div class="mega-feature-tag">SEBI / LODR</div>
+                            <div class="mega-feature-title">Regulatory Disclosures &amp; Filings</div>
+                            <a href="/investors/disclosure-regulation-46/" class="mega-feature-link">View disclosures →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-sub-panel" id="invShareholders">
+                    <div class="mega-sub-links">
+                        <a href="/investors/shareholding-pattern/">Shareholding Pattern</a>
+                        <a href="/investors/shareholders-meeting/">Shareholders Meeting</a>
+                        <a href="/investors/investor-grievance/">Investor Grievance</a>
+                    </div>
+                    <div class="mega-feature-card">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/Secondary Static.jpg" alt="Shareholder Info" class="mega-feature-img" loading="lazy">
+                        <div class="mega-feature-body">
+                            <div class="mega-feature-tag">NSE · BSE Listed</div>
+                            <div class="mega-feature-title">Shareholder Information &amp; Stock Data</div>
+                            <a href="/investors/shareholding-pattern/" class="mega-feature-link">View details →</a>
                         </div>
                     </div>
                 </div>
                 <div class="mega-sub-panel" id="invResources">
                     <div class="mega-sub-links">
-                        <a href="/stock-exchange">NSE / BSE Listing</a>
-                        <a href="/shareholding-pattern">Shareholding Pattern</a>
-                        <a href="/credit-rating">Credit Rating</a>
-                        <a href="/downloads">Downloads</a>
+                        <a href="/investors/ipo-documents/">IPO Documents</a>
+                        <a href="/investors/newspaper-advertisements/">Newspaper Advertisements</a>
+                        <a href="/investors/credit-ratings/">Credit Ratings</a>
+                        <a href="/investors/investor-grievance/">Investor Grievance</a>
                     </div>
                     <div class="mega-feature-card">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/Secondary Static.jpg" alt="Investor Resources" class="mega-feature-img" loading="lazy">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/boardroom.jpg" alt="IPO &amp; More" class="mega-feature-img" loading="lazy">
                         <div class="mega-feature-body">
-                            <div class="mega-feature-tag">CRISIL BBB Rated</div>
-                            <div class="mega-feature-title">Compliance Documents &amp; Stock Data</div>
-                            <a href="/downloads" class="mega-feature-link">Browse files →</a>
+                            <div class="mega-feature-tag">NSE · BSE Listed</div>
+                            <div class="mega-feature-title">IPO Documents &amp; Investor Resources</div>
+                            <a href="/investors/" class="mega-feature-link">View all →</a>
                         </div>
                     </div>
                 </div>
@@ -820,13 +859,13 @@
                 <a href="/contact-us" class="mega-left-cta" data-cursor="hover">Get in touch &rarr;</a>
             </div>
             <div class="mega-center">
-                <a class="mega-cat active" data-sub="contactOverview" href="/contact-us">Get in Touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="contactOverview" href="/contact-us">Get in Touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="contactLocations" href="/our-locations">Our Locations <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="contactHours" href="/contact-us#hours">Office Hours <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="contactFAQ" href="/contact-us#faq">FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
             <div class="mega-right">
-                <div class="mega-sub-panel active" id="contactOverview">
+                <div class="mega-sub-panel" id="contactOverview">
                     <div class="mega-sub-desc">
                         <p class="mega-sub-desc-text">Reach out to us via our contact form, email, or phone. Our sales and support teams are ready to assist with your transformer insulation requirements.</p>
                         <a href="/contact-us" class="mega-sub-desc-cta">Contact Form →</a>
@@ -897,12 +936,12 @@
                 <a href="/newsroom" class="mega-left-cta" data-cursor="hover">Visit Newsroom &rarr;</a>
             </div>
             <div class="mega-center">
-                <a class="mega-cat active" data-sub="newsMedia" href="/media-kit">Media Kit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="newsMedia" href="/media-kit">Media Kit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="newsEvents" href="/events">Events <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="newsPress" href="/press-releases">Press Releases <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
             <div class="mega-right">
-                <div class="mega-sub-panel active" id="newsMedia">
+                <div class="mega-sub-panel" id="newsMedia">
                     <div class="mega-sub-desc">
                         <p class="mega-sub-desc-text">Access official logos, brand guidelines, press photos, and media assets for publications and press coverage.</p>
                         <a href="/media-kit" class="mega-sub-desc-cta">Download Media Kit →</a>
@@ -952,6 +991,9 @@
          MOBILE NAV
          ================================================ -->
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" data-lenis-prevent>
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <ul class="mobile-nav-links">
             <!-- 1. Company -->
             <li class="mobile-accordion">
@@ -998,11 +1040,16 @@
                     </li>
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Transformer Accessories</span>
-                        <a href="/bushings">Bushings</a>
-                        <a href="/conservators">Conservators</a>
-                        <a href="/radiators">Radiators</a>
-                        <a href="/tap-changers">Tap Changers</a>
-                        <a href="/gaskets">Gaskets & Seals</a>
+                        <a href="/products/transformer-accessories/bushings/">Bushings</a>
+                        <a href="/products/transformer-accessories/sleeves/">Sleeves</a>
+                        <a href="/products/transformer-accessories/cooling-fans/">Fans &amp; Cooling Fans</a>
+                        <a href="/products/transformer-accessories/valves/">Valves</a>
+                        <a href="/products/transformer-accessories/relays/">Relays</a>
+                        <a href="/products/transformer-accessories/cork-sheet/">Cork Sheet</a>
+                        <a href="/products/transformer-accessories/perma-wood/">Perma Wood</a>
+                        <a href="/products/transformer-accessories/backlite-sheet/">Backlite Sheet</a>
+                        <a href="/products/transformer-accessories/protection-accessories/">Protection Accessories</a>
+                        <a href="/products/transformer-accessories/metal-fixing-parts/">Metal Fixing Parts</a>
                     </li>
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Winding Wires</span>
@@ -1057,19 +1104,29 @@
                 </ul>
             </li>
 
-            <!-- 4. Investors -->
+            <!-- 4. Investors (flat list like Waaree) -->
             <li class="mobile-accordion">
                 <div class="mobile-accordion-header" data-cursor="hover">
                     <span>Investors</span>
                     <svg class="mobile-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
                 </div>
                 <ul class="mobile-accordion-body">
-                    <li><a href="/annual-reports">Annual Reports</a></li>
-                    <li><a href="/quarterly-results">Quarterly Results</a></li>
-                    <li><a href="/corporate-governance">Corporate Governance</a></li>
-                    <li><a href="/board-of-directors">Board of Directors</a></li>
-                    <li><a href="/shareholding-pattern">Shareholding Pattern</a></li>
-                    <li><a href="/downloads">Downloads</a></li>
+                    <li><a href="/investors/shareholding-pattern/">Shareholding Pattern</a></li>
+                    <li><a href="/investors/disclosure-regulation-46/">Disclosure under Regulation 46</a></li>
+                    <li><a href="/investors/corporate-social-responsibility/">Corporate Social Responsibility</a></li>
+                    <li><a href="/investors/stock-exchange-disclosures/">Stock Exchange Disclosures</a></li>
+                    <li><a href="/investors/material-documents/">Material Documents &amp; Contracts</a></li>
+                    <li><a href="/investors/board-and-committees/">Board of Directors &amp; Committees</a></li>
+                    <li><a href="/investors/company-financial-information/">Company Financial Information</a></li>
+                    <li><a href="/investors/group-company-financials/">Group Company Financials</a></li>
+                    <li><a href="/investors/annual-reports/">Annual Reports</a></li>
+                    <li><a href="/investors/analyst-investor-meets/">Schedule of Analyst/Investor Meets</a></li>
+                    <li><a href="/investors/policies/">Policies</a></li>
+                    <li><a href="/investors/shareholders-meeting/">Shareholders Meeting</a></li>
+                    <li><a href="/investors/corporate-governance/">Corporate Governance</a></li>
+                    <li><a href="/investors/newspaper-advertisements/">Newspaper Advertisements</a></li>
+                    <li><a href="/investors/ipo-documents/">IPO Documents</a></li>
+                    <li><a href="/investors/investor-grievance/">Investor Grievance</a></li>
                 </ul>
             </li>
 
@@ -1106,6 +1163,20 @@
         <div class="mobile-nav-footer">
             <p>General Enquiry</p>
             <a href="tel:+911412395845">+91 141 239 5845</a>
+            <div class="mobile-nav-socials">
+                <a href="https://www.linkedin.com/company/umang-boards-limited/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://x.com/umangboards" target="_blank" rel="noopener" aria-label="X / Twitter">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@umangboardslimited" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/umangboardslimited/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
         </div>
     </nav>
 

@@ -260,7 +260,7 @@
 }
 .vf-heading {
     font-family: var(--font-body); font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-    font-weight: 800; color: var(--navy); line-height: 1.15;
+    font-weight: 800; color: var(--text-primary); line-height: 1.15;
     letter-spacing: -0.02em; margin-bottom: 1rem;
 }
 .vf-heading em { font-style: normal; color: var(--gold-dark); font-weight: 700; }
@@ -702,14 +702,15 @@
         left: 0.5rem;
     }
     .app-carousel-track {
-        padding: 1.2rem 0 1.2rem 1rem;
+        padding: 1.2rem 1.5rem 1.2rem 1.5rem;
         gap: 1rem;
     }
     .app-carousel-card {
-        flex: 0 0 240px;
+        flex: 0 0 calc(100vw - 5rem);
+        max-width: 320px;
     }
     .app-carousel-card-img {
-        height: 150px;
+        height: 180px;
     }
     .app-carousel-card-body {
         padding: 1.5rem 1.2rem 1.2rem;
@@ -1210,7 +1211,7 @@
 .inv-hero-title {
     font-family: var(--font-body); font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     font-weight: 800; line-height: 1.08; letter-spacing: -0.02em;
-    color: var(--navy); margin: 0 0 clamp(2.5rem, 5vh, 4rem);
+    color: var(--text-primary); margin: 0 0 clamp(2.5rem, 5vh, 4rem);
     opacity: 0;
 }
 
@@ -1457,15 +1458,15 @@
 .sf-quick-email:hover { background: rgba(255,255,255,0.1); color: #fff; }
 
 .sf-follow-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 1.4rem; margin-bottom: 0.6rem; }
-.sf-socials { display: flex; gap: 0.5rem; }
+.sf-socials { display: flex; gap: 0.6rem; position: relative; z-index: 2; }
 .sf-social {
-    width: 32px; height: 32px; border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center;
-    justify-content: center; color: rgba(255,255,255,0.45); text-decoration: none;
-    transition: all 0.3s;
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center;
+    justify-content: center; color: rgba(255,255,255,0.5); text-decoration: none;
+    transition: all 0.3s; cursor: pointer;
 }
-.sf-social:hover { border-color: var(--gold); color: var(--gold); }
-.sf-social svg { width: 13px; height: 13px; }
+.sf-social:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,168,75,0.1); }
+.sf-social svg { width: 15px; height: 15px; pointer-events: none; }
 
 /* Footer bottom */
 .s-footer-bottom {
@@ -1523,7 +1524,9 @@
     .product-tab .tab-icon { display: none; }
     .product-cta-box { flex-direction: column; text-align: center; }
     .product-tab-modes { flex-wrap: wrap; }
-    .pf-selects { flex-direction: column; }
+    .pf-selects { flex-direction: column; gap: 0.75rem; }
+    .pf-select-group { min-width: 100%; }
+    .pf-go-btn { width: 100%; justify-content: center; }
     .mn-two-col { grid-template-columns: 1fr; }
     .s-footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .sf-brand { grid-column: span 2; }
@@ -1559,7 +1562,7 @@
   --map-border-light: #e4e9f0;
 
   /* Map text (scoped names) */
-  --map-text-primary: var(--navy);
+  --map-text-primary: var(--text-primary);
   --map-text-secondary: #5a6478;
   --map-text-tertiary: #8994a8;
 
@@ -2111,6 +2114,21 @@
 /* =============================================================
    MAP SECTION RESPONSIVE
    ============================================================= */
+@media (max-width: 1400px) {
+  .export-map-section .col-left__content {
+    padding: 32px 28px 20px;
+  }
+  .export-map-section .headline {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  }
+  .export-map-section .eyebrow {
+    font-size: 0.68rem;
+  }
+  .export-map-section .subtext {
+    font-size: 0.82rem;
+  }
+}
+
 @media (max-width: 900px) {
   .export-map-section {
     flex-direction: column;
@@ -2132,13 +2150,13 @@
   }
 
   .export-map-section .headline {
-    font-size: 1.3rem;
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
   }
 
   .export-map-section .col-right {
     width: 100%;
-    height: 50vh;
-    min-height: 50vh;
+    height: 55vh;
+    min-height: 350px;
   }
 
   .export-map-section .stats-grid {
@@ -2156,8 +2174,11 @@
 
 @media (max-width: 768px) {
   .export-map-section .col-right {
-    height: 45vh;
-    min-height: 300px;
+    height: 55vh;
+    min-height: 350px;
+    touch-action: pan-x pan-y pinch-zoom;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .tooltip-panel {

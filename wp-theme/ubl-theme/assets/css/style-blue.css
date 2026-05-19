@@ -68,44 +68,34 @@
    Dark navy (#1a3056) not bright blue
    ============================================ */
 
-/* Page heroes — !important needed to override inline <style> in page templates */
+/* ============================================
+   HERO & SECTION DARK BG OVERRIDES
+   Company/inner pages: NO dark backgrounds
+   Only product pages & solutions keep dark heroes
+   ============================================ */
+
+/* Product pages only — keep dark heroes */
 .pc-header,
-.ch-hero,
-.au-hero,
 .sol-hero,
-.nr-hero,
-.cr-hero,
-.dl-hero,
-.ev-hero,
-.qa-hero,
-.cert-hero,
-.csr-hero,
 .sp-hero {
     background: #1a3056 !important;
 }
 
-/* Split layout left panes */
-.ld-left,
-.ct-left,
+/* Product split layout left panes — keep dark */
 .pd-left {
     background: #1a3056 !important;
 }
-
-/* Split pane gradients */
-.ld-left-gradient { background: linear-gradient(to bottom, rgba(26,48,86,0.5), rgba(26,48,86,0.8), #1a3056) !important; }
-.ct-left-gradient { background: linear-gradient(to bottom, rgba(26,48,86,0.5), rgba(26,48,86,0.8), #1a3056) !important; }
 .pd-left-gradient { background: linear-gradient(to bottom, rgba(26,48,86,0.5), rgba(26,48,86,0.8), #1a3056) !important; }
 
-/* About page sections */
-.au-bento-story { background: #1a3056 !important; border-color: #1a3056 !important; }
-.au-pillars { background: #1a3056 !important; }
-.au-cta { background: #1a3056 !important; }
-
-/* Company history */
-.ch-quote { background: #1a3056 !important; }
-
-/* Enquiry panel */
+/* Enquiry panel — keep dark (product page element) */
 .pd-enquiry-panel { background: #1a3056 !important; }
+
+/* REMOVED: All company page dark overrides
+   .au-hero, .ch-hero, .nr-hero, .cr-hero, .dl-hero, .ev-hero,
+   .qa-hero, .cert-hero, .csr-hero, .ld-left, .ct-left,
+   .ld-left-gradient, .ct-left-gradient, .ch-quote,
+   .au-bento-story, .au-pillars, .au-cta
+   — All these now use light backgrounds per client rule */
 
 /* ============================================
    FOOTER & DARK SECTIONS

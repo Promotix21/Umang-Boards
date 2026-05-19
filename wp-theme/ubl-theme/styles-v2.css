@@ -342,7 +342,7 @@ a, button, [data-cursor] { cursor: pointer; }
     position: fixed; top: var(--utility-h); left: 0; right: 0; z-index: 160;
     background: var(--header-bg);
     padding: 0 clamp(1.5rem, 4vw, 3.5rem);
-    transition: background 0.4s ease;
+    transition: top 0.4s var(--ease-out-expo), background 0.4s ease;
 }
 .header-inner {
     display: flex; align-items: center; justify-content: space-between;
@@ -729,15 +729,6 @@ a, button, [data-cursor] { cursor: pointer; }
     overscroll-behavior: contain; touch-action: pan-y;
 }
 .mobile-nav.active { opacity: 1; visibility: visible; }
-.mobile-nav-close {
-    position: absolute; top: 1.25rem; right: 1.5rem;
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--navy); color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    border: none; cursor: pointer; z-index: 5;
-    flex-shrink: 0;
-}
-.mobile-nav-close svg { width: 20px; height: 20px; stroke: #fff; }
 .mobile-nav-links { list-style: none; display: flex; flex-direction: column; }
 .mobile-nav-links > li { overflow: hidden; border-bottom: 1px solid var(--border-subtle); }
 .mobile-nav-links > li > a {

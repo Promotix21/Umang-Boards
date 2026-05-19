@@ -1,0 +1,6 @@
+# Utility scripts (local use only)
+check_server.py
+compare_server.py
+sync_from_server.py
+*.pyc
+__pycache__/

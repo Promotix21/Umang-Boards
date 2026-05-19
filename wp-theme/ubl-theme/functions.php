@@ -7,9 +7,18 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'UBL_VERSION', '2.16.0' );
+define( 'UBL_VERSION', time() );
 define( 'UBL_DIR', get_template_directory() );
 define( 'UBL_URI', get_template_directory_uri() );
+
+/* ─── Dev: Bypass Cloudflare HTML cache ─── */
+add_action( 'send_headers', function () {
+    header( 'Cache-Control: no-cache, no-store, must-revalidate' );
+    header( 'Pragma: no-cache' );
+    header( 'Expires: 0' );
+    // Tell Cloudflare not to cache this response
+    header( 'CDN-Cache-Control: no-store' );
+} );
 
 /* ─── Theme Setup ─── */
 add_action( 'after_setup_theme', function () {
@@ -80,6 +89,9 @@ add_action( 'acf/init', function () {
     require_once UBL_DIR . '/inc/acf-product-fields.php';
 } );
 
+/* ─── Investor Document Pages — Custom Admin Editor (no ACF Pro needed) ─── */
+require_once UBL_DIR . '/inc/investor-admin.php';
+
 /* ─── Helper: get ACF field with fallback ─── */
 function ubl_field( $field, $fallback = '', $post_id = false ) {
     if ( ! function_exists( 'get_field' ) ) return $fallback;
@@ -111,8 +123,9 @@ add_action( 'wp_head', function () {
 } );
 
 /* ─── Cloudflare Cache Purge ─── */
-define( 'UBL_CF_ZONE', '272b4923ce32cbb684e169a1e4694fdd' );
-define( 'UBL_CF_TOKEN', 'cfut_vQ1y0nax6ufvH4SWHx71KU0miKXAAutV76TnBvhVb0f3828e' );
+// Define UBL_CF_ZONE and UBL_CF_TOKEN in wp-config.php (never commit these values)
+if ( ! defined( 'UBL_CF_ZONE' ) )  define( 'UBL_CF_ZONE',  '' );
+if ( ! defined( 'UBL_CF_TOKEN' ) ) define( 'UBL_CF_TOKEN', '' );
 
 function ubl_cf_purge_cache() {
     $response = wp_remote_post( 'https://api.cloudflare.com/client/v4/zones/' . UBL_CF_ZONE . '/purge_cache', [
@@ -365,3 +378,354 @@ remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SEO Meta Tags, Open Graph & Schema.org Structured Data
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Get SEO data for the current page based on template slug.
+ *
+ * @return array|false  Array with 'title', 'description', 'keywords' keys, or false.
+ */
+function ubl_seo_get_page_data() {
+    $pages = [
+        'page-about-us.php' => [
+            'title'       => 'About Umang Boards Limited | Leading Transformer Insulation Manufacturer India',
+            'description' => 'Founded in 1999, Umang Boards Limited is a globally trusted manufacturer of transformer insulation materials, winding wires, and insulating chemicals. PGCIL 400 KV approved, ISO certified, serving 15+ countries.',
+            'keywords'    => 'transformer insulation manufacturer India, pressboard manufacturer, cellulose insulation, winding wire manufacturer',
+        ],
+        'page-leadership.php' => [
+            'title'       => 'Leadership Team | Board of Directors | Umang Boards Limited',
+            'description' => 'Meet the experienced leadership team of Umang Boards Limited. Our Board of Directors brings 26+ years of expertise in power transmission, manufacturing, and corporate governance.',
+            'keywords'    => '',
+        ],
+        'page-company-history.php' => [
+            'title'       => 'Company History | 27+ Years of Excellence | Umang Boards Limited',
+            'description' => 'Explore the milestones of Umang Boards Limited from 1999 to present — from incorporation to PGCIL 400 KV approval, 525 KV class validation, and ₹200 Cr revenue.',
+            'keywords'    => '',
+        ],
+        'page-csr.php' => [
+            'title'       => 'Corporate Social Responsibility | Umang Boards Limited',
+            'description' => "Umang Boards' CSR initiatives through Dhanuka Foundation — supporting education scholarships, healthcare partnerships with Mother Teresa Foundation, and sustainable livelihood programs.",
+            'keywords'    => '',
+        ],
+        'page-dhanuka-foundation.php' => [
+            'title'       => 'Dhanuka Foundation | Community Impact | Umang Boards Limited',
+            'description' => 'Dhanuka Foundation creates lasting social impact through education, healthcare, and community development initiatives across India.',
+            'keywords'    => '',
+        ],
+        'page-manufacturing-units.php' => [
+            'title'       => 'Manufacturing Facilities | State-of-the-Art Plants | Umang Boards Limited',
+            'description' => 'Two modern manufacturing facilities in Jaipur, Rajasthan with 51,000+ sq mtrs area, 500+ workers, NABL accredited labs, producing 525 KV class transformer insulation products.',
+            'keywords'    => '',
+        ],
+        'page-investors.php' => [
+            'title'       => 'Investor Relations | Umang Boards Limited | BSE Listed',
+            'description' => 'Investor information for Umang Boards Limited — annual reports, shareholding patterns, financial results, corporate governance, and SEBI Regulation 46 disclosures.',
+            'keywords'    => '',
+        ],
+        'page-contact-us.php' => [
+            'title'       => 'Contact Us | Umang Boards Limited | Jaipur, Rajasthan',
+            'description' => 'Contact Umang Boards Limited for transformer insulation products, winding wires, and insulating chemicals. Office: Jaipur, Rajasthan. Mon-Fri 9AM-6PM IST.',
+            'keywords'    => '',
+        ],
+        'page-quality.php' => [
+            'title'       => 'Quality &amp; Testing | NABL Accredited Labs | Umang Boards Limited',
+            'description' => 'NABL accredited testing laboratories for transformer insulation, winding wires, and chemicals. ISO 9001, 14001, 45001 certified quality management systems.',
+            'keywords'    => '',
+        ],
+        'page-downloads.php' => [
+            'title'       => 'Download Center | Catalogues &amp; Technical Data | Umang Boards Limited',
+            'description' => 'Download product catalogues, technical data sheets, certifications, and policy documents from Umang Boards Limited.',
+            'keywords'    => '',
+        ],
+        'page-newsroom.php' => [
+            'title'       => 'Newsroom | Events &amp; Press Releases | Umang Boards Limited',
+            'description' => 'Latest news, events, and press releases from Umang Boards Limited — India\'s leading transformer insulation manufacturer.',
+            'keywords'    => '',
+        ],
+    ];
+
+    // Check front page first
+    if ( is_front_page() ) {
+        return [
+            'title'       => 'Umang Boards Limited | Transformer Insulation &amp; Winding Wire Manufacturer',
+            'description' => "Umang Boards Limited — India's leading manufacturer of transformer insulation materials, super enameled winding wires, and insulating chemicals. PGCIL approved, ISO certified, exporting to 15+ countries.",
+            'keywords'    => 'transformer insulation manufacturer, winding wire manufacturer, insulating chemicals, pressboard manufacturer India, PGCIL approved',
+        ];
+    }
+
+    // Check each page template
+    foreach ( $pages as $template => $data ) {
+        if ( is_page_template( $template ) ) {
+            return $data;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Output dynamic SEO meta tags in <head>.
+ */
+function ubl_seo_meta_tags() {
+    $seo = ubl_seo_get_page_data();
+    if ( ! $seo ) return;
+
+    $site_url  = home_url();
+    $logo_url  = UBL_URI . '/assets/images/UBL_LOGO.png';
+    $current_url = ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+    // Basic meta tags
+    echo '<!-- UBL SEO Meta Tags -->' . "\n";
+    echo '<meta name="description" content="' . esc_attr( $seo['description'] ) . '">' . "\n";
+    if ( ! empty( $seo['keywords'] ) ) {
+        echo '<meta name="keywords" content="' . esc_attr( $seo['keywords'] ) . '">' . "\n";
+    }
+    echo '<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">' . "\n";
+
+    // Canonical URL
+    echo '<link rel="canonical" href="' . esc_url( $current_url ) . '">' . "\n";
+
+    // Open Graph tags
+    echo '<meta property="og:title" content="' . esc_attr( wp_strip_all_tags( $seo['title'] ) ) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr( $seo['description'] ) . '">' . "\n";
+    echo '<meta property="og:type" content="website">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url( $current_url ) . '">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url( $logo_url ) . '">' . "\n";
+    echo '<meta property="og:site_name" content="Umang Boards Limited">' . "\n";
+    echo '<meta property="og:locale" content="en_IN">' . "\n";
+
+    // Twitter Card
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr( wp_strip_all_tags( $seo['title'] ) ) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr( $seo['description'] ) . '">' . "\n";
+    echo '<meta name="twitter:image" content="' . esc_url( $logo_url ) . '">' . "\n";
+    echo '<!-- /UBL SEO Meta Tags -->' . "\n";
+}
+add_action( 'wp_head', 'ubl_seo_meta_tags', 2 );
+
+/**
+ * Filter document title for SEO pages.
+ */
+function ubl_seo_document_title( $title ) {
+    $seo = ubl_seo_get_page_data();
+    if ( $seo ) {
+        $title['title'] = wp_strip_all_tags( html_entity_decode( $seo['title'] ) );
+        unset( $title['tagline'] );
+    }
+    return $title;
+}
+add_filter( 'document_title_parts', 'ubl_seo_document_title' );
+
+/**
+ * Output Organization Schema (JSON-LD) on homepage and about page.
+ */
+function ubl_schema_organization() {
+    if ( ! is_front_page() && ! is_page_template( 'page-about-us.php' ) ) return;
+
+    $schema = [
+        '@context'        => 'https://schema.org',
+        '@type'           => 'Organization',
+        'name'            => 'Umang Boards Limited',
+        'url'             => home_url(),
+        'logo'            => UBL_URI . '/assets/images/logo.png',
+        'foundingDate'    => '1999',
+        'description'     => 'Manufacturer of transformer insulation materials, winding wires, and insulating chemicals',
+        'address'         => [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => 'SP-30/A, RIICO Industrial Area, Mansarovar',
+            'addressLocality' => 'Jaipur',
+            'addressRegion'   => 'Rajasthan',
+            'postalCode'      => '302020',
+            'addressCountry'  => 'IN',
+        ],
+        'numberOfEmployees' => '500+',
+        'sameAs'            => [],
+    ];
+
+    echo '<!-- UBL Organization Schema -->' . "\n";
+    echo '<script type="application/ld+json">' . "\n";
+    echo wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+    echo "\n" . '</script>' . "\n";
+}
+add_action( 'wp_head', 'ubl_schema_organization', 3 );
+
+/**
+ * Output BreadcrumbList Schema (JSON-LD) on inner pages.
+ */
+function ubl_schema_breadcrumbs() {
+    if ( is_front_page() ) return;
+
+    $seo = ubl_seo_get_page_data();
+    $page_title = $seo ? wp_strip_all_tags( html_entity_decode( $seo['title'] ) ) : get_the_title();
+
+    // Build breadcrumb trail: Home > Current Page
+    $breadcrumb_items = [
+        [
+            '@type'    => 'ListItem',
+            'position' => 1,
+            'name'     => 'Home',
+            'item'     => home_url(),
+        ],
+    ];
+
+    // Determine parent section for deeper pages
+    $parent_crumbs = ubl_seo_get_parent_breadcrumb();
+    $position = 2;
+
+    if ( $parent_crumbs ) {
+        $breadcrumb_items[] = [
+            '@type'    => 'ListItem',
+            'position' => $position,
+            'name'     => $parent_crumbs['name'],
+            'item'     => $parent_crumbs['url'],
+        ];
+        $position++;
+    }
+
+    // Current page (last item — no 'item' property per Google spec)
+    $current_url = ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $breadcrumb_items[] = [
+        '@type'    => 'ListItem',
+        'position' => $position,
+        'name'     => $page_title,
+        'item'     => $current_url,
+    ];
+
+    $schema = [
+        '@context'        => 'https://schema.org',
+        '@type'           => 'BreadcrumbList',
+        'itemListElement' => $breadcrumb_items,
+    ];
+
+    echo '<!-- UBL Breadcrumb Schema -->' . "\n";
+    echo '<script type="application/ld+json">' . "\n";
+    echo wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+    echo "\n" . '</script>' . "\n";
+}
+add_action( 'wp_head', 'ubl_schema_breadcrumbs', 4 );
+
+/**
+ * Determine parent breadcrumb section for nested pages.
+ *
+ * @return array|false  Array with 'name' and 'url', or false.
+ */
+function ubl_seo_get_parent_breadcrumb() {
+    $company_pages = [
+        'page-about-us.php', 'page-leadership.php', 'page-company-history.php',
+        'page-csr.php', 'page-dhanuka-foundation.php', 'page-manufacturing-units.php',
+        'page-our-story.php', 'page-our-history.php',
+    ];
+    $resource_pages = [
+        'page-newsroom.php', 'page-downloads.php', 'page-certifications.php',
+        'page-blogs.php', 'page-events.php',
+    ];
+    $career_pages = [
+        'page-careers.php', 'page-life-ubl.php', 'page-training-development.php',
+    ];
+
+    foreach ( $company_pages as $tpl ) {
+        if ( is_page_template( $tpl ) ) {
+            return [ 'name' => 'Company', 'url' => home_url( '/about-us/' ) ];
+        }
+    }
+    foreach ( $resource_pages as $tpl ) {
+        if ( is_page_template( $tpl ) ) {
+            return [ 'name' => 'Resources', 'url' => home_url( '/newsroom/' ) ];
+        }
+    }
+    foreach ( $career_pages as $tpl ) {
+        if ( is_page_template( $tpl ) ) {
+            return [ 'name' => 'Careers', 'url' => home_url( '/careers/' ) ];
+        }
+    }
+    if ( is_page_template( 'page-investors.php' ) || is_page_template( 'page-investor-documents.php' ) || is_page_template( 'page-investor-sub.php' ) || is_page_template( 'page-investor-login.php' ) ) {
+        return [ 'name' => 'Investors', 'url' => home_url( '/investors/' ) ];
+    }
+
+    return false;
+}
+
+/**
+ * Output LocalBusiness Schema (JSON-LD) on manufacturing units page.
+ */
+function ubl_schema_local_business() {
+    if ( ! is_page_template( 'page-manufacturing-units.php' ) ) return;
+
+    $facilities = [
+        [
+            '@context'    => 'https://schema.org',
+            '@type'       => 'LocalBusiness',
+            'name'        => 'Umang Boards Limited — Unit I',
+            'description' => 'Manufacturing facility for transformer insulation materials including pressboard, insulating paper, and laminated products.',
+            'url'         => home_url( '/manufacturing-units/' ),
+            'telephone'   => '+91-141-2781042',
+            'address'     => [
+                '@type'           => 'PostalAddress',
+                'streetAddress'   => 'SP-30/A, RIICO Industrial Area, Mansarovar',
+                'addressLocality' => 'Jaipur',
+                'addressRegion'   => 'Rajasthan',
+                'postalCode'      => '302020',
+                'addressCountry'  => 'IN',
+            ],
+            'geo' => [
+                '@type'     => 'GeoCoordinates',
+                'latitude'  => '26.8583',
+                'longitude' => '75.7639',
+            ],
+            'openingHoursSpecification' => [
+                '@type'     => 'OpeningHoursSpecification',
+                'dayOfWeek' => [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+                'opens'     => '09:00',
+                'closes'    => '18:00',
+            ],
+            'parentOrganization' => [
+                '@type' => 'Organization',
+                'name'  => 'Umang Boards Limited',
+                'url'   => home_url(),
+            ],
+        ],
+        [
+            '@context'    => 'https://schema.org',
+            '@type'       => 'LocalBusiness',
+            'name'        => 'Umang Boards Limited — Unit II',
+            'description' => 'Manufacturing facility for super enameled winding wires and insulating chemicals.',
+            'url'         => home_url( '/manufacturing-units/' ),
+            'telephone'   => '+91-141-2781042',
+            'address'     => [
+                '@type'           => 'PostalAddress',
+                'streetAddress'   => 'SP-25, RIICO Industrial Area, Mansarovar',
+                'addressLocality' => 'Jaipur',
+                'addressRegion'   => 'Rajasthan',
+                'postalCode'      => '302020',
+                'addressCountry'  => 'IN',
+            ],
+            'geo' => [
+                '@type'     => 'GeoCoordinates',
+                'latitude'  => '26.8580',
+                'longitude' => '75.7635',
+            ],
+            'openingHoursSpecification' => [
+                '@type'     => 'OpeningHoursSpecification',
+                'dayOfWeek' => [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+                'opens'     => '09:00',
+                'closes'    => '18:00',
+            ],
+            'parentOrganization' => [
+                '@type' => 'Organization',
+                'name'  => 'Umang Boards Limited',
+                'url'   => home_url(),
+            ],
+        ],
+    ];
+
+    echo '<!-- UBL LocalBusiness Schema -->' . "\n";
+    foreach ( $facilities as $facility ) {
+        echo '<script type="application/ld+json">' . "\n";
+        echo wp_json_encode( $facility, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+        echo "\n" . '</script>' . "\n";
+    }
+}
+add_action( 'wp_head', 'ubl_schema_local_business', 5 );

@@ -15,21 +15,39 @@ $uri = UBL_URI;
 /* --- HERO --- */
 .ev-hero {
     position: relative;
-    background: var(--navy);
-    color: #fff;
+    background: #fdf9f4;
+    color: var(--navy);
     padding: calc(var(--utility-h) + var(--header-h) + 4rem) 0 6rem;
     overflow: hidden;
 }
 .ev-hero-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, var(--navy), rgba(11,31,58,0.95));
+    background: none;
 }
 .ev-hero-glow {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at top right, rgba(200,168,75,0.12) 0%, transparent 50%);
     pointer-events: none;
+}
+.ev-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(11,31,58,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 1;
+    pointer-events: none;
+}
+.ev-hero-accent {
+    position: absolute;
+    left: clamp(1.5rem, 4vw, 3.5rem);
+    top: calc(var(--utility-h) + var(--header-h) + 2rem);
+    bottom: 2rem;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--gold), rgba(212,168,67,0.2));
+    z-index: 1;
 }
 .ev-hero-inner {
     position: relative;
@@ -46,10 +64,10 @@ $uri = UBL_URI;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.5);
+    color: rgba(11,31,58,0.4);
     margin-bottom: 2rem;
 }
-.ev-breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
+.ev-breadcrumb a { color: rgba(11,31,58,0.4); text-decoration: none; transition: color 0.3s; }
 .ev-breadcrumb a:hover { color: var(--gold); }
 .ev-breadcrumb .active { color: var(--gold); }
 .ev-breadcrumb svg { width: 12px; height: 12px; }
@@ -57,8 +75,8 @@ $uri = UBL_URI;
     display: inline-flex;
     align-items: center;
     padding: 0.4rem 1rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(212,168,67,0.1);
+    border: 1px solid rgba(212,168,67,0.25);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -77,7 +95,7 @@ $uri = UBL_URI;
 .ev-hero-title em { font-style: normal; color: var(--gold); }
 .ev-hero-subtitle {
     font-size: clamp(1rem, 1.8vw, 1.25rem);
-    color: rgba(255,255,255,0.7);
+    color: var(--text-secondary);
     max-width: 560px;
     line-height: 1.65;
     font-weight: 300;
@@ -206,10 +224,10 @@ $uri = UBL_URI;
 
 /* --- CTA --- */
 .ev-cta {
-    background: var(--navy);
+    background: linear-gradient(145deg, #f2e0c8 0%, #e8caa4 45%, #ddb880 100%);
     padding: 5rem 0;
     text-align: center;
-    color: #fff;
+    color: var(--navy);
 }
 .ev-cta-inner {
     max-width: 700px;
@@ -224,35 +242,11 @@ $uri = UBL_URI;
 }
 .ev-cta-desc {
     font-size: 1.1rem;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-secondary);
     line-height: 1.65;
     font-weight: 300;
     margin-bottom: 2rem;
 }
-.ev-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    height: 56px;
-    padding: 0 2.5rem;
-    background: var(--gold);
-    color: var(--navy);
-    border: none;
-    border-radius: 8px;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    text-decoration: none;
-    transition: all 0.4s var(--ease-out-expo);
-}
-.ev-cta-btn:hover {
-    background: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}
-.ev-cta-btn svg { width: 18px; height: 18px; }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
@@ -267,6 +261,7 @@ $uri = UBL_URI;
     <section class="ev-hero">
         <div class="ev-hero-gradient"></div>
         <div class="ev-hero-glow"></div>
+        <div class="ev-hero-accent"></div>
         <div class="ev-hero-inner">
             <nav class="ev-breadcrumb">
                 <a href="<?php echo home_url(); ?>">Home</a>
@@ -326,7 +321,7 @@ $uri = UBL_URI;
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/></svg>
                 </div>
                 <div class="ev-presence-label">International Trade</div>
-                <p class="ev-presence-desc">Global exhibitions to strengthen our export network spanning 61+ countries.</p>
+                <p class="ev-presence-desc">Global exhibitions to strengthen our export network spanning 15+ countries.</p>
             </div>
 
             <div class="ev-presence-card">
@@ -345,7 +340,7 @@ $uri = UBL_URI;
         <div class="ev-cta-inner">
             <h2 class="ev-cta-title">Want to Meet Us at an Event?</h2>
             <p class="ev-cta-desc">Get in touch with our team to learn about our upcoming exhibition schedule or to arrange a meeting.</p>
-            <a href="/contact-us" class="ev-cta-btn">
+            <a href="/contact-us" class="btn-gold">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 Contact Our Team
             </a>
