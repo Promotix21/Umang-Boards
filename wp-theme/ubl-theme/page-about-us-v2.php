@@ -34,9 +34,6 @@ $uri = UBL_URI;
                         Worldwide
                     </h1>
 
-                    <p class="ab2-subhead">
-                        Advanced insulation materials and precision winding solutions enabling reliable power transmission across global energy systems.
-                    </p>
                 </div>
 
                 <div class="ab2-headline-img" aria-hidden="true">
@@ -91,13 +88,9 @@ $uri = UBL_URI;
                     <div class="ab2-split-rule"></div>
                     <div class="ab2-body">
                         <p>Founded with a vision to reduce India's dependence on imported electrical insulation products, Umang Boards Limited has evolved into a globally trusted manufacturing partner serving power utilities, transformer OEMs, and industrial equipment manufacturers.</p>
-                        <p class="ab2-body-extra">We manufacture high-performance cellulose insulation materials, precision super enameled and paper-coated winding wires in copper and aluminum, along with specialized insulating chemicals&mdash;delivering integrated solutions for critical electrical applications.</p>
-                        <p class="ab2-body-extra">Serving industries across six continents, we support infrastructure that powers economies, industries, and emerging energy systems.</p>
+                        <p>We manufacture high-performance cellulose insulation materials, precision super enameled and paper-coated winding wires in copper and aluminum, along with specialized insulating chemicals, delivering integrated solutions for critical electrical applications.</p>
+                        <p>Serving industries across six continents, we support infrastructure that powers economies, industries, and emerging energy systems.</p>
                     </div>
-                    <button type="button" class="ab2-readmore" id="ab2ReadMore" aria-expanded="false" aria-controls="ab2BodyText">
-                        <span class="ab2-readmore-label">Read Full Story</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
                 </div>
 
                 <div class="ab2-split-video">
@@ -196,93 +189,35 @@ $uri = UBL_URI;
                 <p class="ab2-exc-body">Our integrated manufacturing capabilities span <em>high-performance insulation materials</em>, precision <em>winding wires</em>, and specialized <em>insulating chemicals</em>—enabling us to deliver complete electrical component solutions across applications.</p>
             </div>
 
-            <!-- RIGHT: big image + 3 product cards -->
+            <!-- RIGHT: 3 product category tiles (no lab image per brief) -->
             <div class="ab2-exc-visual">
-                <div class="ab2-exc-img-hero">
-                    <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-excellence-hero.jpg" alt="High-voltage testing in our laboratory" loading="lazy">
-                    <div class="ab2-exc-img-hero-overlay"></div>
-                </div>
-                <div class="ab2-exc-products">
-                    <div class="ab2-exc-product-card">
+                <div class="ab2-exc-products ab2-exc-products--full">
+                    <a href="<?php echo esc_url( home_url('/transformer-insulations/') ); ?>" class="ab2-exc-product-card ab2-exc-product-card--linked">
                         <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-product-insulation.png" alt="Insulation Materials" loading="lazy">
                         <div class="ab2-exc-product-overlay">
                             <span class="ab2-exc-product-label">Insulation Materials</span>
+                            <span class="ab2-exc-product-cta">Explore Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-                    </div>
-                    <div class="ab2-exc-product-card">
+                    </a>
+                    <a href="<?php echo esc_url( home_url('/winding-wires/') ); ?>" class="ab2-exc-product-card ab2-exc-product-card--linked">
                         <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-product-winding.png" alt="Winding Wires" loading="lazy">
                         <div class="ab2-exc-product-overlay">
                             <span class="ab2-exc-product-label">Winding Wires</span>
+                            <span class="ab2-exc-product-cta">Explore Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-                    </div>
-                    <div class="ab2-exc-product-card">
+                    </a>
+                    <a href="<?php echo esc_url( home_url('/insulating-chemical/') ); ?>" class="ab2-exc-product-card ab2-exc-product-card--linked">
                         <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-product-chemicals.png" alt="Insulating Chemicals" loading="lazy">
                         <div class="ab2-exc-product-overlay">
                             <span class="ab2-exc-product-label">Insulating Chemicals</span>
+                            <span class="ab2-exc-product-cta">Explore Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 
         </div>
 
-        <!-- BOTTOM: 4 pillar cards -->
-        <div class="ab2-exc-pillars-outer"><div class="ab2-exc-pillars">
-
-            <div class="ab2-exc-pillar">
-                <div class="ab2-exc-pillar-icon">
-                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="24" cy="20" r="12"/>
-                        <path d="M24 12v8l5 3"/>
-                        <path d="M14 38c0-3 4.5-5 10-5s10 2 10 5"/>
-                    </svg>
-                </div>
-                <h3 class="ab2-exc-pillar-title">Innovation &amp; Process</h3>
-                <div class="ab2-exc-pillar-divider"></div>
-                <p class="ab2-exc-pillar-body">Built on a technology-driven foundation, we continuously invest in advanced processes and product development to meet evolving electrical demands.</p>
-            </div>
-
-            <div class="ab2-exc-pillar">
-                <div class="ab2-exc-pillar-icon">
-                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M24 6l4 8 9 1.3-6.5 6.3 1.5 9L24 26l-8 4.6 1.5-9L11 15.3 20 14z"/>
-                        <path d="M14 40h20"/>
-                        <path d="M24 36v4"/>
-                    </svg>
-                </div>
-                <h3 class="ab2-exc-pillar-title">Quality &amp; Reliability</h3>
-                <div class="ab2-exc-pillar-divider"></div>
-                <p class="ab2-exc-pillar-body">Disciplined manufacturing, stringent quality control, and in-house testing ensure consistent performance across all product categories.</p>
-            </div>
-
-            <div class="ab2-exc-pillar">
-                <div class="ab2-exc-pillar-icon">
-                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="8 36 20 22 28 30 42 12"/>
-                        <polyline points="34 12 42 12 42 20"/>
-                    </svg>
-                </div>
-                <h3 class="ab2-exc-pillar-title">Leadership &amp; Growth</h3>
-                <div class="ab2-exc-pillar-divider"></div>
-                <p class="ab2-exc-pillar-body">Guided by experienced leadership and a clear growth vision, we have expanded steadily while maintaining operational and financial discipline.</p>
-            </div>
-
-            <div class="ab2-exc-pillar">
-                <div class="ab2-exc-pillar-icon">
-                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="18" cy="16" r="6"/>
-                        <path d="M6 38c0-6 5.4-10 12-10"/>
-                        <circle cx="34" cy="28" r="5"/>
-                        <path d="M26 42c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
-                        <path d="M28 20l3 3 6-7"/>
-                    </svg>
-                </div>
-                <h3 class="ab2-exc-pillar-title">Social Responsibility</h3>
-                <div class="ab2-exc-pillar-divider"></div>
-                <p class="ab2-exc-pillar-body">Through structured initiatives and the Dhanuka Foundation, we contribute to community development and sustainable practices.</p>
-            </div>
-
-        </div></div>
 
     </section>
 
@@ -588,109 +523,17 @@ $uri = UBL_URI;
                 </div>
             </div><!-- /row1 -->
 
-            <!-- ROW 2: 8 icon cards (4×2) -->
-            <div class="ab2-cv-grid">
-
-                <div class="ab2-cv-card">
-                    <div class="ab2-cv-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="24" cy="24" r="16"/>
-                            <polyline points="16 24 21 29 32 18"/>
-                        </svg>
-                    </div>
-                    <h4 class="ab2-cv-card-title"><span class="ab2-cv-card-num">1.</span> Quality &amp; Excellence</h4>
-                    <p class="ab2-cv-card-desc">Uncompromising standards, continuous improvement, and a zero-defect mindset.</p>
-                </div>
-
-                <div class="ab2-cv-card">
-                    <div class="ab2-cv-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M24 8c-2 5-5 7.5-5 13a5 5 0 0 0 10 0c0-5.5-3-8-5-13z"/>
-                            <path d="M19 30h10"/>
-                            <path d="M20 34h8"/>
-                            <path d="M22 38h4"/>
-                        </svg>
-                    </div>
-                    <h4 class="ab2-cv-card-title"><span class="ab2-cv-card-num">2.</span> Innovation &amp; Technology</h4>
-                    <p class="ab2-cv-card-desc">Advanced R&amp;D, automation, and next-generation solutions that shape the future.</p>
-                </div>
-
-                <div class="ab2-cv-card">
-                    <div class="ab2-cv-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="18" cy="18" r="6"/>
-                            <circle cx="32" cy="20" r="5"/>
-                            <path d="M8 40c0-6 4-10 10-10s10 4 10 10"/>
-                            <path d="M28 40c0-5 3-8 8-8s6 3 6 8"/>
-                        </svg>
-                    </div>
-                    <h4 class="ab2-cv-card-title"><span class="ab2-cv-card-num">3.</span> Customer Centricity</h4>
-                    <p class="ab2-cv-card-desc">Long-term partnerships, responsiveness, and collaborative problem-solving.</p>
-                </div>
-
-                <div class="ab2-cv-card">
-                    <div class="ab2-cv-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M24 8c-3 6-10 9-10 18a10 10 0 0 0 20 0c0-9-7-12-10-18z"/>
-                            <path d="M20 28c0 4 2 7 4 8"/>
-                        </svg>
-                    </div>
-                    <h4 class="ab2-cv-card-title"><span class="ab2-cv-card-num">4.</span> Sustainability &amp; Responsibility</h4>
-                    <p class="ab2-cv-card-desc">Environmental stewardship, zero liquid discharge, and positive community impact.</p>
-                </div>
-
-                <div class="ab2-cv-card">
-                    <div class="ab2-cv-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="8" y="28" width="7" height="12" rx="1"/>
-                            <rect x="20" y="20" width="7" height="20" rx="1"/>
-                            <rect x="32" y="12" width="7" height="28" rx="1"/>
-                            <polyline points="10 24 18 16 28 20 38 10"/>
-                        </svg>
-                    </div>
-                    <h4 class="ab2-cv-card-title"><span class="ab2-cv-card-num">5.</span> Operational Excellence</h4>
-                    <p class="ab2-cv-card-desc">Process discipline, efficiency, and data-driven optimization in everything we do.</p>
-                </div>
-
-                <div class="ab2-cv-card">
-                    <div class="ab2-cv-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M24 6l-14 6v10c0 9 6 17 14 20 8-3 14-11 14-20V12L24 6z"/>
-                            <polyline points="18 24 22 28 30 20"/>
-                        </svg>
-                    </div>
-                    <h4 class="ab2-cv-card-title"><span class="ab2-cv-card-num">6.</span> Integrity &amp; Trust</h4>
-                    <p class="ab2-cv-card-desc">Transparency, accountability, and ethical practices in every business interaction.</p>
-                </div>
-
-                <div class="ab2-cv-card">
-                    <div class="ab2-cv-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="16" cy="16" r="5"/>
-                            <circle cx="32" cy="16" r="5"/>
-                            <circle cx="24" cy="14" r="4"/>
-                            <path d="M8 38c0-6 4-10 8-10"/>
-                            <path d="M40 38c0-6-4-10-8-10"/>
-                            <path d="M16 40c0-6 4-10 8-10s8 4 8 10"/>
-                        </svg>
-                    </div>
-                    <h4 class="ab2-cv-card-title"><span class="ab2-cv-card-num">7.</span> Teamwork &amp; Dedication</h4>
-                    <p class="ab2-cv-card-desc">Skilled people, continuous learning, and a culture of respect and shared success.</p>
-                </div>
-
-                <div class="ab2-cv-card">
-                    <div class="ab2-cv-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="24" cy="24" r="10"/>
-                            <path d="M24 18v6l4 3"/>
-                            <path d="M24 8v3M24 37v3M8 24h3M37 24h3"/>
-                        </svg>
-                    </div>
-                    <h4 class="ab2-cv-card-title"><span class="ab2-cv-card-num">8.</span> Cost Leadership</h4>
-                    <p class="ab2-cv-card-desc">Delivering economical solutions that create value without compromising on quality.</p>
-                </div>
-
-            </div><!-- /grid -->
+            <!-- ROW 2: value pills -->
+            <div class="ab2-cv-pills">
+                <span class="ab2-cv-pill">Quality &amp; Excellence</span>
+                <span class="ab2-cv-pill">Innovation &amp; Technology</span>
+                <span class="ab2-cv-pill">Customer Centricity</span>
+                <span class="ab2-cv-pill">Sustainability &amp; Responsibility</span>
+                <span class="ab2-cv-pill">Operational Excellence</span>
+                <span class="ab2-cv-pill">Integrity &amp; Trust</span>
+                <span class="ab2-cv-pill">Teamwork &amp; Dedication</span>
+                <span class="ab2-cv-pill">Cost Leadership</span>
+            </div>
 
             <!-- ROW 3: inset rounded rectangle — quote + 4 pillars -->
             <div class="ab2-cv-inset">
@@ -698,7 +541,7 @@ $uri = UBL_URI;
                     <svg class="ab2-cv-quote-mark" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true">
                         <path d="M0 24V12C0 5.4 5.4 0 12 0v4c-4.4 0-8 3.6-8 8h8v12H0zm20 0V12c0-6.6 5.4-12 12-12v4c-4.4 0-8 3.6-8 8h8v12H20z"/>
                     </svg>
-                    <p class="ab2-cv-quote-text">These principles are not just ideals &mdash; they are the foundation of how we build, deliver, and lead.</p>
+                    <p class="ab2-cv-quote-text">These principles are not just ideals , they are the foundation of how we build, deliver, and lead.</p>
                 </div>
                 <div class="ab2-cv-pillars">
                     <div class="ab2-cv-pillar">
@@ -724,6 +567,17 @@ $uri = UBL_URI;
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
+         OUR TEAM GATEWAY
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="ab2-team-gateway">
+        <div class="ab2-team-gateway-inner">
+            <div class="ab2-team-eyebrow">Our Team</div>
+            <p class="ab2-team-body">Great companies are shaped by the people who understand them most deeply. At Umang Boards, our leadership team carries between them decades of experience in transformer insulation, manufacturing operations, and business growth — a team that has built this company and continues to steer it with the same conviction it started with. Get to know them.</p>
+            <a href="<?php echo esc_url( home_url('/leadership/') ); ?>" class="btn-gold">Meet the Team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
          MEDIA & NEWS — au-news (ported from v1)
     ═══════════════════════════════════════════════════════════════ -->
     <section class="au-news" id="auNews">
@@ -742,7 +596,7 @@ $uri = UBL_URI;
                         <img src="<?php echo esc_url( $uri ); ?>/assets/images/news-pgcil-approval.jpg" alt="PGCIL 400 KV Approval" loading="lazy">
                     </div>
                     <div class="au-news-card-body">
-                        <h3 class="au-news-card-title">Power Grid Corporation India Ltd &mdash; 400 KV Class Approval</h3>
+                        <h3 class="au-news-card-title">Power Grid Corporation India Ltd: 400 KV Class Approval</h3>
                         <p class="au-news-card-excerpt">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class rating transformers.</p>
                         <a href="<?php echo home_url('/newsroom'); ?>" class="au-news-card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                     </div>
@@ -754,7 +608,7 @@ $uri = UBL_URI;
                     </div>
                     <div class="au-news-card-body">
                         <h3 class="au-news-card-title">CRISIL BBB Investment Grade Rating Achieved</h3>
-                        <p class="au-news-card-excerpt">We are now BBB rated by CRISIL &mdash; reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
+                        <p class="au-news-card-excerpt">We are now BBB rated by CRISIL , reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
                         <a href="<?php echo home_url('/newsroom'); ?>" class="au-news-card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                     </div>
                 </article>
