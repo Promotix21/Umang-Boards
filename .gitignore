@@ -1,6 +1,16 @@
-# Utility scripts (local use only)
+# SSH deploy keys — never commit
+_deploy_key
+_deploy_key.pub
+_live-backups/
+
+# Local-only scripts (contain server credentials)
+deploy_pages.py
+pull_live.py
+setup_deploy_key.py
+move_cf_to_wpconfig.py
 check_server.py
 compare_server.py
 sync_from_server.py
+
 *.pyc
 __pycache__/

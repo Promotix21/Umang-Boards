@@ -1127,6 +1127,126 @@ $uri = UBL_URI;
     margin-bottom: 2.5rem;
 }
 
+/* --- OUR STRENGTH --- */
+.au-strength-section {
+    background: #fff;
+    padding: clamp(5rem, 10vh, 8rem) clamp(1.5rem, 4vw, 3.5rem);
+    position: relative;
+    z-index: 2;
+}
+.au-strength-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+}
+.au-strength-text-col {}
+.au-strength-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+.au-strength-title {
+    font-family: var(--font-body);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+}
+.au-strength-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    letter-spacing: 0.01em;
+}
+.au-strength-text-col p {
+    font-size: clamp(0.92rem, 1.2vw, 1rem);
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+}
+.au-strength-text-col p:last-child { margin-bottom: 0; }
+.au-strength-tiles-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.au-strength-tile {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0;
+    border: 1px solid rgba(11,31,58,0.09);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    background: #fff;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.au-strength-tile:hover {
+    box-shadow: 0 12px 40px rgba(11,31,58,0.12);
+    transform: translateY(-3px);
+}
+.au-strength-tile-img {
+    width: 140px;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+}
+.au-strength-tile-body {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+}
+.au-strength-tile-cat {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+}
+.au-strength-tile-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+}
+.au-strength-tile-arrow {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+}
+.au-strength-tile-arrow svg { width: 14px; height: 14px; transition: transform 0.3s; }
+.au-strength-tile:hover .au-strength-tile-arrow svg { transform: translateX(4px); }
+@media (max-width: 1024px) {
+    .au-strength-inner { grid-template-columns: 1fr; }
+    .au-strength-tiles-col { flex-direction: row; flex-wrap: wrap; }
+    .au-strength-tile { flex: 1 1 calc(50% - 0.625rem); }
+}
+@media (max-width: 600px) {
+    .au-strength-tile { grid-template-columns: 110px 1fr; }
+    .au-strength-tiles-col { flex-direction: column; }
+    .au-strength-tile { flex: none; }
+    .au-strength-tile-img { width: 110px; }
+}
+
 /* --- NEWS / EVENTS / CONNECT ROW HEADER --- */
 .au-updates-header {
     max-width: 1400px;
@@ -1921,6 +2041,57 @@ $uri = UBL_URI;
                 <span class="au-value-pill">Integrity &amp; Trust</span>
                 <span class="au-value-pill">Teamwork &amp; Dedication</span>
                 <span class="au-value-pill">Cost Leadership</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         OUR STRENGTH
+         ══════════════════════════════════════════ -->
+    <section class="au-strength-section" id="auStrength">
+        <div class="au-strength-inner">
+            <div class="au-strength-text-col" data-reveal>
+                <div class="au-strength-eyebrow">Manufacturing Excellence</div>
+                <h2 class="au-strength-title">Our Strength</h2>
+                <p class="au-strength-subtitle">Engineering Excellence Built on Manufacturing Depth</p>
+                <p>Headquartered in Jaipur, India, Umang Boards Limited has built its growth on continuous investment in advanced manufacturing, skilled talent, and rigorous in-house testing systems. With two modern production facilities and globally recognized ISO certifications, we ensure every product meets the highest standards of performance, reliability, and consistency.</p>
+                <p>Our integrated manufacturing capabilities span high-performance insulation materials, precision winding wires, and specialized insulating chemicals, enabling us to deliver complete electrical component solutions across applications.</p>
+            </div>
+            <div class="au-strength-tiles-col" data-reveal>
+                <a href="<?php echo esc_url( home_url( '/transformer-insulations/' ) ); ?>" class="au-strength-tile">
+                    <img src="<?php echo UBL_URI; ?>/assets/images/product-transformer-insulation.jpg" alt="Transformer Insulation" class="au-strength-tile-img">
+                    <div class="au-strength-tile-body">
+                        <div class="au-strength-tile-cat">Product Category</div>
+                        <div class="au-strength-tile-name">Transformer Insulation</div>
+                        <div class="au-strength-tile-arrow">
+                            Explore Range
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </a>
+                <a href="<?php echo esc_url( home_url( '/winding-wires/' ) ); ?>" class="au-strength-tile">
+                    <img src="<?php echo UBL_URI; ?>/assets/images/product-winding-wire.jpg" alt="Winding Wires" class="au-strength-tile-img">
+                    <div class="au-strength-tile-body">
+                        <div class="au-strength-tile-cat">Product Category</div>
+                        <div class="au-strength-tile-name">Winding Wires</div>
+                        <div class="au-strength-tile-arrow">
+                            Explore Range
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </a>
+                <a href="<?php echo esc_url( home_url( '/insulating-chemical/' ) ); ?>" class="au-strength-tile">
+                    <img src="<?php echo UBL_URI; ?>/assets/images/product-insulating-chemicals.jpg" alt="Insulating Chemicals" class="au-strength-tile-img">
+                    <div class="au-strength-tile-body">
+                        <div class="au-strength-tile-cat">Product Category</div>
+                        <div class="au-strength-tile-name">Insulating Chemicals</div>
+                        <div class="au-strength-tile-arrow">
+                            Explore Range
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
