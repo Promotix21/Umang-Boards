@@ -1,0 +1,510 @@
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #f0f1f3; }
+
+  .page-title {
+    padding: 28px 32px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0B1F3A;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #dde0e8;
+    margin-bottom: 0;
+    background: #fff;
+  }
+  .page-sub {
+    padding: 8px 32px 20px;
+    font-size: 12px;
+    color: #555;
+    background: #fff;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #dde0e8;
+  }
+  .page-sub strong { color: #C8A84B; }
+
+  /* ---- comparison rows ---- */
+  .cmp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 24px 24px; }
+  .cmp-col { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
+  .cmp-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    padding: 9px 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .label-before { background: #3a1818; color: #d09090; }
+  .label-after  { background: #0d3a20; color: #70c490; }
+  .label-before .dot, .label-after .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .label-before .dot { background: #d09090; }
+  .label-after  .dot { background: #70c490; }
+  .label-after em, .label-before em { color: #C8A84B; font-style: normal; }
+
+  /* ---- SECTION HEADER ---- */
+  .section-hdr {
+    padding: 14px 24px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #0B1F3A;
+    border-bottom: 2px solid #C8A84B;
+    margin: 0 24px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-hdr-badge {
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(200,168,75,.15);
+    color: #C8A84B;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+
+  /* ============================
+     MINI DESIGN SYSTEM
+     matches UBL homepage exactly
+     ============================ */
+  :root {
+    --navy: #0B1F3A;
+    --gold: #C8A84B;
+    --white: #fff;
+    --light: #f8f9fb;
+    --text-body: rgba(11,31,58,.68);
+  }
+
+  /* Shared elements */
+  .eyebrow {
+    font-size: 9px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 8px;
+  }
+  .eyebrow::before {
+    content: ''; width: 18px; height: 2px;
+    background: var(--gold); flex-shrink: 0;
+  }
+  .heading { font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.25; letter-spacing: -.02em; }
+  .heading em { font-style: normal; color: var(--gold); }
+  .heading-white { color: #fff; }
+  .body-text { font-size: 9px; color: var(--text-body); line-height: 1.7; margin-top: 6px; }
+  .gold-rule { width: 28px; height: 2px; background: var(--gold); margin: 8px 0; }
+  .section-wrap { padding: 20px 18px; }
+
+  /* ==========================================
+     V&M — BEFORE (boxed)
+     ========================================== */
+  .vm-before { background: var(--navy); }
+  .vm-before .vm-inner { padding: 18px; }
+  .vm-before .vm-hdr { margin-bottom: 14px; }
+  .vm-before .vm-box {
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(200,168,75,.25);
+    box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    padding: 14px;
+    backdrop-filter: blur(4px);
+  }
+  .vm-before .vm-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .vm-before .vm-card {
+    background: linear-gradient(160deg, #fbf6ee 0%, #f5ead6 100%);
+    border: 1px solid rgba(200,168,75,.22);
+    padding: 12px;
+  }
+  .vm-card-label { font-size: 11px; font-weight: 800; color: var(--gold); letter-spacing: -.01em; margin-bottom: 6px; }
+  .vm-card-body  { font-size: 8px; color: var(--navy); line-height: 1.65; font-weight: 700; }
+  .vm-card-sup   { font-size: 7.5px; color: rgba(11,31,58,.55); line-height: 1.65; margin-top: 5px; }
+
+  /* What's wrong annotation */
+  .issue-note {
+    margin: 10px 18px 0;
+    padding: 8px 12px;
+    background: rgba(180,40,40,.08);
+    border-left: 2px solid #d06060;
+    font-size: 9px;
+    color: #c05050;
+    line-height: 1.6;
+  }
+  .fix-note {
+    margin: 10px 18px 0;
+    padding: 8px 12px;
+    background: rgba(60,160,80,.08);
+    border-left: 2px solid #3c9050;
+    font-size: 9px;
+    color: #2d7a42;
+    line-height: 1.6;
+  }
+
+  /* ==========================================
+     V&M — AFTER (no box, matches homepage)
+     ========================================== */
+  .vm-after { background: var(--navy); }
+  .vm-after .vm-inner { padding: 18px; }
+  .vm-after .vm-hdr { margin-bottom: 16px; }
+  .vm-after .vm-hdr .heading { color: #fff; }
+  .vm-after .vm-hdr .body-text { color: rgba(255,255,255,.6); }
+  .vm-after .vm-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(200,168,75,.25);
+  }
+  .vm-after .vm-col {}
+  .vm-col-tag { font-size: 9px; font-weight: 700; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+  .vm-col-rule { width: 24px; height: 2px; background: var(--gold); margin-bottom: 10px; }
+  .vm-col-body { font-size: 8.5px; color: rgba(255,255,255,.82); line-height: 1.7; font-weight: 600; }
+  .vm-col-sup  { font-size: 7.5px; color: rgba(255,255,255,.48); line-height: 1.65; margin-top: 6px; }
+
+  /* ==========================================
+     CORE VALUES — BEFORE (parchment box)
+     ========================================== */
+  .cv-before { background: var(--white); }
+  .cv-before-outer { margin: 18px; background: #f9f4ea; border: 1px solid rgba(200,168,75,.18); box-shadow: 0 8px 32px rgba(0,0,0,.07); padding: 14px; }
+  .cv-before .cv-row1 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; align-items: center; }
+  .cv-before .cv-img { background: linear-gradient(135deg, #e8dfc8, #d4c8a8); height: 60px; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+  .cv-before .cv-img span { font-size: 8px; color: rgba(11,31,58,.4); text-transform: uppercase; letter-spacing: .1em; }
+  .cv-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .cv-pill { font-size: 7.5px; padding: 3px 9px; border-radius: 20px; background: rgba(11,31,58,.07); border: 1px solid rgba(11,31,58,.12); color: var(--navy); font-weight: 600; }
+
+  /* ==========================================
+     CORE VALUES — AFTER (open, white)
+     ========================================== */
+  .cv-after { background: var(--white); }
+  .cv-after .cv-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .cv-after .cv-text-col { padding: 18px; border-right: 1px solid rgba(11,31,58,.07); display: flex; flex-direction: column; justify-content: center; }
+  .cv-after .cv-img-col { position: relative; overflow: hidden; }
+  .cv-after .cv-img-fill { background: linear-gradient(135deg, #e8dfc8, #c8b888); height: 100%; min-height: 120px; display: flex; align-items: center; justify-content: center; }
+  .cv-after .cv-img-fill span { font-size: 8px; color: rgba(11,31,58,.35); text-transform: uppercase; letter-spacing: .1em; }
+  .cv-after .cv-pills-row { padding: 12px 18px; border-top: 1px solid rgba(11,31,58,.06); background: var(--light); }
+  .cv-after .cv-pill { background: rgba(11,31,58,.05); border-color: rgba(11,31,58,.1); }
+
+  /* ==========================================
+     PILLARS — BEFORE (card-like boxes)
+     ========================================== */
+  .pillars-before { background: #fff; }
+  .pillars-before .pg { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .pillar-card {
+    padding: 14px 12px;
+    border-right: 1px solid rgba(11,31,58,.07);
+    display: flex; flex-direction: column; gap: 6px;
+    background: #fff;
+    transition: background .2s;
+  }
+  .pillar-card:last-child { border-right: none; }
+  .pillar-icon { width: 28px; height: 28px; background: rgba(200,168,75,.12); border-radius: 50%; border: 1px solid rgba(200,168,75,.3); display: flex; align-items: center; justify-content: center; }
+  .pillar-icon svg { width: 14px; height: 14px; stroke: var(--gold); }
+  .pillar-title { font-size: 9px; font-weight: 700; color: var(--navy); }
+  .pillar-div { width: 20px; height: 1.5px; background: var(--gold); }
+  .pillar-body { font-size: 7.5px; color: var(--text-body); line-height: 1.65; }
+
+  /* ==========================================
+     PILLARS — AFTER (editorial type-forward)
+     ========================================== */
+  .pillars-after { background: #fff; }
+  .pillars-after .pg {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(11,31,58,.07);
+  }
+  .pillar-open {
+    padding: 16px 14px 14px;
+    border-right: 1px solid rgba(11,31,58,.07);
+    border-top: 3px solid transparent;
+    transition: border-color .25s;
+  }
+  .pillar-open:last-child { border-right: none; }
+  .pillar-open:hover { border-top-color: var(--gold); }
+  .pillar-num { font-size: 22px; font-weight: 800; color: rgba(11,31,58,.06); letter-spacing: -.04em; line-height: 1; margin-bottom: 4px; }
+  .pillar-open .pillar-title { font-size: 9px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .pillar-open .pillar-body { font-size: 7.5px; color: var(--text-body); line-height: 1.65; }
+
+  /* ==========================================
+     CHANGE SUMMARY TABLE
+     ========================================== */
+  .summary-wrap { padding: 0 24px 32px; }
+  .summary-table { width: 100%; border-collapse: collapse; font-size: 10.5px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  .summary-table th { padding: 10px 14px; background: var(--navy); color: rgba(255,255,255,.7); font-size: 9px; text-transform: uppercase; letter-spacing: .1em; text-align: left; }
+  .summary-table td { padding: 10px 14px; border-bottom: 1px solid rgba(11,31,58,.06); vertical-align: top; line-height: 1.55; }
+  .summary-table tr:last-child td { border-bottom: none; }
+  .tag-remove { background: rgba(180,40,40,.1); color: #c04040; font-size: 8px; font-weight: 700; padding: 1px 6px; border-radius: 3px; text-transform: uppercase; letter-spacing: .06em; }
+  .tag-keep { background: rgba(60,160,80,.1); color: #2d7a42; font-size: 8px; font-weight: 700; padding: 1px 6px; border-radius: 3px; text-transform: uppercase; letter-spacing: .06em; }
+  .tag-restyle { background: rgba(200,168,75,.15); color: #8a6c1a; font-size: 8px; font-weight: 700; padding: 1px 6px; border-radius: 3px; text-transform: uppercase; letter-spacing: .06em; }
+  .col-section { color: var(--navy); font-weight: 700; }
+  .col-change { color: #333; }
+  .col-css { color: #555; font-family: 'Courier New', monospace; font-size: 9px; }
+</style>
+
+<div class="page-title">About Us — Removing the Boxes</div>
+<div class="page-sub">Exact same content, same colors, same fonts. Only the inner containers are removed — matching how the homepage works. <strong>The homepage never has a white box floating on a dark section.</strong></div>
+
+<!-- ============================
+     1. VISION & MISSION
+     ============================ -->
+<div class="section-hdr">
+  Vision &amp; Mission
+  <span class="section-hdr-badge">Problem: white box on dark navy</span>
+</div>
+
+<div class="cmp-row">
+
+  <!-- BEFORE -->
+  <div class="cmp-col">
+    <div class="cmp-label label-before"><span class="dot"></span> Current — <em>White box floating on dark bg</em></div>
+    <div class="vm-before">
+      <div class="vm-inner">
+        <div class="vm-hdr">
+          <div class="eyebrow" style="color:#C8A84B;">Our Direction</div>
+          <div class="heading heading-white" style="color:#fff;font-size:13px;">Shaping the Future of <em>Global Electrical Infrastructure</em></div>
+          <div class="body-text" style="color:rgba(255,255,255,.55); font-size:8px; margin-top:5px;">Our vision and mission guide how we innovate, scale, and contribute.</div>
+        </div>
+        <!-- THE BOX — this is the problem -->
+        <div class="vm-box">
+          <div class="vm-cards">
+            <div class="vm-card">
+              <div class="vm-card-label">Vision</div>
+              <div class="gold-rule"></div>
+              <div class="vm-card-body">To be the global benchmark in electrical insulation and winding solutions...</div>
+              <div class="vm-card-sup">We aspire to lead through continuous innovation, superior quality and customer-centric solutions...</div>
+            </div>
+            <div class="vm-card">
+              <div class="vm-card-label">Mission</div>
+              <div class="gold-rule"></div>
+              <div class="vm-card-body">We deliver high-quality, cost-efficient electrical components through advanced technology...</div>
+              <div class="vm-card-sup">Our integrated solutions in insulation materials, winding wires, and insulating chemicals...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="issue-note">
+      <strong>Three layers of boxes:</strong> Dark section → white/blur box → parchment cards. The homepage never nests boxes inside dark sections. Content always sits directly on the background.
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="cmp-col">
+    <div class="cmp-label label-after"><span class="dot"></span> Proposed — <em>Text directly on dark bg (homepage pattern)</em></div>
+    <div class="vm-after">
+      <div class="vm-inner">
+        <div class="vm-hdr">
+          <div class="eyebrow" style="color:#C8A84B;">Our Direction</div>
+          <div class="heading" style="color:#fff;font-size:13px;">Shaping the Future of <em style="color:#C8A84B;">Global Electrical Infrastructure</em></div>
+          <div class="body-text" style="color:rgba(255,255,255,.55); font-size:8px; margin-top:5px;">Our vision and mission guide how we innovate, scale, and contribute.</div>
+        </div>
+        <!-- NO BOX — content directly on dark bg -->
+        <div class="vm-cols">
+          <div class="vm-col">
+            <div class="vm-col-tag">Vision</div>
+            <div class="vm-col-rule"></div>
+            <div class="vm-col-body">To be the global benchmark in electrical insulation and winding solutions, powering the world's transition to ultra-high voltage systems.</div>
+            <div class="vm-col-sup">We aspire to lead through continuous innovation, superior quality, and customer-centric solutions, creating long-term value.</div>
+          </div>
+          <div class="vm-col">
+            <div class="vm-col-tag">Mission</div>
+            <div class="vm-col-rule"></div>
+            <div class="vm-col-body">We deliver high-quality, cost-efficient electrical components through advanced technology and operational excellence.</div>
+            <div class="vm-col-sup">Our integrated solutions in insulation materials, winding wires, and insulating chemicals are built to enhance reliability and performance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fix-note">
+      <strong>Same dark section, no box.</strong> Vision and Mission sit directly on the navy background — exactly how the homepage's CSR and Investor sections work. The gold hairline separates the two columns.
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================
+     2. CORE VALUES
+     ============================ -->
+<div class="section-hdr" style="margin-top:8px;">
+  Core Values
+  <span class="section-hdr-badge">Problem: parchment box inside white section</span>
+</div>
+
+<div class="cmp-row">
+
+  <!-- BEFORE -->
+  <div class="cmp-col">
+    <div class="cmp-label label-before"><span class="dot"></span> Current — <em>Parchment inner box with shadow</em></div>
+    <div class="cv-before" style="padding-bottom:4px;">
+      <div class="cv-before-outer">
+        <div class="cv-row1">
+          <div>
+            <div class="eyebrow">OUR VALUES</div>
+            <div class="heading" style="font-size:12px;">Principles That<br>Drive <em>Performance</em></div>
+            <div class="body-text" style="font-size:7.5px; margin-top:5px;">Our values define how we operate, innovate, and deliver consistent quality.</div>
+          </div>
+          <div class="cv-img"><span>materials image</span></div>
+        </div>
+        <div class="cv-pills">
+          <span class="cv-pill">Quality &amp; Excellence</span>
+          <span class="cv-pill">Innovation &amp; Technology</span>
+          <span class="cv-pill">Customer Centricity</span>
+          <span class="cv-pill">Sustainability</span>
+          <span class="cv-pill">Operational Excellence</span>
+          <span class="cv-pill">Integrity &amp; Trust</span>
+        </div>
+      </div>
+    </div>
+    <div class="issue-note">
+      <strong>Box on white.</strong> The parchment inner box adds a shadow border on an already-light section — it creates a "slide" feel, not a flowing section. The homepage uses open grids with no inner shadow boxes.
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="cmp-col">
+    <div class="cmp-label label-after"><span class="dot"></span> Proposed — <em>Open split layout (homepage CSR pattern)</em></div>
+    <div class="cv-after">
+      <div class="cv-split">
+        <div class="cv-text-col">
+          <div class="eyebrow">OUR VALUES</div>
+          <div class="heading" style="font-size:12px;">Principles That<br>Drive <em>Performance</em></div>
+          <div class="gold-rule"></div>
+          <div class="body-text" style="font-size:7.5px;">Our values define how we operate, innovate, and deliver consistent quality across every aspect of our business.</div>
+        </div>
+        <div class="cv-img-col">
+          <div class="cv-img-fill"><span>materials image</span></div>
+        </div>
+      </div>
+      <div class="cv-pills-row">
+        <div class="cv-pills">
+          <span class="cv-pill">Quality &amp; Excellence</span>
+          <span class="cv-pill">Innovation &amp; Technology</span>
+          <span class="cv-pill">Customer Centricity</span>
+          <span class="cv-pill">Sustainability</span>
+          <span class="cv-pill">Operational Excellence</span>
+          <span class="cv-pill">Integrity &amp; Trust</span>
+        </div>
+      </div>
+    </div>
+    <div class="fix-note">
+      <strong>Open split layout.</strong> Heading and text on the left, image fills the right — exactly like the homepage CSR section. Pills sit in a simple band below. No shadow box, no inner container.
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================
+     3. PILLARS (ENGINEERING EXCELLENCE)
+     ============================ -->
+<div class="section-hdr" style="margin-top:8px;">
+  Engineering Excellence — Pillars
+  <span class="section-hdr-badge">Subtle improvement only</span>
+</div>
+
+<div class="cmp-row">
+
+  <!-- BEFORE -->
+  <div class="cmp-col">
+    <div class="cmp-label label-before"><span class="dot"></span> Current — <em>Cards with hover lift + border animations</em></div>
+    <div class="pillars-before">
+      <div class="pg">
+        <div class="pillar-card">
+          <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="10" r="6"/></svg></div>
+          <div class="pillar-title">Innovation &amp; Products</div>
+          <div class="pillar-div"></div>
+          <div class="pillar-body">Built on a technology-driven foundation, we continuously invest in innovation and product development.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polygon points="12 2 15 8 22 9 17 14 18 22 12 19 6 22 7 14 2 9 9 8"/></svg></div>
+          <div class="pillar-title">Quality &amp; Reliability</div>
+          <div class="pillar-div"></div>
+          <div class="pillar-body">Across markets we are known for consistent quality and long-term customer partnerships.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="2 20 8 12 14 16 22 4"/></svg></div>
+          <div class="pillar-title">Leadership &amp; Growth</div>
+          <div class="pillar-div"></div>
+          <div class="pillar-body">Guided by committed leadership and a clear growth vision, Umang Boards has expanded steadily.</div>
+        </div>
+        <div class="pillar-card" style="border-right:none;">
+          <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="pillar-title">Social Responsibility</div>
+          <div class="pillar-div"></div>
+          <div class="pillar-body">Through structured social initiatives and Dhanuka Foundation, we contribute to community development.</div>
+        </div>
+      </div>
+    </div>
+    <div class="issue-note">
+      <strong>Cards in a grid</strong> — each pillar is a distinct card box. Less problematic than VM, but still "slides" rather than a flowing band.
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="cmp-col">
+    <div class="cmp-label label-after"><span class="dot"></span> Proposed — <em>Editorial columns with large number index</em></div>
+    <div class="pillars-after">
+      <div class="pg">
+        <div class="pillar-open">
+          <div class="pillar-num">01</div>
+          <div class="pillar-title">Innovation &amp; Products</div>
+          <div class="pillar-body">Built on a technology-driven foundation, we continuously invest in innovation and product development.</div>
+        </div>
+        <div class="pillar-open">
+          <div class="pillar-num">02</div>
+          <div class="pillar-title">Quality &amp; Reliability</div>
+          <div class="pillar-body">Across markets we are known for consistent quality and long-term customer partnerships.</div>
+        </div>
+        <div class="pillar-open">
+          <div class="pillar-num">03</div>
+          <div class="pillar-title">Leadership &amp; Growth</div>
+          <div class="pillar-body">Guided by committed leadership and a clear growth vision, Umang Boards has expanded steadily.</div>
+        </div>
+        <div class="pillar-open" style="border-right:none;">
+          <div class="pillar-num">04</div>
+          <div class="pillar-title">Social Responsibility</div>
+          <div class="pillar-body">Through structured social initiatives and Dhanuka Foundation, we contribute to community development.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fix-note">
+      <strong>Editorial columns</strong> — large ghost numbers as index, clean typography. A top gold hairline appears on hover. This matches the homepage's typography-first approach in stats bands.
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================
+     CHANGE SUMMARY TABLE
+     ============================ -->
+<div class="section-hdr" style="margin-top:8px;">What changes — and what doesn't</div>
+<div class="summary-wrap">
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Section</th>
+        <th>Change</th>
+        <th>What gets touched</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-section">Vision &amp; Mission</td>
+        <td class="col-change"><span class="tag-remove">Remove</span> <code>.ab2-vm-box</code> container and <code>.ab2-vm-card</code> parchment backgrounds. Content sits on dark navy directly.</td>
+        <td class="col-css">CSS only — no HTML restructure, no content change</td>
+      </tr>
+      <tr>
+        <td class="col-section">Core Values</td>
+        <td class="col-change"><span class="tag-remove">Remove</span> <code>.ab2-cv-box</code> parchment wrapper. Use open split (text left / image right). Pills move to a plain band below.</td>
+        <td class="col-css">CSS only — minor HTML: remove one wrapping div</td>
+      </tr>
+      <tr>
+        <td class="col-section">Engineering Excellence</td>
+        <td class="col-change"><span class="tag-restyle">Restyle</span> 4 pillars from card-lift to editorial numbered columns.</td>
+        <td class="col-css">CSS only — no HTML change</td>
+      </tr>
+      <tr>
+        <td class="col-section">Hero / Cert Strip / Applications / Team / News</td>
+        <td class="col-change"><span class="tag-keep">Keep</span> Exactly as-is — already match homepage patterns well.</td>
+        <td class="col-css">No change</td>
+      </tr>
+      <tr>
+        <td class="col-section">Spacing between sections</td>
+        <td class="col-change"><span class="tag-restyle">Restyle</span> Gold hairline separators between white→white transitions (same as homepage).</td>
+        <td class="col-css">CSS only — ~3 lines</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

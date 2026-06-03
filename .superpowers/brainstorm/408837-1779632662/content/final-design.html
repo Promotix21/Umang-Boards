@@ -1,0 +1,296 @@
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #f0f1f3; }
+
+  .pg-title { padding: 24px 28px 8px; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #0B1F3A; background: #fff; }
+  .pg-sub { padding: 6px 28px 18px; font-size: 11.5px; color: #555; background: #fff; border-bottom: 1px solid #dde0e8; margin-bottom: 0; }
+
+  /* ---- shared vars ---- */
+  :root {
+    --navy: #0B1F3A;
+    --gold: #C8A84B;
+    --light: #f8f9fb;
+    --text-muted: rgba(11,31,58,.65);
+  }
+
+  .eyebrow {
+    font-size: 8.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold); display: flex; align-items: center; gap: 6px; margin-bottom: 7px;
+  }
+  .eyebrow::before { content:''; width:18px; height:2px; background:var(--gold); flex-shrink:0; }
+  .heading { font-size: 14px; font-weight: 700; color: var(--navy); line-height:1.22; letter-spacing:-.02em; }
+  .heading em { font-style: normal; color: var(--gold); }
+  .gold-rule { width:28px; height:2px; background:var(--gold); margin: 8px 0 10px; }
+  .body-sm { font-size: 8px; color: var(--text-muted); line-height: 1.7; }
+
+  /* ---- page flow strip ---- */
+  .page-flow {
+    display: flex;
+    flex-direction: column;
+    max-width: 680px;
+    margin: 20px auto;
+    gap: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,.12);
+  }
+
+  .sec-label {
+    font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    padding: 5px 14px; background: rgba(0,0,0,.25); color: rgba(255,255,255,.6);
+  }
+  .sec-label.light { background: rgba(11,31,58,.06); color: rgba(11,31,58,.45); }
+
+  /* 1. HERO */
+  .s-hero { background: #fff; padding: 20px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .s-hero-right { background: linear-gradient(135deg, #c5d8e8, #8dafc8); border-radius: 6px; min-height: 80px; display:flex;align-items:center;justify-content:center; }
+  .s-hero-right span { font-size:8px; color:rgba(11,31,58,.4); text-transform:uppercase; letter-spacing:.1em; }
+  .s-hero-stats { display:grid; grid-template-columns: repeat(4,1fr); gap:0; border-top:1px solid rgba(11,31,58,.1); margin-top:12px; }
+  .s-hero-stat { padding:8px 6px 4px; border-right:1px solid rgba(11,31,58,.08); }
+  .s-hero-stat:last-child { border-right:none; }
+  .s-hero-stat-n { font-size:15px; font-weight:700; color:var(--navy); letter-spacing:-.03em; line-height:1; }
+  .s-hero-stat-l { font-size:7px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.1em; margin-top:2px; }
+  .s-hero-split { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:12px; }
+  .s-hero-video { background: linear-gradient(135deg,#0B1F3A,#162d4f); border-radius:6px; min-height:60px; display:flex;align-items:center;justify-content:center; }
+  .s-hero-video span { font-size:8px; color:rgba(255,255,255,.35); text-transform:uppercase; letter-spacing:.1em; }
+
+  /* 2. CERT STRIP */
+  .s-cert { background: #fff; border-top:1px solid rgba(11,31,58,.07); border-bottom:1px solid rgba(11,31,58,.07); padding: 10px 22px; display:flex; align-items:center; gap:0; }
+  .cert-lbl { font-size:7px; font-weight:800; text-transform:uppercase; letter-spacing:.12em; color:rgba(11,31,58,.5); border-right:1px solid rgba(11,31,58,.1); padding-right:16px; margin-right:16px; white-space:nowrap; line-height:1.6; flex-shrink:0; }
+  .cert-lbl em { color:var(--gold); font-style:normal; display:block; }
+  .cert-items { display:flex; gap:12px; flex:1; }
+  .cert-item { display:flex; flex-direction:column; align-items:center; flex:1; padding:4px 0; }
+  .cert-badge { width:32px; height:32px; background:rgba(11,31,58,.06); border-radius:50%; display:flex;align-items:center;justify-content:center; }
+  .cert-badge svg { width:14px; height:14px; stroke:var(--gold); }
+  .cert-name { font-size:6.5px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:.06em; margin-top:3px; text-align:center; }
+
+  /* 3. VISION & MISSION — PROPOSED */
+  .s-vm { background: var(--navy); padding: 22px; }
+  .s-vm .vm-hdr { margin-bottom: 16px; }
+  .s-vm .vm-hdr .heading { color:#fff; font-size:13px; }
+  .s-vm .vm-hdr .body-sm { color:rgba(255,255,255,.5); margin-top:5px; }
+  .s-vm .vm-cols { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding-top:16px; border-top:1px solid rgba(200,168,75,.2); }
+  .vm-col-tag { font-size:9px; font-weight:700; color:var(--gold); letter-spacing:.12em; text-transform:uppercase; margin-bottom:7px; }
+  .vm-col-rule { width:22px; height:2px; background:var(--gold); margin-bottom:9px; }
+  .vm-col-body { font-size:8px; color:rgba(255,255,255,.82); line-height:1.7; font-weight:600; }
+  .vm-col-sup  { font-size:7.5px; color:rgba(255,255,255,.42); line-height:1.65; margin-top:6px; }
+
+  /* 4. CORE VALUES — PROPOSED (text + pills only, no image) */
+  .s-cv { background: #fff; padding: 22px; }
+  .s-cv-text { max-width:480px; margin-bottom:16px; }
+  .s-cv-pills { display:flex; flex-wrap:wrap; gap:6px; }
+  .cv-pill { font-size:7.5px; padding:4px 10px; border-radius:20px; background:rgba(11,31,58,.05); border:1px solid rgba(11,31,58,.1); color:var(--navy); font-weight:600; }
+
+  /* Transition hairline */
+  .gold-hair { height:1px; background:linear-gradient(90deg, transparent, rgba(200,168,75,.35), transparent); margin: 0 22px; }
+
+  /* 5. ENGINEERING EXCELLENCE */
+  .s-exc { background: var(--light); }
+  .s-exc-top { display:grid; grid-template-columns:1fr 1.25fr; gap:22px; padding:22px 22px 18px; align-items:start; }
+  .s-exc-imgs { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+  .s-exc-img { aspect-ratio:4/3; overflow:hidden; border-radius:3px; }
+  .s-exc-img img { width:100%; height:100%; object-fit:cover; display:block; }
+  .s-exc-img-placeholder { width:100%; height:100%; min-height:50px; display:flex;align-items:center;justify-content:center; font-size:7px; color:rgba(11,31,58,.3); text-transform:uppercase; letter-spacing:.08em; }
+  .s-exc-img-placeholder.p1 { background: linear-gradient(135deg,#d0e0e8,#b0c8d8); }
+  .s-exc-img-placeholder.p2 { background: linear-gradient(135deg,#c8d8c8,#a8c0a8); }
+  .s-exc-img-placeholder.p3 { background: linear-gradient(135deg,#e0d8c0,#c8c0a0); }
+  /* Pillars — PROPOSED editorial numbered */
+  .s-exc-pillars { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(11,31,58,.07); background:#fff; }
+  .pillar-open { padding:16px 14px 14px; border-right:1px solid rgba(11,31,58,.07); border-top:3px solid transparent; }
+  .pillar-open:last-child { border-right:none; }
+  .pillar-num { font-size:24px; font-weight:800; color:rgba(11,31,58,.05); letter-spacing:-.04em; line-height:1; margin-bottom:3px; }
+  .pillar-title { font-size:8.5px; font-weight:700; color:var(--navy); margin-bottom:5px; line-height:1.3; }
+  .pillar-body { font-size:7.5px; color:var(--text-muted); line-height:1.65; }
+
+  /* 6. APPLICATIONS */
+  .s-apps { background:#fff; }
+  .s-apps-hdr { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:20px 22px; align-items:center; gap:16px; }
+  .s-apps-hdr .heading { color:#fff; font-size:12px; }
+  .s-apps-hdr-img { background:linear-gradient(135deg,#162d4f,#2a4f78); border-radius:5px; min-height:70px; display:flex;align-items:center;justify-content:center; }
+  .s-apps-hdr-img span { font-size:7px; color:rgba(255,255,255,.3); text-transform:uppercase; }
+  .s-apps-cards { display:grid; grid-template-columns:repeat(3,1fr); }
+  .s-apps-card { background:var(--navy); position:relative; }
+  .s-apps-card-img { width:100%; height:50px; object-fit:cover; display:block; opacity:.45; }
+  .s-apps-card-img-ph { width:100%; min-height:50px; display:flex;align-items:center;justify-content:center; }
+  .s-apps-card-img-ph.c1 { background:linear-gradient(135deg,#0d2844,#1a3a5c); }
+  .s-apps-card-img-ph.c2 { background:linear-gradient(135deg,#0a2030,#142840); }
+  .s-apps-card-img-ph.c3 { background:linear-gradient(135deg,#0e2a3a,#183448); }
+  .s-apps-card-body { padding:12px; }
+  .s-apps-card-num { font-size:20px; font-weight:800; color:rgba(200,168,75,.18); letter-spacing:-.04em; line-height:1; }
+  .s-apps-card-title { font-size:8.5px; font-weight:700; color:#fff; line-height:1.3; margin:4px 0; }
+  .s-apps-card-desc { font-size:7.5px; color:rgba(255,255,255,.5); line-height:1.6; }
+
+  /* 7. TEAM */
+  .s-team { background: var(--navy); padding: 18px 22px; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
+  .s-team .heading { color:#fff; }
+  .s-team .body-sm { color:rgba(255,255,255,.5); max-width:480px; }
+  .s-team-btn { font-size:8px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:7px 14px; border:1px solid var(--gold); color:var(--gold); border-radius:2px; display:inline-flex; align-items:center; gap:6px; }
+
+  /* Change markers */
+  .changed-marker {
+    display:inline-block; font-size:8px; font-weight:700; padding:1px 7px; border-radius:3px;
+    text-transform:uppercase; letter-spacing:.06em; margin-left:8px; vertical-align:middle;
+  }
+  .m-changed { background:rgba(60,140,200,.12); color:#2a7ab0; }
+  .m-unchanged { background:rgba(60,160,80,.08); color:#2d7042; }
+
+  /* Legend */
+  .legend { display:flex; gap:16px; padding:14px 28px; background:#fff; border-bottom:1px solid #eee; }
+  .legend-item { display:flex; align-items:center; gap:6px; font-size:9px; color:#555; }
+  .legend-dot { width:8px; height:8px; border-radius:2px; }
+  .legend-dot.changed { background:rgba(60,140,200,.4); }
+  .legend-dot.unchanged { background:rgba(60,160,80,.3); }
+</style>
+
+<div class="pg-title">About Us — Final Design</div>
+<div class="pg-sub">Full page flow showing all sections. Blue markers = what changes. Green = unchanged. Same colors, same fonts as homepage.</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot changed"></div> Changes in this redesign</div>
+  <div class="legend-item"><div class="legend-dot unchanged"></div> Unchanged — already matches homepage</div>
+</div>
+
+<div class="page-flow">
+
+  <!-- 1. HERO -->
+  <div class="sec-label light">Hero <span class="changed-marker m-unchanged">unchanged</span></div>
+  <div class="s-hero">
+    <div>
+      <div class="eyebrow">About</div>
+      <div class="heading" style="font-size:16px; margin-bottom:10px;">Powering Critical<br><em>Electrical Infrastructure</em><br>Worldwide</div>
+      <div class="body-sm">Founded with a vision to reduce India's dependence on imported insulation products, Umang Boards has evolved into a globally trusted manufacturing partner...</div>
+      <div class="s-hero-stats">
+        <div class="s-hero-stat"><div class="s-hero-stat-n">1999</div><div class="s-hero-stat-l">Established</div></div>
+        <div class="s-hero-stat"><div class="s-hero-stat-n">27+</div><div class="s-hero-stat-l">Years</div></div>
+        <div class="s-hero-stat"><div class="s-hero-stat-n">500+</div><div class="s-hero-stat-l">Workforce</div></div>
+        <div class="s-hero-stat"><div class="s-hero-stat-n">15+</div><div class="s-hero-stat-l">Countries</div></div>
+      </div>
+      <div class="s-hero-split">
+        <div class="body-sm">We manufacture high-performance cellulose insulation materials, precision super enameled and paper-coated winding wires, along with specialized insulating chemicals...</div>
+        <div class="s-hero-video"><span>factory video</span></div>
+      </div>
+    </div>
+    <div class="s-hero-right"><span>substation image</span></div>
+  </div>
+
+  <!-- 2. CERT STRIP -->
+  <div class="sec-label light">Cert Strip <span class="changed-marker m-unchanged">unchanged</span></div>
+  <div class="s-cert">
+    <div class="cert-lbl">Built on Trust.<br><em>Certified for Excellence.</em></div>
+    <div class="cert-items">
+      <div class="cert-item"><div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="cert-name">ISO 9001</div></div>
+      <div class="cert-item"><div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="cert-name">ISO 14001</div></div>
+      <div class="cert-item"><div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="cert-name">ISO 45001</div></div>
+      <div class="cert-item"><div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg></div><div class="cert-name">NABL</div></div>
+      <div class="cert-item"><div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg></div><div class="cert-name">PGCIL 400kV</div></div>
+    </div>
+  </div>
+
+  <!-- 3. VISION & MISSION — CHANGED -->
+  <div class="sec-label">Vision &amp; Mission <span class="changed-marker m-changed">box removed</span></div>
+  <div class="s-vm">
+    <div class="vm-hdr">
+      <div class="eyebrow">Our Direction</div>
+      <div class="heading">Shaping the Future of <em>Global Electrical Infrastructure</em></div>
+      <div class="body-sm" style="margin-top:6px;">Our vision and mission guide how we innovate, scale, and contribute to the evolving global energy ecosystem.</div>
+    </div>
+    <div class="vm-cols">
+      <div>
+        <div class="vm-col-tag">Vision</div>
+        <div class="vm-col-rule"></div>
+        <div class="vm-col-body">To be the global benchmark in electrical insulation and winding solutions, powering the world's transition to ultra-high voltage (1200 kV) and sustainable energy systems.</div>
+        <div class="vm-col-sup">We aspire to lead through continuous innovation, superior quality, and customer-centric solutions, creating long-term value and enabling a sustainable, electrified future.</div>
+      </div>
+      <div>
+        <div class="vm-col-tag">Mission</div>
+        <div class="vm-col-rule"></div>
+        <div class="vm-col-body">We deliver high-quality, cost-efficient electrical components through advanced technology and operational excellence, supporting infrastructure from 1200 kV transformers to renewable energy.</div>
+        <div class="vm-col-sup">Our integrated solutions in insulation materials, winding wires, and insulating chemicals are built to enhance reliability, efficiency, and performance across critical applications worldwide.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CORE VALUES — CHANGED -->
+  <div class="sec-label light">Core Values <span class="changed-marker m-changed">box removed · no image</span></div>
+  <div class="s-cv">
+    <div class="s-cv-text">
+      <div class="eyebrow">OUR VALUES</div>
+      <div class="heading" style="font-size:13px;">Principles That Drive <em>Performance</em></div>
+      <div class="gold-rule"></div>
+      <div class="body-sm">Our values define how we operate, innovate, and deliver consistent quality across every aspect of our business.</div>
+    </div>
+    <div class="s-cv-pills">
+      <span class="cv-pill">Quality &amp; Excellence</span>
+      <span class="cv-pill">Innovation &amp; Technology</span>
+      <span class="cv-pill">Customer Centricity</span>
+      <span class="cv-pill">Sustainability &amp; Responsibility</span>
+      <span class="cv-pill">Operational Excellence</span>
+      <span class="cv-pill">Integrity &amp; Trust</span>
+      <span class="cv-pill">Teamwork &amp; Dedication</span>
+      <span class="cv-pill">Cost Leadership</span>
+    </div>
+  </div>
+
+  <!-- hairline between white sections -->
+  <div class="gold-hair" style="background:#fff; padding:0 22px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,75,.3),transparent);"></div></div>
+
+  <!-- 5. ENGINEERING EXCELLENCE — pillars changed -->
+  <div class="sec-label light">Engineering Excellence <span class="changed-marker m-unchanged">top layout unchanged</span></div>
+  <div class="s-exc">
+    <div class="s-exc-top">
+      <div>
+        <div class="eyebrow">Our Strength</div>
+        <div class="heading" style="font-size:13px; margin-bottom:8px;">Engineering Excellence Built on <em>Manufacturing Depth</em></div>
+        <div class="gold-rule"></div>
+        <div class="body-sm">Headquartered in Jaipur, India, Umang Boards has built its growth on continuous investment in advanced manufacturing, skilled talent, and rigorous in-house testing systems.</div>
+        <div class="body-sm" style="margin-top:6px;">With two modern production facilities and globally recognized ISO certifications, we ensure every product meets the highest standards of performance, reliability, and consistency.</div>
+      </div>
+      <div class="s-exc-imgs">
+        <div class="s-exc-img"><div class="s-exc-img-placeholder p1">insulation</div></div>
+        <div class="s-exc-img"><div class="s-exc-img-placeholder p2">winding</div></div>
+        <div class="s-exc-img"><div class="s-exc-img-placeholder p3">chemicals</div></div>
+      </div>
+    </div>
+    <!-- Pillars — CHANGED to editorial -->
+    <div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(11,31,58,.3);padding:8px 22px 0;">pillars <span class="changed-marker m-changed">editorial columns</span></div>
+    <div class="s-exc-pillars">
+      <div class="pillar-open"><div class="pillar-num">01</div><div class="pillar-title">Innovation &amp; Products</div><div class="pillar-body">Continuously investing in advanced processes and product development to stay ahead of evolving electrical demands.</div></div>
+      <div class="pillar-open"><div class="pillar-num">02</div><div class="pillar-title">Quality &amp; Reliability</div><div class="pillar-body">Known for consistent quality, disciplined manufacturing, and dependable delivery across markets worldwide.</div></div>
+      <div class="pillar-open"><div class="pillar-num">03</div><div class="pillar-title">Leadership &amp; Growth</div><div class="pillar-body">Committed leadership with a clear growth vision, expanding steadily while maintaining operational and financial discipline.</div></div>
+      <div class="pillar-open" style="border-right:none;"><div class="pillar-num">04</div><div class="pillar-title">Social Responsibility</div><div class="pillar-body">Through structured social initiatives and Dhanuka Foundation, actively contributing to community development.</div></div>
+    </div>
+  </div>
+
+  <!-- 6. APPLICATIONS -->
+  <div class="sec-label">Applications <span class="changed-marker m-unchanged">unchanged</span></div>
+  <div class="s-apps">
+    <div class="s-apps-hdr">
+      <div>
+        <div class="eyebrow">Our Impact</div>
+        <div class="heading">Powering Critical Infrastructure Across <em>Global Energy Systems</em></div>
+        <div style="width:28px;height:2px;background:var(--gold);margin:8px 0;"></div>
+        <div class="body-sm" style="color:rgba(255,255,255,.5);">Our products form the backbone of electrical systems, from high-voltage transformers to industrial and emerging energy applications.</div>
+      </div>
+      <div class="s-apps-hdr-img"><span>collage image</span></div>
+    </div>
+    <div class="s-apps-cards">
+      <div class="s-apps-card"><div class="s-apps-card-img-ph c1"></div><div class="s-apps-card-body"><div class="s-apps-card-num">01</div><div class="s-apps-card-title">Power &amp; Transmission Infrastructure</div><div class="s-apps-card-desc">High-performance insulation materials and winding wires for transformers, supporting reliable electricity transmission.</div></div></div>
+      <div class="s-apps-card" style="border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06);"><div class="s-apps-card-img-ph c2"></div><div class="s-apps-card-body"><div class="s-apps-card-num">02</div><div class="s-apps-card-title">Industrial &amp; Electrical Systems</div><div class="s-apps-card-desc">Our solutions power motors, stabilizers, and heavy electrical equipment across demanding industrial environments.</div></div></div>
+      <div class="s-apps-card"><div class="s-apps-card-img-ph c3"></div><div class="s-apps-card-body"><div class="s-apps-card-num">03</div><div class="s-apps-card-title">Emerging Energy &amp; Digital Infrastructure</div><div class="s-apps-card-desc">Supporting renewable energy systems, data centers, and next-generation electrical applications.</div></div></div>
+    </div>
+  </div>
+
+  <!-- 7. TEAM GATEWAY -->
+  <div class="sec-label">Team Gateway <span class="changed-marker m-unchanged">unchanged</span></div>
+  <div class="s-team">
+    <div class="eyebrow">Our Team</div>
+    <div class="heading" style="color:#fff; font-size:13px;">Great Companies Are Shaped by the People Who Understand Them Most Deeply</div>
+    <div class="body-sm" style="color:rgba(255,255,255,.5); margin-top:4px;">Our leadership team carries between them decades of experience in transformer insulation, manufacturing operations, and business growth.</div>
+    <div class="s-team-btn">Meet the Team →</div>
+  </div>
+
+</div>
+
+<div style="padding:20px 28px 10px; font-size:11px; color:#555; line-height:1.7;">
+  <strong style="color:#0B1F3A;">Summary:</strong> Three sections change, five stay exactly as they are. The whole page now follows the same rule as the homepage — <em>content always sits directly on the section background, no inner containers.</em>
+</div>

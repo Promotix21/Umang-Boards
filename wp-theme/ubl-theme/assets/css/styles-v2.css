@@ -420,14 +420,14 @@ a, button, [data-cursor] { cursor: pointer; }
 /* 3-panel inner grid */
 .mega-inner {
     display: grid;
-    grid-template-columns: 260px 230px 1fr;
+    grid-template-columns: 310px 200px 1fr;
     max-width: 1400px; margin: 0 auto;
     min-height: 320px;
 }
 
 /* LEFT PANEL */
 .mega-left {
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 2.5rem;
     border-right: 1px solid var(--border-subtle);
     display: flex; flex-direction: column;
 }
@@ -506,15 +506,15 @@ a, button, [data-cursor] { cursor: pointer; }
     flex-wrap: wrap; gap: 0 2rem;
 }
 
-/* PRODUCTS MEGA MENU — cascading L3 → L4 columns */
+/* PRODUCTS MEGA MENU — direct L3 links, no L4 column */
 .mega-right-products .mega-sub-panel.active {
     display: flex; flex-direction: row; gap: 0; align-items: stretch;
     animation: megaSubFade 0.2s ease forwards;
 }
 .mega-l3-list {
-    min-width: 190px; width: 190px; flex-shrink: 0;
+    flex: 1; min-width: 0;
     display: flex; flex-direction: column;
-    border-right: 1px solid var(--border-subtle);
+    border-right: none;
     padding: 0;
 }
 .mega-l3 {
@@ -560,7 +560,7 @@ a, button, [data-cursor] { cursor: pointer; }
 }
 
 .mega-right-products .mega-feature-card {
-    width: 190px; flex-shrink: 0; margin-left: auto;
+    width: 220px; flex-shrink: 0; margin-left: 2rem;
     align-self: flex-start;
 }
 .mega-sub-links { flex: 1; display: flex; flex-direction: column; }

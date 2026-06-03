@@ -171,7 +171,7 @@
             <div class="search-suggestions" id="searchSuggestions">
                 <div class="search-suggest-label">Popular Searches</div>
                 <div class="search-suggest-tags">
-                    <a href="/products/cellulose-transformer-insulation-boards/" class="search-suggest-tag">Pressboards</a>
+                    <a href="/products/cellulose-transformer-insulation-boards/" class="search-suggest-tag">Transformer Boards</a>
                     <a href="/products/machined-and-milled-components/" class="search-suggest-tag">Machined Components</a>
                     <a href="/copper" class="search-suggest-tag">Copper Winding Wires</a>
                     <a href="/products/insulating-chemicals/" class="search-suggest-tag">Wire Enamels</a>
@@ -454,11 +454,11 @@
         <div class="mega-inner">
             <div class="mega-left">
                 <h3 class="mega-left-title">Our Products</h3>
-                <p class="mega-left-desc">A vertically integrated product suite powering the world's electrical infrastructure — from cellulose pressboards to precision winding wires and specialty chemicals.</p>
+                <p class="mega-left-desc">Vertically integrated insulation solutions powering global electrical infrastructure — cellulose pressboards, precision winding wires, and specialty chemicals.</p>
                 <a href="/products" class="mega-left-cta" data-cursor="hover">Explore all products &rarr;</a>
             </div>
             <div class="mega-center">
-                <a class="mega-cat" href="/products/cellulose-transformer-insulation-boards/" data-sub="prodInsulation">Transformer Insulation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" href="/products/transformer-insulation/" data-sub="prodInsulation">Transformer Insulation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" href="/products/winding-wires/" data-sub="prodWires">Winding Wires <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" href="/products/insulating-chemicals/" data-sub="prodChemicals">Chemicals <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
@@ -466,76 +466,25 @@
                 <!-- L2: Transformer Insulation -->
                 <div class="mega-sub-panel" id="prodInsulation">
                     <div class="mega-l3-list">
-                        <a class="mega-l3" href="/products/cellulose-transformer-insulation-boards/" data-l4="l4InsPress">Pressboards <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                        <a class="mega-l3" href="/products/machined-and-milled-components/" data-l4="l4InsMach">Machined &amp; Moulded <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                        <a class="mega-l3" href="/products/insulation-papers/" data-l4="l4InsPaper">Papers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                        <a class="mega-l3" href="/products/transformer-accessories/" data-l4="l4InsAccess">Accessories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                    </div>
-                    <div class="mega-l4-wrap">
-                        <div class="mega-l4-panel" id="l4InsPress">
-                            <a href="/products/cellulose-transformer-insulation-boards/high-density-pressboards/">High Density Pressboard</a>
-                            <a href="/products/cellulose-transformer-insulation-boards/laminated-pressboards/">Laminated Pressboard</a>
-                            <a href="/products/cellulose-transformer-insulation-boards/calendered-pressboards/">Calendered Pressboard</a>
-                            <a href="/products/cellulose-transformer-insulation-boards/mouldable-pressboards/">Mouldable Pressboard</a>
-                        </div>
-                        <div class="mega-l4-panel" id="l4InsMach">
-                            <a href="/products/machined-and-milled-components/spacer-strips/">Spacer Strips &amp; Rings</a>
-                            <a href="/products/machined-and-milled-components/l-profile-and-frames/">L Profile / U Channel</a>
-                            <a href="/products/moulded-components-and-other-components/couched-high-voltage-terminal-leads/">Lead Exit Systems</a>
-                            <a href="/products/moulded-components-and-other-components/angle-ring-cap-ring-snouts/">Angle Ring, Cap Ring, Snouts</a>
-                            <a href="/products/moulded-components-and-other-components/corner-collars/">Corner Collars &amp; End Rings</a>
-                        </div>
-                        <div class="mega-l4-panel" id="l4InsPaper">
-                            <a href="/products/insulation-papers/electrical-grade-kraft-paper/">Insulation Kraft Paper</a>
-                            <a href="/products/insulation-papers/electrical-grade-crepe-paper/">Crepe Paper</a>
-                            <a href="/products/insulation-papers/electrical-grade-diamond-dotted-paper/">Diamond Dotted Paper</a>
-                            <a href="/products/insulation-papers/crepe-paper-tubes/">Tubes (Crepe, TUP)</a>
-                            <a href="/products/insulation-papers/electrical-grade-press-paper/">Press Paper</a>
-                        </div>
-                        <div class="mega-l4-panel" id="l4InsAccess">
-                            <a href="/products/transformer-accessories/bushings/">Bushings</a>
-                            <a href="/products/transformer-accessories/sleeves/">Sleeves</a>
-                            <a href="/products/transformer-accessories/cooling-fans/">Fans &amp; Cooling Fans</a>
-                            <a href="/products/transformer-accessories/valves/">Valves</a>
-                            <a href="/products/transformer-accessories/relays/">Relays</a>
-                            <a href="/products/transformer-accessories/cork-sheet/">Cork Sheet</a>
-                            <a href="/products/transformer-accessories/perma-wood/">Perma Wood</a>
-                            <a href="/products/transformer-accessories/backlite-sheet/">Backlite Sheet</a>
-                            <a href="/products/transformer-accessories/protection-accessories/">Protection Accessories</a>
-                            <a href="/products/transformer-accessories/metal-fixing-parts/">Metal Fixing Parts</a>
-                        </div>
+                        <a class="mega-l3" href="/products/cellulose-transformer-insulation-boards/">Transformer Boards</a>
+                        <a class="mega-l3" href="/products/insulation-papers/">Insulation Papers</a>
+                        <a class="mega-l3" href="/products/machined-and-milled-components/">Machined &amp; Milled Components</a>
+                        <a class="mega-l3" href="/products/moulded-components-and-other-components/">Moulded Components</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Transformer Insulations.jpg" alt="Transformer Insulation Products" class="mega-feature-img" loading="lazy">
                         <div class="mega-feature-body">
                             <div class="mega-feature-tag">Featured</div>
                             <div class="mega-feature-title">Transformer Insulation</div>
-                            <a href="/products/paper-and-board/" class="mega-feature-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                            <a href="/products/transformer-insulation/" class="mega-feature-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                         </div>
                     </div>
                 </div>
                 <!-- L2: Winding Wires -->
                 <div class="mega-sub-panel" id="prodWires">
                     <div class="mega-l3-list">
-                        <a class="mega-l3" href="/products/aluminium/" data-l4="l4WireAlum">Aluminium <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                        <a class="mega-l3" href="/products/copper/" data-l4="l4WireCopper">Copper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                    </div>
-                    <div class="mega-l4-wrap">
-                        <div class="mega-l4-panel" id="l4WireAlum">
-                            <a href="/products/aluminium/super-enamelled-al-round-wire/">Super Enameled Round Wire</a>
-                            <a href="/products/aluminium/super-enamelled-al-flat-wire/">Super Enameled Flat Wire</a>
-                            <a href="/products/aluminium/kraft-crepe-coated-al-round-wire/">Paper Covered Round Wire</a>
-                            <a href="/products/aluminium/paper-covered-al-flat-wire/">Paper Covered Flat Wire</a>
-                            <a href="/products/aluminium/">Aluminium Foil</a>
-                        </div>
-                        <div class="mega-l4-panel" id="l4WireCopper">
-                            <a href="/products/copper/super-enamelled-cu-round-wire/">Super Enameled Round Wire</a>
-                            <a href="/products/copper/super-enamelled-cu-flat-wire/">Super Enameled Flat Wire</a>
-                            <a href="/products/copper/kraft-crepe-coated-cu-round-wire/">Paper Covered Round Wire</a>
-                            <a href="/products/copper/paper-covered-cu-flat-wire/">Paper Covered Flat Wire</a>
-                            <a href="/products/copper/">CTC</a>
-                            <a href="/products/copper/">Fiberglass Covered Flat Wire</a>
-                        </div>
+                        <a class="mega-l3" href="/products/copper/">Copper Winding Wires</a>
+                        <a class="mega-l3" href="/products/aluminium/">Aluminium Winding Wires</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Winding Wires.jpg" alt="Winding Wire Products" class="mega-feature-img" loading="lazy">
@@ -549,16 +498,11 @@
                 <!-- L2: Chemicals -->
                 <div class="mega-sub-panel" id="prodChemicals">
                     <div class="mega-l3-list">
-                        <a class="mega-l3" href="/products/insulating-chemicals/" data-l4="l4ChemEnamels">Wire Enamels <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                    </div>
-                    <div class="mega-l4-wrap">
-                        <div class="mega-l4-panel" id="l4ChemEnamels">
-                            <a href="/products/polyester/">Polyester</a>
-                            <a href="/products/modified-polyester/">Modified Polyester</a>
-                            <a href="/products/polyurethane/">Polyurethane</a>
-                            <a href="/products/polyestermide/">Polyester Imide</a>
-                            <a href="/products/polyamide-imide/">Polyamide Imide</a>
-                        </div>
+                        <a class="mega-l3" href="/products/polyester/">Polyester</a>
+                        <a class="mega-l3" href="/products/modified-polyester/">Modified Polyester</a>
+                        <a class="mega-l3" href="/products/polyurethane/">Polyurethane</a>
+                        <a class="mega-l3" href="/products/polyestermide/">Polyestermide</a>
+                        <a class="mega-l3" href="/products/polyamide-imide/">Polyamide-imide</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Insulating Chemicals.jpg" alt="Insulating Chemical Products" class="mega-feature-img" loading="lazy">
@@ -597,17 +541,15 @@
             <div class="mega-right">
                 <div class="mega-sub-panel" id="solPower">
                     <div class="mega-sub-links">
-                        <a href="/products/cellulose-transformer-insulation-boards/high-density-pressboards/">HD Pressboard</a>
-                        <a href="/products/cellulose-transformer-insulation-boards/laminated-pressboards/">Laminated Pressboard</a>
-                        <a href="/products/moulded-components-and-other-components/angle-ring-cap-ring-snouts/">Angle Ring, Cap Ring, Snouts</a>
-                        <a href="/products/moulded-components-and-other-components/couched-high-voltage-terminal-leads/">Lead Exit Systems</a>
-                        <a href="/products/copper/super-enamelled-cu-round-wire/">Enamelled Copper Round Wire</a>
-                        <a href="/products/copper/super-enamelled-cu-flat-wire/">Enamelled Copper Flat Wire</a>
-                        <a href="/products/copper/paper-covered-cu-flat-wire/">Paper Covered Copper Wire (Round &amp; Flat)</a>
-                        <a href="/products/copper/">CTC</a>
-                        <a href="/products/copper/">Fiberglass Covered Copper Wire</a>
-                        <a href="/products/insulation-papers/electrical-grade-press-paper/">TUP Paper</a>
-                        <a href="/products/insulation-papers/electrical-grade-diamond-dotted-paper/">DDP Paper</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">HD Pressboard</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">Laminated Pressboard</a>
+                        <a href="/products/moulded-components-and-other-components/">Angle Ring, Cap Ring, Snouts</a>
+                        <a href="/products/moulded-components-and-other-components/">Lead Exit Systems</a>
+                        <a href="/products/copper/">Enamelled Copper Round Wire</a>
+                        <a href="/products/copper/">Enamelled Copper Flat Wire</a>
+                        <a href="/products/copper/">Paper Covered Copper Wire (Round &amp; Flat)</a>
+                        <a href="/products/insulation-papers/">TUP Paper</a>
+                        <a href="/products/insulation-papers/">DDP Paper</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Transformer Insulations.jpg" alt="Power Transformer Insulation" class="mega-feature-img" loading="lazy">
@@ -620,14 +562,13 @@
                 </div>
                 <div class="mega-sub-panel" id="solDist">
                     <div class="mega-sub-links">
-                        <a href="/products/cellulose-transformer-insulation-boards/calendered-pressboards/">Calendered Boards</a>
-                        <a href="/products/cellulose-transformer-insulation-boards/high-density-pressboards/">HD Pressboards</a>
-                        <a href="/products/aluminium/super-enamelled-al-round-wire/">Enamelled Aluminium Round Wire</a>
-                        <a href="/products/aluminium/super-enamelled-al-flat-wire/">Enamelled Aluminium Flat Wire</a>
-                        <a href="/products/aluminium/paper-covered-al-flat-wire/">Paper Covered Aluminium Wire (Round &amp; Flat)</a>
-                        <a href="/products/insulation-papers/electrical-grade-kraft-paper/">Insulation Paper</a>
-                        <a href="/products/aluminium/">Aluminium Foil</a>
-                        <a href="/products/insulation-papers/electrical-grade-crepe-paper/">Crepe Paper Tubes</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">Calendered Boards</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">HD Pressboards</a>
+                        <a href="/products/aluminium/">Enamelled Aluminium Round Wire</a>
+                        <a href="/products/aluminium/">Enamelled Aluminium Flat Wire</a>
+                        <a href="/products/aluminium/">Paper Covered Aluminium Wire (Round &amp; Flat)</a>
+                        <a href="/products/insulation-papers/">Insulation Paper</a>
+                        <a href="/products/insulation-papers/">Crepe Paper Tubes</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Secondary Static.jpg" alt="Distribution Transformer" class="mega-feature-img" loading="lazy">
@@ -641,9 +582,9 @@
                 <div class="mega-sub-panel" id="solInstrument">
                     <div class="mega-sub-links">
                         <a href="/products/copper/">Fiberglass Covered Copper Wire</a>
-                        <a href="/products/cellulose-transformer-insulation-boards/calendered-pressboards/">Calendered Board</a>
-                        <a href="/products/cellulose-transformer-insulation-boards/laminated-pressboards/">Laminated Pressboard</a>
-                        <a href="/products/insulation-papers/electrical-grade-kraft-paper/">Insulation Paper</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">Calendered Board</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">Laminated Pressboard</a>
+                        <a href="/products/insulation-papers/">Insulation Paper</a>
                     </div>
                     <div class="mega-feature-card">
                         <img src="<?php echo UBL_URI; ?>/assets/images/Main-Slideshow_0000_MS1.png" alt="Instrument Transformer" class="mega-feature-img" loading="lazy">
@@ -1033,10 +974,10 @@
                 <ul class="mobile-accordion-body">
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Transformer Insulations</span>
-                        <a href="/cellulose-transformer-insulation-boards">Pressboards</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">Transformer Boards</a>
                         <a href="/products/machined-and-milled-components/">Machined Components</a>
-                        <a href="/moulded-components">Moulded Components</a>
-                        <a href="/insulation-papers">Insulation Papers</a>
+                        <a href="/products/moulded-components-and-other-components/">Moulded Components</a>
+                        <a href="/products/insulation-papers/">Insulation Papers</a>
                     </li>
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Transformer Accessories</span>
@@ -1053,14 +994,16 @@
                     </li>
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Winding Wires</span>
-                        <a href="/copper">Copper Winding Wires</a>
-                        <a href="/aluminium">Aluminium Winding Wires</a>
+                        <a href="/products/copper/">Copper Winding Wires</a>
+                        <a href="/products/aluminium/">Aluminium Winding Wires</a>
                     </li>
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Insulating Chemicals</span>
-                        <a href="/products/insulating-chemicals/">Wire Enamels</a>
-                        <a href="/impregnating-resins">Impregnating Resins</a>
-                        <a href="/insulating-varnishes">Insulating Varnishes</a>
+                        <a href="/products/polyester/">Polyester</a>
+                        <a href="/products/modified-polyester/">Modified Polyester</a>
+                        <a href="/products/polyurethane/">Polyurethane</a>
+                        <a href="/products/polyestermide/">Polyestermide</a>
+                        <a href="/products/polyamide-imide/">Polyamide-imide</a>
                     </li>
                 </ul>
             </li>
@@ -1074,26 +1017,26 @@
                 <ul class="mobile-accordion-body">
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Power Transformers</span>
-                        <a href="/pre-compressed-pressboards">HD Pressboard</a>
-                        <a href="/laminated-pressboards">Laminated Pressboard</a>
-                        <a href="/rings-and-caps">Angle Ring, Cap Ring, Snouts</a>
-                        <a href="/lead-exit-assemblies">Lead Exit Systems</a>
-                        <a href="/copper">Enamelled Copper Wire</a>
-                        <a href="/products/insulation-papers/electrical-grade-press-paper/">TUP Paper</a>
-                        <a href="/ddp">DDP Paper</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">HD Pressboard</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">Laminated Pressboard</a>
+                        <a href="/products/moulded-components-and-other-components/">Angle Ring, Cap Ring, Snouts</a>
+                        <a href="/products/moulded-components-and-other-components/">Lead Exit Systems</a>
+                        <a href="/products/copper/">Enamelled Copper Wire</a>
+                        <a href="/products/insulation-papers/">TUP Paper</a>
+                        <a href="/products/insulation-papers/">DDP Paper</a>
                     </li>
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Distribution Transformers</span>
-                        <a href="/calendered-pressboards">Calendered Boards</a>
-                        <a href="/aluminium">Enamelled Aluminium Wire</a>
-                        <a href="/plain-kraft-paper">Insulation Paper</a>
-                        <a href="/crepe-paper">Crepe Paper Tubes</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">Calendered Boards</a>
+                        <a href="/products/aluminium/">Enamelled Aluminium Wire</a>
+                        <a href="/products/insulation-papers/">Insulation Paper</a>
+                        <a href="/products/insulation-papers/">Crepe Paper Tubes</a>
                     </li>
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">Instrument Transformers</span>
-                        <a href="/copper">Fiberglass Copper Wire</a>
-                        <a href="/calendered-pressboards">Calendered Board</a>
-                        <a href="/plain-kraft-paper">Insulation Paper</a>
+                        <a href="/products/copper/">Fiberglass Copper Wire</a>
+                        <a href="/products/cellulose-transformer-insulation-boards/">Calendered Board</a>
+                        <a href="/products/insulation-papers/">Insulation Paper</a>
                     </li>
                     <li><a href="/solutions/data-centers">Data Centers</a></li>
                     <li><a href="/solutions/renewables">Renewables</a></li>

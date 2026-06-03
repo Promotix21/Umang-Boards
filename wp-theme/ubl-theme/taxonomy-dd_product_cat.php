@@ -8,6 +8,31 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+// All catalog categories get their own full-page template instead of the standard list layout.
+$catalog_map = [
+    'transformer-insulation'                   => 'page-transformer-insulation.php',
+    'cellulose-transformer-insulation-boards'  => 'page-transformer-boards.php',
+    'winding-wires'                            => 'page-winding-wires.php',
+    'insulating-chemicals'                     => 'page-insulating-chemicals.php',
+    'insulation-papers'                        => 'page-insulation-papers.php',
+    'machined-and-milled-components'           => 'page-machined-components.php',
+    'moulded-components-and-other-components'  => 'page-moulded-components.php',
+    'copper'                                   => 'page-copper-wires.php',
+    'aluminium'                                => 'page-aluminium-wires.php',
+    'polyester'                                => 'page-chemicals-polyester.php',
+    'modified-polyester'                       => 'page-chemicals-mod-polyester.php',
+    'polyurethane'                             => 'page-chemicals-polyurethane.php',
+    'polyestermide'                            => 'page-chemicals-polyestermide.php',
+    'polyamide-imide'                          => 'page-chemicals-polyamide.php',
+];
+
+$term = get_queried_object();
+if ( $term && isset( $catalog_map[ $term->slug ] ) ) {
+    include get_template_directory() . '/' . $catalog_map[ $term->slug ];
+    exit;
+}
+
 get_header();
 
 $term         = get_queried_object();

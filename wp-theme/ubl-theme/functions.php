@@ -7,7 +7,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'UBL_VERSION', '2.18.0' );
+define( 'UBL_VERSION', '2.41.0' );
 define( 'UBL_DIR', get_template_directory() );
 define( 'UBL_URI', get_template_directory_uri() );
 
@@ -68,6 +68,38 @@ add_action( 'wp_enqueue_scripts', function () {
     if ( is_singular( 'dd_product' ) || is_tax( 'dd_product_cat' ) || is_post_type_archive( 'dd_product' ) ) {
         wp_enqueue_style( 'ubl-products', UBL_URI . '/assets/css/product-pages.css', [ 'ubl-sections' ], UBL_VERSION );
         wp_enqueue_script( 'ubl-products-js', UBL_URI . '/assets/js/product-pages.js', [ 'gsap', 'gsap-scroll' ], UBL_VERSION, true );
+    }
+
+    // About Us page — load after GSAP so ScrollTrigger animations work
+    if ( is_page_template( 'page-about-us-v2.php' ) ) {
+        wp_enqueue_script( 'ubl-about-js', UBL_URI . '/assets/js/about-v2.js', [ 'gsap', 'gsap-scroll' ], UBL_VERSION, true );
+    }
+
+    // Product catalog pages — all category-level pages use the shared transformer-boards.css
+    $catalog_slugs = [
+        'transformer-insulation', 'winding-wires', 'insulating-chemicals',
+        'cellulose-transformer-insulation-boards', 'insulation-papers',
+        'machined-and-milled-components', 'moulded-components-and-other-components',
+        'copper', 'aluminium',
+        'polyester', 'modified-polyester', 'polyurethane', 'polyestermide', 'polyamide-imide',
+    ];
+    $catalog_page_templates = [
+        'page-transformer-insulation.php', 'page-winding-wires.php', 'page-insulating-chemicals.php',
+        'page-transformer-boards.php', 'page-insulation-papers.php',
+        'page-machined-components.php', 'page-moulded-components.php',
+        'page-copper-wires.php', 'page-aluminium-wires.php',
+        'page-chemicals-polyester.php', 'page-chemicals-mod-polyester.php',
+        'page-chemicals-polyurethane.php', 'page-chemicals-polyestermide.php',
+        'page-chemicals-polyamide.php',
+    ];
+    $qo              = get_queried_object();
+    $is_catalog_tax  = is_tax( 'dd_product_cat' ) && $qo && in_array( $qo->slug, $catalog_slugs, true );
+    $is_catalog_tpl  = false;
+    foreach ( $catalog_page_templates as $tpl ) {
+        if ( is_page_template( $tpl ) ) { $is_catalog_tpl = true; break; }
+    }
+    if ( $is_catalog_tax || $is_catalog_tpl ) {
+        wp_enqueue_style( 'ubl-transformer-boards', UBL_URI . '/assets/css/transformer-boards.css', [ 'ubl-sections' ], UBL_VERSION );
     }
 } );
 

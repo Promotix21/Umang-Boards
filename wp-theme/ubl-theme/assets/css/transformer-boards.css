@@ -1,0 +1,708 @@
+/* ============================================================
+   TRANSFORMER BOARDS — Catalog Page
+   tb- prefix throughout
+   ============================================================ */
+
+/* ============================================================
+   CERT LIGHTBOX — mirrors About Us exactly
+   ============================================================ */
+.ab2-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(8,15,28,0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+.ab2-lightbox.open { display: flex; }
+.ab2-lb-box {
+    position: relative;
+    background: #fff;
+    padding: 3rem 2.5rem 2.5rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+    animation: ab2LbIn 0.22s ease;
+}
+@keyframes ab2LbIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+.ab2-lb-img { width: 180px; height: 180px; object-fit: contain; display: block; margin: 0 auto 1.5rem; }
+.ab2-lb-title { font-size: 0.82rem; font-weight: 700; color: #0b1f3a; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.ab2-lb-desc { font-size: 0.8rem; color: rgba(11,31,58,0.55); line-height: 1.6; }
+.ab2-lb-close {
+    position: absolute;
+    top: 0.85rem; right: 0.85rem;
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(11,31,58,0.08);
+    border: none; cursor: pointer; color: #0b1f3a;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+.ab2-lb-close:hover { background: rgba(11,31,58,0.15); }
+
+/* ============================================================
+   APPLICATIONS STRIP
+   ============================================================ */
+.tb-apps {
+    padding: 2.5rem 0;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.tb-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.tb-app-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    background: #fff;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+}
+
+.tb-app-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tb-app-icon svg {
+    width: 18px;
+    height: 18px;
+    color: var(--gold);
+}
+
+.tb-app-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+}
+
+.tb-app-sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+}
+
+@media (max-width: 900px) {
+    .tb-apps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .tb-apps-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   GRADE COMPARISON MATRIX
+   ============================================================ */
+.tb-matrix {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.tb-matrix-scroll {
+    overflow-x: auto;
+    margin-bottom: 0.75rem;
+}
+
+.tb-matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.tb-matrix-table thead tr {
+    background: var(--navy);
+}
+
+.tb-matrix-table thead th {
+    padding: 0.75rem 1.25rem;
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    white-space: nowrap;
+}
+
+.tb-matrix-table thead th:first-child { border-radius: 8px 0 0 8px; }
+.tb-matrix-table thead th:last-child  { border-radius: 0 8px 8px 0; }
+
+.tb-matrix-row {
+    border-bottom: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.tb-matrix-row:hover { background: rgba(11,31,58,0.025); }
+
+.tb-matrix-row.is-active {
+    background: rgba(200,168,75,0.07);
+    border-left: 3px solid var(--gold);
+}
+
+.tb-matrix-row td {
+    padding: 0.85rem 1.25rem;
+    color: var(--text-secondary);
+    vertical-align: middle;
+}
+
+.tb-matrix-row td:first-child {
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.tb-matrix-grade-chip {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 3px;
+}
+
+.tb-matrix-row.is-active .tb-matrix-grade-chip {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.tb-matrix-hint {
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    text-align: right;
+}
+
+/* ============================================================
+   PANEL INTRO
+   ============================================================ */
+.tb-panel-intro {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-weight: 300;
+    margin-bottom: 1.75rem;
+    max-width: 560px;
+}
+
+/* ============================================================
+   ACTIVE GRADE DISPLAY
+   ============================================================ */
+.tb-active-grade-display {
+    background: rgba(11,31,58,0.04);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.tb-active-grade-display strong {
+    color: var(--navy);
+    font-weight: 700;
+}
+
+/* ============================================================
+   TAB NAV
+   ============================================================ */
+.tb-tabs {
+    position: sticky;
+    top: calc(var(--utility-h) + var(--header-h-scrolled));
+    z-index: 90;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 2px 12px rgba(11, 31, 58, 0.06);
+}
+
+.tb-tabs .p-container {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.tb-tab-nav {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: center;
+}
+
+.tb-tab-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.tb-tab-pill {
+    flex-shrink: 0;
+    padding: 1.1rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.tb-tab-pill:hover {
+    color: var(--navy);
+}
+
+.tb-tab-pill.is-active {
+    color: var(--navy);
+    border-bottom-color: var(--gold);
+}
+
+/* ============================================================
+   PANELS
+   ============================================================ */
+.tb-panels {
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
+}
+
+.tb-panel {
+    display: none;
+}
+
+.tb-panel.is-active {
+    display: block;
+    animation: tbPanelIn 0.35s var(--ease-out-quart) both;
+}
+
+@keyframes tbPanelIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Two-col layout ── */
+.tb-panel-layout {
+    display: grid;
+    grid-template-columns: 480px 1fr;
+    gap: 3.5rem;
+    align-items: start;
+    margin-bottom: 3.5rem;
+}
+
+@media (max-width: 900px) {
+    .tb-panel-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ── Image ── */
+.tb-panel-image {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    aspect-ratio: 5 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tb-panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 1rem;
+}
+
+/* ── Info column ── */
+.tb-panel-info {
+    padding-top: 0.5rem;
+}
+
+.tb-panel-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.tb-grade-chip {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border-radius: 4px;
+}
+
+.tb-iec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(200, 168, 75, 0.08);
+    border: 1px solid rgba(200, 168, 75, 0.3);
+    color: var(--gold-dark);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+}
+
+.tb-iec-badge svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+}
+
+.tb-panel-title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+/* ── Key Properties ── */
+.tb-props-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 1rem;
+}
+
+.tb-props-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.tb-prop {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+}
+
+.tb-prop-num {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    padding-top: 0.05em;
+}
+
+.tb-prop-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   DIMENSIONS TABLE
+   ============================================================ */
+.tb-table-wrap {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.tb-table-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 1.25rem;
+}
+
+.tb-table-scroll {
+    overflow-x: auto;
+}
+
+.tb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+.tb-table thead tr {
+    background: var(--navy);
+}
+
+.tb-table thead th {
+    padding: 0.75rem 1.25rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+}
+
+.tb-table thead th:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+.tb-table thead th:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+.tb-table tbody tr {
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.tb-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tb-table tbody tr:hover td {
+    background: rgba(11, 31, 58, 0.02);
+}
+
+.tb-table tbody td {
+    padding: 0.85rem 1.25rem;
+    color: var(--text-secondary);
+    vertical-align: middle;
+    transition: background 0.15s;
+}
+
+/* First column = row label (slightly bolder); columns 2–4 share one consistent
+   style so font colour, weight, and size match across the table. */
+.tb-table tbody td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.tb-table tbody td:nth-child(2),
+.tb-table tbody td:nth-child(3),
+.tb-table tbody td:nth-child(4) {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--navy);
+}
+
+/* ============================================================
+   CERT STRIP — mirrors About Us page exactly (ab2-cert-* classes)
+   ============================================================ */
+.ab2-cert-strip {
+    background: #fff;
+    border-top: 1px solid rgba(11,31,58,0.08);
+    border-bottom: 1px solid rgba(11,31,58,0.06);
+    box-shadow: 0 4px 24px rgba(11,31,58,0.05);
+}
+.ab2-cert-inner {
+    width: 100%;
+    padding: 1rem clamp(3rem, 7vw, 7rem);
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+}
+.ab2-cert-label {
+    flex-shrink: 0;
+    border-right: 1px solid rgba(11,31,58,0.12);
+    padding: 0.5rem clamp(1rem, 2vw, 2rem) 0.5rem 0;
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(11,31,58,0.6);
+    line-height: 1.75;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 2rem;
+}
+.ab2-cert-label em {
+    color: #D4A843;
+    font-style: normal;
+    display: block;
+}
+.ab2-cert-items {
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+}
+.ab2-cert-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    padding: 1rem 0.75rem;
+    flex: 1;
+    border-right: 1px solid rgba(11,31,58,0.07);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.ab2-cert-item:last-child { border-right: none; }
+.ab2-cert-item:hover { background: rgba(11,31,58,0.03); }
+.ab2-cert-item img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    opacity: 0.85;
+    flex-shrink: 0;
+    display: block;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.ab2-cert-item:hover img { opacity: 1; transform: scale(1.06); }
+.ab2-cert-item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: left;
+}
+.ab2-cert-item-name {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #0b1f3a;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+}
+.ab2-cert-item-sub {
+    font-size: 0.58rem;
+    color: rgba(11,31,58,0.42);
+    line-height: 1.4;
+}
+@media (max-width: 900px) {
+    .ab2-cert-inner { flex-direction: column; align-items: flex-start; padding: 1rem clamp(1.5rem, 5vw, 3rem); }
+    .ab2-cert-label { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.08); padding: 0 0 0.75rem 0; width: 100%; }
+    .ab2-cert-items { flex-wrap: wrap; width: 100%; }
+    .ab2-cert-item { flex: 1 1 45%; border-right: none; border-bottom: 1px solid rgba(11,31,58,0.07); justify-content: flex-start; padding: 0.85rem 0.5rem; }
+    .ab2-cert-item img { width: 64px; height: 64px; }
+}
+@media (max-width: 480px) {
+    .ab2-cert-item { flex: 1 1 100%; }
+    .ab2-cert-item img { width: 56px; height: 56px; }
+}
+
+/* ============================================================
+   ENQUIRY SECTION
+   ============================================================ */
+.tb-enquiry {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-subtle);
+    padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.tb-enquiry-inner {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tb-enquiry-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 0.75rem;
+}
+
+.tb-enquiry-title {
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.025em;
+    margin-bottom: 0.75rem;
+}
+
+.tb-enquiry-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+}
+
+.tb-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.tb-form-grid .tb-form-full {
+    grid-column: 1 / -1;
+}
+
+.tb-form-input,
+.tb-form-textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+}
+
+.tb-form-input:focus,
+.tb-form-textarea:focus {
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(11, 31, 58, 0.08);
+}
+
+.tb-form-input::placeholder,
+.tb-form-textarea::placeholder {
+    color: var(--text-faint);
+}
+
+.tb-form-textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+@media (max-width: 600px) {
+    .tb-form-grid {
+        grid-template-columns: 1fr;
+    }
+    .tb-panel-layout {
+        grid-template-columns: 1fr;
+    }
+    .tb-table-wrap {
+        padding: 1.25rem 1rem;
+    }
+}

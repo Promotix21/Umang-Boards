@@ -120,7 +120,7 @@ $uri = UBL_URI;
                 <div class="ab2-cert-item"
                      data-img="<?php echo esc_url( $uri ); ?>/assets/images/cert-iso-9001.png"
                      data-title="ISO 9001:2015"
-                     data-desc="Quality Management System — ensuring consistent product quality across all manufacturing operations.">
+                     data-desc="Quality Management System, ensuring consistent product quality across all manufacturing operations.">
                     <img src="<?php echo esc_url( $uri ); ?>/assets/images/cert-iso-9001.png" alt="ISO 9001:2015" loading="lazy">
                     <div class="ab2-cert-item-text">
                         <div class="ab2-cert-item-name">ISO 9001:2015</div>
@@ -130,7 +130,7 @@ $uri = UBL_URI;
                 <div class="ab2-cert-item"
                      data-img="<?php echo esc_url( $uri ); ?>/assets/images/cert-iso-14001.png"
                      data-title="ISO 14001:2015"
-                     data-desc="Environmental Management System — reflecting our commitment to responsible and sustainable manufacturing.">
+                     data-desc="Environmental Management System, reflecting our commitment to responsible and sustainable manufacturing.">
                     <img src="<?php echo esc_url( $uri ); ?>/assets/images/cert-iso-14001.png" alt="ISO 14001:2015" loading="lazy">
                     <div class="ab2-cert-item-text">
                         <div class="ab2-cert-item-name">ISO 14001:2015</div>
@@ -140,7 +140,7 @@ $uri = UBL_URI;
                 <div class="ab2-cert-item"
                      data-img="<?php echo esc_url( $uri ); ?>/assets/images/cert-iso-45001.png"
                      data-title="ISO 45001:2018"
-                     data-desc="Occupational Health &amp; Safety Management — prioritising the wellbeing of every member of our workforce.">
+                     data-desc="Occupational Health &amp; Safety Management, prioritising the wellbeing of every member of our workforce.">
                     <img src="<?php echo esc_url( $uri ); ?>/assets/images/cert-iso-45001.png" alt="ISO 45001:2018" loading="lazy">
                     <div class="ab2-cert-item-text">
                         <div class="ab2-cert-item-name">ISO 45001:2018</div>
@@ -160,7 +160,7 @@ $uri = UBL_URI;
                 <div class="ab2-cert-item"
                      data-img="<?php echo esc_url( $uri ); ?>/assets/images/cert-pgcil-400kv.png"
                      data-title="Approved by PGCIL"
-                     data-desc="Approved by Power Grid Corporation of India Ltd for 400 kV class — India's highest voltage class approval for insulation manufacturers.">
+                     data-desc="Approved by Power Grid Corporation of India Ltd for 400 kV class, India's highest voltage class approval for insulation manufacturers.">
                     <img src="<?php echo esc_url( $uri ); ?>/assets/images/cert-pgcil-400kv.png" alt="Approved by PGCIL" loading="lazy">
                     <div class="ab2-cert-item-text">
                         <div class="ab2-cert-item-name">Approved by PGCIL</div>
@@ -170,205 +170,6 @@ $uri = UBL_URI;
             </div>
         </div>
     </div>
-
-    <!-- ================================================
-         ENGINEERING EXCELLENCE — two-col top + 4 pillars
-         ================================================ -->
-    <section class="ab2-exc" id="ab2Excellence">
-
-        <!-- TOP: two-column grid -->
-        <div class="ab2-exc-top">
-
-            <!-- LEFT: text content -->
-            <div class="ab2-exc-text">
-                <div class="ab2-exc-eyebrow">Our Strength</div>
-                <h2 class="ab2-exc-heading">Engineering Excellence Built on <em>Manufacturing Depth</em></h2>
-                <div class="ab2-exc-divider"></div>
-                <p class="ab2-exc-body">Headquartered in Jaipur, India, Umang Boards Limited has built its growth on continuous investment in advanced manufacturing, skilled talent, and rigorous in-house testing systems.</p>
-                <p class="ab2-exc-body">With two modern production facilities and globally recognized ISO certifications, we ensure every product meets the highest standards of performance, reliability, and consistency.</p>
-                <p class="ab2-exc-body">Our integrated manufacturing capabilities span <em>high-performance insulation materials</em>, precision <em>winding wires</em>, and specialized <em>insulating chemicals</em>—enabling us to deliver complete electrical component solutions across applications.</p>
-            </div>
-
-            <!-- RIGHT: 3 product category tiles (no lab image per brief) -->
-            <div class="ab2-exc-visual">
-                <div class="ab2-exc-products ab2-exc-products--full">
-                    <a href="<?php echo esc_url( home_url('/transformer-insulations/') ); ?>" class="ab2-exc-product-card ab2-exc-product-card--linked">
-                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-product-insulation.png" alt="Insulation Materials" loading="lazy">
-                        <div class="ab2-exc-product-overlay">
-                            <span class="ab2-exc-product-label">Insulation Materials</span>
-                            <span class="ab2-exc-product-cta">Explore Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </a>
-                    <a href="<?php echo esc_url( home_url('/winding-wires/') ); ?>" class="ab2-exc-product-card ab2-exc-product-card--linked">
-                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-product-winding.png" alt="Winding Wires" loading="lazy">
-                        <div class="ab2-exc-product-overlay">
-                            <span class="ab2-exc-product-label">Winding Wires</span>
-                            <span class="ab2-exc-product-cta">Explore Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </a>
-                    <a href="<?php echo esc_url( home_url('/insulating-chemical/') ); ?>" class="ab2-exc-product-card ab2-exc-product-card--linked">
-                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-product-chemicals.png" alt="Insulating Chemicals" loading="lazy">
-                        <div class="ab2-exc-product-overlay">
-                            <span class="ab2-exc-product-label">Insulating Chemicals</span>
-                            <span class="ab2-exc-product-cta">Explore Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-
-    </section>
-
-    <!-- ================================================
-         APPLICATIONS — header split + 3 cards + capability strip
-         ================================================ -->
-    <section class="ab2-apps" id="ab2Applications">
-
-        <!-- HEADER SPLIT: text left, hero image right -->
-        <div class="ab2-apps-hdr">
-            <div class="ab2-apps-hdr-inner">
-
-                <div class="ab2-apps-hdr-text">
-                    <div class="ab2-apps-eyebrow">Our Impact</div>
-                    <h2 class="ab2-apps-heading">Powering Critical Infrastructure Across <em>Global Energy Systems</em></h2>
-                    <div class="ab2-apps-hdr-rule"></div>
-                    <p class="ab2-apps-subtext">Our products form the backbone of electrical systems—from high-voltage transformers to industrial and emerging energy applications.</p>
-                </div>
-
-                <div class="ab2-apps-hdr-img">
-                    <img src="<?php echo esc_url( $uri ); ?>/assets/images/app-hero-collage.jpg"
-                         alt="Umang Boards insulation materials, winding wires and chemicals" loading="lazy">
-                    <div class="ab2-apps-hdr-img-veil"></div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 3 APPLICATION CARDS -->
-        <div class="ab2-apps-cards-wrap">
-            <div class="ab2-apps-cards">
-
-                <!-- Card 1 -->
-                <article class="ab2-apps-card">
-                    <div class="ab2-apps-card-body">
-                        <div class="ab2-apps-card-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="28 5 16 25 24 25 20 43 32 23 24 23"/>
-                            </svg>
-                        </div>
-                        <span class="ab2-apps-card-num">01</span>
-                        <h3 class="ab2-apps-card-title">Power &amp; Transmission Infrastructure</h3>
-                        <p class="ab2-apps-card-desc">We manufacture high-performance insulation materials and winding wires for transformers, supporting reliable electricity transmission—including ultra-high voltage applications.</p>
-                    </div>
-                    <div class="ab2-apps-card-img">
-                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/app-card-power.jpg"
-                             alt="High-voltage transmission substation at sunset" loading="lazy">
-                        <div class="ab2-apps-card-img-veil"></div>
-                    </div>
-                </article>
-
-                <!-- Card 2 -->
-                <article class="ab2-apps-card">
-                    <div class="ab2-apps-card-body">
-                        <div class="ab2-apps-card-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="24" cy="24" r="7"/>
-                                <path d="M24 6v6M24 36v6M6 24h6M36 24h6"/>
-                                <path d="M11.5 11.5l4.2 4.2M32.3 32.3l4.2 4.2M11.5 36.5l4.2-4.2M32.3 15.7l4.2-4.2"/>
-                            </svg>
-                        </div>
-                        <span class="ab2-apps-card-num">02</span>
-                        <h3 class="ab2-apps-card-title">Industrial &amp; Electrical Systems</h3>
-                        <p class="ab2-apps-card-desc">Our solutions power motors, stabilizers, and heavy electrical equipment—ensuring efficiency, durability, and reliability across demanding industrial environments.</p>
-                    </div>
-                    <div class="ab2-apps-card-img">
-                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/app-card-industrial.jpg"
-                             alt="Industrial motors and electrical equipment on factory floor" loading="lazy">
-                        <div class="ab2-apps-card-img-veil"></div>
-                    </div>
-                </article>
-
-                <!-- Card 3 -->
-                <article class="ab2-apps-card">
-                    <div class="ab2-apps-card-body">
-                        <div class="ab2-apps-card-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M24 8c-1.5 4-5 7.5-5 13a5 5 0 0 0 10 0c0-5.5-3.5-9-5-13z"/>
-                                <line x1="24" y1="21" x2="24" y2="40"/>
-                                <line x1="16" y1="40" x2="32" y2="40"/>
-                                <path d="M10 28c3.5-2 7-2 9 0"/>
-                                <path d="M29 28c2-2 5.5-2 9 0"/>
-                            </svg>
-                        </div>
-                        <span class="ab2-apps-card-num">03</span>
-                        <h3 class="ab2-apps-card-title">Emerging Energy &amp; Digital Infrastructure</h3>
-                        <p class="ab2-apps-card-desc">We support renewable energy systems, data centers, and next-generation electrical applications—enabling the infrastructure of tomorrow's energy economy.</p>
-                    </div>
-                    <div class="ab2-apps-card-img">
-                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/app-card-energy.jpg"
-                             alt="Wind turbines and renewable energy infrastructure at dusk" loading="lazy">
-                        <div class="ab2-apps-card-img-veil"></div>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-
-        <!-- CAPABILITY STRIP -->
-        <div class="ab2-apps-strip">
-            <div class="ab2-apps-strip-inner">
-
-                <div class="ab2-apps-strip-left">
-                    <div class="ab2-apps-strip-icon">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="24 4 44 16 44 32 24 44 4 32 4 16"/>
-                            <line x1="4" y1="16" x2="44" y2="16"/>
-                            <line x1="4" y1="32" x2="44" y2="32"/>
-                            <line x1="24" y1="4" x2="24" y2="44"/>
-                            <line x1="14" y1="9.5" x2="34" y2="38.5"/>
-                            <line x1="34" y1="9.5" x2="14" y2="38.5"/>
-                        </svg>
-                    </div>
-                    <div class="ab2-apps-strip-title">Integrated.<br>Reliable.<br>Future-Ready.</div>
-                </div>
-
-                <div class="ab2-apps-strip-center">
-                    <p>Our integrated capabilities across insulation materials, winding wires, and insulating chemicals enable complete, high-performance electrical component solutions.</p>
-                </div>
-
-                <div class="ab2-apps-strip-points">
-                    <div class="ab2-apps-strip-point">
-                        <div class="ab2-apps-strip-point-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>
-                        </div>
-                        <span>High Performance</span>
-                    </div>
-                    <div class="ab2-apps-strip-point">
-                        <div class="ab2-apps-strip-point-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-                        </div>
-                        <span>Engineered for Reliability</span>
-                    </div>
-                    <div class="ab2-apps-strip-point">
-                        <div class="ab2-apps-strip-point-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                        </div>
-                        <span>Global Applications</span>
-                    </div>
-                    <div class="ab2-apps-strip-point">
-                        <div class="ab2-apps-strip-point-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a10 10 0 0 1 0 20"/><path d="M12 2C8 6 6 9 6 12s2 6 6 10"/><path d="M2 12h20"/></svg>
-                        </div>
-                        <span>Sustainable by Design</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </section>
 
     <!-- ================================================
          VISION & MISSION — transformer hero image bg + ONE inner box (2-card row + 5-card row)
@@ -405,7 +206,7 @@ $uri = UBL_URI;
                         <div class="ab2-vm-card-label">Vision</div>
                         <div class="ab2-vm-card-rule"></div>
                         <p class="ab2-vm-card-body">To be the global benchmark in electrical insulation and winding solutions, powering the world's transition to ultra-high voltage (1200 kV) and sustainable energy systems.</p>
-                        <p class="ab2-vm-card-support">We aspire to lead through continuous innovation, superior quality, and customer-centric solutions—creating long-term value and enabling a sustainable, electrified future.</p>
+                        <p class="ab2-vm-card-support">We aspire to lead through continuous innovation, superior quality, and customer-centric solutions, creating long-term value and enabling a sustainable, electrified future.</p>
                     </div>
 
                     <div class="ab2-vm-card">
@@ -418,84 +219,12 @@ $uri = UBL_URI;
                         </div>
                         <div class="ab2-vm-card-label">Mission</div>
                         <div class="ab2-vm-card-rule"></div>
-                        <p class="ab2-vm-card-body">We deliver high-quality, cost-efficient electrical components through advanced technology and operational excellence—supporting infrastructure from 1200 kV transformers to renewable energy, data centers, and industrial systems.</p>
+                        <p class="ab2-vm-card-body">We deliver high-quality, cost-efficient electrical components through advanced technology and operational excellence, supporting infrastructure from 1200 kV transformers to renewable energy, data centers, and industrial systems.</p>
                         <p class="ab2-vm-card-support">Our integrated solutions in insulation materials, winding wires, and insulating chemicals are built to enhance reliability, efficiency, and performance across critical applications worldwide.</p>
                     </div>
 
                 </div>
 
-                <!-- BOX DIVIDER + EXEC HEADER -->
-                <div class="ab2-vm-exec-hdr">
-                    <div class="ab2-vm-divider-rule"></div>
-                    <h3 class="ab2-vm-exec-title">How We Execute This Vision</h3>
-                    <p class="ab2-vm-exec-sub">Our strategic pillars translate our vision and mission into measurable impact.</p>
-                </div>
-
-                <!-- BOTTOM ROW: 5 pillars -->
-                <div class="ab2-vm-pillars">
-
-                    <div class="ab2-vm-pillar">
-                        <div class="ab2-vm-pillar-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="28 5 16 25 24 25 20 43 32 23 24 23"/>
-                            </svg>
-                        </div>
-                        <h4 class="ab2-vm-pillar-title">Power &amp; Distribution</h4>
-                        <p class="ab2-vm-pillar-desc">Enabling reliable power transmission through advanced insulation materials and winding solutions for transformers up to 1200 kV and beyond.</p>
-                    </div>
-
-                    <div class="ab2-vm-pillar">
-                        <div class="ab2-vm-pillar-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M24 8c-1.5 4-5 7.5-5 13a5 5 0 0 0 10 0c0-5.5-3.5-9-5-13z"/>
-                                <line x1="24" y1="21" x2="24" y2="40"/>
-                                <line x1="16" y1="40" x2="32" y2="40"/>
-                                <path d="M10 28c3.5-2 7-2 9 0"/>
-                                <path d="M29 28c2-2 5.5-2 9 0"/>
-                            </svg>
-                        </div>
-                        <h4 class="ab2-vm-pillar-title">Emerging Applications</h4>
-                        <p class="ab2-vm-pillar-desc">Supporting renewable energy systems, data centers, EV ecosystems, and next-generation electrical infrastructure.</p>
-                    </div>
-
-                    <div class="ab2-vm-pillar">
-                        <div class="ab2-vm-pillar-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="24" cy="24" r="6"/>
-                                <path d="M24 4v6M24 38v6M4 24h6M38 24h6"/>
-                                <path d="M9.5 9.5l4.2 4.2M34.3 34.3l4.2 4.2M9.5 38.5l4.2-4.2M34.3 13.7l4.2-4.2"/>
-                            </svg>
-                        </div>
-                        <h4 class="ab2-vm-pillar-title">Operational Excellence</h4>
-                        <p class="ab2-vm-pillar-desc">Investing in advanced manufacturing, automation, zero liquid discharge (ZLD), and sustainable practices to ensure efficiency and quality.</p>
-                    </div>
-
-                    <div class="ab2-vm-pillar">
-                        <div class="ab2-vm-pillar-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="16" cy="18" r="7"/>
-                                <circle cx="32" cy="30" r="7"/>
-                                <path d="M23 18h2a7 7 0 0 1 7 7v2"/>
-                                <path d="M16 25v2a7 7 0 0 0 7 7h2"/>
-                            </svg>
-                        </div>
-                        <h4 class="ab2-vm-pillar-title">Strategic Partnerships</h4>
-                        <p class="ab2-vm-pillar-desc">Building long-term relationships with global customers, suppliers, and partners—driving shared growth and reliability.</p>
-                    </div>
-
-                    <div class="ab2-vm-pillar">
-                        <div class="ab2-vm-pillar-icon">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M24 6l3.5 9.5H38l-8.5 6.5 3.5 9.5L24 26l-9 5.5 3.5-9.5L10 15.5h10.5z"/>
-                                <path d="M16 38l-4 6M32 38l4 6"/>
-                                <path d="M12 44h24"/>
-                            </svg>
-                        </div>
-                        <h4 class="ab2-vm-pillar-title">Innovation Leadership</h4>
-                        <p class="ab2-vm-pillar-desc">Continuously advancing through R&amp;D, product development, and custom engineering solutions to meet evolving industry demands.</p>
-                    </div>
-
-                </div>
 
             </div><!-- /ab2-vm-box -->
 
@@ -535,35 +264,213 @@ $uri = UBL_URI;
                 <span class="ab2-cv-pill">Cost Leadership</span>
             </div>
 
-            <!-- ROW 3: inset rounded rectangle — quote + 4 pillars -->
-            <div class="ab2-cv-inset">
-                <div class="ab2-cv-quote">
-                    <svg class="ab2-cv-quote-mark" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true">
-                        <path d="M0 24V12C0 5.4 5.4 0 12 0v4c-4.4 0-8 3.6-8 8h8v12H0zm20 0V12c0-6.6 5.4-12 12-12v4c-4.4 0-8 3.6-8 8h8v12H20z"/>
-                    </svg>
-                    <p class="ab2-cv-quote-text">These principles are not just ideals , they are the foundation of how we build, deliver, and lead.</p>
-                </div>
-                <div class="ab2-cv-pillars">
-                    <div class="ab2-cv-pillar">
-                        <h5 class="ab2-cv-pillar-title">Purpose Driven</h5>
-                        <p class="ab2-cv-pillar-desc">Aligned with our mission every step of the way.</p>
-                    </div>
-                    <div class="ab2-cv-pillar">
-                        <h5 class="ab2-cv-pillar-title">Performance Focused</h5>
-                        <p class="ab2-cv-pillar-desc">Backed by rigour, results, and resilience.</p>
-                    </div>
-                    <div class="ab2-cv-pillar">
-                        <h5 class="ab2-cv-pillar-title">Future Ready</h5>
-                        <p class="ab2-cv-pillar-desc">Powering tomorrow for a sustainable tomorrow.</p>
-                    </div>
-                    <div class="ab2-cv-pillar">
-                        <h5 class="ab2-cv-pillar-title">Trusted by Stakeholders</h5>
-                        <p class="ab2-cv-pillar-desc">Earning confidence through consistency and care.</p>
-                    </div>
-                </div>
-            </div><!-- /inset -->
 
         </div><!-- /ab2-cv-box -->
+    </section>
+
+    <!-- ================================================
+         ENGINEERING EXCELLENCE — two-col top + 4 pillars
+         ================================================ -->
+    <section class="ab2-exc" id="ab2Excellence">
+
+        <!-- TOP: two-column grid -->
+        <div class="ab2-exc-top">
+
+            <!-- LEFT: text content -->
+            <div class="ab2-exc-text">
+                <div class="ab2-exc-eyebrow">Our Strength</div>
+                <h2 class="ab2-exc-heading">Engineering Excellence Built on <em>Manufacturing Depth</em></h2>
+                <div class="ab2-exc-divider"></div>
+                <p class="ab2-exc-body">Headquartered in Jaipur, India, Umang Boards Limited has built its growth on continuous investment in advanced manufacturing, skilled talent, and rigorous in-house testing systems.</p>
+                <p class="ab2-exc-body">With two modern production facilities and globally recognized ISO certifications, we ensure every product meets the highest standards of performance, reliability, and consistency.</p>
+                <p class="ab2-exc-body">Our integrated manufacturing capabilities span <em>high-performance insulation materials</em>, precision <em>winding wires</em>, and specialized <em>insulating chemicals</em>, enabling us to deliver complete electrical component solutions across applications.</p>
+            </div>
+
+            <!-- RIGHT: 3 product category tiles (no lab image per brief) -->
+            <div class="ab2-exc-visual">
+                <div class="ab2-exc-products ab2-exc-products--full">
+                    <a href="<?php echo esc_url( home_url('/transformer-insulations/') ); ?>" class="ab2-exc-product-card ab2-exc-product-card--linked">
+                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-product-insulation.png" alt="Insulation Materials" loading="lazy">
+                        <div class="ab2-exc-product-overlay">
+                            <span class="ab2-exc-product-label">Insulation Materials</span>
+                            <span class="ab2-exc-product-cta">Explore Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url('/winding-wires/') ); ?>" class="ab2-exc-product-card ab2-exc-product-card--linked">
+                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-product-winding.png" alt="Winding Wires" loading="lazy">
+                        <div class="ab2-exc-product-overlay">
+                            <span class="ab2-exc-product-label">Winding Wires</span>
+                            <span class="ab2-exc-product-cta">Explore Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url('/insulating-chemical/') ); ?>" class="ab2-exc-product-card ab2-exc-product-card--linked">
+                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/about-product-chemicals.png" alt="Insulating Chemicals" loading="lazy">
+                        <div class="ab2-exc-product-overlay">
+                            <span class="ab2-exc-product-label">Insulating Chemicals</span>
+                            <span class="ab2-exc-product-cta">Explore Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM: 4 pillar cards -->
+        <div class="ab2-exc-pillars-outer"><div class="ab2-exc-pillars">
+
+            <div class="ab2-exc-pillar">
+                <div class="ab2-exc-pillar-icon">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="24" cy="20" r="12"/>
+                        <path d="M24 12v8l5 3"/>
+                        <path d="M14 38c0-3 4.5-5 10-5s10 2 10 5"/>
+                    </svg>
+                </div>
+                <h3 class="ab2-exc-pillar-title">Innovation &amp; Products</h3>
+                <div class="ab2-exc-pillar-divider"></div>
+                <p class="ab2-exc-pillar-body">Built on a technology-driven foundation, we continuously invest in innovation, advanced processes and product development to stay ahead of evolving electrical demands.</p>
+            </div>
+
+            <div class="ab2-exc-pillar">
+                <div class="ab2-exc-pillar-icon">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M24 6l4 8 9 1.3-6.5 6.3 1.5 9L24 26l-8 4.6 1.5-9L11 15.3 20 14z"/>
+                        <path d="M14 40h20"/>
+                        <path d="M24 36v4"/>
+                    </svg>
+                </div>
+                <h3 class="ab2-exc-pillar-title">Quality &amp; Reliability</h3>
+                <div class="ab2-exc-pillar-divider"></div>
+                <p class="ab2-exc-pillar-body">Across markets, we are known for consistent quality, disciplined manufacturing, dependable delivery and long-term customer partnerships, serving clients in India and globally.</p>
+            </div>
+
+            <div class="ab2-exc-pillar">
+                <div class="ab2-exc-pillar-icon">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="8 36 20 22 28 30 42 12"/>
+                        <polyline points="34 12 42 12 42 20"/>
+                    </svg>
+                </div>
+                <h3 class="ab2-exc-pillar-title">Leadership &amp; Growth</h3>
+                <div class="ab2-exc-pillar-divider"></div>
+                <p class="ab2-exc-pillar-body">Guided by committed leadership and a clear growth vision, Umang Boards has expanded steadily, strengthening its presence while maintaining operational rigor and financial discipline.</p>
+            </div>
+
+            <div class="ab2-exc-pillar">
+                <div class="ab2-exc-pillar-icon">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="16" r="6"/>
+                        <path d="M6 38c0-6 5.4-10 12-10"/>
+                        <circle cx="34" cy="28" r="5"/>
+                        <path d="M26 42c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+                        <path d="M28 20l3 3 6-7"/>
+                    </svg>
+                </div>
+                <h3 class="ab2-exc-pillar-title">Social Responsibility</h3>
+                <div class="ab2-exc-pillar-divider"></div>
+                <p class="ab2-exc-pillar-body">We believe meaningful growth extends beyond business. Through structured social initiatives and our wholly owned subsidiary Dhanuka Foundation, we actively contribute to community development and sustainable progress.</p>
+            </div>
+
+        </div></div>
+
+    </section>
+
+    <!-- ================================================
+         APPLICATIONS — header split + 3 cards
+         ================================================ -->
+    <section class="ab2-apps" id="ab2Applications">
+
+        <!-- HEADER SPLIT: text left, hero image right -->
+        <div class="ab2-apps-hdr">
+            <div class="ab2-apps-hdr-inner">
+
+                <div class="ab2-apps-hdr-text">
+                    <div class="ab2-apps-eyebrow">Our Impact</div>
+                    <h2 class="ab2-apps-heading">Powering Critical Infrastructure Across <em>Global Energy Systems</em></h2>
+                    <div class="ab2-apps-hdr-rule"></div>
+                    <p class="ab2-apps-subtext">Our products form the backbone of electrical systems, from high-voltage transformers to industrial and emerging energy applications.</p>
+                </div>
+
+                <div class="ab2-apps-hdr-img">
+                    <img src="<?php echo esc_url( $uri ); ?>/assets/images/app-hero-collage.jpg"
+                         alt="Umang Boards insulation materials, winding wires and chemicals" loading="lazy">
+                    <div class="ab2-apps-hdr-img-veil"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 3 APPLICATION CARDS -->
+        <div class="ab2-apps-cards-wrap">
+            <div class="ab2-apps-cards">
+
+                <!-- Card 1 -->
+                <article class="ab2-apps-card">
+                    <div class="ab2-apps-card-body">
+                        <div class="ab2-apps-card-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="28 5 16 25 24 25 20 43 32 23 24 23"/>
+                            </svg>
+                        </div>
+                        <span class="ab2-apps-card-num">01</span>
+                        <h3 class="ab2-apps-card-title">Power &amp; Transmission Infrastructure</h3>
+                        <p class="ab2-apps-card-desc">We manufacture high-performance insulation materials and winding wires for transformers, supporting reliable electricity transmission, including ultra-high voltage applications.</p>
+                    </div>
+                    <div class="ab2-apps-card-img">
+                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/app-card-power.jpg"
+                             alt="High-voltage transmission substation at sunset" loading="lazy">
+                        <div class="ab2-apps-card-img-veil"></div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="ab2-apps-card">
+                    <div class="ab2-apps-card-body">
+                        <div class="ab2-apps-card-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="24" cy="24" r="7"/>
+                                <path d="M24 6v6M24 36v6M6 24h6M36 24h6"/>
+                                <path d="M11.5 11.5l4.2 4.2M32.3 32.3l4.2 4.2M11.5 36.5l4.2-4.2M32.3 15.7l4.2-4.2"/>
+                            </svg>
+                        </div>
+                        <span class="ab2-apps-card-num">02</span>
+                        <h3 class="ab2-apps-card-title">Industrial &amp; Electrical Systems</h3>
+                        <p class="ab2-apps-card-desc">Our solutions power motors, stabilizers, and heavy electrical equipment, ensuring efficiency, durability, and reliability across demanding industrial environments.</p>
+                    </div>
+                    <div class="ab2-apps-card-img">
+                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/app-card-industrial.jpg"
+                             alt="Industrial motors and electrical equipment on factory floor" loading="lazy">
+                        <div class="ab2-apps-card-img-veil"></div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="ab2-apps-card">
+                    <div class="ab2-apps-card-body">
+                        <div class="ab2-apps-card-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M24 8c-1.5 4-5 7.5-5 13a5 5 0 0 0 10 0c0-5.5-3.5-9-5-13z"/>
+                                <line x1="24" y1="21" x2="24" y2="40"/>
+                                <line x1="16" y1="40" x2="32" y2="40"/>
+                                <path d="M10 28c3.5-2 7-2 9 0"/>
+                                <path d="M29 28c2-2 5.5-2 9 0"/>
+                            </svg>
+                        </div>
+                        <span class="ab2-apps-card-num">03</span>
+                        <h3 class="ab2-apps-card-title">Emerging Energy &amp; Digital Infrastructure</h3>
+                        <p class="ab2-apps-card-desc">We support renewable energy systems, data centers, and next-generation electrical applications, enabling the infrastructure of tomorrow's energy economy.</p>
+                    </div>
+                    <div class="ab2-apps-card-img">
+                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/app-card-energy.jpg"
+                             alt="Wind turbines and renewable energy infrastructure at dusk" loading="lazy">
+                        <div class="ab2-apps-card-img-veil"></div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
@@ -572,139 +479,91 @@ $uri = UBL_URI;
     <section class="ab2-team-gateway">
         <div class="ab2-team-gateway-inner">
             <div class="ab2-team-eyebrow">Our Team</div>
-            <p class="ab2-team-body">Great companies are shaped by the people who understand them most deeply. At Umang Boards, our leadership team carries between them decades of experience in transformer insulation, manufacturing operations, and business growth — a team that has built this company and continues to steer it with the same conviction it started with. Get to know them.</p>
+            <p class="ab2-team-body">Great companies are shaped by the people who understand them most deeply. At Umang Boards, our leadership team carries between them decades of experience in transformer insulation, manufacturing operations, and business growth; a team that has built this company and continues to steer it with the same conviction it started with. Get to know them.</p>
             <a href="<?php echo esc_url( home_url('/leadership/') ); ?>" class="btn-gold">Meet the Team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         MEDIA & NEWS — au-news (ported from v1)
+         NEWS + EVENTS + CONNECT — mn-trio (same as homepage)
     ═══════════════════════════════════════════════════════════════ -->
-    <section class="au-news" id="auNews">
-        <div class="au-news-wrap">
-            <div class="au-news-header">
+    <section class="s-media-news" id="auNews" style="background:#f8f9fb;">
+        <div class="s-media-news-inner">
+
+            <div class="s-media-news-header">
                 <div>
-                    <div class="au-news-eyebrow">Media &amp; News</div>
-                    <h2 class="au-news-title">Our Latest<br><em>Updates</em></h2>
+                    <div class="section-eyebrow">Media &amp; News</div>
+                    <h2 class="section-title">What's <em>Happening</em></h2>
                 </div>
-                <a href="<?php echo home_url('/newsroom'); ?>" class="btn-outline">View All</a>
             </div>
-            <div class="au-news-grid">
-                <article class="au-news-card">
-                    <div class="au-news-card-img-wrap">
-                        <span class="au-news-badge">Milestone</span>
-                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/news-pgcil-approval.jpg" alt="PGCIL 400 KV Approval" loading="lazy">
-                    </div>
-                    <div class="au-news-card-body">
-                        <h3 class="au-news-card-title">Power Grid Corporation India Ltd: 400 KV Class Approval</h3>
-                        <p class="au-news-card-excerpt">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class rating transformers.</p>
-                        <a href="<?php echo home_url('/newsroom'); ?>" class="au-news-card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    </div>
-                </article>
-                <article class="au-news-card">
-                    <div class="au-news-card-img-wrap">
-                        <span class="au-news-badge">Rating</span>
-                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/news-crisil-rating.jpg" alt="CRISIL BBB Rating" loading="lazy">
-                    </div>
-                    <div class="au-news-card-body">
-                        <h3 class="au-news-card-title">CRISIL BBB Investment Grade Rating Achieved</h3>
-                        <p class="au-news-card-excerpt">We are now BBB rated by CRISIL , reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
-                        <a href="<?php echo home_url('/newsroom'); ?>" class="au-news-card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    </div>
-                </article>
-                <article class="au-news-card">
-                    <div class="au-news-card-img-wrap">
-                        <span class="au-news-badge">Recognition</span>
-                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/news-export-house.jpg" alt="Star Export House" loading="lazy">
-                    </div>
-                    <div class="au-news-card-body">
-                        <h3 class="au-news-card-title">One Star Export House Certification by DGFT</h3>
-                        <p class="au-news-card-excerpt">Honoured with the prestigious One Star Export House Certificate by the Directorate General of Foreign Trade, Government of India. Valid until March 2028.</p>
-                        <a href="<?php echo home_url('/newsroom'); ?>" class="au-news-card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         UPCOMING EVENTS — au-events (ported from v1)
-    ═══════════════════════════════════════════════════════════════ -->
-    <section class="au-events" id="auEvents">
-        <div class="au-events-wrap">
-            <div class="au-events-inner">
-                <div class="au-events-eyebrow">Upcoming Events</div>
-                <h2 class="au-events-title">Connect With Us</h2>
-                <div class="au-events-grid">
-                    <div class="au-event-card">
-                        <div class="au-event-logo-wrap">
-                            <img src="<?php echo esc_url( $uri ); ?>/assets/images/event-messe-dusseldorf.png" alt="Messe Dusseldorf" loading="lazy">
-                        </div>
-                        <div class="au-event-info">
-                            <h3 class="au-event-name">Messe Dusseldorf</h3>
-                            <p class="au-event-meta">13&ndash;17 Apr 2026 &middot; Booth C82-5</p>
-                        </div>
+            <div class="mn-trio">
+
+                <!-- Col 1: Latest Update -->
+                <div class="mn-trio-col">
+                    <div class="mn-trio-col-hd">
+                        <span class="mn-trio-col-label">Our Latest Updates</span>
                     </div>
-                    <div class="au-event-card">
-                        <div class="au-event-logo-wrap">
-                            <img src="<?php echo esc_url( $uri ); ?>/assets/images/event-cwieme-berlin.png" alt="CWIEME Berlin" loading="lazy">
+                    <a href="<?php echo home_url('/newsroom'); ?>" class="mn-trio-card mn-trio-card--news">
+                        <div class="mn-trio-news-img">
+                            <img src="<?php echo esc_url( $uri ); ?>/assets/images/news-pgcil-approval.jpg" alt="PGCIL 400 KV Class Approval" loading="lazy">
+                            <span class="mn-card-badge">Milestone</span>
                         </div>
-                        <div class="au-event-info">
-                            <h3 class="au-event-name">CWIEME Berlin</h3>
-                            <p class="au-event-meta">19&ndash;21 May 2026 &middot; Booth 27A50</p>
+                        <div class="mn-trio-news-body">
+                            <h3 class="mn-trio-news-title">Power Grid Corporation India Ltd: 400 KV Class Approval</h3>
+                            <p class="mn-trio-news-desc">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class transformers.</p>
                         </div>
+                    </a>
+                    <a href="<?php echo home_url('/newsroom'); ?>" class="mn-trio-cta">
+                        View All News
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Col 2: Featured Event -->
+                <div class="mn-trio-col">
+                    <div class="mn-trio-col-hd">
+                        <span class="mn-trio-col-label">Upcoming Events</span>
                     </div>
-                    <div class="au-event-card">
-                        <div class="au-event-logo-wrap">
-                            <img src="<?php echo esc_url( $uri ); ?>/assets/images/event-elecrama.png" alt="ELECRAMA 2027" loading="lazy">
+                    <a href="https://berlin.cwiemeevents.com/exhibitors/umang-boards-limited" target="_blank" rel="noopener" class="mn-trio-card mn-trio-card--event">
+                        <img src="<?php echo esc_url( $uri ); ?>/assets/images/event-cwieme-berlin.png" alt="CWIEME Berlin" class="mn-trio-event-logo">
+                        <div class="mn-trio-event-info">
+                            <span class="mn-trio-event-badge">&#9679; Live Now</span>
+                            <h3 class="mn-trio-event-name">CWIEME Berlin 2026</h3>
+                            <span class="mn-trio-event-meta">19&ndash;21 May 2026 &middot; Booth 27A50</span>
+                            <p class="mn-trio-event-desc">World's leading trade show for coil winding, electric motor and transformer manufacturing technology.</p>
                         </div>
-                        <div class="au-event-info">
-                            <h3 class="au-event-name">ELECRAMA 2027</h3>
-                            <p class="au-event-meta">20&ndash;24 Feb 2027 &middot; 17th Edition</p>
+                    </a>
+                    <a href="<?php echo home_url('/newsroom#events'); ?>" class="mn-trio-cta">
+                        View All Events
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Col 3: Connect With Us -->
+                <div class="mn-trio-col">
+                    <div class="mn-trio-col-hd">
+                        <span class="mn-trio-col-label">Connect With Us</span>
+                    </div>
+                    <div class="mn-trio-card mn-trio-card--connect">
+                        <div class="mn-trio-video">
+                            <iframe src="https://www.youtube.com/embed/svxX0oXME-8" title="Umang Boards Limited" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="mn-trio-socials">
+                            <a href="https://www.instagram.com/umangboards7/" target="_blank" rel="noopener" class="mn-social-btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Follow on Instagram
+                            </a>
+                            <a href="https://www.youtube.com/@UmangBoards" target="_blank" rel="noopener" class="mn-social-btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+                                Subscribe on YouTube
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         INSTAGRAM FEED — au-insta (ported from v1)
-    ═══════════════════════════════════════════════════════════════ -->
-    <section class="au-insta" id="auInsta">
-        <div class="au-insta-wrap">
-            <div class="au-insta-header">
-                <div class="au-insta-eyebrow">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    @umangboardslimited
-                </div>
-                <h2 class="au-insta-title">Follow Us on <em>Instagram</em></h2>
-                <a href="https://instagram.com/umangboardslimited" target="_blank" rel="noopener" class="au-insta-follow btn-outline-light">Follow Us</a>
             </div>
 
-            <?php if ( shortcode_exists('instagram-feed') ) : ?>
-                <?php echo do_shortcode('[instagram-feed num=6 cols=6 showheader=false showbutton=false showfollow=false]'); ?>
-            <?php else : ?>
-            <div class="au-insta-grid">
-                <?php
-                $insta_placeholders = [
-                    ['factory-aerial-drone.jpg', 'Manufacturing Excellence'],
-                    ['facility-aerial.jpg', 'Our Facility'],
-                    ['product-transformer-insulation.jpg', 'Transformer Insulation'],
-                    ['product-winding-wire.jpg', 'Winding Wires'],
-                    ['boardroom.jpg', 'Leadership'],
-                    ['app-power-transformers.jpg', 'Power Transformers'],
-                ];
-                foreach ($insta_placeholders as $ph) : ?>
-                <a href="https://instagram.com/umangboardslimited" target="_blank" rel="noopener" class="au-insta-tile">
-                    <img src="<?php echo esc_url( $uri ); ?>/assets/images/<?php echo $ph[0]; ?>" alt="<?php echo esc_attr($ph[1]); ?>" loading="lazy">
-                    <div class="au-insta-overlay">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </div>
-                </a>
-                <?php endforeach; ?>
-            </div>
-            <?php endif; ?>
         </div>
     </section>
 
@@ -722,5 +581,4 @@ $uri = UBL_URI;
 
 </main>
 
-<script src="<?php echo esc_url( $uri ); ?>/assets/js/about-v2.js?ver=<?php echo UBL_VERSION; ?>"></script>
 <?php get_footer(); ?>

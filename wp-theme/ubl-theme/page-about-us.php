@@ -1140,7 +1140,7 @@ $uri = UBL_URI;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(3rem, 6vw, 6rem);
-    align-items: start;
+    align-items: stretch;
 }
 .au-strength-text-col {}
 .au-strength-eyebrow {
@@ -1174,15 +1174,18 @@ $uri = UBL_URI;
     margin-bottom: 1.25rem;
 }
 .au-strength-text-col p:last-child { margin-bottom: 0; }
+/* Bento grid: 1 tall tile left, 2 half tiles stacked right */
 .au-strength-tiles-col {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    height: 100%;
+    min-height: 420px;
 }
 .au-strength-tile {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 0;
+    display: flex;
+    flex-direction: column;
     border: 1px solid rgba(11,31,58,0.09);
     border-radius: 12px;
     overflow: hidden;
@@ -1190,16 +1193,21 @@ $uri = UBL_URI;
     background: #fff;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+/* First tile spans both rows — tall portrait */
+.au-strength-tile:first-child {
+    grid-row: span 2;
+}
+/* Other tiles — compact, image top then body below */
 .au-strength-tile:hover {
     box-shadow: 0 12px 40px rgba(11,31,58,0.12);
     transform: translateY(-3px);
 }
 .au-strength-tile-img {
-    width: 140px;
-    aspect-ratio: 4/3;
+    width: 100%;
+    flex: 1;
     object-fit: cover;
     display: block;
-    flex-shrink: 0;
+    min-height: 120px;
 }
 .au-strength-tile-body {
     padding: 1.25rem 1.5rem;
@@ -1207,6 +1215,7 @@ $uri = UBL_URI;
     flex-direction: column;
     justify-content: center;
     gap: 0.4rem;
+    flex-shrink: 0;
 }
 .au-strength-tile-cat {
     font-size: 0.7rem;
@@ -1236,15 +1245,14 @@ $uri = UBL_URI;
 .au-strength-tile-arrow svg { width: 14px; height: 14px; transition: transform 0.3s; }
 .au-strength-tile:hover .au-strength-tile-arrow svg { transform: translateX(4px); }
 @media (max-width: 1024px) {
-    .au-strength-inner { grid-template-columns: 1fr; }
-    .au-strength-tiles-col { flex-direction: row; flex-wrap: wrap; }
-    .au-strength-tile { flex: 1 1 calc(50% - 0.625rem); }
+    .au-strength-inner { grid-template-columns: 1fr; align-items: start; }
+    .au-strength-tiles-col { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; min-height: 280px; }
+    .au-strength-tile:first-child { grid-row: span 1; }
+    .au-strength-tile-img { min-height: 160px; }
 }
 @media (max-width: 600px) {
-    .au-strength-tile { grid-template-columns: 110px 1fr; }
-    .au-strength-tiles-col { flex-direction: column; }
-    .au-strength-tile { flex: none; }
-    .au-strength-tile-img { width: 110px; }
+    .au-strength-tiles-col { grid-template-columns: 1fr; grid-template-rows: auto; min-height: unset; }
+    .au-strength-tile-img { min-height: 180px; }
 }
 
 /* --- NEWS / EVENTS / CONNECT ROW HEADER --- */
@@ -1440,6 +1448,49 @@ $uri = UBL_URI;
 @media (max-width: 480px) {
     .au-insta-grid { grid-template-columns: repeat(2, 1fr); }
     .au-hero-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --- NEWS / EVENTS / INSTAGRAM — 3-COLUMN SIDE-BY-SIDE ROW --- */
+.au-bottom-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #fff;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(11,31,58,0.07);
+}
+.au-bottom-trio .au-news {
+    padding: clamp(3rem,6vh,5rem) clamp(1.5rem,3vw,2.5rem);
+    border-right: 1px solid rgba(11,31,58,0.07);
+}
+.au-bottom-trio .au-news-wrap { max-width: 100%; }
+.au-bottom-trio .au-news-grid { grid-template-columns: 1fr; gap: 1rem; }
+.au-bottom-trio .au-events {
+    padding: clamp(3rem,6vh,5rem) clamp(1.5rem,3vw,2.5rem);
+    border-right: 1px solid rgba(11,31,58,0.07);
+}
+.au-bottom-trio .au-events-wrap { max-width: 100%; }
+.au-bottom-trio .au-events-inner { border-radius: 0; padding: 0; background: transparent; }
+.au-bottom-trio .au-events-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+.au-bottom-trio .au-insta {
+    padding: clamp(3rem,6vh,5rem) clamp(1.5rem,3vw,2.5rem);
+}
+.au-bottom-trio .au-insta-wrap { max-width: 100%; }
+.au-bottom-trio .au-insta-grid { grid-template-columns: repeat(2, 1fr); }
+.au-bottom-trio .au-insta-header { flex-direction: column; align-items: flex-start; margin-bottom: 1.5rem; }
+.au-bottom-trio .au-insta-title { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+@media (max-width: 1024px) {
+    .au-bottom-trio { grid-template-columns: 1fr; }
+    .au-bottom-trio .au-news,
+    .au-bottom-trio .au-events { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.07); }
+    .au-bottom-trio .au-news-grid { grid-template-columns: repeat(2, 1fr); }
+    .au-bottom-trio .au-events-grid { grid-template-columns: repeat(2, 1fr); }
+    .au-bottom-trio .au-insta-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 600px) {
+    .au-bottom-trio .au-news-grid { grid-template-columns: 1fr; }
+    .au-bottom-trio .au-events-grid { grid-template-columns: 1fr; }
+    .au-bottom-trio .au-insta-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 
@@ -1679,30 +1730,6 @@ $uri = UBL_URI;
                     </div>
                     <div class="au-vm-tab" data-panel="2">
                         <span class="au-vm-tab-num">03</span>
-                        <span class="au-vm-tab-label">Power &amp; Distribution</span>
-                    </div>
-                    <div class="au-vm-tab" data-panel="3">
-                        <span class="au-vm-tab-num">04</span>
-                        <span class="au-vm-tab-label">Emerging Applications</span>
-                    </div>
-                    <div class="au-vm-tab" data-panel="4">
-                        <span class="au-vm-tab-num">05</span>
-                        <span class="au-vm-tab-label">Operational Excellence</span>
-                    </div>
-                    <div class="au-vm-tab" data-panel="5">
-                        <span class="au-vm-tab-num">06</span>
-                        <span class="au-vm-tab-label">Strategic Partnerships</span>
-                    </div>
-                    <div class="au-vm-tab" data-panel="6">
-                        <span class="au-vm-tab-num">07</span>
-                        <span class="au-vm-tab-label">Responsible Growth</span>
-                    </div>
-                    <div class="au-vm-tab" data-panel="7">
-                        <span class="au-vm-tab-num">08</span>
-                        <span class="au-vm-tab-label">Innovation Leadership</span>
-                    </div>
-                    <div class="au-vm-tab" data-panel="8">
-                        <span class="au-vm-tab-num">09</span>
                         <span class="au-vm-tab-label">Certifications</span>
                     </div>
                 </div>
@@ -1738,88 +1765,10 @@ $uri = UBL_URI;
                         </div>
                     </div>
 
-                    <!-- 03: Power & Distribution -->
-                    <div class="au-vm-panel">
-                        <div class="au-vm-panel-img">
-                            <img src="<?php echo $uri; ?>/assets/images/mission-power-distribution.jpg" alt="Power and Distribution">
-                        </div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-num">03</div>
-                            <div class="au-vm-panel-tag">In Power &amp; Distribution</div>
-                            <h3 class="au-vm-panel-title">Powering Grids Up to 1200 kV</h3>
-                            <p class="au-vm-panel-desc">We manufacture high-performance pressboards, machined components, moulded components, insulation papers, and winding wires for power transformers up to 1200 kV and distribution transformers, enabling utilities and grid operators to deliver stable electricity worldwide.</p>
-                        </div>
-                    </div>
-
-                    <!-- 04: Emerging Applications -->
-                    <div class="au-vm-panel">
-                        <div class="au-vm-panel-img">
-                            <img src="<?php echo $uri; ?>/assets/images/mission-emerging-applications.jpg" alt="Emerging Applications">
-                        </div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-num">04</div>
-                            <div class="au-vm-panel-tag">In Emerging Applications</div>
-                            <h3 class="au-vm-panel-title">Enabling the Digital &amp; Clean Energy Economy</h3>
-                            <p class="au-vm-panel-desc">We support the digital economy through specialized insulation for data center transformers, contribute to the clean energy transition through renewable energy components, and enable industrial progress through products for electric motors, stabilizers, and electronic applications.</p>
-                        </div>
-                    </div>
-
-                    <!-- 05: Operational Excellence -->
-                    <div class="au-vm-panel">
-                        <div class="au-vm-panel-img">
-                            <img src="<?php echo $uri; ?>/assets/images/mission-operational-excellence.jpg" alt="Operational Excellence">
-                        </div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-num">05</div>
-                            <div class="au-vm-panel-tag">Through Operational Excellence</div>
-                            <h3 class="au-vm-panel-title">World-Class Manufacturing Standards</h3>
-                            <p class="au-vm-panel-desc">We leverage state-of-the-art manufacturing technology, rigorous quality management systems, and maintain zero liquid discharge (ZLD) and sustainable practices including solar energy and biomass fuels, delivering products that meet the highest international standards.</p>
-                        </div>
-                    </div>
-
-                    <!-- 06: Strategic Partnerships -->
-                    <div class="au-vm-panel">
-                        <div class="au-vm-panel-img">
-                            <img src="<?php echo $uri; ?>/assets/images/mission-strategic-partnerships.jpg" alt="Strategic Partnerships">
-                        </div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-num">06</div>
-                            <div class="au-vm-panel-tag">Through Strategic Partnerships</div>
-                            <h3 class="au-vm-panel-title">Long-Term Relationships, Shared Success</h3>
-                            <p class="au-vm-panel-desc">We build long-term relationships with customers, suppliers, and technology partners, creating value through collaborative innovation, reliable supply chains, and responsive customer service. Our success is measured by our customers' success in their markets.</p>
-                        </div>
-                    </div>
-
-                    <!-- 07: Responsible Growth -->
-                    <div class="au-vm-panel">
-                        <div class="au-vm-panel-img">
-                            <img src="<?php echo $uri; ?>/assets/images/mission-responsible-growth.jpg" alt="Responsible Growth">
-                        </div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-num">07</div>
-                            <div class="au-vm-panel-tag">Through Responsible Growth</div>
-                            <h3 class="au-vm-panel-title">Growth That Gives Back</h3>
-                            <p class="au-vm-panel-desc">We are committed to sustainable business practices that protect the environment, support local communities through the Dhanuka Foundation, and create value for all stakeholders, guided by principles of responsible manufacturing, ethical business conduct, and positive social impact.</p>
-                        </div>
-                    </div>
-
-                    <!-- 08: Innovation Leadership -->
-                    <div class="au-vm-panel">
-                        <div class="au-vm-panel-img">
-                            <img src="<?php echo $uri; ?>/assets/images/mission-innovation-leadership.jpg" alt="Innovation Leadership">
-                        </div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-num">08</div>
-                            <div class="au-vm-panel-tag">Through Innovation Leadership</div>
-                            <h3 class="au-vm-panel-title">R&amp;D at the Frontier of Electrical Engineering</h3>
-                            <p class="au-vm-panel-desc">We invest in R&amp;D to anticipate market needs, develop next-generation products, and solve complex technical challenges. Our engineering teams create customized solutions that improve performance, reduce costs, and enable new applications in the rapidly evolving electrical industry.</p>
-                        </div>
-                    </div>
-
-                    <!-- 09: Certifications -->
+                    <!-- 03: Certifications -->
                     <div class="au-vm-panel au-vm-panel-certs">
                         <div class="au-vm-cert-wrap">
-                            <div class="au-vm-panel-num">09</div>
+                            <div class="au-vm-panel-num">03</div>
                             <div class="au-vm-panel-tag">Our Accreditations</div>
                             <h3 class="au-vm-panel-title">Certified to the World's Highest Standards</h3>
                             <p class="au-vm-panel-desc">Every product we manufacture is backed by internationally recognized quality, safety, and environmental management certifications, reflecting our commitment to excellence, reliability, and responsible operations.</p>
@@ -1896,96 +1845,6 @@ $uri = UBL_URI;
                 <div class="au-vm-acc-item">
                     <div class="au-vm-acc-header" data-acc="2">
                         <span class="au-vm-acc-num">03</span>
-                        <span class="au-vm-acc-label">Power &amp; Distribution</span>
-                        <svg class="au-vm-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </div>
-                    <div class="au-vm-acc-body">
-                        <div class="au-vm-panel-img"><img src="<?php echo $uri; ?>/assets/images/mission-power-distribution.jpg" alt="Power and Distribution"></div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-tag">In Power &amp; Distribution</div>
-                            <h3 class="au-vm-panel-title">Powering Grids Up to 1200 kV</h3>
-                            <p class="au-vm-panel-desc">We manufacture high-performance pressboards, machined components, moulded components, insulation papers, and winding wires for power transformers up to 1200 kV and distribution transformers, enabling utilities and grid operators to deliver stable electricity worldwide.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="au-vm-acc-item">
-                    <div class="au-vm-acc-header" data-acc="3">
-                        <span class="au-vm-acc-num">04</span>
-                        <span class="au-vm-acc-label">Emerging Applications</span>
-                        <svg class="au-vm-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </div>
-                    <div class="au-vm-acc-body">
-                        <div class="au-vm-panel-img"><img src="<?php echo $uri; ?>/assets/images/mission-emerging-applications.jpg" alt="Emerging Applications"></div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-tag">In Emerging Applications</div>
-                            <h3 class="au-vm-panel-title">Enabling the Digital &amp; Clean Energy Economy</h3>
-                            <p class="au-vm-panel-desc">We support the digital economy through specialized insulation for data center transformers, contribute to the clean energy transition through renewable energy components, and enable industrial progress through products for electric motors, stabilizers, and electronic applications.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="au-vm-acc-item">
-                    <div class="au-vm-acc-header" data-acc="4">
-                        <span class="au-vm-acc-num">05</span>
-                        <span class="au-vm-acc-label">Operational Excellence</span>
-                        <svg class="au-vm-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </div>
-                    <div class="au-vm-acc-body">
-                        <div class="au-vm-panel-img"><img src="<?php echo $uri; ?>/assets/images/mission-operational-excellence.jpg" alt="Operational Excellence"></div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-tag">Through Operational Excellence</div>
-                            <h3 class="au-vm-panel-title">World-Class Manufacturing Standards</h3>
-                            <p class="au-vm-panel-desc">We leverage state-of-the-art manufacturing technology, rigorous quality management systems, and maintain zero liquid discharge (ZLD) and sustainable practices including solar energy and biomass fuels, delivering products that meet the highest international standards.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="au-vm-acc-item">
-                    <div class="au-vm-acc-header" data-acc="5">
-                        <span class="au-vm-acc-num">06</span>
-                        <span class="au-vm-acc-label">Strategic Partnerships</span>
-                        <svg class="au-vm-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </div>
-                    <div class="au-vm-acc-body">
-                        <div class="au-vm-panel-img"><img src="<?php echo $uri; ?>/assets/images/mission-strategic-partnerships.jpg" alt="Strategic Partnerships"></div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-tag">Through Strategic Partnerships</div>
-                            <h3 class="au-vm-panel-title">Long-Term Relationships, Shared Success</h3>
-                            <p class="au-vm-panel-desc">We build long-term relationships with customers, suppliers, and technology partners, creating value through collaborative innovation, reliable supply chains, and responsive customer service. Our success is measured by our customers' success in their markets.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="au-vm-acc-item">
-                    <div class="au-vm-acc-header" data-acc="6">
-                        <span class="au-vm-acc-num">07</span>
-                        <span class="au-vm-acc-label">Responsible Growth</span>
-                        <svg class="au-vm-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </div>
-                    <div class="au-vm-acc-body">
-                        <div class="au-vm-panel-img"><img src="<?php echo $uri; ?>/assets/images/mission-responsible-growth.jpg" alt="Responsible Growth"></div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-tag">Through Responsible Growth</div>
-                            <h3 class="au-vm-panel-title">Growth That Gives Back</h3>
-                            <p class="au-vm-panel-desc">We are committed to sustainable business practices that protect the environment, support local communities through the Dhanuka Foundation, and create value for all stakeholders, guided by principles of responsible manufacturing, ethical business conduct, and positive social impact.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="au-vm-acc-item">
-                    <div class="au-vm-acc-header" data-acc="7">
-                        <span class="au-vm-acc-num">08</span>
-                        <span class="au-vm-acc-label">Innovation Leadership</span>
-                        <svg class="au-vm-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </div>
-                    <div class="au-vm-acc-body">
-                        <div class="au-vm-panel-img"><img src="<?php echo $uri; ?>/assets/images/mission-innovation-leadership.jpg" alt="Innovation Leadership"></div>
-                        <div class="au-vm-panel-content">
-                            <div class="au-vm-panel-tag">Through Innovation Leadership</div>
-                            <h3 class="au-vm-panel-title">R&amp;D at the Frontier of Electrical Engineering</h3>
-                            <p class="au-vm-panel-desc">We invest in R&amp;D to anticipate market needs, develop next-generation products, and solve complex technical challenges. Our engineering teams create customized solutions that improve performance, reduce costs, and enable new applications in the rapidly evolving electrical industry.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="au-vm-acc-item">
-                    <div class="au-vm-acc-header" data-acc="8">
-                        <span class="au-vm-acc-num">09</span>
                         <span class="au-vm-acc-label">Certifications</span>
                         <svg class="au-vm-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                     </div>
@@ -2339,31 +2198,19 @@ $uri = UBL_URI;
         </div>
     </section>
 
-    <!-- ================================================
-         UPDATES / EVENTS / CONNECT — Row Header
-         ================================================ -->
-    <div class="au-updates-row-wrap" style="background:#fff;padding-top:clamp(4rem,8vh,7rem);position:relative;z-index:2;">
-        <div class="au-updates-header">
-            <div class="au-updates-header-item">
-                <div class="au-news-eyebrow">Media &amp; News</div>
-                <h2 class="au-news-title" style="font-size:clamp(1.6rem,3vw,2.4rem)">Our Latest <em>Updates</em></h2>
-            </div>
-            <div class="au-updates-header-item">
-                <div class="au-news-eyebrow">Schedule</div>
-                <h2 class="au-news-title" style="font-size:clamp(1.6rem,3vw,2.4rem)"><em>Events</em></h2>
-            </div>
-            <div class="au-updates-header-item">
-                <div class="au-news-eyebrow">Social</div>
-                <h2 class="au-news-title" style="font-size:clamp(1.6rem,3vw,2.4rem)">Connect <em>With Us</em></h2>
-            </div>
-        </div>
-    </div>
+    <div class="au-bottom-trio">
 
     <!-- ================================================
          LATEST NEWS
          ================================================ -->
-    <section class="au-news" id="auNews" style="padding-top:0;">
+    <section class="au-news" id="auNews">
         <div class="au-news-wrap">
+            <div class="au-news-header">
+                <div>
+                    <div class="au-news-eyebrow">Company News</div>
+                    <h2 class="au-news-title">Our Latest <em>Updates</em></h2>
+                </div>
+            </div>
             <div class="au-news-grid">
                 <article class="au-news-card">
                     <div class="au-news-card-img-wrap">
@@ -2485,9 +2332,8 @@ $uri = UBL_URI;
         </div>
     </section>
 
-    <!-- ================================================
-         INSTAGRAM FEED
-         ================================================ -->
+    </div><!-- /.au-bottom-trio -->
+
     <!-- ================================================
          CTA — Large typography closing section
          ================================================ -->

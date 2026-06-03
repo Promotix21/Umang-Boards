@@ -1099,22 +1099,10 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.fromTo('#mediaNewsHeader', { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
               scrollTrigger: { trigger: '#sMediaNews', start: 'top 65%' } });
-        gsap.utils.toArray('.mn-card').forEach((card, i) => {
-            gsap.fromTo(card, { opacity: 0, y: 50, scale: 0.95 },
-                { opacity: 1, y: 0, scale: 1, duration: 0.9, delay: i * 0.15, ease: 'power3.out',
-                  scrollTrigger: { trigger: '.mn-cards-grid', start: 'top 70%' } });
-            // Clip-reveal the card image
-            var cardImg = card.querySelector('.mn-card-img');
-            if (cardImg) {
-                gsap.fromTo(cardImg, { clipPath: 'inset(100% 0 0 0)' },
-                    { clipPath: 'inset(0 0 0 0)', duration: 1, delay: 0.2 + i * 0.15, ease: 'power3.inOut',
-                      scrollTrigger: { trigger: '.mn-cards-grid', start: 'top 65%' } });
-            }
-        });
-        gsap.utils.toArray('.mn-event-pill').forEach((pill, i) => {
-            gsap.fromTo(pill, { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.6, delay: i * 0.1, ease: 'power2.out',
-                  scrollTrigger: { trigger: '.mn-events-strip', start: 'top 75%' } });
+        gsap.utils.toArray('.mn-trio-col').forEach((col, i) => {
+            gsap.fromTo(col, { opacity: 0, y: 40 },
+                { opacity: 1, y: 0, duration: 0.85, delay: i * 0.12, ease: 'power3.out',
+                  scrollTrigger: { trigger: '.mn-trio', start: 'top 72%' } });
         });
 
         // --- Boardroom Parallax Strip ---

@@ -416,7 +416,7 @@
     padding: 0 clamp(1.5rem, 4vw, 3.5rem) clamp(3rem, 6vh, 5rem);
     display: grid;
     grid-template-columns: 1fr 1.25fr;
-    gap: clamp(2rem, 4vw, 4rem);
+    gap: clamp(3rem, 6vw, 6rem);
     align-items: start;
 }
 
@@ -1072,13 +1072,13 @@
 .ab2-vm-card:hover .ab2-vm-card-icon { background: rgba(212,168,67,0.2); }
 .ab2-vm-card-icon svg { width: 26px; height: 26px; }
 .ab2-vm-card-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-family: var(--font-body);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
     font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
+    letter-spacing: -0.03em;
     color: #D4A843;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
+    line-height: 1;
 }
 .ab2-vm-card-rule {
     width: 40px; height: 3px;
@@ -1584,12 +1584,27 @@
    PDF BRIEF ADDITIONS
    ============================================================ */
 
-/* Product tiles — full height, linked, with CTA */
+/* Product tiles — 1 wide hero top, 2 equal below */
 .ab2-exc-products--full {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.4fr 1fr;
     gap: 1rem;
-    height: 100%;
+    height: 520px;
+}
+.ab2-exc-products--full .ab2-exc-product-card {
+    aspect-ratio: unset;
+}
+/* First tile spans full width — wide hero */
+.ab2-exc-products--full .ab2-exc-product-card--linked:nth-child(1) {
+    grid-column: 1 / span 2; grid-row: 1;
+}
+/* Cards 2 and 3 sit side-by-side below */
+.ab2-exc-products--full .ab2-exc-product-card--linked:nth-child(2) {
+    grid-column: 1; grid-row: 2;
+}
+.ab2-exc-products--full .ab2-exc-product-card--linked:nth-child(3) {
+    grid-column: 2; grid-row: 2;
 }
 .ab2-exc-product-card--linked {
     display: block;
@@ -1598,10 +1613,11 @@
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    min-height: 260px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .ab2-exc-product-card--linked img {
+    position: absolute;
+    inset: 0;
     width: 100%; height: 100%;
     object-fit: cover; display: block;
     transition: transform 0.4s ease;
@@ -1625,8 +1641,16 @@
 .ab2-exc-product-cta svg { width: 13px; height: 13px; transition: transform 0.3s; }
 .ab2-exc-product-card--linked:hover .ab2-exc-product-cta { opacity: 1; transform: translateY(0); }
 .ab2-exc-product-card--linked:hover .ab2-exc-product-cta svg { transform: translateX(3px); }
+@media (max-width: 1199px) {
+    .ab2-exc-products--full {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        min-height: 260px;
+    }
+    .ab2-exc-products--full .ab2-exc-product-card--linked:first-child { grid-row: span 1; }
+}
 @media (max-width: 768px) {
-    .ab2-exc-products--full { grid-template-columns: 1fr; }
+    .ab2-exc-products--full { grid-template-columns: 1fr; grid-template-rows: auto; min-height: unset; }
     .ab2-exc-product-card--linked { min-height: 200px; }
 }
 
@@ -1674,3 +1698,129 @@
     font-size: clamp(1rem,1.6vw,1.15rem); color: rgba(255,255,255,0.82);
     line-height: 1.8; font-weight: 400; margin-bottom: 2.5rem;
 }
+
+/* ── TRIO ROW — Option B: news + events + insta side by side ──────
+   Option A (stacked): remove .au-trio-row wrapper from PHP
+   ────────────────────────────────────────────────────────────── */
+.au-trio-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    align-items: start;
+    background: #f8f9fb;
+    border-top: 1px solid rgba(11,31,58,0.06);
+}
+
+/* Each section resets its own horizontal padding/max-width inside trio */
+.au-trio-row .au-news {
+    background: #fff;
+    padding: clamp(2.5rem,5vh,4rem) clamp(1.5rem,3vw,2.5rem);
+    border-right: 1px solid rgba(11,31,58,0.07);
+}
+.au-trio-row .au-news .au-news-wrap { max-width: none; margin: 0; }
+.au-trio-row .au-news .au-news-header { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+.au-trio-row .au-news .au-news-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+
+.au-trio-row .au-events {
+    background: #f8f9fb;
+    padding: clamp(2.5rem,5vh,4rem) clamp(1.5rem,3vw,2.5rem);
+    border-right: 1px solid rgba(11,31,58,0.07);
+}
+.au-trio-row .au-events .au-events-wrap { max-width: none; margin: 0; }
+.au-trio-row .au-events .au-events-inner { padding: 0; background: none; border-radius: 0; }
+.au-trio-row .au-events .au-events-grid { grid-template-columns: 1fr; gap: 1rem; }
+.au-trio-row .au-events .au-event-card { border-radius: 8px; }
+
+.au-trio-row .au-insta {
+    background: #fff;
+    padding: clamp(2.5rem,5vh,4rem) clamp(1.5rem,3vw,2.5rem);
+}
+.au-trio-row .au-insta .au-insta-wrap { max-width: none; margin: 0; }
+.au-trio-row .au-insta .au-insta-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; margin-bottom: 1.5rem; }
+.au-trio-row .au-insta .au-insta-grid { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 1024px) {
+    .au-trio-row { grid-template-columns: 1fr 1fr; }
+    .au-trio-row .au-insta { grid-column: 1 / span 2; border-top: 1px solid rgba(11,31,58,0.07); }
+}
+@media (max-width: 640px) {
+    .au-trio-row { grid-template-columns: 1fr; }
+    .au-trio-row .au-insta { grid-column: auto; }
+    .au-trio-row .au-news { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.07); }
+    .au-trio-row .au-events { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.07); }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   CORE VALUES — two-col layout v2.36.3
+   Text left | Pills right. Matches section padding of rest of page.
+   GSAP ScrollTrigger animates pills in about-v2.js.
+   ════════════════════════════════════════════════════════════════ */
+
+.ab2-cv {
+    padding: 0;
+}
+
+.ab2-cv-box {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: clamp(3rem, 6vw, 7rem);
+    align-items: center;
+    padding: clamp(4rem, 8vh, 6.5rem) clamp(1.5rem, 4vw, 3.5rem);
+    max-width: 1400px;
+    margin: 0 auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.ab2-cv-row1 {
+    grid-template-columns: 1fr;
+    min-height: unset;
+    max-width: none;
+    margin-bottom: 0;
+}
+
+.ab2-cv-hero { display: none; }
+
+.ab2-cv-eyebrow { color: #D4A843; }
+
+.ab2-cv-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 0 0 0 clamp(1.5rem, 3vw, 2.5rem);
+    border-left: 2px solid rgba(212, 168, 67, 0.3);
+}
+
+@media (max-width: 900px) {
+    .ab2-cv-box {
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 4vh, 3rem);
+    }
+    .ab2-cv-pills {
+        border-left: none;
+        padding-left: 0;
+        border-top: 2px solid rgba(212, 168, 67, 0.3);
+        padding-top: clamp(1.25rem, 3vh, 1.75rem);
+    }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   VISION & MISSION labels — editorial chapter-marker treatment v2.36.4
+   ════════════════════════════════════════════════════════════════ */
+
+.ab2-vm-card-label {
+    font-family: var(--font-mono);
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #D4A843;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.ab2-vm-card-rule { width: 56px; }

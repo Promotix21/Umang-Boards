@@ -25,7 +25,7 @@ $people = [
   'alok' => [
     'name'    => 'Mr. Alok Kumar Dhanuka',
     'role'    => 'Whole-Time Director',
-    'photo'   => $ldr . 'Alok-Dhanuka.jpg',
+    'photo'   => $ldr . 'Alok-Dhanuka-1.jpg',
     'linkedin'=> '#',
     'meta'    => ['Promoter','B.Com, Univ. of Rajasthan (1994)','26+ yrs in Power T&D'],
     'bio'     => [
@@ -93,18 +93,24 @@ $people = [
   'shruti' => [
     'name'    => 'Ms. Shruti Gupta',
     'role'    => 'Independent Director',
-    'photo'   => $ldr . 'Shruti-Gupta.jpg',
+    'photo'   => $ldr . 'ShrutiGupta.png',
     'linkedin'=> '#',
-    'meta'    => [],
-    'bio'     => [],
+    'meta'    => ['Company Secretary, ICSI (2014)','10+ yrs compliance & secretarial practice','Secretarial Auditor — listed cos & Govt. PSUs'],
+    'bio'     => [
+      "CS Shruti Gupta is an Independent Director of Umang Boards Limited. A qualified Company Secretary and member of the Institute of Company Secretaries of India since 2014, she brings over 10 years of experience in compliance and corporate secretarial practice.",
+      "Ms. Gupta has served as Secretarial Auditor to listed companies and Government of Rajasthan public sector undertakings, and holds membership on statutory committees including POSH Committees. Her background spans the full range of governance oversight, bringing both technical rigour and institutional breadth to the Board.",
+    ],
   ],
   'nitin' => [
     'name'    => 'Mr. Nitin Ghanshyam Hotchandani',
     'role'    => 'Independent Director',
-    'photo'   => $ldr . 'NitinGhanshyamHotchandani.jpg',
-    'linkedin'=> '#',
-    'meta'    => [],
-    'bio'     => [],
+    'photo'   => $ldr . 'NitinGhanshyamHotchandani.png',
+    'linkedin'=> 'https://www.linkedin.com/in/fcsnitinhotchandani',
+    'meta'    => ['FCS, ICSI (2012)','13 yrs corporate governance & secretarial practice','Practicing Company Secretary — own firm'],
+    'bio'     => [
+      "FCS Nitin Ghanshyam Hotchandani is an Independent Director of Umang Boards Limited. A qualified Company Secretary and member of the Institute of Company Secretaries of India since 2012, he brings 13 years of focused expertise in corporate governance, secretarial practice, due diligence, and corporate law.",
+      "Mr. Hotchandani currently leads his own practicing firm, advising companies across the full spectrum of compliance and governance matters.",
+    ],
   ],
   'manan' => [
     'name'    => 'Mr. Manan Dhanuka',
@@ -127,19 +133,45 @@ $people = [
   ],
   'ayush' => [
     'name'    => 'Mr. Ayush Vijay',
-    'role'    => 'Company Secretary & Compliance Officer',
+    'role'    => 'Company Secretary &amp; Compliance Officer',
     'photo'   => null,
     'linkedin'=> '#',
-    'meta'    => [],
-    'bio'     => [],
+    'meta'    => ['ACS, ICSI (Dec 2017)','B.Com, Kota University · LLB, Lords Universal College, Mumbai','8+ yrs corporate &amp; secretarial compliance'],
+    'bio'     => [
+      "Ayush Vijay is the Company Secretary and Compliance Officer of Umang Boards Limited. A Commerce graduate from Kota University and LLB from Lords Universal College, Mumbai, he is an associate member of the Institute of Company Secretaries of India since December 2017, with over eight years of experience across corporate and secretarial compliance for private, public, and listed companies, NBFCs, and LLPs.",
+      "Prior to joining Umang Boards, Mr. Vijay served as Company Secretary and Compliance Officer at Platinum Infradevelopment Private Limited, a debt-listed real estate entity in Mumbai, for five years. He has also conducted secretarial audits and managed listed company compliances across Rajasthan and Mumbai.",
+    ],
+  ],
+  'muthumurugan' => [
+    'name'    => 'Mr. Muthumurugan C.',
+    'role'    => 'General Manager - Board &amp; Crepe Paper Division',
+    'photo'   => $ldr . 'MuthumuruganC.jpg',
+    'linkedin'=> '#',
+    'meta'    => ['25 yrs in pulp &amp; paper industry', 'Joined Apr 2025', 'Diploma - Pulp &amp; Paper Technology, Seshasayee Institute of Technology, Trichy'],
+    'bio'     => [
+      "Muthumurugan C. is a seasoned professional in the pulp and paper industry with 25 years of sector experience. He joined the Company in April 2025 to lead the Board and Crepe Paper Division. His career began at Raman Boards Limited, where he served as Supervisor Production, building a strong foundation in paper manufacturing operations.",
+    ],
+  ],
+  'rajendra' => [
+    'name'    => 'Mr. Rajendra Prasad Yadav',
+    'role'    => 'General Manager - Technical',
+    'photo'   => $ldr . 'RajendraPrasadYadav.png',
+    'linkedin'=> '#',
+    'meta'    => ['25+ yrs experience', 'With Company since Jul 2003', 'Diploma - Electrical Engineering, Govt. Polytechnic, Azamgarh'],
+    'bio'     => [
+      "Rajendra Prasad Yadav is a highly experienced technical leader who has been with the Company since July 2003. Over his tenure, he has built comprehensive expertise spanning transformer design, testing, and assembly, as well as electrical insulation boards, solid press boards, and manufacturing process management.",
+      "He brings approximately 25 years of experience in Electrical Insulation Boards, Solid Press Boards, manufacturing processes, Quality Control, Insulation Material Testing, and the Quality and Technical Management System of NABL accredited Laboratories.",
+    ],
   ],
   'rajeshwaran' => [
-    'name'    => 'Mr. P. Rajeshwaran',
-    'role'    => 'Plant Head · Insulation',
-    'photo'   => null,
+    'name'    => 'Mr. P. Rajeswaran',
+    'role'    => 'General Manager - Production (Moulded Division)',
+    'photo'   => $ldr . 'PRajeswaran.png',
     'linkedin'=> '#',
-    'meta'    => [],
-    'bio'     => [],
+    'meta'    => ['29 yrs experience', 'Joined Aug 2021', 'Diploma - Mechanical Engineering', 'BBA - Computer Applications', 'MBA - Annamalai University'],
+    'bio'     => [
+      "P. Rajeswaran brings nearly three decades of deep expertise in manufacturing to his role as General Manager of the Moulded Division, a position he has held since August 2021. His career reflects a strong blend of hands-on production knowledge and strategic management, having previously served as Management Staff and PGTR at ABB Global Industries and Services.",
+    ],
   ],
   'gopal' => [
     'name'    => 'Mr. Gopal Sharma',
@@ -348,6 +380,7 @@ $people = [
 
 /* ── Person grid ── */
 .lp-wrap .lp-grid{display:grid;gap:2rem}
+.lp-wrap .lp-grid--4{grid-template-columns:repeat(4,1fr)}
 .lp-wrap .lp-grid--3{grid-template-columns:repeat(3,1fr)}
 .lp-wrap .lp-grid--2{grid-template-columns:repeat(2,1fr)}
 .lp-wrap .person{
@@ -356,7 +389,7 @@ $people = [
 }
 .lp-wrap .person:hover{transform:translateY(-4px)}
 .lp-wrap .person-photo{
-  position:relative;aspect-ratio:4/5;overflow:hidden;
+  position:relative;height:300px;overflow:hidden;
   background:linear-gradient(180deg,#f0ece4 0%,#e4ddc8 100%);
 }
 .lp-wrap .person-photo img{
@@ -393,6 +426,7 @@ $people = [
   font-family:var(--font-body);font-weight:600;
   font-size:1.15rem;line-height:1.2;letter-spacing:-.005em;color:#0b1f3a;margin:0;
 }
+.lp-wrap .lp-grid--4 .person-name{font-size:.95rem}
 .lp-wrap .person-role{
   font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
   color:rgba(11,31,58,.72);margin-top:.35rem;font-weight:600;
@@ -569,6 +603,7 @@ $people = [
   .lp-wrap .section{padding:4rem 1.4rem}
   .lp-wrap .founder-grid{grid-template-columns:1fr;gap:3rem}
   .lp-wrap .founder-portrait{max-width:360px;margin:0 auto}
+  .lp-wrap .lp-grid--4{grid-template-columns:repeat(2,1fr)}
   .lp-wrap .lp-grid--3{grid-template-columns:repeat(2,1fr)}
   .lp-wrap .hero-inner{padding:6rem 1.4rem 4rem}
   .lp-wrap .hero-title{font-size:clamp(2rem,8vw,3rem)}
@@ -579,7 +614,7 @@ $people = [
   .lp-wrap .hero-side{display:none}
 }
 @media(max-width:600px){
-  .lp-wrap .lp-grid--3,.lp-wrap .lp-grid--2{grid-template-columns:1fr}
+  .lp-wrap .lp-grid--4,.lp-wrap .lp-grid--3,.lp-wrap .lp-grid--2{grid-template-columns:1fr}
   .lp-wrap .hero-mark{display:none}
 }
 </style>
@@ -597,7 +632,6 @@ $people = [
   <div class="hero-inner">
     <span class="eyebrow" data-reveal>Leadership</span>
     <h1 class="hero-title" data-reveal>Leading with <em>Transparency,</em><br>Growing with <em>Integrity.</em></h1>
-    <p class="hero-sub" data-reveal>When we started this journey in Jaipur, the ambition was simple - to make something the industry could genuinely depend on. Twenty-five years on, that ambition has only grown sharper. The team we have built, the standards we hold ourselves to, and the customers who trust us with their most critical supply needs are all a reflection of one belief: that in this business, quality is not a differentiator. It is the only currency that matters.</p>
   </div>
 </section>
 
@@ -610,7 +644,7 @@ $people = [
         <span class="quote-glyph" aria-hidden="true">"</span>
         <p class="founder-lead">Driven by a vision to power the <em>world's electric future,</em> we remain deeply committed to the Make-in-India initiative.</p>
       </div>
-      <p class="founder-body">Under Mr. Anoop Kumar Dhanuka's stewardship, Umang Boards has evolved from a regional supplier into a global player, serving customers across multiple continents. The Company now supplies critical insulation solutions including high-performance pressboards, precision-machined components, moulded systems, and winding wires to leading transformer manufacturers worldwide, with technical capabilities extending to 1200 kV class applications.</p>
+      <p class="founder-body">When we started this journey in Jaipur, the ambition was simple - to make something the industry could genuinely depend on. Twenty-five years on, that ambition has only grown sharper. The team we have built, the standards we hold ourselves to, and the customers who trust us with their most critical supply needs are all a reflection of one belief: that in this business, quality is not a differentiator. It is the only currency that matters.</p>
       <div class="founder-sig">
         <span class="founder-sig-rule"></span>
         <div>
@@ -639,18 +673,18 @@ $people = [
     </div>
 
     <div class="tabs" role="tablist" id="lpTabs">
-      <button class="tab is-active" data-tab="exec" role="tab">Board of Directors<span class="tab-count">6</span></button>
+      <button class="tab is-active" data-tab="exec" role="tab">Board of Directors<span class="tab-count">8</span></button>
       <button class="tab" data-tab="kmp" role="tab">Key Managerial Personnel<span class="tab-count">3</span></button>
-      <button class="tab" data-tab="sen" role="tab">Senior Management<span class="tab-count">2</span></button>
+      <button class="tab" data-tab="sen" role="tab">Senior Management<span class="tab-count">4</span></button>
       <span class="tab-indicator" id="lpTabInd"></span>
     </div>
 
     <!-- Board of Directors -->
     <div class="panel is-active" data-panel="exec">
-      <div class="lp-grid lp-grid--3">
+      <div class="lp-grid lp-grid--4">
 
         <?php
-        $board_members = ['anoop','alok','umang','dhruv','devendra','avindar'];
+        $board_members = ['anoop','alok','umang','dhruv','devendra','avindar','shruti','nitin'];
         foreach ( $board_members as $key ) :
           $p = $people[ $key ];
           $initials = preg_replace('/^M[rs]\.\s*/u','', $p['name']);
@@ -678,7 +712,7 @@ $people = [
 
     <!-- KMP -->
     <div class="panel" data-panel="kmp">
-      <div class="lp-grid lp-grid--3">
+      <div class="lp-grid lp-grid--4">
 
         <?php
         $kmp_members = ['manan','mayank','ayush'];
@@ -689,8 +723,12 @@ $people = [
           $init = strtoupper( substr($parts[0],0,1) . (isset($parts[1]) ? substr($parts[1],0,1) : '') );
         ?>
         <article class="person" data-person="<?php echo esc_attr($key); ?>">
-          <div class="person-photo person-photo--empty">
-            <span class="init"><?php echo esc_html($init); ?></span>
+          <div class="person-photo<?php echo $p['photo'] ? '' : ' person-photo--empty'; ?>">
+            <?php if ( $p['photo'] ) : ?>
+              <img src="<?php echo esc_url($p['photo']); ?>" alt="<?php echo esc_attr($p['name']); ?>">
+            <?php else : ?>
+              <span class="init"><?php echo esc_html($init); ?></span>
+            <?php endif; ?>
           </div>
           <div class="person-cap">
             <h3 class="person-name"><?php echo esc_html($p['name']); ?></h3>
@@ -705,10 +743,10 @@ $people = [
 
     <!-- Senior Management -->
     <div class="panel" data-panel="sen">
-      <div class="lp-grid lp-grid--3">
+      <div class="lp-grid lp-grid--4">
 
         <?php
-        $senior_members = ['rajeshwaran','gopal'];
+        $senior_members = ['muthumurugan','rajendra','rajeshwaran','gopal'];
         foreach ( $senior_members as $key ) :
           $p = $people[ $key ];
           $initials = preg_replace('/^M[rs]\.\s*/u','', $p['name']);
@@ -716,8 +754,12 @@ $people = [
           $init = strtoupper( substr($parts[0],0,1) . (isset($parts[1]) ? substr($parts[1],0,1) : '') );
         ?>
         <article class="person" data-person="<?php echo esc_attr($key); ?>">
-          <div class="person-photo person-photo--empty">
-            <span class="init"><?php echo esc_html($init); ?></span>
+          <div class="person-photo<?php echo $p['photo'] ? '' : ' person-photo--empty'; ?>">
+            <?php if ( $p['photo'] ) : ?>
+              <img src="<?php echo esc_url($p['photo']); ?>" alt="<?php echo esc_attr($p['name']); ?>">
+            <?php else : ?>
+              <span class="init"><?php echo esc_html($init); ?></span>
+            <?php endif; ?>
           </div>
           <div class="person-cap">
             <h3 class="person-name"><?php echo esc_html($p['name']); ?></h3>
@@ -989,8 +1031,9 @@ document.addEventListener('DOMContentLoaded', function(){
     else { li.style.display='none'; }
     modal.classList.add('open');
     document.body.style.overflow='hidden';
+    if(window.__ubl_lenis) window.__ubl_lenis.stop();
   }
-  function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+  function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; if(window.__ubl_lenis) window.__ubl_lenis.start(); }
 
   document.querySelectorAll('.lp-wrap [data-person]').forEach(function(el){
     el.addEventListener('click', function(){ openModal(el.dataset.person); });
@@ -998,6 +1041,11 @@ document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('lpModalClose').addEventListener('click', closeModal);
   modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+  // Prevent wheel/touch events from bubbling out to Lenis on window
+  // so the modal body scrolls natively while the page stays locked
+  modal.addEventListener('wheel',     function(e){ e.stopPropagation(); }, { passive: false });
+  modal.addEventListener('touchmove', function(e){ e.stopPropagation(); }, { passive: true });
 
 })();
 }); // DOMContentLoaded

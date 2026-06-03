@@ -744,129 +744,86 @@ get_header();
     </section>
 
     <!-- ================================================
-         SECTION 7 — MEDIA & NEWS (Premium Redesign)
+         SECTION 7 — MEDIA & NEWS (3-column trio)
          ================================================ -->
     <section class="s-media-news" id="sMediaNews">
         <div class="s-media-news-inner">
+
             <div class="s-media-news-header" id="mediaNewsHeader">
                 <div>
                     <div class="section-eyebrow">Media &amp; News</div>
-                    <h2 class="section-title">Our Latest<br><em>Updates</em></h2>
-                </div>
-                <a href="/newsroom" class="btn-outline" data-cursor="hover">View All</a>
-            </div>
-
-            <!-- News Cards Grid — 3 cards with images -->
-            <div class="mn-cards-grid">
-                <article class="mn-card" data-cursor="hover">
-                    <div class="mn-card-img">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/news-pgcil-approval.jpg" alt="PGCIL 400 KV Class Approval" loading="lazy">
-                        <span class="mn-card-badge">Milestone</span>
-                    </div>
-                    <div class="mn-card-body">
-                        <h3 class="mn-card-title">Power Grid Corporation India Ltd — 400 KV Class Approval</h3>
-                        <p class="mn-card-desc">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class rating transformers.</p>
-                        <div class="mn-card-footer">
-                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="mn-card" data-cursor="hover">
-                    <div class="mn-card-img">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/news-crisil-rating.jpg" alt="CRISIL BBB Investment Rating" loading="lazy">
-                        <span class="mn-card-badge">Rating</span>
-                    </div>
-                    <div class="mn-card-body">
-                        <h3 class="mn-card-title">CRISIL BBB Investment Grade Rating Achieved</h3>
-                        <p class="mn-card-desc">We are now BBB rated by CRISIL — reflecting our strong financial position and creditworthiness in the Indian power sector market.</p>
-                        <div class="mn-card-footer">
-                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="mn-card" data-cursor="hover">
-                    <div class="mn-card-img">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/news-export-house.jpg" alt="One Star Export House Certification" loading="lazy">
-                        <span class="mn-card-badge">Recognition</span>
-                    </div>
-                    <div class="mn-card-body">
-                        <h3 class="mn-card-title">One Star Export House Certification by DGFT</h3>
-                        <p class="mn-card-desc">Honoured with the prestigious One Star Export House Certificate by the Directorate General of Foreign Trade, Government of India. Valid until March 2028.</p>
-                        <div class="mn-card-footer">
-                            <span class="mn-card-link">Read More <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Events & Social Row -->
-            <div class="mn-events-row">
-                <div class="mn-events-header">
-                    <div class="section-eyebrow">Upcoming Events</div>
-                    <h3 class="mn-events-title">Connect With Us</h3>
-                </div>
-                <div class="mn-events-strip">
-                    <a href="https://www.wire-tradefair.com/" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/event-messe-dusseldorf.png" alt="Messe Dusseldorf" class="mn-event-pill-img">
-                        <div class="mn-event-pill-text">
-                            <strong>Messe Dusseldorf</strong>
-                            <span>13–17 Apr 2026 · Booth C82-5</span>
-                        </div>
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                    </a>
-                    <a href="https://berlin.cwiemeevents.com/exhibitors/umang-boards-limited" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/event-cwieme-berlin.png" alt="CWIEME Berlin" class="mn-event-pill-img">
-                        <div class="mn-event-pill-text">
-                            <strong>CWIEME Berlin</strong>
-                            <span>19–21 May 2026 · Booth 27A50</span>
-                        </div>
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                    </a>
-                    <a href="https://elecrama.com" target="_blank" rel="noopener" class="mn-event-pill" data-cursor="hover">
-                        <img src="<?php echo UBL_URI; ?>/assets/images/event-elecrama.png" alt="ELECRAMA" class="mn-event-pill-img">
-                        <div class="mn-event-pill-text">
-                            <strong>ELECRAMA 2027</strong>
-                            <span>20–24 Feb 2027 · 17th Edition</span>
-                        </div>
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mn-event-pill-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                    </a>
+                    <h2 class="section-title">What's <em>Happening</em></h2>
                 </div>
             </div>
 
-            <!-- YouTube + Social -->
-            <div class="mn-video-row">
-                <div class="mn-video-embed">
-                    <iframe src="https://www.youtube.com/embed/svxX0oXME-8" title="Umang Boards Limited" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="mn-social-links">
-                    <a href="https://www.instagram.com/umangboards7/" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-                        Follow on Instagram
+            <!-- 3-column trio: News · Events · Connect -->
+            <div class="mn-trio">
+
+                <!-- Col 1: Latest Update -->
+                <div class="mn-trio-col">
+                    <div class="mn-trio-col-hd">
+                        <span class="mn-trio-col-label">Our Latest Updates</span>
+                    </div>
+                    <a href="/newsroom" class="mn-trio-card mn-trio-card--news" data-cursor="hover">
+                        <div class="mn-trio-news-img">
+                            <img src="<?php echo UBL_URI; ?>/assets/images/news-pgcil-approval.jpg" alt="PGCIL 400 KV Class Approval" loading="lazy">
+                            <span class="mn-card-badge">Milestone</span>
+                        </div>
+                        <div class="mn-trio-news-body">
+                            <h3 class="mn-trio-news-title">Power Grid Corporation India Ltd — 400 KV Class Approval</h3>
+                            <p class="mn-trio-news-desc">Approved by PGCIL for supply of pre-compressed pressboard, laminated pressboard and machined &amp; moulded components for up to 400 KV class transformers.</p>
+                        </div>
                     </a>
-                    <a href="https://www.youtube.com/@UmangBoards" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
-                        Subscribe on YouTube
+                    <a href="/newsroom" class="mn-trio-cta" data-cursor="hover">
+                        View All News
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
+
+                <!-- Col 2: Featured Event -->
+                <div class="mn-trio-col">
+                    <div class="mn-trio-col-hd">
+                        <span class="mn-trio-col-label">Upcoming Events</span>
+                    </div>
+                    <a href="https://berlin.cwiemeevents.com/exhibitors/umang-boards-limited" target="_blank" rel="noopener" class="mn-trio-card mn-trio-card--event" data-cursor="hover">
+                        <img src="<?php echo UBL_URI; ?>/assets/images/event-cwieme-berlin.png" alt="CWIEME Berlin" class="mn-trio-event-logo">
+                        <div class="mn-trio-event-info">
+                            <span class="mn-trio-event-badge">&#9679; Live Now</span>
+                            <h3 class="mn-trio-event-name">CWIEME Berlin 2026</h3>
+                            <span class="mn-trio-event-meta">19–21 May 2026 &middot; Booth 27A50</span>
+                            <p class="mn-trio-event-desc">World's leading trade show for coil winding, electric motor and transformer manufacturing technology.</p>
+                        </div>
+                    </a>
+                    <a href="/newsroom#events" class="mn-trio-cta" data-cursor="hover">
+                        View All Events
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Col 3: Connect With Us -->
+                <div class="mn-trio-col">
+                    <div class="mn-trio-col-hd">
+                        <span class="mn-trio-col-label">Connect With Us</span>
+                    </div>
+                    <div class="mn-trio-card mn-trio-card--connect">
+                        <div class="mn-trio-video">
+                            <iframe src="https://www.youtube.com/embed/svxX0oXME-8" title="Umang Boards Limited" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="mn-trio-socials">
+                            <a href="https://www.instagram.com/umangboards7/" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Follow on Instagram
+                            </a>
+                            <a href="https://www.youtube.com/@UmangBoards" target="_blank" rel="noopener" class="mn-social-btn" data-cursor="hover">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+                                Subscribe on YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Instagram Feed Placeholder -->
-            <div class="mn-insta-feed" id="instaFeed">
-                <div class="mn-insta-header">
-                    <div class="section-eyebrow">@umangboards7</div>
-                    <h3 class="mn-events-title">Instagram Feed</h3>
-                </div>
-                <div class="mn-insta-grid">
-                    <?php for ($i = 0; $i < 6; $i++) : ?>
-                    <div class="mn-insta-placeholder">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="rgba(11,31,58,0.12)" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
-                    </div>
-                    <?php endfor; ?>
-                </div>
-                <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:1rem;">Instagram feed will be connected soon</p>
-            </div>
         </div>
     </section>
 
