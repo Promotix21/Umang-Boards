@@ -14,3 +14,11 @@ sync_from_server.py
 
 *.pyc
 __pycache__/
+
+
+# Additional local-only deploy scripts (contain server credentials)
+check_live.py
+deploy_catalog.py
+deploy_product_images.py
+deploy_transformer_boards.py
+purge_cf_cache.py

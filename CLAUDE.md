@@ -103,7 +103,16 @@ These steps are NON-NEGOTIABLE before writing any new HTML, CSS, or PHP:
 
 Skipping these steps wastes deploys and produces inconsistent UI. The pattern is always already there.
 
-## Current Status (May 2026)
-- Repo is AHEAD of live server — PDF brief changes (About Us + Leadership) committed but not yet deployed
-- Deploy via `deploy_pages.py` or SFTP, then clear Cloudflare cache
-- Any changes made through WP Admin (content, ACF fields) live in the database only
+## Current Status (Jun 2026)
+- Local, GitHub (`origin/main`), and live server are all IN SYNC as of this update.
+- Deploy via `deploy_pages.py` / `deploy_product_images.py` / SFTP, then clear Cloudflare cache (scripts auto-purge).
+- Any changes made through WP Admin (content, ACF fields) live in the database only.
+
+## Credentials & deploy scripts (IMPORTANT)
+- Deploy scripts (`deploy_pages.py`, `deploy_transformer_boards.py`, `deploy_product_images.py`,
+  `deploy_catalog.py`, `purge_cf_cache.py`, `check_live.py`, etc.) contain SSH + Cloudflare creds and
+  are **gitignored** — they stay LOCAL only, never commit them. Creds also mirrored in `E:/ai-website-projects/.env` (`UMANG_*`).
+- GitHub has **push protection** (blocks secrets) and the push token lacks `workflow` scope — do NOT
+  commit credential files or `.github/workflows/*` changes, or the push will be rejected.
+- Background removal for product images: use `rembg` (u2net) → save local transparent PNG in
+  `assets/images/`, switch template data from `image_id` to `'image' => UBL_URI . '/assets/images/...png'`.
