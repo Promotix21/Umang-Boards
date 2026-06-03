@@ -116,3 +116,32 @@ Skipping these steps wastes deploys and produces inconsistent UI. The pattern is
   commit credential files or `.github/workflows/*` changes, or the push will be rejected.
 - Background removal for product images: use `rembg` (u2net) → save local transparent PNG in
   `assets/images/`, switch template data from `image_id` to `'image' => UBL_URI . '/assets/images/...png'`.
+
+## Product pages architecture
+- **Transformer Boards** (`page-transformer-boards.php`) is STANDALONE — its own markup (`tb-` classes),
+  data array `$boards`, and inline tables. Edit it directly.
+- **All other catalog pages** (machined, moulded, copper/aluminium wires, papers, chemicals) define a
+  `$catalog` array (products with `image_id` / `image`, `features`, `sizes`, `variants`, `matrix_row`)
+  and `include inc/catalog-renderer.php`. The renderer draws the shared `tb-` UI for all of them — so
+  one renderer edit affects every catalog page (e.g. removing the Key Properties/Features block).
+- catalog-renderer image logic: `if image_id` (WP attachment, served via `wp_get_attachment_image`)
+  `elseif image` (direct URL). To use a local transparent PNG, set `'image'` and REMOVE `'image_id'`
+  (image_id wins if both present).
+- Resolve a WP `image_id` → file URL via REST: `GET /wp-json/wp/v2/media/<id>` → `source_url`.
+  Many source photos are low-res (~254–500px) — cutouts look soft at large sizes; ask client for hi-res.
+
+## Live product page URLs (slugs differ from template names)
+- Transformer Boards: `/products/cellulose-transformer-insulation-boards/`
+- Machined Components: `/products/machined-and-milled-components/`
+- Moulded Components: `/products/moulded-components-and-other-components/`
+- Copper wires: `/products/copper/` · Aluminium wires: `/products/aluminium/` · Winding Wires: `/products/winding-wires/`
+- Insulation Papers: `/products/insulation-papers/` · Insulating Chemicals: `/products/insulating-chemicals/`
+- Page templates aren't always at slug-based URLs; find the real URL from the nav/sitemap, not the filename.
+
+## Gotchas
+- After a Cloudflare `purge_everything`, the origin briefly returns **522** (flooded with uncached
+  requests) — assets settle to 200 within ~30s. Not a real error; re-check before concluding broken.
+- "Broken image" reports are often Cloudflare/browser **cache**, not a 404 — verify the URL returns 200
+  and renders before chasing a code fix; a CF purge usually resolves it.
+- Repo hygiene: some leadership photos existed on the server but were missing locally — keep the local
+  `assets/images/leadership/` in sync with what the template references (10 photos).
