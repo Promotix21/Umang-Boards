@@ -32,7 +32,7 @@ $catalog = [
             'name'       => 'Insulation Kraft Paper',
             'grade'      => 'UB-IKP',
             'iec'        => 'IEC 60554-3-5:1984',
-            'image'      => UBL_URI . '/assets/images/paper-kraft-crepe.png',
+            'image'      => UBL_URI . '/assets/images/paper-kraft.jpg',
             'intro'      => 'The standard conductor insulation paper — wound directly onto copper and aluminium conductors for winding in power and distribution transformers.',
             'properties' => [
                 'Reliable electrical insulation characteristics',
@@ -53,7 +53,7 @@ $catalog = [
             'name'       => 'Insulation Press Paper',
             'grade'      => 'UB-IPP',
             'iec'        => 'IEC 60641-3-2 P2.1B',
-            'image'      => UBL_URI . '/assets/images/paper-press.png',
+            'image'      => UBL_URI . '/assets/images/paper-press.jpg',
             'intro'      => 'A multi-layer structured insulation paper with high mechanical strength — used for heavier insulation requirements in power transformer windings.',
             'properties' => [
                 'Thermal class performance (up to 105°C class)',
@@ -65,9 +65,9 @@ $catalog = [
                 'Available in natural finish and customised colour options',
             ],
             'sizes' => [
-                [ 'grade' => 'UB-IPP', 'thickness' => '5 mil to 20 mil (0.125 mm to 0.25 mm)', 'max_width' => 'Upto 1250', 'tolerance' => '+/- 5' ],
+                [ 'grade' => 'UB-IPP', 'thickness' => '5 mil to 20 mil (0.125 mm to 0.5 mm)', 'max_width' => 'Upto 1250', 'tolerance' => '+/- 5' ],
             ],
-            'matrix_row' => [ [ 'chip' => 'UB-IPP' ], 'IEC 60641-3-2 P2.1B', '0.125–0.25 mm', 'Upto 1250 mm' ],
+            'matrix_row' => [ [ 'chip' => 'UB-IPP' ], 'IEC 60641-3-2 P2.1B', '0.125–0.5 mm', 'Upto 1250 mm' ],
         ],
         [
             'id'         => 'ddp',
@@ -75,7 +75,7 @@ $catalog = [
             'name'       => 'Diamond Dotted Paper',
             'grade'      => 'UB-DDP',
             'iec'        => 'IEC 60641-3-2 P4.1A',
-            'image'      => UBL_URI . '/assets/images/paper-ddp.png',
+            'image'      => UBL_URI . '/assets/images/paper-ddp.jpg',
             'intro'      => 'Epoxy resin-coated paper that bonds winding layers under heat and pressure — eliminates the need for varnish impregnation in coil assembly.',
             'properties' => [
                 'Strong interlayer bonding after curing',
@@ -86,9 +86,9 @@ $catalog = [
                 'Suitable for long-term thermal performance',
             ],
             'sizes' => [
-                [ 'grade' => 'UB-DDP', 'thickness' => '3 mil to 20 mil (0.075 mm to 0.25 mm)', 'max_width' => 'Upto 1220', 'tolerance' => '+/- 5' ],
+                [ 'grade' => 'UB-DDP', 'thickness' => '3 mil to 20 mil (0.075 mm to 0.5 mm)', 'max_width' => 'Upto 1220', 'tolerance' => '+/- 5' ],
             ],
-            'matrix_row' => [ [ 'chip' => 'UB-DDP' ], 'IEC 60641-3-2 P4.1A', '0.075–0.25 mm', 'Upto 1220 mm' ],
+            'matrix_row' => [ [ 'chip' => 'UB-DDP' ], 'IEC 60641-3-2 P4.1A', '0.075–0.5 mm', 'Upto 1220 mm' ],
         ],
         [
             'id'         => 'crepe',
@@ -96,7 +96,7 @@ $catalog = [
             'name'       => 'Insulation Crepe Paper',
             'grade'      => 'UB-Crepe',
             'iec'        => 'IEC 60554-3-3:1980',
-            'image'      => UBL_URI . '/assets/images/paper-kraft-crepe.png',
+            'image'      => UBL_URI . '/assets/images/paper-crepe.jpg',
             'intro'      => 'High-elongation paper that conforms tightly to irregular surfaces — used for wrapping leads, bushings, and components requiring flexible insulation.',
             'properties' => [
                 'High elongation and excellent flexibility',
@@ -117,7 +117,7 @@ $catalog = [
             'name'       => 'Thermally Upgraded Paper',
             'grade'      => 'UB-TUP',
             'iec'        => 'IEC 60554-2:2001',
-            'image'      => UBL_URI . '/assets/images/paper-thermally-upgraded.png',
+            'image'      => UBL_URI . '/assets/images/paper-tup.jpg',
             'intro'      => 'Chemically treated paper engineered for extended transformer life — delivers superior thermal stability at 120°C class and significantly slower ageing than standard kraft.',
             'properties' => [
                 'Higher thermal class performance (up to 120°C class)',
@@ -126,11 +126,11 @@ $catalog = [
                 'Strong electrical insulation characteristics',
             ],
             'sizes' => [
-                [ 'grade' => 'UB-TUP',      'thickness' => '3 mil to 20 mil (0.075 mm to 0.25 mm)',   'max_width' => 'Upto 1500', 'tolerance' => '+/- 5' ],
+                [ 'grade' => 'UB-TUP',      'thickness' => '3 mil to 20 mil (0.075 mm to 0.5 mm)',   'max_width' => 'Upto 1500', 'tolerance' => '+/- 5' ],
                 [ 'grade' => 'UB-TUP(C)',    'thickness' => '3 mil to 5 mil (0.075 mm to 0.125 mm)',   'max_width' => 'Upto 1000', 'tolerance' => '+/- 5' ],
-                [ 'grade' => 'UB-TUP(DDP)', 'thickness' => '3 mil to 20 mil (0.075 mm to 0.25 mm)',   'max_width' => 'Upto 1450', 'tolerance' => '+/- 5' ],
+                [ 'grade' => 'UB-TUP(DDP)', 'thickness' => '3 mil to 20 mil (0.075 mm to 0.5 mm)',   'max_width' => 'Upto 1450', 'tolerance' => '+/- 5' ],
             ],
-            'matrix_row' => [ [ 'chip' => 'UB-TUP' ], 'IEC 60554-2:2001', '0.075–0.25 mm', 'Upto 1500 mm' ],
+            'matrix_row' => [ [ 'chip' => 'UB-TUP' ], 'IEC 60554-2:2001', '0.075–0.5 mm', 'Upto 1500 mm' ],
         ],
     ],
 ];

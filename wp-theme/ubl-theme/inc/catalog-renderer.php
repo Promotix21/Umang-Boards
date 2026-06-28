@@ -283,7 +283,8 @@ get_header();
         </div>
 
         <?php /* WIRES — key:value spec table */
-        elseif ( $type === 'wires' && ! empty( $p['specs'] ) ) : ?>
+        elseif ( $type === 'wires' && ( ! empty( $p['specs'] ) || ! empty( $p['paper_types'] ) || ! empty( $p['paper_types_image'] ) ) ) : ?>
+        <?php if ( ! empty( $p['specs'] ) ) : ?>
         <div class="tb-table-wrap">
             <div class="tb-table-label">Technical Specifications</div>
             <div class="tb-table-scroll">
@@ -300,6 +301,27 @@ get_header();
                 </table>
             </div>
         </div>
+        <?php endif; ?>
+        <?php if ( ! empty( $p['paper_types_image'] ) ) : ?>
+        <div class="tb-table-wrap">
+            <div class="tb-table-label">Insulation Papers Used</div>
+            <figure style="margin:0;padding-top:0.5rem;">
+                <img src="<?php echo esc_url( $p['paper_types_image'] ); ?>"
+                     alt="<?php echo esc_attr( $p['name'] . ' — available insulation paper covering options' ); ?>"
+                     loading="lazy"
+                     style="width:100%;height:auto;display:block;border:1px solid var(--border-subtle);border-radius:8px;background:#fff;">
+            </figure>
+        </div>
+        <?php elseif ( ! empty( $p['paper_types'] ) ) : ?>
+        <div class="tb-table-wrap">
+            <div class="tb-table-label">Insulation Papers Used</div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.6rem;padding-top:0.25rem;">
+                <?php foreach ( $p['paper_types'] as $pt ) : ?>
+                <span style="display:inline-block;padding:0.4rem 0.9rem;background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:4px;font-size:0.82rem;font-weight:500;color:var(--navy);"><?php echo esc_html( $pt ); ?></span>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
 
         <?php /* COMPONENTS — variants section */
         elseif ( $type === 'components' && ! empty( $p['variants'] ) ) : ?>
