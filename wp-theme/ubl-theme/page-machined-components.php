@@ -41,7 +41,7 @@ $catalog = [
                 'Consistent dielectric performance',
             ],
             'applications_text' => 'Maintains uniform gaps between conductors and winding layers; ensures oil circulation, electrical clearance, and mechanical stability.',
-            'matrix_row' => [ 'UB-HD-3.1 / Laminated Board', 'Class A (105°C)', 'Made to customer specification' ],
+            'matrix_row' => [ 'UB-HD-3.1 / Laminated Board', '—', 'Made to customer specification' ],
         ],
         [
             'id'       => 'strips',
@@ -58,7 +58,7 @@ $catalog = [
                 'Dependable electrical insulation characteristics',
             ],
             'applications_text' => 'Winding support, duct formation, and structural reinforcement.',
-            'matrix_row' => [ 'Premium Transformerboard', 'Class A (105°C)', 'Made to customer specification' ],
+            'matrix_row' => [ 'Premium Transformerboard', '—', 'Made to customer specification' ],
         ],
         [
             'id'       => 'washers',
@@ -75,7 +75,7 @@ $catalog = [
                 'Precise dimensional tolerances',
             ],
             'applications_text' => 'Electrical insulation and mechanical support at fastening and clamping points.',
-            'matrix_row' => [ 'Premium Cellulose Board', 'Class A (105°C)', 'Made to customer specification' ],
+            'matrix_row' => [ 'Premium Cellulose Board', '—', 'Made to customer specification' ],
         ],
     ],
 ];

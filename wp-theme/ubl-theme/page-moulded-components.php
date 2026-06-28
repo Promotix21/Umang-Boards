@@ -40,7 +40,7 @@ $catalog = [
                 'Dimensional accuracy',
                 'Supplied in sectors to customer requirements',
             ],
-            'matrix_row' => [ 'Mouldable Pressboard', 'Class A (105°C)', '400–2000 mm dia · in sectors' ],
+            'matrix_row' => [ 'Mouldable Pressboard', '—', '400–2000 mm dia · in sectors' ],
         ],
         [
             'id'       => 'cap-rings',
@@ -56,7 +56,7 @@ $catalog = [
                 'Dependable dielectric performance',
                 'Supplied in sectors to customer requirements',
             ],
-            'matrix_row' => [ 'Mouldable Pressboard', 'Class A (105°C)', '400–2000 mm dia · in sectors' ],
+            'matrix_row' => [ 'Mouldable Pressboard', '—', '400–2000 mm dia · in sectors' ],
         ],
         [
             'id'       => 'disc-angle-ring',
@@ -72,7 +72,7 @@ $catalog = [
                 'Dependable dielectric performance',
                 'Supplied in sectors to customer specifications',
             ],
-            'matrix_row' => [ 'Mouldable Pressboard', 'Class A (105°C)', '450–2000 mm dia · in sectors' ],
+            'matrix_row' => [ 'Mouldable Pressboard', '—', '450–2000 mm dia · in sectors' ],
         ],
         [
             'id'       => 'disc-cap-ring',
@@ -88,7 +88,7 @@ $catalog = [
                 'Dependable dielectric performance',
                 'Supplied in sectors to customer specifications',
             ],
-            'matrix_row' => [ 'Mouldable Pressboard', 'Class A (105°C)', '450–2000 mm dia · in sectors' ],
+            'matrix_row' => [ 'Mouldable Pressboard', '—', '450–2000 mm dia · in sectors' ],
         ],
         [
             'id'       => 'snouts',
@@ -104,7 +104,7 @@ $catalog = [
                 'Reliable electrical insulation properties',
                 'Produced to customer specifications',
             ],
-            'matrix_row' => [ 'Mouldable Pressboard', 'Class A (105°C)', '400–2000 mm dia' ],
+            'matrix_row' => [ 'Mouldable Pressboard', '—', '400–2000 mm dia' ],
         ],
     ],
 ];
