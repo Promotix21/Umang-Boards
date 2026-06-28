@@ -108,6 +108,46 @@ Skipping these steps wastes deploys and produces inconsistent UI. The pattern is
 - Deploy via `deploy_pages.py` / `deploy_product_images.py` / SFTP, then clear Cloudflare cache (scripts auto-purge).
 - Any changes made through WP Admin (content, ACF fields) live in the database only.
 
+## Jun 28 2026 — Product pages built from client doc (`AK Folder/Product page details.docx`)
+All 6 product pages now built from the client's Word doc + its 45 embedded product images.
+Commits `71cfdcc` (build) + `8015747` (fix), pushed to `origin/main`; deployed live, CF purged.
+- **Source method:** doc text + images extracted via Python `zipfile` (`word/media/`), mapped in
+  document order → `AK Folder/seq.txt` (image↔product map), `product_page_details.txt` (text),
+  `process_paper_images.py` (PIL optimiser). All extracted assets stay in `AK Folder/` (untracked;
+  48MB docx NOT committed).
+- **Pages built/finalised:** Machined (spacers/strips/washers), Moulded (angle/cap rings, disc
+  angle/cap rings, snouts), Copper wires (3), Aluminium wires (4), Insulation Papers (5).
+  Transformer Boards was already live. Product images optimised: transparent→quantized PNG,
+  opaque→progressive JPG q82–86, max ~1100px (grid 1600px). All 25–226 KB.
+- **Client decisions applied:** (1) Disc Cap Ring = SAME content as Disc Angle Ring, just renamed.
+  (2) "20 mil" typo → write **0.5 mm** in brackets (not 0.25 mm) on Press/DDP/TUP papers + matrix.
+- **Insulation Papers:** real paper photos swapped in — `paper-kraft.jpg` (img15), `paper-press.jpg`
+  (img33), `paper-ddp.jpg` (img5), `paper-crepe.jpg` (img16), `paper-tup.jpg` (img25, green).
+  (Old `paper-kraft-crepe.png`/`paper-press.png`/`paper-ddp.png`/`paper-thermally-upgraded.png` now
+  unreferenced — left in place, harmless.)
+- **Copper/Aluminium paper types:** the doc's pre-built "Available Paper Covering Options" grid
+  (image26, all 7 types w/ photos+labels+desc) → `paper-covering-options.jpg`. Renderer extended:
+  new optional `paper_types_image` field renders a full-width figure; falls back to text chips
+  (`paper_types`) if absent. Chosen over the 9 individual photos (which had red watermark labels).
+- **IMPORTANT principle reaffirmed:** only render what the doc provides. Initially I invented
+  "Class A (105°C)" insulation class for machined/moulded matrix — doc never stated one → reverted
+  to "—". Don't fabricate spec values the source omits.
+- **⬜ PENDING (client sending, NON-blocking):** (1) hi-res Aluminium Paper-Insulated photo
+  (`al-paper-insulated.jpg` source only ~446px, soft); (2) dedicated Disc Angle/Cap Ring photos
+  (currently reuse Angle/Cap Ring images). When received: process → `assets/images/` → swap 1–3
+  `'image'` paths → `deploy_pages.py`.
+
+## Deploy creds — Jun 28 2026 FIX (was failing auth)
+The shared Hostinger account SSH password had been rotated; `deploy_pages.py`'s hardcoded value AND
+`.env` `UMANG_SSH_PASS` were both STALE → auth failures. The LIVE password is **`DAD_SSH_PASS`** in
+`E:/ai-website-projects/.env` (same shared account `u495633441` as Doctor at Door).
+- `deploy_pages.py` now reads `DAD_SSH_PASS` from `.env` at runtime (`_load_env_pass()`) — no
+  hardcoded secret, won't go stale again.
+- `.env` `UMANG_SSH_PASS` re-synced to the live value.
+- If a future deploy fails auth: the source of truth is `DAD_SSH_PASS`; re-test before assuming code.
+- `deploy_pages.py` `FILES` list was updated to this build's files; edit it to your changed files
+  before each run.
+
 ## Credentials & deploy scripts (IMPORTANT)
 - Deploy scripts (`deploy_pages.py`, `deploy_transformer_boards.py`, `deploy_product_images.py`,
   `deploy_catalog.py`, `purge_cf_cache.py`, `check_live.py`, etc.) contain SSH + Cloudflare creds and
