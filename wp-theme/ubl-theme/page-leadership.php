@@ -459,6 +459,7 @@ $people = [
   background:linear-gradient(180deg,var(--gold) 0%,var(--gold-dark) 100%);
   color:var(--navy);padding:1.1rem 1.3rem 1.2rem;
   position:relative;text-align:center;
+  flex:1;display:flex;flex-direction:column;align-items:center;
 }
 .lp-wrap .person-cap::before{
   content:'';position:absolute;left:50%;top:-9px;width:18px;height:18px;
@@ -467,14 +468,17 @@ $people = [
 .lp-wrap .person-name{
   font-family:var(--font-body);font-weight:600;
   font-size:1.15rem;line-height:1.2;letter-spacing:-.005em;color:#0b1f3a;margin:0;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:2.4em;
 }
 .lp-wrap .lp-grid--4 .person-name{font-size:.95rem}
 .lp-wrap .person-role{
-  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;line-height:1.5;
   color:rgba(11,31,58,.72);margin-top:.35rem;font-weight:600;
+  min-height:3em;
 }
 .lp-wrap .person-more{
-  margin-top:.85rem;display:inline-flex;align-items:center;gap:.35rem;
+  margin-top:auto;display:inline-flex;align-items:center;gap:.35rem;
   font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
   color:#0b1f3a;font-weight:700;opacity:.85;
   padding-top:.75rem;border-top:1px solid rgba(11,31,58,.18);
