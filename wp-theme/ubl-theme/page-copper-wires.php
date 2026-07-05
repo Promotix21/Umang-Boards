@@ -60,7 +60,7 @@ $catalog = [
                 'Polyester Paper',
             ],
             'paper_types_image' => UBL_URI . '/assets/images/paper-covering-options.jpg',
-            'matrix_row' => [ 'Electrolytic Copper', '0.80–6.0 mm dia · up to 150 sq.mm', 'Paper Insulated', 'Rectangular / Round' ],
+            'matrix_row' => [ 'Electrolytic Copper', 'Rectangular / Round' ],
         ],
         [
             'id'       => 'cu-enamel-strips',
@@ -84,7 +84,7 @@ $catalog = [
                 [ 'label' => 'Insulation Thermal Classes','value' => 'Modified Polyester 155°C · Polyesterimide 180°C · Dual Coated 200 / 220°C · Self Solderable 155°C / 180°C' ],
                 [ 'label' => 'Applications',              'value' => 'Power Transformers, Motors & Generators, Renewable Energy Transformers, Automotive Electrical Systems' ],
             ],
-            'matrix_row' => [ 'Electrolytic Copper', '3.15–15 mm W · 1.12–5 mm T', 'Up to 200 / 220°C', 'Rectangular Strip' ],
+            'matrix_row' => [ 'Electrolytic Copper', 'Rectangular Strip' ],
         ],
         [
             'id'       => 'cu-magnet-wire',
@@ -108,7 +108,7 @@ $catalog = [
                 [ 'label' => 'Insulation Grade', 'value' => '1 – 3' ],
                 [ 'label' => 'Applications',     'value' => 'Transformers, Electric Motors, Generators, Household Appliances, Industrial Equipment' ],
             ],
-            'matrix_row' => [ 'Electrolytic Copper', '0.40–5.40 mm dia', 'Grade 1 – 3', 'Round Enamelled' ],
+            'matrix_row' => [ 'Electrolytic Copper', 'Round Enamelled' ],
         ],
     ],
 ];

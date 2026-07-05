@@ -60,7 +60,7 @@ $catalog = [
                 'Kapton',
             ],
             'paper_types_image' => UBL_URI . '/assets/images/paper-covering-options.jpg',
-            'matrix_row' => [ 'High Conductivity Aluminium', '0.80–6.0 mm dia · up to 150 sq.mm', 'Paper Insulated', 'Rectangular / Round' ],
+            'matrix_row' => [ 'High Conductivity Aluminium', 'Rectangular / Round' ],
         ],
         [
             'id'       => 'al-enamel-strips',
@@ -84,7 +84,7 @@ $catalog = [
                 [ 'label' => 'Insulation Thermal Classes','value' => 'Modified Polyester 155°C · Polyesterimide 180°C · Dual Coated 200 / 220°C · Self Solderable 155°C / 180°C' ],
                 [ 'label' => 'Applications',              'value' => 'Power Transformers, Motors & Generators, Renewable Energy Transformers, Automotive Electrical Systems' ],
             ],
-            'matrix_row' => [ 'EC Grade Aluminium', '3.15–15 mm W · 1.12–5 mm T', 'Up to 200 / 220°C', 'Rectangular Strip' ],
+            'matrix_row' => [ 'EC Grade Aluminium', 'Rectangular Strip' ],
         ],
         [
             'id'       => 'al-magnet-wire',
@@ -108,7 +108,7 @@ $catalog = [
                 [ 'label' => 'Insulation Grade', 'value' => '1 – 3' ],
                 [ 'label' => 'Applications',     'value' => 'Transformers, Electric Motors, Generators, Household Appliances, Industrial Equipment' ],
             ],
-            'matrix_row' => [ 'EC Grade Aluminium', '0.40–5.40 mm dia', 'Grade 1 – 3', 'Round Enamelled' ],
+            'matrix_row' => [ 'EC Grade Aluminium', 'Round Enamelled' ],
         ],
         [
             'id'       => 'al-bare-foil',
@@ -133,7 +133,7 @@ $catalog = [
                 [ 'label' => 'Applicable Standards',   'value' => 'IS · IEC · DIN · Customer Specific Requirements' ],
                 [ 'label' => 'Applications',           'value' => 'Foil Winding Transformers, Distribution Transformers, Switchgear Equipment, CT & PT Manufacturing, Electrical Busbars, Motors & Electrical Equipment' ],
             ],
-            'matrix_row' => [ 'High Quality Aluminium', '4–30 mm W · 0.80–10 mm T', 'Bare (uninsulated)', 'Foil / Strip' ],
+            'matrix_row' => [ 'High Quality Aluminium', 'Foil / Strip' ],
         ],
     ],
 ];

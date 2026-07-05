@@ -135,7 +135,7 @@ get_header();
                         if ( $type === 'rolls' ) {
                             echo '<th>Paper Type</th><th>Grade Code</th><th>IEC Standard</th><th>Thickness Range</th><th>Max Roll Width</th>';
                         } elseif ( $type === 'wires' ) {
-                            echo '<th>Wire Type</th><th>Conductor</th><th>Size / Diameter</th><th>Insulation Class</th><th>Form</th>';
+                            echo '<th>Wire Type</th><th>Conductor</th><th>Form</th>';
                         } elseif ( $type === 'components' ) {
                             echo '<th>Component</th><th>Material</th><th>Insulation Class</th><th>Key Variants</th>';
                         }
