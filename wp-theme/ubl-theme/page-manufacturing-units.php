@@ -766,7 +766,7 @@ $uri = UBL_URI;
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                 <span>Company</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-                <span class="active">Manufacturing Units</span>
+                <span class="active">Infrastructure</span>
             </nav>
             <div class="mu-hero-badge">
                 <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l8-6 8 6v12M9 20v-6h6v6"/></svg>

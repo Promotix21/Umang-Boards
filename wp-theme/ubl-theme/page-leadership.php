@@ -15,6 +15,14 @@ $people = [
     'photo'   => $ldr . 'AnoopKumarDhanuka.jpg',
     'linkedin'=> '#',
     'meta'    => ['Promoter','B.Com, Univ. of Rajasthan (1993)','26+ yrs in Power T&D'],
+    'directorships' => [
+      'Dhanuka Foundation (Director)',
+      'Umang Boards (Mumbai) Pvt. Ltd. (Director)',
+      'Anup Insulation Pvt. Ltd. (Director)',
+      'Umang Business Ventures LLP (Designated Partner)',
+      'Umang EHV Insulation LLP (Designated Partner)',
+      'Umang Corporate Park LLP (Designated Partner)',
+    ],
     'bio'     => [
       "Anoop Kumar Dhanuka is the Promoter, Chairman &amp; Managing Director of Umang Boards Limited. A commerce graduate from the University of Rajasthan, he brings over 26 years of expertise in power transmission and distribution, and has been the principal force behind the Company's evolution from a regional manufacturer to a globally recognised supplier of transformer insulation solutions.",
       "As Chairman &amp; Managing Director, Mr. Dhanuka sets the strategic direction of the Company, with a particular focus on long-term expansion, R&amp;D leadership, and capital allocation. His approach to growth has been deliberate and consistent: building technical capabilities that anticipate industry demand rather than follow it.",
@@ -28,6 +36,13 @@ $people = [
     'photo'   => $ldr . 'Alok-Dhanuka-1.jpg',
     'linkedin'=> '#',
     'meta'    => ['Promoter','B.Com, Univ. of Rajasthan (1994)','26+ yrs in Power T&D'],
+    'directorships' => [
+      'Dhanuka Foundation (Director)',
+      'Umang Boards (Mumbai) Pvt. Ltd. (Director)',
+      'Anup Insulation Pvt. Ltd. (Director)',
+      'Umang Business Ventures LLP (Designated Partner)',
+      'Umang Corporate Park LLP (Designated Partner)',
+    ],
     'bio'     => [
       "Mr. Alok Kumar Dhanuka is the Promoter and Whole Time Director of Umang Boards Limited and has served on its Board of Directors since incorporation. He holds a Bachelor of Commerce degree from the University of Rajasthan (1994) and brings over 26 years of leadership experience in the power transmission and distribution sector.",
       "As Whole Time Director, Mr. Dhanuka oversees the Company's financial strategy and treasury management, ensuring robust financial health and operational efficiency. His key responsibilities include managing overall P&L performance, directing finance and treasury operations, and optimizing capital utilization to support the Company's growth trajectory while maintaining financial discipline.",
@@ -39,7 +54,12 @@ $people = [
     'role'    => 'Whole-Time Director',
     'photo'   => $ldr . 'UmangDhanuka.jpg',
     'linkedin'=> '#',
-    'meta'    => ['Promoter','B.Sc. Industrial Engg., Purdue (2018)','BIS ETD-02 Principal Member','IEEE Member'],
+    'meta'    => ['Promoter','B.Sc. I.E. (2018)','BIS ETD-02 Principal Member','IEEE Member'],
+    'directorships' => [
+      'Umang Business Ventures LLP (Designated Partner, Nominee on behalf of Umang Corporate Park LLP)',
+      'Umang EHV Insulation LLP (Designated Partner)',
+      'Umang Corporate Park LLP (Designated Partner, Nominee on behalf of Anup Insulation Private Limited)',
+    ],
     'bio'     => [
       "Umang Dhanuka is a Promoter and Whole-Time Director of Umang Boards Limited. He holds a Bachelor of Science in Industrial Engineering from Purdue University, USA, and brings with him a rigorous, systems-oriented approach to manufacturing and operations that is rare in the industry at his level of experience.",
       "Appointed to the Board in 2025, Mr. Dhanuka oversees the end-to-end operations of the Company's insulation business, from production and vendor management to marketing and business development. He also leads new product development, with a focus on high-performance insulation solutions for next-generation electrical applications.",
@@ -71,6 +91,7 @@ $people = [
       'SBI SG Global Securities Services Pvt Ltd (past nominee director)',
       'C-Edge Technologies Pvt Ltd (past nominee director)',
       'PSB Alliance Pvt Ltd (past nominee director)',
+      'White Tiger Animation Studios Private Limited (Director)',
     ],
     'bio'     => [
       "Mr. Devendra Kumar is a seasoned banking leader with 39+ years of experience, primarily in retail banking across leading institutions. After retiring from State Bank of India, he served as Advisor to its Wealth and Premier Banking Business and, in March 2024, was appointed by the Reserve Bank of India as Advisor to Abhyudaya Coop Bank Ltd., Mumbai.",
@@ -84,6 +105,9 @@ $people = [
     'photo'   => $ldr . 'AvindarLaddha.jpg',
     'linkedin'=> '#',
     'meta'    => ['Ex-Addl. Director of Industries, Govt. of Rajasthan','M.A. Economics, Rajasthan University','30+ yrs public policy'],
+    'directorships' => [
+      'Kamtech Associates Private Limited (Director)',
+    ],
     'bio'     => [
       "Mr. Avindra Laddha is a seasoned industry expert with over three decades of experience, formerly serving as Additional Director of Industries for the Government of Rajasthan. He played a pivotal role in formulating key regulatory frameworks, including the Rajasthan MSME Policy 2015 and the state's Export Promotion Strategy.",
       "His track record includes managing extensive cluster development programs and executing value chain diagnostics for the salt and handicraft sectors. Furthermore, he supervised the successful Geographical Indication (GI) tagging of five heritage products, such as Makrana Marble and Blue Pottery.",
@@ -96,6 +120,14 @@ $people = [
     'photo'   => $ldr . 'ShrutiGupta.png',
     'linkedin'=> '#',
     'meta'    => ['Company Secretary, ICSI (2014)','10+ yrs compliance & secretarial practice','Secretarial Auditor — listed cos & Govt. PSUs'],
+    'directorships' => [
+      'Welterman International Limited (Additional Independent Director)',
+      'Riwind Green Energy Limited (Additional Independent Director)',
+      'Jindal Steel Andhra Limited (Independent Director)',
+      'Nalwa Steel And Power Limited (Independent Director)',
+      'Jindal Projects And Engineers Limited (Independent Director)',
+      'Jindal Paradip Port Limited (Independent Director)',
+    ],
     'bio'     => [
       "CS Shruti Gupta is an Independent Director of Umang Boards Limited. A qualified Company Secretary and member of the Institute of Company Secretaries of India since 2014, she brings over 10 years of experience in compliance and corporate secretarial practice.",
       "Ms. Gupta has served as Secretarial Auditor to listed companies and Government of Rajasthan public sector undertakings, and holds membership on statutory committees including POSH Committees. Her background spans the full range of governance oversight, bringing both technical rigour and institutional breadth to the Board.",
@@ -107,6 +139,16 @@ $people = [
     'photo'   => $ldr . 'NitinGhanshyamHotchandani.png',
     'linkedin'=> 'https://www.linkedin.com/in/fcsnitinhotchandani',
     'meta'    => ['FCS, ICSI (2012)','13 yrs corporate governance & secretarial practice','Practicing Company Secretary — own firm'],
+    'directorships' => [
+      'Solkit Distillery And Brewery Private Limited (Independent Director)',
+      'Jindal Projects And Engineers Limited (Independent Director)',
+      'Transworld Furtichem Limited (Independent Director)',
+      'Jindal Paradip Port Limited (Independent Director)',
+      'Agribio Spirits Limited (Independent Director)',
+      'Agarwal Toughened Glass India Limited (Independent Director)',
+      'Nyca Business Solutions LLP (Designated Partner)',
+      'GKH And Partners LLP (Designated Partner)',
+    ],
     'bio'     => [
       "FCS Nitin Ghanshyam Hotchandani is an Independent Director of Umang Boards Limited. A qualified Company Secretary and member of the Institute of Company Secretaries of India since 2012, he brings 13 years of focused expertise in corporate governance, secretarial practice, due diligence, and corporate law.",
       "Mr. Hotchandani currently leads his own practicing firm, advising companies across the full spectrum of compliance and governance matters.",
@@ -128,8 +170,10 @@ $people = [
     'role'    => 'Chief Financial Officer',
     'photo'   => null,
     'linkedin'=> '#',
-    'meta'    => [],
-    'bio'     => [],
+    'meta'    => ['CFO since Jul 2025','B.Com &amp; M.Com, Rajasthan University','ACA, ICAI · 15+ yrs finance, taxation &amp; audit'],
+    'bio'     => [
+      "Mr. Mayank Jain serves as the Chief Financial Officer of our Company, a role he has held since July 5, 2025. He holds both a bachelor's and a master's degree in commerce from Rajasthan University and is an associate member of the Institute of Chartered Accountants of India. With approximately 15 years of experience spanning accounts, finance, taxation, and audit, he brings deep functional expertise to the Company's financial leadership.",
+    ],
   ],
   'ayush' => [
     'name'    => 'Mr. Ayush Vijay',
@@ -172,14 +216,6 @@ $people = [
     'bio'     => [
       "P. Rajeswaran brings nearly three decades of deep expertise in manufacturing to his role as General Manager of the Moulded Division, a position he has held since August 2021. His career reflects a strong blend of hands-on production knowledge and strategic management, having previously served as Management Staff and PGTR at ABB Global Industries and Services.",
     ],
-  ],
-  'gopal' => [
-    'name'    => 'Mr. Gopal Sharma',
-    'role'    => 'Finance Head · Treasury and MIS',
-    'photo'   => null,
-    'linkedin'=> '#',
-    'meta'    => [],
-    'bio'     => [],
   ],
 ];
 ?>
@@ -326,24 +362,30 @@ $people = [
 .lp-wrap .founder-sig-name{font-weight:700;color:#0b1f3a;font-size:1rem;letter-spacing:.01em}
 .lp-wrap .founder-sig-role{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dark);margin-top:.25rem;font-weight:600}
 .lp-wrap .founder-portrait{
-  position:relative;aspect-ratio:3/4;max-width:420px;width:100%;margin-left:auto;
-  min-height:300px;
+  position:relative;max-width:480px;width:100%;margin-left:auto;
+  display:flex;align-items:flex-end;
 }
-.lp-wrap .founder-portrait .frame{
-  position:absolute;inset:0;border:1px solid rgba(200,168,75,.4);
-  transform:translate(18px,18px);
+/* Gold rectangle the portrait emerges from */
+.lp-wrap .founder-portrait .founder-block{
+  position:absolute;left:7%;right:-5%;bottom:0;height:72%;z-index:1;
+  background:linear-gradient(155deg,var(--gold-light) 0%,var(--gold) 55%,var(--gold-dark) 100%);
+  box-shadow:0 34px 80px -30px rgba(160,128,48,.7);
+}
+.lp-wrap .founder-portrait .founder-block::after{
+  content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.18);
+  transform:translate(14px,14px);
 }
 .lp-wrap .founder-portrait .photo{
-  position:absolute;inset:0;overflow:hidden;background:var(--navy-light);
-  box-shadow:0 30px 70px -20px rgba(11,31,58,.35);
+  position:relative;z-index:2;width:100%;
 }
 .lp-wrap .founder-portrait .photo img{
-  width:100%;height:100%;object-fit:cover;object-position:top center;
-  filter:contrast(1.02) saturate(.95);
+  width:100%;height:auto;display:block;
+  filter:contrast(1.02) saturate(.97) drop-shadow(0 26px 30px rgba(11,31,58,.30));
 }
 .lp-wrap .founder-portrait .tag{
-  position:absolute;bottom:-18px;left:-18px;background:var(--navy);color:#fff;
+  position:absolute;bottom:24px;left:-18px;z-index:3;background:var(--navy);color:#fff;
   padding:.65rem 1.2rem;font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;
+  box-shadow:0 14px 30px -10px rgba(11,31,58,.5);
 }
 .lp-wrap .founder-portrait .tag em{font-style:normal;color:var(--gold-light)}
 
@@ -654,9 +696,9 @@ $people = [
       </div>
     </div>
     <div class="founder-portrait">
-      <div class="frame"></div>
+      <div class="founder-block"></div>
       <div class="photo">
-        <img src="<?php echo $ldr; ?>AnoopKumarDhanuka.jpg" alt="Mr. Anoop Kumar Dhanuka, Chairman &amp; Managing Director">
+        <img src="<?php echo $ldr; ?>AnoopKumarDhanuka-cutout.png" alt="Mr. Anoop Kumar Dhanuka, Chairman &amp; Managing Director">
       </div>
       <div class="tag">Since <em>1999</em></div>
     </div>
@@ -675,7 +717,7 @@ $people = [
     <div class="tabs" role="tablist" id="lpTabs">
       <button class="tab is-active" data-tab="exec" role="tab">Board of Directors<span class="tab-count">8</span></button>
       <button class="tab" data-tab="kmp" role="tab">Key Managerial Personnel<span class="tab-count">3</span></button>
-      <button class="tab" data-tab="sen" role="tab">Senior Management<span class="tab-count">4</span></button>
+      <button class="tab" data-tab="sen" role="tab">Senior Management<span class="tab-count">3</span></button>
       <span class="tab-indicator" id="lpTabInd"></span>
     </div>
 
@@ -746,7 +788,7 @@ $people = [
       <div class="lp-grid lp-grid--4">
 
         <?php
-        $senior_members = ['muthumurugan','rajendra','rajeshwaran','gopal'];
+        $senior_members = ['muthumurugan','rajendra','rajeshwaran'];
         foreach ( $senior_members as $key ) :
           $p = $people[ $key ];
           $initials = preg_replace('/^M[rs]\.\s*/u','', $p['name']);

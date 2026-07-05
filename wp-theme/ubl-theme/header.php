@@ -308,7 +308,7 @@
                 <a class="mega-cat" data-sub="companyLeadership" href="/leadership">Leadership <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyHistory" href="/company-history">Company History <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyFoundation" href="/dhanuka-foundation">Dhanuka Foundation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
-                <a class="mega-cat" data-sub="companyMfg" href="/manufacturing-units">Manufacturing Units <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
+                <a class="mega-cat" data-sub="companyMfg" href="/manufacturing-units">Infrastructure <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyPeople">People <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyDownloads">Download Center <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
                 <a class="mega-cat" data-sub="companyQuality">Quality <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -947,7 +947,7 @@
                     <li><a href="/leadership">Leadership</a></li>
                     <li><a href="/company-history">Company History</a></li>
                     <li><a href="/dhanuka-foundation">Dhanuka Foundation</a></li>
-                    <li><a href="/manufacturing-units">Manufacturing Units</a></li>
+                    <li><a href="/manufacturing-units">Infrastructure</a></li>
                     <li class="mobile-sub-group">
                         <span class="mobile-sub-title">People</span>
                         <a href="/life-ubl">Life @ UBL</a>
