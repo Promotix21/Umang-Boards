@@ -154,21 +154,10 @@ $people = [
       "Mr. Hotchandani currently leads his own practicing firm, advising companies across the full spectrum of compliance and governance matters.",
     ],
   ],
-  'manan' => [
-    'name'    => 'Mr. Manan Dhanuka',
-    'role'    => 'President · Wire and Chemical Business',
-    'photo'   => null,
-    'linkedin'=> '#',
-    'meta'    => ['B.Sc. EECS, UC Berkeley','Joined 2025'],
-    'bio'     => [
-      "Mr. Manan Dhanuka holds a degree in Electrical Engineering and Computer Science from the University of California, Berkeley. He joined the business in 2025 and currently leads the Wire and Chemical Business vertical, responsible for strategic growth, business development, and operational leadership across product segments.",
-      "With a strong technical foundation and global exposure, he focuses on modernization, efficiency enhancement, and expanding the Company's presence in domestic and international markets.",
-    ],
-  ],
   'mayank' => [
     'name'    => 'Mr. Mayank Jain',
     'role'    => 'Chief Financial Officer',
-    'photo'   => null,
+    'photo'   => $ldr . 'MayankJain.png',
     'linkedin'=> '#',
     'meta'    => ['CFO since Jul 2025','B.Com &amp; M.Com, Rajasthan University','ACA, ICAI · 15+ yrs finance, taxation &amp; audit'],
     'bio'     => [
@@ -178,7 +167,7 @@ $people = [
   'ayush' => [
     'name'    => 'Mr. Ayush Vijay',
     'role'    => 'Company Secretary &amp; Compliance Officer',
-    'photo'   => null,
+    'photo'   => $ldr . 'AyushVijay.png',
     'linkedin'=> '#',
     'meta'    => ['ACS, ICSI (Dec 2017)','B.Com, Kota University · LLB, Lords Universal College, Mumbai','8+ yrs corporate &amp; secretarial compliance'],
     'bio'     => [
@@ -362,28 +351,32 @@ $people = [
 .lp-wrap .founder-sig-name{font-weight:700;color:#0b1f3a;font-size:1rem;letter-spacing:.01em}
 .lp-wrap .founder-sig-role{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dark);margin-top:.25rem;font-weight:600}
 .lp-wrap .founder-portrait{
-  position:relative;max-width:480px;width:100%;margin-left:auto;
+  position:relative;max-width:540px;width:100%;margin-left:auto;
   display:flex;align-items:flex-end;
 }
-/* Gold rectangle the portrait emerges from */
+/* Solid gold rectangle the portrait emerges from */
 .lp-wrap .founder-portrait .founder-block{
-  position:absolute;left:7%;right:-5%;bottom:0;height:72%;z-index:1;
-  background:linear-gradient(155deg,var(--gold-light) 0%,var(--gold) 55%,var(--gold-dark) 100%);
-  box-shadow:0 34px 80px -30px rgba(160,128,48,.7);
+  position:absolute;left:6%;right:-4%;bottom:0;height:80%;z-index:1;
+  background:linear-gradient(158deg,#EBC85A 0%,#D4B04A 52%,#B8942F 100%);
+  box-shadow:0 40px 80px -32px rgba(160,128,48,.75);
 }
+/* Inset frame so the crop reads as an intentional portrait, not a cut */
 .lp-wrap .founder-portrait .founder-block::after{
-  content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.18);
-  transform:translate(14px,14px);
+  content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.35);
+  transform:translate(16px,16px);
 }
 .lp-wrap .founder-portrait .photo{
   position:relative;z-index:2;width:100%;
+  /* fade the very bottom so the blazer melts into the gold panel (no hard cut) */
+  -webkit-mask-image:linear-gradient(to bottom,#000 90%,transparent 100%);
+          mask-image:linear-gradient(to bottom,#000 90%,transparent 100%);
 }
 .lp-wrap .founder-portrait .photo img{
   width:100%;height:auto;display:block;
-  filter:contrast(1.02) saturate(.97) drop-shadow(0 26px 30px rgba(11,31,58,.30));
+  filter:contrast(1.03) saturate(.98) drop-shadow(0 26px 30px rgba(11,31,58,.32));
 }
 .lp-wrap .founder-portrait .tag{
-  position:absolute;bottom:24px;left:-18px;z-index:3;background:var(--navy);color:#fff;
+  position:absolute;bottom:34px;left:-18px;z-index:3;background:var(--navy);color:#fff;
   padding:.65rem 1.2rem;font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;
   box-shadow:0 14px 30px -10px rgba(11,31,58,.5);
 }
@@ -720,7 +713,7 @@ $people = [
 
     <div class="tabs" role="tablist" id="lpTabs">
       <button class="tab is-active" data-tab="exec" role="tab">Board of Directors<span class="tab-count">8</span></button>
-      <button class="tab" data-tab="kmp" role="tab">Key Managerial Personnel<span class="tab-count">3</span></button>
+      <button class="tab" data-tab="kmp" role="tab">Key Managerial Personnel<span class="tab-count">2</span></button>
       <button class="tab" data-tab="sen" role="tab">Senior Management<span class="tab-count">3</span></button>
       <span class="tab-indicator" id="lpTabInd"></span>
     </div>
@@ -761,7 +754,7 @@ $people = [
       <div class="lp-grid lp-grid--4">
 
         <?php
-        $kmp_members = ['manan','mayank','ayush'];
+        $kmp_members = ['mayank','ayush'];
         foreach ( $kmp_members as $key ) :
           $p = $people[ $key ];
           $initials = preg_replace('/^M[rs]\.\s*/u','', $p['name']);
