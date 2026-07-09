@@ -334,10 +334,11 @@ $people = [
   position:relative;display:grid;grid-template-columns:1.15fr 1fr;gap:5rem;align-items:center;
 }
 .lp-wrap .founder-text{position:relative}
+.lp-wrap .quote-wrap{position:relative;padding-top:2.4rem}
 .lp-wrap .quote-glyph{
-  font-family:var(--font-body);font-size:8rem;line-height:.8;
-  color:var(--gold);opacity:.55;font-weight:500;
-  position:absolute;left:-.1em;top:-.15em;pointer-events:none;
+  font-family:var(--font-body);font-size:5rem;line-height:1;
+  color:var(--gold);opacity:.5;font-weight:600;
+  position:absolute;left:-.04em;top:-.4rem;pointer-events:none;
 }
 .lp-wrap .founder-lead{
   font-family:var(--font-body);font-size:clamp(1.4rem,2.1vw,1.9rem);
@@ -350,24 +351,22 @@ $people = [
 .lp-wrap .founder-sig-rule{width:42px;height:1px;background:var(--gold)}
 .lp-wrap .founder-sig-name{font-weight:700;color:#0b1f3a;font-size:1rem;letter-spacing:.01em}
 .lp-wrap .founder-sig-role{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dark);margin-top:.25rem;font-weight:600}
-/* Connecting gold highlight: emerges from behind the photo, runs left under the quote */
+/* Solid gold rectangle: top sits below the heading, spans left (under the body quote)
+   to right (behind the photo). The head/shoulders emerge above its top edge for a 3D feel. */
 .lp-wrap .founder-band{
-  position:absolute;z-index:0;pointer-events:none;
-  left:0;right:1%;top:18%;height:60%;
-  background:linear-gradient(90deg,
-     rgba(226,199,90,0) 0%,
-     rgba(226,199,90,.14) 12%,
-     rgba(226,199,90,.5) 38%,
-     #E7C24C 52%, #D4B04A 76%, #B8942F 100%);
+  position:absolute;z-index:1;pointer-events:none;
+  left:0;right:1%;top:40%;bottom:2%;
+  background:linear-gradient(158deg,#EAC652 0%,#DEB94C 55%,#C8A63C 100%);
   box-shadow:0 40px 80px -34px rgba(160,128,48,.6);
 }
 .lp-wrap .founder-band::after{
-  content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.30);
+  content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.35);
   transform:translate(14px,14px);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 35%);
-          mask-image:linear-gradient(90deg,transparent 0%,#000 35%);
 }
 .lp-wrap .founder-text{z-index:3}
+/* body copy + name read on the gold; darken slightly for contrast */
+.lp-wrap .founder-body{color:rgba(11,31,58,.82)}
+.lp-wrap .founder-sig-role{color:rgba(11,31,58,.68);font-weight:700}
 .lp-wrap .founder-portrait{
   position:relative;z-index:2;max-width:520px;width:100%;margin-left:auto;
 }
@@ -695,8 +694,8 @@ $people = [
     <div class="founder-band" aria-hidden="true"></div>
     <div class="founder-text" data-reveal>
       <div class="sec-eyebrow">From the Chairman</div>
-      <div style="position:relative">
-        <span class="quote-glyph" aria-hidden="true">"</span>
+      <div class="quote-wrap">
+        <span class="quote-glyph" aria-hidden="true">&ldquo;</span>
         <p class="founder-lead">Driven by a vision to power the <em>world's electric future,</em> we remain deeply committed to the Make-in-India initiative.</p>
       </div>
       <p class="founder-body">When we started this journey in Jaipur, the ambition was simple - to make something the industry could genuinely depend on. Twenty-five years on, that ambition has only grown sharper. The team we have built, the standards we hold ourselves to, and the customers who trust us with their most critical supply needs are all a reflection of one belief: that in this business, quality is not a differentiator. It is the only currency that matters.</p>
