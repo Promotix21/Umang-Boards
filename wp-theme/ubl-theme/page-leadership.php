@@ -365,9 +365,9 @@ $people = [
   content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.35);
   transform:translate(14px,14px);
 }
-.lp-wrap .founder-text{z-index:3}
+.lp-wrap .founder-text{z-index:3;padding-left:2rem}
 .lp-wrap .founder-portrait{
-  position:relative;z-index:2;max-width:520px;width:100%;margin:-2.5rem 0 0 auto;
+  position:relative;z-index:2;max-width:560px;width:100%;margin:-3.4rem 0 0 auto;
 }
 .lp-wrap .founder-portrait .photo{
   position:relative;z-index:2;width:100%;
@@ -647,6 +647,7 @@ $people = [
   .lp-wrap .founder-grid{grid-template-columns:1fr;gap:3rem;min-height:0}
   /* On mobile the quote reads on parchment; the gold patch only works side-by-side */
   .lp-wrap .founder-band{display:none}
+  .lp-wrap .founder-text{padding-left:0}
   .lp-wrap .founder-lead em{color:var(--gold-dark)}
   .lp-wrap .founder-portrait{max-width:360px;margin:0 auto}
   /* Gold block behind just the photo on mobile, so it still "emerges from" gold */
