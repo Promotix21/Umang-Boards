@@ -647,7 +647,16 @@ $people = [
 @media(max-width:960px){
   .lp-wrap .section{padding:4rem 1.4rem}
   .lp-wrap .founder-grid{grid-template-columns:1fr;gap:3rem}
+  /* Connecting band only works side-by-side; hide it once columns stack */
+  .lp-wrap .founder-band{display:none}
   .lp-wrap .founder-portrait{max-width:360px;margin:0 auto}
+  /* Gold block behind just the photo on mobile, so it still "emerges from" gold */
+  .lp-wrap .founder-portrait::before{
+    content:"";position:absolute;z-index:0;left:8%;right:-4%;bottom:0;height:80%;
+    background:linear-gradient(158deg,#EBC85A 0%,#D4B04A 55%,#B8942F 100%);
+    box-shadow:0 30px 60px -30px rgba(160,128,48,.7);
+  }
+  .lp-wrap .founder-portrait .photo{z-index:1}
   .lp-wrap .lp-grid--4{grid-template-columns:repeat(2,1fr)}
   .lp-wrap .lp-grid--3{grid-template-columns:repeat(2,1fr)}
   .lp-wrap .hero-inner{padding:6rem 1.4rem 4rem}
