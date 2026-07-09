@@ -331,22 +331,24 @@ $people = [
   background-size:26px 26px;opacity:.55;
 }
 .lp-wrap .founder-grid{
-  position:relative;display:grid;grid-template-columns:1.15fr 1fr;gap:5rem;align-items:center;
+  position:relative;display:grid;grid-template-columns:1.08fr 1fr;gap:3.5rem;align-items:center;
+  min-height:620px;
 }
 .lp-wrap .founder-text{position:relative}
-.lp-wrap .quote-wrap{position:relative;padding-top:2.4rem}
+.lp-wrap .quote-wrap{position:relative;z-index:3;padding-top:2.2rem}
 .lp-wrap .quote-glyph{
-  font-family:var(--font-body);font-size:5rem;line-height:1;
-  color:var(--gold);opacity:.5;font-weight:600;
-  position:absolute;left:-.04em;top:-.4rem;pointer-events:none;
+  font-family:var(--font-body);font-size:4.6rem;line-height:1;
+  color:var(--gold-dark);opacity:.6;font-weight:700;
+  position:absolute;left:-.04em;top:-.5rem;pointer-events:none;
 }
 .lp-wrap .founder-lead{
-  font-family:var(--font-body);font-size:clamp(1.4rem,2.1vw,1.9rem);
-  line-height:1.4;color:#0b1f3a;font-weight:500;
-  margin:1rem 0 1.6rem;letter-spacing:-.005em;position:relative;
+  font-family:var(--font-body);font-size:1.5rem;
+  line-height:1.4;color:#0b1f3a;font-weight:600;
+  margin:0;max-width:690px;letter-spacing:-.005em;position:relative;
 }
-.lp-wrap .founder-lead em{font-style:normal;color:var(--gold-dark)}
-.lp-wrap .founder-body{font-size:1rem;line-height:1.85;color:var(--ink-2);max-width:540px;margin:0 0 1.6rem;font-weight:400}
+/* quote sits on the gold patch; white highlight pops against it */
+.lp-wrap .founder-lead em{font-style:normal;color:#fff;font-weight:600}
+.lp-wrap .founder-body{font-size:1rem;line-height:1.85;color:var(--ink-2);max-width:540px;margin:2.4rem 0 1.6rem;font-weight:400}
 .lp-wrap .founder-sig{display:flex;align-items:center;gap:1.1rem;margin-top:1.8rem}
 .lp-wrap .founder-sig-rule{width:42px;height:1px;background:var(--gold)}
 .lp-wrap .founder-sig-name{font-weight:700;color:#0b1f3a;font-size:1rem;letter-spacing:.01em}
@@ -355,7 +357,7 @@ $people = [
    to right (behind the photo). The head/shoulders emerge above its top edge for a 3D feel. */
 .lp-wrap .founder-band{
   position:absolute;z-index:1;pointer-events:none;
-  left:0;right:1%;top:40%;bottom:2%;
+  left:0;right:1%;top:21%;height:24%;
   background:linear-gradient(158deg,#EAC652 0%,#DEB94C 55%,#C8A63C 100%);
   box-shadow:0 40px 80px -34px rgba(160,128,48,.6);
 }
@@ -364,11 +366,8 @@ $people = [
   transform:translate(14px,14px);
 }
 .lp-wrap .founder-text{z-index:3}
-/* body copy + name read on the gold; darken slightly for contrast */
-.lp-wrap .founder-body{color:rgba(11,31,58,.82)}
-.lp-wrap .founder-sig-role{color:rgba(11,31,58,.68);font-weight:700}
 .lp-wrap .founder-portrait{
-  position:relative;z-index:2;max-width:520px;width:100%;margin-left:auto;
+  position:relative;z-index:2;max-width:520px;width:100%;margin:-2.5rem 0 0 auto;
 }
 .lp-wrap .founder-portrait .photo{
   position:relative;z-index:2;width:100%;
@@ -381,7 +380,7 @@ $people = [
   filter:contrast(1.03) saturate(.98) drop-shadow(0 26px 30px rgba(11,31,58,.32));
 }
 .lp-wrap .founder-portrait .tag{
-  position:absolute;bottom:34px;left:-18px;z-index:3;background:var(--navy);color:#fff;
+  position:absolute;bottom:120px;left:-18px;z-index:3;background:var(--navy);color:#fff;
   padding:.65rem 1.2rem;font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;
   box-shadow:0 14px 30px -10px rgba(11,31,58,.5);
 }
@@ -645,9 +644,10 @@ $people = [
 /* ── Responsive ── */
 @media(max-width:960px){
   .lp-wrap .section{padding:4rem 1.4rem}
-  .lp-wrap .founder-grid{grid-template-columns:1fr;gap:3rem}
-  /* Connecting band only works side-by-side; hide it once columns stack */
+  .lp-wrap .founder-grid{grid-template-columns:1fr;gap:3rem;min-height:0}
+  /* On mobile the quote reads on parchment; the gold patch only works side-by-side */
   .lp-wrap .founder-band{display:none}
+  .lp-wrap .founder-lead em{color:var(--gold-dark)}
   .lp-wrap .founder-portrait{max-width:360px;margin:0 auto}
   /* Gold block behind just the photo on mobile, so it still "emerges from" gold */
   .lp-wrap .founder-portrait::before{
