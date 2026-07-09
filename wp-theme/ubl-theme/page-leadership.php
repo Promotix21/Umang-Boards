@@ -350,20 +350,26 @@ $people = [
 .lp-wrap .founder-sig-rule{width:42px;height:1px;background:var(--gold)}
 .lp-wrap .founder-sig-name{font-weight:700;color:#0b1f3a;font-size:1rem;letter-spacing:.01em}
 .lp-wrap .founder-sig-role{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dark);margin-top:.25rem;font-weight:600}
+/* Connecting gold highlight: emerges from behind the photo, runs left under the quote */
+.lp-wrap .founder-band{
+  position:absolute;z-index:0;pointer-events:none;
+  left:0;right:1%;top:18%;height:60%;
+  background:linear-gradient(90deg,
+     rgba(226,199,90,0) 0%,
+     rgba(226,199,90,.14) 12%,
+     rgba(226,199,90,.5) 38%,
+     #E7C24C 52%, #D4B04A 76%, #B8942F 100%);
+  box-shadow:0 40px 80px -34px rgba(160,128,48,.6);
+}
+.lp-wrap .founder-band::after{
+  content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.30);
+  transform:translate(14px,14px);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 35%);
+          mask-image:linear-gradient(90deg,transparent 0%,#000 35%);
+}
+.lp-wrap .founder-text{z-index:3}
 .lp-wrap .founder-portrait{
-  position:relative;max-width:540px;width:100%;margin-left:auto;
-  display:flex;align-items:flex-end;
-}
-/* Solid gold rectangle the portrait emerges from */
-.lp-wrap .founder-portrait .founder-block{
-  position:absolute;left:6%;right:-4%;bottom:0;height:80%;z-index:1;
-  background:linear-gradient(158deg,#EBC85A 0%,#D4B04A 52%,#B8942F 100%);
-  box-shadow:0 40px 80px -32px rgba(160,128,48,.75);
-}
-/* Inset frame so the crop reads as an intentional portrait, not a cut */
-.lp-wrap .founder-portrait .founder-block::after{
-  content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.35);
-  transform:translate(16px,16px);
+  position:relative;z-index:2;max-width:520px;width:100%;margin-left:auto;
 }
 .lp-wrap .founder-portrait .photo{
   position:relative;z-index:2;width:100%;
@@ -677,6 +683,7 @@ $people = [
 <!-- ── Chairman's Message ── -->
 <section class="section founder" id="lp-chairman">
   <div class="section-wrap founder-grid">
+    <div class="founder-band" aria-hidden="true"></div>
     <div class="founder-text" data-reveal>
       <div class="sec-eyebrow">From the Chairman</div>
       <div style="position:relative">
@@ -693,7 +700,6 @@ $people = [
       </div>
     </div>
     <div class="founder-portrait">
-      <div class="founder-block"></div>
       <div class="photo">
         <img src="<?php echo $ldr; ?>AnoopKumarDhanuka-cutout.png" alt="Mr. Anoop Kumar Dhanuka, Chairman &amp; Managing Director">
       </div>
