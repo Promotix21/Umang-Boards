@@ -357,7 +357,7 @@ $people = [
    to right (behind the photo). The head/shoulders emerge above its top edge for a 3D feel. */
 .lp-wrap .founder-band{
   position:absolute;z-index:1;pointer-events:none;
-  left:0;right:1%;top:21%;height:24%;
+  left:0;right:1%;top:15%;height:22%;
   background:linear-gradient(158deg,#EAC652 0%,#DEB94C 55%,#C8A63C 100%);
   box-shadow:0 40px 80px -34px rgba(160,128,48,.6);
 }
